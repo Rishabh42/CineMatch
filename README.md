@@ -12,9 +12,9 @@ Yaoqiang:
 #### Organisation
 
 Pushing changes:
-- Each member has own branch to work on.
-- Once changes complete in private branch, merge to development.
-- Near to due date, once **everything** is complete, we will merge it to main branch and tag for submission.
+- Each member has their own branch to work on.
+- Once changes are completed in private branch, merge to development.
+- Near due date, once **everything** is complete, we will merge it to main branch and tag for submission.
 
 Files:
 - Meeting notes will go to folder meeting-notes (obviously!)
