@@ -1,15 +1,15 @@
-### Read me for Team 4
+### Team 4: project 585
 
-This is repo for collaborating on project component of the course COMP 585 during Fall 2023.
-##### Members
+This is the repo for collaborating on project component of the course COMP 585 during Fall 2023.
+#### Members
 (name: gitlab handle - delete this line later)
-Aayush: @akapur12
-Rishabh:
-Tamara:
-Varun:
+Aayush: @akapur12 \
+Rishabh: \
+Tamara: \
+Varun: \
 Yaoqiang:
 
-##### Organisation
+#### Organisation
 
 Pushing changes:
 - Each member has own branch to work on.
