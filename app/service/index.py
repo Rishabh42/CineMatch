@@ -1,8 +1,8 @@
-from flask import Flask
+from flask import Blueprint
 import os
 import pickle
 
-app = Flask(__name__)
+service_api = Blueprint('service_api', __name__)
 
 # dummy data
 in_memory_datastore = {
@@ -26,13 +26,7 @@ def predict_movies(userid):
     return {userid:list(in_memory_datastore[userid].values())}
 
 # define predict endpoint
-@app.route('/recommend/<userid>')
+@service_api.route('/<userid>')
 def recommend_route(userid): 
     return predict_movies(int(userid))
 
-
-if __name__ == "__main__":
-    app.run(debug=True, port=8082)
-
-
-# run the file using python3 app.py
