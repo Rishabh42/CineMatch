@@ -9,10 +9,17 @@ Our team mostly used Slack and WhatsApp for day-to-day communication and updates
 **Work Division & Responsibilities**:
 As from our meeting, the work was divided as:
 
-Yaoqiang (Luke): Data Engineer responsible for data creation and preprocessing.
-Tamara & Rishabh: ML Engineers in charge of implementing the machine learning model.
-Aayush: Backend Engineer tasked with developing the inference service.
-Varun: MLOps Engineer, overlooking deployment and CI/CD
+Yaoqiang (Luke): 
+Data Engineer responsible for data creation and preprocessing.
+
+Tamara & Rishabh: 
+ML Engineers in charge of implementing the machine learning model.
+
+Aayush: 
+Backend Engineer tasked with developing the inference service.
+
+Varun: 
+MLOps Engineer, overlooking deployment and CI/CD
 
 Our meetings served as a platform to discuss progress, brainstorm ideas, set up ToDos, and divide work for the coming week. We made discussions on model type, data creation, and task distribution for a each weeks delivery and assiged the tasks to the corresponding team member. In terms of individual contributions, Luke took charge of dataset creation, while Tamara and Rishabh began implementing the ML models. Aayush dived deep into backend development, and Varun focused on deployment essentials.
 
