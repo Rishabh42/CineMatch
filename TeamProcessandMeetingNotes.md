@@ -21,12 +21,19 @@ https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/tree/development/meeting-note
 
 **Links to our team memember commits**:
 Data collection and preprocessing(Yaoqiang):
+
 https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/bf82820d1affab62a0677fb71e49774f738ef5f1
+
 CI/CD Set up(Varun):
+
 https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/d29be70a3d2e4acdfb599f050fde6e2c89f8fe37
+
 Inference service(Aayush):
+
 https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/c9e4b6027028e6198f967cc969dffd29eccb039b
+
 Model implementation(Tamara & Rishabh):
+
 https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/be9a020284ce5d361e44da83cbe26beeeab1bb62
 
 **Deviations**:
