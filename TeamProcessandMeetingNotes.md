@@ -20,6 +20,7 @@ Our meetings served as a platform to discuss progress, brainstorm ideas, set up 
 https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/tree/development/meeting-notes
 
 **Links to our team memember commits**:
+
 Data collection and preprocessing(Yaoqiang):
 
 https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/bf82820d1affab62a0677fb71e49774f738ef5f1
