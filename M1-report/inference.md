@@ -10,9 +10,13 @@ wrap it in a prediction service which is exposed as an API end point
 
 #### Architecture
 
+### Ranking determination of the services
 
 #### Load and infrastructure considerations
+#### Dockerization of our inference service
+We have placed the model file and the app driver code in the same container which is exposed over port 8082.
 
+#### CI/CD pipeline
 
 #### How are containers made?
 
