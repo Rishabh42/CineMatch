@@ -6,7 +6,7 @@ Our team was organized with an intention to contribute activly and equally. We s
 **Communication Channel**s:
 Our team mostly used Slack and WhatsApp for day-to-day communication and updates. two weekly meetings were scheduled after classes, with both in-person and virtual Zoom sessions. To maintain documentation, GitLab was our platform of choice.
 
-**Work Division & Responsibilities******:
+**Work Division & Responsibilities**:
 As from our meeting, the work was divided as:
 
 Yaoqiang (Luke): Data Engineer responsible for data creation and preprocessing.
