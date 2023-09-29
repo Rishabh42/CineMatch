@@ -5,10 +5,12 @@ from surprise import accuracy
 import pandas as pd
 import numpy as np
 
+
 def column_switch(column):
     if column['max_min'] != 0:
         return (column['min'] * 100) // column['max_min']
     return 0
+
 
 def load_data(file_path):
     users = pd.read_csv('..\\data\\user_data.csv', sep=',', error_bad_lines=False, encoding="latin-1")
@@ -16,10 +18,6 @@ def load_data(file_path):
 
     ratings = pd.read_csv('..\\data\\cleaned_rating.csv', sep=',', error_bad_lines=False, encoding="latin-1")
     ratings.columns = ['user_id', 'movie_id', 'rate']
-    # ratings = ratings[ratings[['user_id']].apply(lambda x: x[0].isdigit(), axis=1)]
-    print(ratings.astype({'user_id': 'int64'}).dtypes)
-    print(users.dtypes)
-    print('---')
     users_ratings = pd.merge(ratings, users, on='user_id')
 
     history = pd.read_csv('..\\data\\movie_cleaned_1.csv', sep=',', error_bad_lines=False, encoding="latin-1")
@@ -38,7 +36,7 @@ def load_data(file_path):
     reader = Reader(line_format='user item rating', sep=',', rating_scale=(1, 5))
 
     # Load the dataset using Surprise
-    return Dataset.load_from_df(ratings, reader=reader), users, data2, users_ratings
+    return Dataset.load_from_df(ratings, reader=reader), users, data2, users_ratings, movies
 
 
 def train():
@@ -47,7 +45,7 @@ def train():
     file_path = '..\\data\\cleaned_rating.csv'
 
     # Load the dataset using Surprise
-    data, users, data2, users_ratings = load_data(file_path)
+    data, users, data2, users_ratings, movies = load_data(file_path)
 
     # Split the dataset into a train set and a test set
     train_set, test_set = train_test_split(data, test_size=0.2, random_state=42)
@@ -80,20 +78,29 @@ def train():
     for movie_id in list(set(map(lambda x: x[1], data.raw_ratings))):
         if movie_id not in user_ratings:
             predictions = model.predict(user_id, movie_id)
-            if predictions.details['was_impossible']:
-                user_row = users.loc[users['user_id'] == int(user_id)]
-                user_gender = user_row['gender'].values[0]
-                users_same_movie = users_ratings.loc[users_ratings['movie_id'] == movie_id]
-                users_same_gender = users_same_movie.loc[users_same_movie['gender'] == user_gender]
-                if len(users_same_gender) == 0:
-                    movie_recommendations.append((movie_id, model.default_prediction()))
-                else:
-                    predicted_rating = users_same_gender.mean(axis=0, numeric_only=True)['rate']
-                    movie_recommendations.append((movie_id, predicted_rating))
+            movie_entry = movies.loc[movies['movie_id'] == movie_id]
+            if True in movie_entry['adult'].values:
+                movie_recommendations.append((movie_id, 0))
             else:
-                print('yey')
-                predicted_rating = predictions.est
-                movie_recommendations.append((movie_id, predicted_rating))
+                if predictions.details['was_impossible']:
+                    global_rate = movie_entry['global_rate'].values
+                    if len(global_rate) == 0:
+                        global_rate = model.default_prediction()
+                    else:
+                        global_rate = global_rate[0]
+                    user_row = users.loc[users['user_id'] == int(user_id)]
+                    user_gender = user_row['gender'].values[0]
+                    users_same_movie = users_ratings.loc[users_ratings['movie_id'] == movie_id]
+                    users_same_gender = users_same_movie.loc[users_same_movie['gender'] == user_gender]
+                    if len(users_same_gender) == 0:
+                        movie_recommendations.append((movie_id, (global_rate / 10) * 5))
+                    else:
+                        predicted_rating = ((global_rate / 10) * 5 + users_same_gender.mean(axis=0, numeric_only=True)[
+                            'rate']) / 2
+                        movie_recommendations.append((movie_id, predicted_rating))
+                else:
+                    predicted_rating = predictions.est
+                    movie_recommendations.append((movie_id, predicted_rating))
 
     # Sort the recommendations by predicted rating in descending order
     movie_recommendations.sort(key=lambda x: x[1], reverse=True)
