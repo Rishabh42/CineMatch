@@ -4,3 +4,8 @@ services:
     image: service
     ports:
       - 8082:8082
+    volumes:
+      - app_vol:/app
+
+volumes:
+  app_vol:
