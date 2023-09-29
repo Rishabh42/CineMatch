@@ -42,7 +42,13 @@ https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/c9e4b6027028e6198f967c
 
 Model implementation(Tamara & Rishabh):
 
-https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/be9a020284ce5d361e44da83cbe26beeeab1bb62
+Rishabh:
+Collaborative filter: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/be9a020284ce5d361e44da83cbe26beeeab1bb62
+
+Tamara:
+Collaborative filter: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/d1f1596cb2e8ad67773bbbd1cc62f12afeadc956
+Other filters: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/2da2427553fface20fc5ab54fd375ddecf4336fd
+Documentation, cleaning and re-structuration of the code: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/f1c5309b01b8b125c9b4592423c64c742233b87e 
 
 **Deviations**:
 While our orignial workflow was mostly outlined in our initial workflow, a few adaptions were made in response to some challenges we faced. For instance, we initially underestimated the complexity of model deployment, leading us to revisit and refine our approach. Additionally, We had believed that the complexity of our data wouldn't necessarily to be a large dataset. However, as we delved deeper into the implementation phase, it became an evidence that It is important to get a larger dataset. So we spent a bit more time on collecting and generating the dataset.

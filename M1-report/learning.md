@@ -17,8 +17,7 @@ We also put an adult movie filter that avoids recommending adult movies to kids.
 ### Implementation
 
 For the implementation, we have used the python library Pandas for managing the databases, and Surprise for the machine learning part. 
-Our model estimates the rates for all the movies the given user has not rated yet, and we take the 20 highest rates sorted in descending order. If the movie is an adult movie and the user is less than 18 years old, the predicted rate of the movie will be 0. If we have enough data to use collaborative filtering, we use the prediction of the collaborative filter, else the predicted rate will be:
-pred_rate = ((IMDB_rate/10)*5 + (mean(rate_of_user_same_gender)))/2
+Our model estimates the rates for all the movies the given user has not rated yet, and we take the 20 highest rates sorted in descending order. If the movie is an adult movie and the user is less than 18 years old, the predicted rate of the movie will be 0. If we have enough data to use collaborative filtering, we use the prediction of the collaborative filter, else the predicted rate will be based on the IMDB rate and the mean of the rates of this movies by user of the same gender.
 Link to our model: 
 
 ### Limitations
