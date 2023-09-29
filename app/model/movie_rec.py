@@ -11,13 +11,16 @@ def column_switch(column):
     return 0
 
 def load_data(file_path):
-    users = pd.read_csv('..\\data\\user_data.csv', sep=',', error_bad_lines=False)
+    users = pd.read_csv('..\\data\\user_data.csv', sep=',', error_bad_lines=False, encoding="latin-1")
     users.columns = ['user_id', 'age', 'occupation', 'gender']
-    users.head()
 
     ratings = pd.read_csv('..\\data\\cleaned_rating.csv', sep=',', error_bad_lines=False, encoding="latin-1")
-    ratings.columns = ['timestamp', 'user_id', 'movie_id', 'rate']
-    users_ratings = ratings.merge(users, on='user_id')
+    ratings.columns = ['user_id', 'movie_id', 'rate']
+    # ratings = ratings[ratings[['user_id']].apply(lambda x: x[0].isdigit(), axis=1)]
+    print(ratings.astype({'user_id': 'int64'}).dtypes)
+    print(users.dtypes)
+    print('---')
+    users_ratings = pd.merge(ratings, users, on='user_id')
 
     history = pd.read_csv('..\\data\\movie_cleaned_1.csv', sep=',', error_bad_lines=False, encoding="latin-1")
     history.columns = ['user_id', 'movie_id', 'min']
@@ -32,10 +35,10 @@ def load_data(file_path):
     data2 = Dataset.load_from_df(new, reader)
 
     # Define a custom reader with the rating scale (usually from 1 to 5)
-    reader = Reader(line_format='timestamp user item rating', sep=',', rating_scale=(1, 5))
+    reader = Reader(line_format='user item rating', sep=',', rating_scale=(1, 5))
 
     # Load the dataset using Surprise
-    return Dataset.load_from_file(file_path, reader=reader), users, data2, users_ratings
+    return Dataset.load_from_df(ratings, reader=reader), users, data2, users_ratings
 
 
 def train():
@@ -88,6 +91,7 @@ def train():
                     predicted_rating = users_same_gender.mean(axis=0, numeric_only=True)['rate']
                     movie_recommendations.append((movie_id, predicted_rating))
             else:
+                print('yey')
                 predicted_rating = predictions.est
                 movie_recommendations.append((movie_id, predicted_rating))
 
