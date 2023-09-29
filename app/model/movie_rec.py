@@ -5,7 +5,6 @@ from surprise import accuracy
 import pandas as pd
 import numpy as np
 import pickle
-import time
 
 
 def column_switch(column):
@@ -231,7 +230,7 @@ def get_recommendation(user_id):
     # path where the data is
     file_path = '..\\data\\'
 
-    # Load the dataset using Surprise
+    # Load the dataset and databases
     dataset, users, users_ratings, movies = load_data(file_path, rate_based=True)
 
     # Get movie recommendations for a user
@@ -241,6 +240,4 @@ def get_recommendation(user_id):
 
 
 if __name__ == '__main__':
-    starting_time = time.time()
     get_recommendation('143079')
-    print(time.time() - starting_time)
