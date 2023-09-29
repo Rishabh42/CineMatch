@@ -31,7 +31,10 @@ def predict_movies(userid):
     # we might have to send request to server to retrieve attributes for the user
     # these may be needed to send to the model.
     print(get_user_details(userid)['age'])
-    return {userid:list(in_memory_datastore[userid].values())}
+    # return {userid:list(in_memory_datastore[userid].values())}
+    output = ['toy+story+1995', 'toy+story+2+1999', 'toy+story+3+2010', 'toy+story+3+2010', 'toy+story+1995', 'toy+story+2+1999', 'toy+story+3+2010', 'toy+story+3+2010', 'toy+story+1995', 'toy+story+2+1999', 'toy+story+3+2010', 'toy+story+3+2010', 'toy+story+1995', 'toy+story+2+1999', 'toy+story+3+2010', 'toy+story+3+2010', 'toy+story+1995', 'toy+story+2+1999', 'toy+story+3+2010', 'toy+story+3+2010']
+    return ",".join(output)
+
 
 # define predict endpoint
 @service_api.route('/<userid>')

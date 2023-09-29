@@ -21,5 +21,5 @@ CMD ["gunicorn", "--bind", "0.0.0.0:8082", "app:app"]
 
 # to run
 # docker build -t service .
-# docker compose up --d
+# docker compose up -d
 # docker exec -it recommender /bin/bash
