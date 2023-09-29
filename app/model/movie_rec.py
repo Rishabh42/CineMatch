@@ -4,6 +4,8 @@ from surprise import KNNBasic
 from surprise import accuracy
 import pandas as pd
 import numpy as np
+import pickle
+import time
 
 
 def column_switch(column):
@@ -62,7 +64,7 @@ def load_data(folder_path, rate_based):
     return dataset, users, users_ratings, movies
 
 
-def train(train_set):
+def train_collaborative_filtering(train_set):
     """
     Train the model with the train dataset
     :return: the model
@@ -78,6 +80,10 @@ def train(train_set):
 
     # Train the model on the training data
     model.fit(train_set)
+
+    # save
+    with open('model.pkl', 'wb') as f:
+        pickle.dump(model, f)
 
     return model
 
@@ -96,12 +102,11 @@ def test_collaborative_filtering(model, test_set):
     accuracy.rmse(predictions)
 
 
-def recommendation(model, user_id, nb_recommendation, dataset, movies, users, users_ratings):
+def recommendation(user_id, nb_recommendation, dataset, movies, users, users_ratings):
     """
     Recommend a list of movies for a user based on collaborative filtering or demographic filtering when there are
     not enough data.
 
-    :param model: The model of the collaborative filter
     :param user_id: The user id to make the prediction
     :param nb_recommendation: The number of recommendation asked
     :param dataset: The dataset used for train the model
@@ -109,7 +114,12 @@ def recommendation(model, user_id, nb_recommendation, dataset, movies, users, us
     :param users: All the users
     :param users_ratings: Database with the ratings and the users info
     :return: the recommendation
+    :exception: The user have to exist in the database
     """
+
+    # load the model
+    with open('model.pkl', 'rb') as f:
+        model = pickle.load(f)
 
     # Get the array of the movies already rates by the user
     user_ratings_arr = np.array(list(map(lambda x: x[1], filter(lambda x: x[0] == user_id, dataset.raw_ratings))))
@@ -122,11 +132,12 @@ def recommendation(model, user_id, nb_recommendation, dataset, movies, users, us
 
     # Get the user entry in the database of all users
     user_row = users.loc[users['user_id'] == int(user_id)]
+    assert len(user_row) > 0, 'The user does not exist in the users database'
 
     # Get the user gender ('F' or 'M')
     user_gender = user_row['gender'].values[0]
 
-    # Get the user age ('F' or 'M')
+    # Get the user age
     user_age = user_row['age'].values[0]
 
     movie_recommendations = []
@@ -135,7 +146,7 @@ def recommendation(model, user_id, nb_recommendation, dataset, movies, users, us
         # Get the movie entry in the database of all movies
         movie_entry = movies.loc[movies['movie_id'] == movie_id]
 
-        # Filter to do not recommend adult movie to kid
+        # Filter to do not recommend adult movie to a kid
         if (True in movie_entry['adult'].values) and user_age < 18:
             movie_recommendations.append((movie_id, 0))
         else:
@@ -194,7 +205,7 @@ def print_recommendations(top_movie_recommendations, user_id):
         print(f'Movie ID: {movie_id}, Predicted Rating: {predicted_rating:.2f}')
 
 
-def main():
+def train():
     # path where the data is
     file_path = '..\\data\\'
 
@@ -205,17 +216,31 @@ def main():
     train_set, test_set = train_test_split(dataset, test_size=0.2, random_state=42)
 
     # Training
-    model = train(train_set)
+    model = train_collaborative_filtering(train_set)
 
     # Testing
     test_collaborative_filtering(model, test_set)
 
+
+def get_recommendation(user_id):
+    """
+    Get the recommendation for a user
+
+    :param user_id: the id of the user
+    """
+    # path where the data is
+    file_path = '..\\data\\'
+
+    # Load the dataset using Surprise
+    dataset, users, users_ratings, movies = load_data(file_path, rate_based=True)
+
     # Get movie recommendations for a user
-    user_id = '143079'
     nb_recommendation = 20
-    recommendations = recommendation(model, user_id, nb_recommendation, dataset, movies, users, users_ratings)
+    recommendations = recommendation(user_id, nb_recommendation, dataset, movies, users, users_ratings)
     print_recommendations(recommendations, user_id)
 
 
 if __name__ == '__main__':
-    main()
+    starting_time = time.time()
+    get_recommendation('143079')
+    print(time.time() - starting_time)
