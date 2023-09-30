@@ -35,7 +35,9 @@ Data collection and preprocessing(Yaoqiang):
 https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/bf82820d1affab62a0677fb71e49774f738ef5f1
 
 Varun:
-
+Dockerfile setup: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/fdf0481ed0bbdb3ed729a817ced950fc713c5047
+CI/CD setup: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/8fbe0ff3d371123cc565c335b7cb49c1c6261d50
+Documentation: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/79f5136fab86fcd14e0b49b9884c904052103170
 
 Inference service(Aayush):  
 Create inference service, help with deployment:
