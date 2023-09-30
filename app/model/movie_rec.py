@@ -218,7 +218,7 @@ def print_recommendations(top_movie_recommendations, user_id):
 
 def train():
     # path where the data is
-    file_path = '..\\data\\'
+    file_path = '../data/'
 
     # Load the dataset using Surprise
     dataset, users, users_ratings, movies = load_data(
@@ -242,7 +242,7 @@ def get_recommendation(user_id):
     :param user_id: the id of the user
     """
     # path where the data is
-    file_path = '..\\data\\'
+    file_path = '../data/'
 
     # Load the dataset and databases
     dataset, users, users_ratings, movies = load_data(
@@ -253,7 +253,3 @@ def get_recommendation(user_id):
     recommendations = recommendation(
         user_id, nb_recommendation, dataset, movies, users, users_ratings)
     print_recommendations(recommendations, user_id)
-
-
-if __name__ == '__main__':
-    get_recommendation('143079')
