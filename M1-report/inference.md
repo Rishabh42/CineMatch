@@ -26,3 +26,19 @@ Add inference support ([link](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-
 
 Refactor flask service ([link](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/17f5d3d221c67758164ed2ad8d9b248f94675473))
 
+
+### Dockerization of our inference service
+
+We have placed the model file and the app driver code in the same container. Port (8082) inside the container is mapped to the port (8082) of the host machine (fall2023-comp585-4.cs.mcgill.ca) such that the requests received at the VM are forwarded to container's port when the container is deployed. We tried using the alpine version of the Python image to keep our container lightweight, but we found that packages end up with dependency errors. So we decided to use the Python base image (though larger) for the moment due to time constraints. We will work on optimizing the Docker container in the future. We set the working directory as app (base directory) in the container where we place the model and data directories. When we launch the container, we run the app.py to start our inference service. When started for the first time, we launch the training on the container for model creation to avoid packaging the model (2GB in size) within the containers as it would slow down the deployment.
+
+### CI/CD pipeline
+
+Though not part of milestone 1, we decided to leverage GitLab's CI/CD capabilities to set up a pipeline in the early stages of development. This is an important step in automating the development lifecycle. A pipeline was set up to automatically deploy the inference service onto a Docker container running on our remote server whenever code is merged into the main branch. A GitLab runner was set up on one of our teammate's local machine in order to run the CI/CD jobs. The CI/CD job itself used an Ubuntu Docker container to SSH into our remote server using a private key generated on the server. The private key was converted to base64 format and added as a masked GitLab CI/CD variable, which means that the variable is hidden in job logs. This is vital from a security standpoint. The job pulls the latest code from the GitLab repository, builds the Docker image and deploys the container. The CI/CD pipeline simplifies the process of deployment, precluding the need for manual intervention during the deployment stage.
+
+*Links to commits for the same:*
+
+Docker setup ([link](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/fdf0481ed0bbdb3ed729a817ced950fc713c5047))
+
+CI/CD setup ([link](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/8fbe0ff3d371123cc565c335b7cb49c1c6261d50))
+
+Testing CI/CD ([link](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/834d7ceebe31e7827d5e573c85afdf30ede0f758))
