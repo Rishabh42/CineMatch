@@ -55,27 +55,27 @@ Documentation, cleaning and re-structuration of the code: https://gitlab.cs.mcgi
 ## Comparison to our original workflow
 Compared to the original workflow, every team member performed the allotted tasks on time and in a collaborative manner. Regular meetings were held amongst group members and the work was done smoothly.
 
-Frequency of meetings:
+**Frequency of meetings:**
 - Initially we planned on meeting once a week but as the development progressed we had to meet at least twice in a week as the deadline for M1 approached.
 - Each team member was present in the meetings either virtually or in person
 
-What are the responsibilities of each team member during the meetings?
+**What are the responsibilities of each team member during the meetings?**
 - We synced up on development, discussed any issues being faced by teammates and resolved them in each meeting. 
 - Notes and meeting minutes were created by almost each team member in the meetings
 - Overall, each team member delivered on their responsibilities 
 
-How will internal deadlines be set, managed, and followed?
+**How will internal deadlines be set, managed, and followed?**
 - We used GitLab issues to assign tasks to each team member and used the `Due date` parameter to manage deadlines. Additionally we created labels for each functionality. 
 - For some tasks like implementation of the model and dataset collection, it was taking some time in researching and coming up with the most optimal recommender approach to be used. During this time, one of our team members fell sick so we had to adjust the deadlines. In the end we were able to achieve the allotted tasks despite the unfortunate delay
 
-How will you coordinate your work?
+**How will you coordinate your work?**
 - As explained above, we used GitLab for syncing the code, allotting tasks and managing deadlines.
 - We also used our team server to share large files like the data files which were used in training the model
 
-What will be done in case disagreement arises?
+**What will be done in case disagreement arises?**
 Fortunately, we didn’t have any major disagreements since we communicated & collaborated effectively.
 
-Modes of communication?
+**Modes of communication?**
 We used the following modes of communication as was discussed in our original workflow:
 - In person meetings
 - GitLab issues for dividing work
