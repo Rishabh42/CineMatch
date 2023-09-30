@@ -1,15 +1,15 @@
 # Team Process and Meeting Notes
 
-**Team Organization**:
+**Team Organization**:  
 Our team was organized with an intention to contribute activly and equally. We set up the roles in our workflow (A0) and  assigned the team members based on individual strengths and experience, ranging from data engineering, backend development to machine learning. This effective categorization in roles helped us to better collaborate and ensuring project completion.
 
-**Communication Channels**:
+**Communication Channels**:  
 Our team mostly used Slack and WhatsApp for day-to-day communication and updates. two weekly meetings were scheduled after classes, with both in-person and virtual Zoom sessions. To maintain documentation, GitLab was our platform of choice.
 
-**Work Division & Responsibilities**:
+**Work Division & Responsibilities**:  
 As from our meeting, the work was divided as:
 
-Yaoqiang (Luke): 
+Yaoqiang (Luke):  
 Data Engineer responsible for data creation and preprocessing.
 
 Tamara: 
