@@ -1,14 +1,15 @@
-For our movie recommender, we use collaborative filtering and other filtering techniques to produce the recommendation.
+For our movie recommender model, we used collaborative filtering and other filtering techniques to produce the recommendation.  
+Following is a brief description of the learning methods involved:
 
 ### Collaborative filtering
 
 Collaborative filtering is a widely used technique in recommender systems based on the idea that the users who previously liked the same movies in the past are more likely to like the same movies in the future. It estimates the similarities between the users and uses it to produce the prediction. To compute the similarities, we use the k-nearest neighbors algorithm with cosine similarity function.
-We chose this technique because it is very popular for recommendation systems and allows us to have a good base that we can improve after.
+We chose this technique because it is very popular for recommendation systems and allows us to have a good starting point that we can improve on later.
 To estimate how much a user liked a movie, we use the ratings given by that user.
 
 ### Cold start
 
-To improve our algorithm, we decided to reduce the cold start problem. The cold start problem is one of the biggest problems of collaborative filtering: when a user has not yet given enough rates, the collaborative filter does not have enough data to find similar users. In case there is not enough data on a user, we decided to use their demographics data to find similar users and also the IMDB rating of the movies to recommend in priority the movies liked by everyone. For now, the only demographic info taken in account by our model is gender.
+To improve our algorithm, we decided to reduce the cold start problem. The cold start problem is one of the biggest problems of collaborative filtering: when a user has not yet given enough ratings, the collaborative filter does not have enough data to find similar users. In case there is not enough data on a user, we decided to use their demographic data to find similar users and also the IMDB rating of the movies to recommend the movies liked by everyone based on matching priority. For now, the only demographic info taken in account by our model is gender.
 
 ### Adult movie filter
 
@@ -16,10 +17,15 @@ We also put an adult movie filter that avoids recommending adult movies to kids.
 
 ### Implementation
 
-For the implementation, we have used the python library Pandas for managing the databases, and Surprise for the machine learning part. 
-Our model estimates the rates for all the movies the given user has not rated yet, and we take the 20 highest rates sorted in descending order. If the movie is an adult movie and the user is less than 18 years old, the predicted rate of the movie will be 0. If we have enough data to use collaborative filtering, we use the prediction of the collaborative filter, else the predicted rate will be based on the IMDB rate and the mean of the rates of this movies by user of the same gender.
-Link to our model: 
+For our implementation, we utilized the Python library Pandas to manage the databases, and we employed Surprise for the machine learning component. Our model's primary function is to estimate movie ratings for those films a user has not yet rated. We then select the top 20 highest-rated movies, sorted in descending order.
+
+In the case of adult-oriented movies and users under the age of 18, the predicted rating for such movies is set to 0. If we possess sufficient data to employ collaborative filtering, we rely on its predictions. In situations where collaborative filtering data is insufficient, our predictions are derived from a combination of the IMDb rating and the average ratings given by users of the same gender for the respective movies.
+
+You can access our model through the following link: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/tree/development/app/model
 
 ### Limitations
 
-Because there is a very large number of users, collective filtering requires a very large number of ratings to be effective. Collecting data from the stream takes time, so we did not have time to collect enough data for our model to be effective. Consequently, the majority of users suffer from the "cold start problem" because we do not have enough data on them. We therefore plan to retrain our model once we have collected more data.
+
+Due to the substantial user base, collaborative filtering necessitates an extensive volume of ratings to yield meaningful results. The process of gathering data from the stream is time-consuming, and as a result, we faced limitations in accumulating a sufficient amount of data to make our model truly effective. This situation has led to the "cold start problem" affecting the majority of users, as we currently lack the requisite data for them.
+
+Our solution moving forward entails planning to retrain our model once we have amassed a more substantial dataset. This proactive approach will help mitigate the cold start problem and enhance the overall effectiveness of our model.
