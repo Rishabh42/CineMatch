@@ -11,7 +11,7 @@ RUN pip install -r requirements.txt
 # Copy the files from our application
 ADD app.py app.py
 COPY model/ model/
-COPY service/ service/
+COPY data/ data/
 
 # Expose port 8082 from the container
 EXPOSE 8082
