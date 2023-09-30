@@ -31,27 +31,26 @@ https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/tree/development/meeting-note
 
 **Links to our team memember commits**:
 
-Data collection and preprocessing(Yaoqiang):
-
+Data collection and preprocessing(Yaoqiang):  
 https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/bf82820d1affab62a0677fb71e49774f738ef5f1
 
-CI/CD Set up(Varun):
-
+CI/CD Set up(Varun):  
 https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/d29be70a3d2e4acdfb599f050fde6e2c89f8fe37
 
-Inference service(Aayush):
-
+Inference service(Aayush):  
 https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/c9e4b6027028e6198f967cc969dffd29eccb039b
 
 Model implementation(Tamara & Rishabh):
 
-Rishabh:
-Collaborative filter: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/be9a020284ce5d361e44da83cbe26beeeab1bb62
+Rishabh:  
+Collaborative filter model: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/be9a020284ce5d361e44da83cbe26beeeab1bb62  
+Data fetching and pre-processing scripts: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/a4d64024d42ddc13dc4405cefc2d8e7458d40f30  
+Compiled datasets: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/b07ff1b98e6c50dfdd10cf72aa6850db6bdff545
 
-Tamara:
-Collaborative filter: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/d1f1596cb2e8ad67773bbbd1cc62f12afeadc956
-Other filters: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/2da2427553fface20fc5ab54fd375ddecf4336fd
-Documentation, cleaning and re-structuration of the code: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/f1c5309b01b8b125c9b4592423c64c742233b87e 
+Tamara:  
+Collaborative filter: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/d1f1596cb2e8ad67773bbbd1cc62f12afeadc956  
+Other filters: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/2da2427553fface20fc5ab54fd375ddecf4336fd  
+Documentation, cleaning and re-structuration of the code: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/f1c5309b01b8b125c9b4592423c64c742233b87e  
 
 ## Comparison to our original workflow
 Compared to the original workflow, every team member performed the allotted tasks on time and in a collaborative manner. Regular meetings were held amongst group members and the work was done smoothly.
