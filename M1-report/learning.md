@@ -1,3 +1,4 @@
+# Learning
 For our movie recommender model, we used collaborative filtering and other filtering techniques to produce the recommendation.  
 Following is a brief description of the learning methods involved:
 
