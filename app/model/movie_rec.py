@@ -253,3 +253,6 @@ def get_recommendation(user_id):
     recommendations = recommendation(
         user_id, nb_recommendation, dataset, movies, users, users_ratings)
     print_recommendations(recommendations, user_id)
+
+if __name__ == '__main__':
+    train()
