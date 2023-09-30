@@ -38,7 +38,10 @@ Varun:
 
 
 Inference service(Aayush):  
-https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/c9e4b6027028e6198f967cc969dffd29eccb039b
+Create inference service, help with deployment:
+here ([link](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/a8e3116e65c35ac300b9c40ed5238775ceed2223)) here ([link](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/4566105d1b007a154147004449541d5556f993f8))  
+Ratings and Users - fetch and dataset creation: here ([link](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/6f6eda5706550a5b97f25ec4b8caab5df96e1756))  
+Documentation and restructuring of code: here ([link](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/17f5d3d221c67758164ed2ad8d9b248f94675473)) here ([link](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/22f7bf9deca26b9caf8d7b401cfa47b84fc41809))
 
 Model implementation(Tamara & Rishabh):
 
