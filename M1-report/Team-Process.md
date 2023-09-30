@@ -12,8 +12,11 @@ As from our meeting, the work was divided as:
 Yaoqiang (Luke): 
 Data Engineer responsible for data creation and preprocessing.
 
-Tamara & Rishabh: 
+Tamara: 
 ML Engineers in charge of implementing the machine learning model.
+
+Rishabh:
+ML Engineer in charge of implementing the machine learning model and collecting \& pre-processing the datasets
 
 Aayush: 
 Backend Engineer tasked with developing the inference service.
@@ -50,5 +53,35 @@ Collaborative filter: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/
 Other filters: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/2da2427553fface20fc5ab54fd375ddecf4336fd
 Documentation, cleaning and re-structuration of the code: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/f1c5309b01b8b125c9b4592423c64c742233b87e 
 
-**Deviations**:
+## Comparison to our original workflow
+Compared to the original workflow, every team member performed the allotted tasks on time and in a collaborative manner. Regular meetings were held amongst group members and the work was done smoothly.
+
+Frequency of meetings:
+- Initially we planned on meeting once a week but as the development progressed we had to meet at least twice in a week as the deadline for M1 approached.
+- Each team member was present in the meetings either virtually or in person
+
+What are the responsibilities of each team member during the meetings?
+- We synced up on development, discussed any issues being faced by teammates and resolved them in each meeting. 
+- Notes and meeting minutes were created by almost each team member in the meetings
+- Overall, each team member delivered on their responsibilities 
+
+How will internal deadlines be set, managed, and followed?
+- We used GitLab issues to assign tasks to each team member and used the `Due date` parameter to manage deadlines. Additionally we created labels for each functionality. 
+- For some tasks like implementation of the model and dataset collection, it was taking some time in researching and coming up with the most optimal recommender approach to be used. During this time, one of our team members fell sick so we had to adjust the deadlines. In the end we were able to achieve the allotted tasks despite the unfortunate delay
+
+How will you coordinate your work?
+- As explained above, we used GitLab for syncing the code, allotting tasks and managing deadlines.
+- We also used our team server to share large files like the data files which were used in training the model
+
+What will be done in case disagreement arises?
+Fortunately, we didn’t have any major disagreements since we communicated & collaborated effectively.
+
+Modes of communication?
+We used the following modes of communication as was discussed in our original workflow:
+- In person meetings
+- GitLab issues for dividing work
+- Slack and WhatsApp groups for easy communication
+- Zoom meetings and voice calls
+
+**Conclussion**:
 While our orignial workflow was mostly outlined in our initial workflow, a few adaptions were made in response to some challenges we faced. For instance, we initially underestimated the complexity of model deployment, leading us to revisit and refine our approach. Additionally, We had believed that the complexity of our data wouldn't necessarily to be a large dataset. However, as we delved deeper into the implementation phase, it became an evidence that It is important to get a larger dataset. So we spent a bit more time on collecting and generating the dataset.
