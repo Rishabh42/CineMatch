@@ -7,6 +7,8 @@ import numpy as np
 import pickle
 import os
 
+global_model = None
+
 
 def column_switch(column):
     if column['max_min'] != 0:
@@ -48,6 +50,7 @@ def load_data(folder_path, rate_based):
                          sep=',', on_bad_lines='skip', encoding="latin-1")
     movies.columns = ['movie_id', 'adult', 'type',
                       'max_min', 'global_rate', 'languages']
+    movies.sort_values(by=['global_rate'], ascending=False)
 
     # Create a database with the watching history and the percentage of the movie seen
     history_percentage = pd.merge(history, movies, on='movie_id')
@@ -125,16 +128,16 @@ def recommendation(user_id, nb_recommendation, dataset, movies, users, users_rat
     :exception: The user have to exist in the database
     """
 
-    # load the model
-    with open(os.path.join(os.path.normpath('/app'), 'model', 'model.pkl'), 'rb') as f:
-        model = pickle.load(f)
+    assert global_model is not None
 
     # Get the array of the movies already rates by the user
     user_ratings_arr = np.array(list(map(lambda x: x[1], filter(
         lambda x: x[0] == user_id, dataset.raw_ratings))))
 
+    max_nb_movies = 100
+
     # Get the array of all the movies
-    movies_arr = np.array(list(set(map(lambda x: x[1], dataset.raw_ratings))))
+    movies_arr = np.array(movies)[:max_nb_movies, 0]
 
     # Create an array with all the movies not seen yet by the user
     movies_not_seen = np.setdiff1d(movies_arr, user_ratings_arr)
@@ -160,7 +163,7 @@ def recommendation(user_id, nb_recommendation, dataset, movies, users, users_rat
             movie_recommendations.append((movie_id, 0))
         else:
             # prediction of the collaborative filtering model
-            prediction = model.predict(user_id, movie_id)
+            prediction = global_model.predict(user_id, movie_id)
 
             # Test if the collaborative filtering prediction is not possible.
             # The prediction can be impossible if the user or the movie is new or have too few ratings (cold start)
@@ -172,7 +175,7 @@ def recommendation(user_id, nb_recommendation, dataset, movies, users, users_rat
 
                 # If there are no global rate, give the default prediction
                 if len(global_rate) == 0:
-                    global_rate = model.default_prediction()
+                    global_rate = global_model.default_prediction()
                 else:
                     global_rate = global_rate[0]
 
@@ -255,3 +258,12 @@ def get_recommendation(user_id):
         user_id, nb_recommendation, dataset, movies, users, users_ratings)
     print_recommendations(recommendations, user_id)
     return [x[0] for x in recommendations]
+
+
+def load_model():
+    global global_model
+    file_path = os.path.join(os.path.normpath('/app'), 'model', 'model.pkl')
+
+    # load the model
+    with open(file_path, 'rb') as f:
+        global_model = pickle.load(f)
