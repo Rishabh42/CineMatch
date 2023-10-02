@@ -1,19 +1,14 @@
 from flask import Flask
 import requests
-from model.movie_rec import get_recommendation, train
+from model.movie_rec import get_recommendation, train, load_model
 import os
 
 app = Flask(__name__)
 
 with app.app_context():
-    # Check if a model is already present, if not train the model. This is to avoid training the model every time the container is restarted.
-    print(os.environ.get('MODEL'))
-    if os.environ.get('MODEL') != 'True':
-        print("Training the model")
-        train()
-        os.environ['MODEL'] = 'True'
-    else:
-        print("Model trained already")
+    # Train the model the first time the container is started and load it locally
+    train()
+    load_model()
 
 
 def get_user_details(userid):
