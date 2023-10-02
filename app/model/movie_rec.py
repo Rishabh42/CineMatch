@@ -5,6 +5,7 @@ from surprise import accuracy
 import pandas as pd
 import numpy as np
 import pickle
+import os
 
 
 def column_switch(column):
@@ -25,12 +26,12 @@ def load_data(folder_path, rate_based):
     """
 
     # Load the users database
-    users = pd.read_csv(f'{folder_path}user_data.csv',
+    users = pd.read_csv(os.path.join(folder_path, 'user_data.csv'),
                         sep=',', on_bad_lines='skip', encoding="latin-1")
     users.columns = ['user_id', 'age', 'occupation', 'gender']
 
     # Load the ratings database
-    ratings = pd.read_csv(f'{folder_path}cleaned_rating.csv',
+    ratings = pd.read_csv(os.path.join(folder_path, 'cleaned_rating.csv'),
                           sep=',', on_bad_lines='skip', encoding="latin-1")
     ratings.columns = ['user_id', 'movie_id', 'rate']
 
@@ -38,12 +39,12 @@ def load_data(folder_path, rate_based):
     users_ratings = pd.merge(ratings, users, on='user_id')
 
     # Load the watching history database
-    history = pd.read_csv(f'{folder_path}movie_cleaned_1.csv',
+    history = pd.read_csv(os.path.join(folder_path, 'movie_cleaned_1.csv'),
                           sep=',', on_bad_lines='skip', encoding="latin-1")
     history.columns = ['user_id', 'movie_id', 'min']
 
     # Load the movies database
-    movies = pd.read_csv(f'{folder_path}filtered_responses.csv',
+    movies = pd.read_csv(os.path.join(folder_path, 'filtered_responses.csv'),
                          sep=',', on_bad_lines='skip', encoding="latin-1")
     movies.columns = ['movie_id', 'adult', 'type',
                       'max_min', 'global_rate', 'languages']
@@ -89,7 +90,7 @@ def train_collaborative_filtering(train_set):
     model.fit(train_set)
 
     # save
-    with open('model.pkl', 'wb') as f:
+    with open(os.path.join(os.path.normpath('/app'), 'model', 'model.pkl'), 'wb') as f:
         pickle.dump(model, f)
 
     return model
@@ -125,7 +126,7 @@ def recommendation(user_id, nb_recommendation, dataset, movies, users, users_rat
     """
 
     # load the model
-    with open('model.pkl', 'rb') as f:
+    with open(os.path.join(os.path.normpath('/app'), 'model', 'model.pkl'), 'rb') as f:
         model = pickle.load(f)
 
     # Get the array of the movies already rates by the user
@@ -218,7 +219,7 @@ def print_recommendations(top_movie_recommendations, user_id):
 
 def train():
     # path where the data is
-    file_path = '../data/'
+    file_path = os.path.join(os.path.normpath('/app'), 'data')
 
     # Load the dataset using Surprise
     dataset, users, users_ratings, movies = load_data(
@@ -242,7 +243,7 @@ def get_recommendation(user_id):
     :param user_id: the id of the user
     """
     # path where the data is
-    file_path = '../data/'
+    file_path = os.path.join(os.path.normpath('/app'), 'data')
 
     # Load the dataset and databases
     dataset, users, users_ratings, movies = load_data(
@@ -253,6 +254,4 @@ def get_recommendation(user_id):
     recommendations = recommendation(
         user_id, nb_recommendation, dataset, movies, users, users_ratings)
     print_recommendations(recommendations, user_id)
-
-if __name__ == '__main__':
-    train()
+    return [x[0] for x in recommendations]
