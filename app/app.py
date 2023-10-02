@@ -5,17 +5,29 @@ import os
 
 app = Flask(__name__)
 
+with app.app_context():
+    # Check if a model is already present, if not train the model. This is to avoid training the model every time the container is restarted.
+    print(os.environ.get('MODEL'))
+    if os.environ.get('MODEL') != 'True':
+        print("Training the model")
+        train()
+        os.environ['MODEL'] = 'True'
+    else:
+        print("Model trained already")
+
+
 def get_user_details(userid):
     """
     Retrieve user details from the user API.
 
         :param userid: user id for prediction
     """
-    response = requests.get("http://fall2023-comp585.cs.mcgill.ca:8080/user/"+str(userid))
+    response = requests.get(
+        "http://fall2023-comp585.cs.mcgill.ca:8080/user/"+str(userid))
     if response.status_code != 200:
         return "Response not successful"
     return response.json()
- 
+
 
 def predict_movies(userid):
     """
@@ -37,16 +49,10 @@ def welcome_return():
 
 # define predict endpoint
 @app.route('/recommend/<userid>')
-def recommend_route(userid): 
+def recommend_route(userid):
     return predict_movies(int(userid))
 
 
-if __name__ == "__main__":
-    # Check if a model is already present, if not train the model. This is to avoid training the model every time the container is restarted.
-    if os.environ.get('MODEL') != 'True':
-        train()
-        os.environ['MODEL'] = 'True'
-
+if __name__ == '__main__':
     app.run(port=8082)
-    
 # run the file using python3 app.py
