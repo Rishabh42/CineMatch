@@ -17,7 +17,7 @@ COPY data data/
 EXPOSE 8082
 
 # Start the Python application
-CMD ["gunicorn", "--bind", "0.0.0.0:8082", "app:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8082", "app:app", "--threads", "2", "--timeout", "180"]
 
 # to run
 # docker build -t service .
