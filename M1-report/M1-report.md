@@ -110,9 +110,10 @@ https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/tree/development/meeting-note
 
 ### Links to our team member commits
 
-Data collection and preprocessing(Yaoqiang):  
+Yaoqiang:
+Data collection and preprocessing:  
 https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/bf82820d1affab62a0677fb71e49774f738ef5f1
-
+Documentation:https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/481c5a7a096d63aed7790be3d09267650d34e754
 Varun:
 Dockerfile setup: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/fdf0481ed0bbdb3ed729a817ced950fc713c5047
 CI/CD setup: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/8fbe0ff3d371123cc565c335b7cb49c1c6261d50
