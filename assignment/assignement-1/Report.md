@@ -1,6 +1,6 @@
 # 2.1
 ### User classes:
-The different user classes of Notion, and why these classes use Notion:
+The different user classes of Notion, and how these different user classes use Notion:
 - **Students**
 	- Take lecture notes
 	- Collaborate with other students on group projects
@@ -11,24 +11,24 @@ The different user classes of Notion, and why these classes use Notion:
 	- Keep track of the project
 	- Manage tasks of the team
 - **Teachers or Professors**
-	- Take note for their classes, organize their course materials
-	- Keep track of their classes and students progress
-	- Share ressources with students
+	- Take notes for their classes, organize their course material
+	- Keep track of their classes and progress of each student
+	- Share resources with students
 - **Compagny**
-	- Create quickly website from documents, for example to share a presentation of a project
-	- Create documentation (for example a hardware usage tutorial)
-	- Manage projects by sharing between and within the teams the notes, tasks, progress and documents.
+	- Quicky create shareable links from documents, for example to share a presentation of a project
+	- Create documentation (for example, a hardware usage tutorial)
+	- Manage projects by sharing notes, tasks, progress and documents amongst team members and with different teams.
 - **Researchers**
 	- Gather data
 	- Organize research notes
 	- Collaborate on research projects
 - **Freelancers**
-	- Keep tracks of the progression of their projects
+	- Keeping track of the progress of their projects
 	- Manage their client projects
 	- Maintain a portfolio
 - **Artists, writer or content creator**
-	- Write down new ideas, write some drafts
-	- Find some inspiration
+	- Noting new ideas and writing some drafts
+	- The ease of use also helps them in not spending much time on the software so they can rather spend time on creative ideas and inspiration
 	- Organize their projects
 
 ### Other stakeholders:
@@ -39,7 +39,7 @@ The other stakeholders of Notion, and why they may have an interest in Notion:
 - **Notion's Investors or Owner**
 	- Financial interest in Notion
 - **Notion's Employee (Developers, designers, marketers,...)**
-	- Create and sell Notion
+	- Develop and market Notion
 - **Stakeholders of product/business made by a Notion's user**
 	- Documentation of the product made with Notion (for example a PDF generated with Notion)
 	- Website or portfolio made with Notion
