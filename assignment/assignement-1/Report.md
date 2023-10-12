@@ -4,7 +4,7 @@ The different user classes of Notion, and how these different user classes use N
 - **Students**
 	- Take lecture notes
 	- Collaborate with other students on group projects
-	- Keep track of their assignements and their progress in each classes
+	- Keep track of their assignments and their progress in each classes
 - **Team**
 	- Collaborate on documents between team members
 	- Take notes during meetings
@@ -14,7 +14,7 @@ The different user classes of Notion, and how these different user classes use N
 	- Take notes for their classes, organize their course material
 	- Keep track of their classes and progress of each student
 	- Share resources with students
-- **Compagny**
+- **Company**
 	- Quicky create shareable links from documents, for example to share a presentation of a project
 	- Create documentation (for example, a hardware usage tutorial)
 	- Manage projects by sharing notes, tasks, progress and documents amongst team members and with different teams.
@@ -38,7 +38,7 @@ The other stakeholders of Notion, and why they may have an interest in Notion:
 	- Provide a service to Notion
 - **Notion's Investors or Owner**
 	- Financial interest in Notion
-- **Notion's Employee (Developers, designers, marketers,...)**
+- **Notion's Employee (Developers, designers, marketers, etc.)**
 	- Develop and market Notion
 - **Stakeholders of product/business made by a Notion's user**
 	- Documentation of the product made with Notion (for example a PDF generated with Notion)
