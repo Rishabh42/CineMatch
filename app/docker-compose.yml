@@ -1,0 +1,6 @@
+services:
+  recommender:
+    container_name: recommender
+    image: service
+    ports:
+      - 8082:8082
