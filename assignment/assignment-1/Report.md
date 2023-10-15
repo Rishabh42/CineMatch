@@ -333,7 +333,10 @@ We created 3 personas and 3 empathy maps for each of our favored user classes th
 
 ## Contribution statement:
 
-We worked together as a team on this assignment like we had done on the project. We met during our regular team meetings and assigned tasks to each member. Then we collaborated over gitlab to finalize the report. The commits were reviewed by other team members before they were added to the main branch. The artefacts for the assignment can be be found in the directory. Each member of the team worked on multiple facets of the assignment so that everyone can get an idea of the whole picture. 
+- We worked together as a team on this assignment like we had done on the project. We met during our regular team meetings and assigned tasks to each member.
+  - Link to meeting notes: [here](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/wikis/Meeting-Notes) and [here](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/wikis/Meeting-notes-October-10th).
+
+- We collaborated over gitlab to finalize the report. The commits were reviewed by other team members before they were added to the main branch. The artefacts for the assignment can be be found in the directory. Each member of the team worked on multiple facets of the assignment so that everyone can get an idea of the whole picture. 
 
 **Work division:**
 
@@ -374,4 +377,3 @@ Question 2.4.1 and 2.4.2 [Tamara][Rishabh]:
 
 
 Typo correction, admin work: All the team members were involved in review, admin and cleanup process (either through slack channel or gitlab) but only significant commits for questions by members linked above.
-
