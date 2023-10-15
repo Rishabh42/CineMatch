@@ -154,10 +154,15 @@ We worked together as a team on this team like we had done on the project. We me
 
 **link to significant contribution**
 Question 1.1 and 1.2 [Aayush]:
+
 Question 2.1 [Luke][Tamara]:
+
 Question 2.2 [Varun][Aayush]:
+
 Question 2.3 [Rishabh][Varun]:
+
 Question 2.4.1 and 2.4.2 [Tamara][Rishabh]:
 
 
 Typo correction, admin work:
+
