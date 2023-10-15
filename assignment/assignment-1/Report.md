@@ -216,6 +216,9 @@ We worked together as a team on this assignment like we had done on the project.
 Question 1.1 and 1.2 [Aayush]:
 
 Question 2.1 [Luke][Tamara]:
+- Tamara: 
+- Luke: 
+- Rishabh: reviewed the merge request and made some enhancements to the writeup: ([merged commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/23))
 
 **Question 2.2:** [Aayush][Varun]
 - Varun: Initial draft of user survey (check [artifact](./artifacts/survey/COMP585_-_User_Survey.pdf)), interview script (check [artifact](./artifacts/interview/interview-script.md)), conducted and transcribed interviews + data analysis (check [OneDrive](https://mcgill-my.sharepoint.com/:f:/r/personal/varun_shiri_mail_mcgill_ca/Documents/COMP585-Team4-A1?csf=1&web=1&e=otQphZ)), report section 2.2.2 ([commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/435a0801ae6dd85a4ae1b8dc81088e3c6e08353d#d3eb7c4dbe5f58eedd318bd05569196db2c4d692_133_136))
