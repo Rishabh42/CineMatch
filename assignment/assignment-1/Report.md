@@ -222,6 +222,7 @@ Question 2.1 [Luke][Tamara]:
 
 **Question 2.3** [Rishabh][Varun]:
 - Varun: Drafted the content for and revised the personas and empathy maps (check [artifacts](./artifacts/)), drafted report section 2.3 ([commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/435a0801ae6dd85a4ae1b8dc81088e3c6e08353d#d3eb7c4dbe5f58eedd318bd05569196db2c4d692_136_171))
+- Rishabh: Drafted the content for the personas, created the personas and the empathy maps for each user ([merged commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/25/diffs))
 
 Question 2.4.1 and 2.4.2 [Tamara][Rishabh]:
 
