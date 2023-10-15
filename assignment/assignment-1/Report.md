@@ -331,6 +331,40 @@ We created 3 personas and 3 empathy maps for each of our favored user classes th
 ![Persona 3: The Researcher Sensei](./artifacts/personas/persona3.jpg)
 ![Empathy map 3](./artifacts/empathy%20maps/em3.jpg)
 
+## 2.4 user stories and acceptance tests
+
+### User stories
+
+User stories are created from personas: we extracted the needs of some particular features for each persona. Several personas indicate the need to use the same features, so we generalized some of the user stories to a larger group than just the groups that represented by the personas. 
+
+##### User stories inspired by the Student profile
+
+- As a student, I want to have indications when I did spelling or grammatical mistakes in a text so that I can be sure that I submit a report without grammatical or spelling errors.
+- As a student, I want to generate todo list from notes so that I can clearly know what I need to do next and keep track of my progress without wasting the time to transform my notes into a todo list by myself.
+- As a student, I want to generate content on events that are happening now or on recent works so that I can have up-to-date information when I study recent works or events.
+- As a student, I want to generate key ideas from notes I wrote so that I can save time when I just want to remember the principal ideas of my lecture notes.
+
+##### User stories inspired by the Team Collaborator profile
+
+- As a team collaborator, I want to quickly summarize and structure messy meeting notes into a clear meeting minute so that I can save time and send to my collaborators clear and structured meeting minutes.
+- As a team collaborator, I want to generate a meeting agenda based on notes or old meeting minutes so that we can know exactly what we should discuss in meetings.
+- As a team collaborator, I want the AI to automatically add into my calendar the next meetings or deadlines that we discussed in our meeting notes so that I'm sure I won't miss any appointments or deadlines. 
+
+##### User stories inspired by the Researcher profile
+
+- As a researcher I want to generate a summary for a research paper so that I can easily know what the paper is about and what are the key ideas of the paper.
+- As a researcher I want to know how Notion uses my data when I use their AI so that I can know if I can use AI to work on sensitive content that requires privacy.
+- As a researcher and a non-native English speaker, I want to easily translate what I write so that I can get help writing my papers in English when I don't know the translation of a word.
+- As a researcher and a non-native English speaker, I want the AI to reformulate and improve what I wrote so that my papers seem to be written by a native English speaker.
+- As a researcher I want to quickly structure all the references I keep track of so that I can quickly find a reference that I am looking for. 
+- As a researcher who work in a lab with not much fundings, I want to have access to some Notion AI features for free so that I can be more productive in my research and participate in the common good without spending money.
+
+##### User stories inspired by all the profiles
+
+- As an academic, I want to generate a list of ideas on a specific subject so that I can quickly collect ideas that I can develop for a project or a work.
+
+### Acceptance tests
+
 ## Contribution statement:
 
 - We worked together as a team on this assignment like we had done on the project. We met during our regular team meetings and assigned tasks to each member.
