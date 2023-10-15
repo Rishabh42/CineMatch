@@ -1,10 +1,13 @@
 from surprise import Dataset, Reader
 from surprise.model_selection import train_test_split
-from surprise import KNNBasic
+from surprise import SVD
 from surprise import accuracy
 import pandas as pd
 import numpy as np
 import pickle
+import os
+
+global_model = None
 
 
 def column_switch(column):
@@ -25,38 +28,47 @@ def load_data(folder_path, rate_based):
     """
 
     # Load the users database
-    users = pd.read_csv(f'{folder_path}user_data.csv', sep=',', error_bad_lines=False, encoding="latin-1")
+    users = pd.read_csv(os.path.join(folder_path, 'user_data.csv'),
+                        sep=',', on_bad_lines='skip', encoding="latin-1")
     users.columns = ['user_id', 'age', 'occupation', 'gender']
 
     # Load the ratings database
-    ratings = pd.read_csv(f'{folder_path}cleaned_rating.csv', sep=',', error_bad_lines=False, encoding="latin-1")
+    ratings = pd.read_csv(os.path.join(folder_path, 'cleaned_rating.csv'),
+                          sep=',', on_bad_lines='skip', encoding="latin-1")
     ratings.columns = ['user_id', 'movie_id', 'rate']
 
     # Create a database with users and ratings
     users_ratings = pd.merge(ratings, users, on='user_id')
 
-    # Load the watching history database
-    history = pd.read_csv(f'{folder_path}movie_cleaned_1.csv', sep=',', error_bad_lines=False, encoding="latin-1")
-    history.columns = ['user_id', 'movie_id', 'min']
-
     # Load the movies database
-    movies = pd.read_csv(f'{folder_path}filtered_responses.csv', sep=',', error_bad_lines=False, encoding="latin-1")
-    movies.columns = ['movie_id', 'adult', 'type', 'max_min', 'global_rate', 'languages']
-
-    # Create a database with the watching history and the percentage of the movie seen
-    history_percentage = pd.merge(history, movies, on='movie_id')
-    history_percentage = history_percentage.drop(['adult', 'type', 'languages', 'global_rate'], axis=1)
-    history_percentage['percentage'] = history_percentage.apply(column_switch, axis=1)
-    history_percentage = history_percentage.drop(['max_min', 'min'], axis=1)
-    history_percentage.head()
+    movies = pd.read_csv(os.path.join(folder_path, 'filtered_responses.csv'),
+                         sep=',', on_bad_lines='skip', encoding="latin-1")
+    movies.columns = ['movie_id', 'adult', 'type',
+                      'max_min', 'global_rate', 'languages']
+    movies.sort_values(by=['global_rate'], ascending=False)
 
     # Create the Dataset for the collaborative filtering
     if rate_based:
         # Dataset based on the rates
-        reader = Reader(line_format='user item rating', sep=',', rating_scale=(1, 5))
+        reader = Reader(line_format='user item rating',
+                        sep=',', rating_scale=(1, 5))
         dataset = Dataset.load_from_df(ratings, reader=reader)
     else:
         # Dataset based on the percentages of the movie seen
+        # Load the watching history database
+        history = pd.read_csv(os.path.join(folder_path, 'movie_cleaned_1.csv'),
+                              sep=',', on_bad_lines='skip', encoding="latin-1")
+        history.columns = ['user_id', 'movie_id', 'min']
+
+        # Create a database with the watching history and the percentage of the movie seen
+        history_percentage = pd.merge(history, movies, on='movie_id')
+        history_percentage = history_percentage.drop(
+            ['adult', 'type', 'languages', 'global_rate'], axis=1)
+        history_percentage['percentage'] = history_percentage.apply(
+            column_switch, axis=1)
+        history_percentage = history_percentage.drop(['max_min', 'min'], axis=1)
+        history_percentage.head()
+
         reader = Reader(rating_scale=(0, 100))
         dataset = Dataset.load_from_df(history_percentage, reader)
 
@@ -75,13 +87,13 @@ def train_collaborative_filtering(train_set):
     }
 
     # Create the model
-    model = KNNBasic(sim_options=sim_options)
+    model = SVD()
 
     # Train the model on the training data
     model.fit(train_set)
 
     # save
-    with open('model.pkl', 'wb') as f:
+    with open(os.path.join(os.path.normpath('/app'), 'model', 'model.pkl'), 'wb') as f:
         pickle.dump(model, f)
 
     return model
@@ -116,15 +128,16 @@ def recommendation(user_id, nb_recommendation, dataset, movies, users, users_rat
     :exception: The user have to exist in the database
     """
 
-    # load the model
-    with open('model.pkl', 'rb') as f:
-        model = pickle.load(f)
+    assert global_model is not None
 
     # Get the array of the movies already rates by the user
-    user_ratings_arr = np.array(list(map(lambda x: x[1], filter(lambda x: x[0] == user_id, dataset.raw_ratings))))
+    user_ratings_arr = np.array(list(map(lambda x: x[1], filter(
+        lambda x: x[0] == user_id, dataset.raw_ratings))))
+
+    max_nb_movies = 100
 
     # Get the array of all the movies
-    movies_arr = np.array(list(set(map(lambda x: x[1], dataset.raw_ratings))))
+    movies_arr = np.array(movies)[:max_nb_movies, 0]
 
     # Create an array with all the movies not seen yet by the user
     movies_not_seen = np.setdiff1d(movies_arr, user_ratings_arr)
@@ -150,7 +163,7 @@ def recommendation(user_id, nb_recommendation, dataset, movies, users, users_rat
             movie_recommendations.append((movie_id, 0))
         else:
             # prediction of the collaborative filtering model
-            prediction = model.predict(user_id, movie_id)
+            prediction = global_model.predict(user_id, movie_id)
 
             # Test if the collaborative filtering prediction is not possible.
             # The prediction can be impossible if the user or the movie is new or have too few ratings (cold start)
@@ -162,7 +175,7 @@ def recommendation(user_id, nb_recommendation, dataset, movies, users, users_rat
 
                 # If there are no global rate, give the default prediction
                 if len(global_rate) == 0:
-                    global_rate = model.default_prediction()
+                    global_rate = global_model.default_prediction()
                 else:
                     global_rate = global_rate[0]
 
@@ -172,7 +185,8 @@ def recommendation(user_id, nb_recommendation, dataset, movies, users, users_rat
 
                 # If at least one person of the same gender have rate the movie, consider it in the prediction
                 if len(users_same_gender) == 0:
-                    movie_recommendations.append((movie_id, (global_rate / 10) * 5))
+                    movie_recommendations.append(
+                        (movie_id, (global_rate / 10) * 5))
                 else:
                     predicted_rating = ((global_rate / 10) * 5 + users_same_gender.mean(axis=0, numeric_only=True)[
                         'rate']) / 2
@@ -199,20 +213,24 @@ def print_recommendations(top_movie_recommendations, user_id):
     :param user_id: The id of the user
     """
 
-    print(f'Top {len(top_movie_recommendations)} Movie Recommendations for User {user_id}:')
+    print(
+        f'Top {len(top_movie_recommendations)} Movie Recommendations for User {user_id}:')
     for movie_id, predicted_rating in top_movie_recommendations:
-        print(f'Movie ID: {movie_id}, Predicted Rating: {predicted_rating:.2f}')
+        print(
+            f'Movie ID: {movie_id}, Predicted Rating: {predicted_rating:.2f}')
 
 
 def train():
     # path where the data is
-    file_path = '..\\data\\'
+    file_path = os.path.join(os.path.normpath('/app'), 'data')
 
     # Load the dataset using Surprise
-    dataset, users, users_ratings, movies = load_data(file_path, rate_based=True)
+    dataset, users, users_ratings, movies = load_data(
+        file_path, rate_based=True)
 
     # Split the dataset into a train set and a test set (20% test, 80% train)
-    train_set, test_set = train_test_split(dataset, test_size=0.2, random_state=42)
+    train_set, test_set = train_test_split(
+        dataset, test_size=0.2, random_state=42)
 
     # Training
     model = train_collaborative_filtering(train_set)
@@ -227,17 +245,28 @@ def get_recommendation(user_id):
 
     :param user_id: the id of the user
     """
+
     # path where the data is
-    file_path = '..\\data\\'
+    file_path = os.path.join(os.path.normpath('/app'), 'data')
 
     # Load the dataset and databases
-    dataset, users, users_ratings, movies = load_data(file_path, rate_based=True)
+    dataset, users, users_ratings, movies = load_data(
+        file_path, rate_based=True)
 
     # Get movie recommendations for a user
     nb_recommendation = 20
-    recommendations = recommendation(user_id, nb_recommendation, dataset, movies, users, users_ratings)
+    recommendations = recommendation(
+        user_id, nb_recommendation, dataset, movies, users, users_ratings)
+
     print_recommendations(recommendations, user_id)
 
+    return [x[0] for x in recommendations]
 
-if __name__ == '__main__':
-    get_recommendation('143079')
+
+def load_model():
+    global global_model
+    file_path = os.path.join(os.path.normpath('/app'), 'model', 'model.pkl')
+
+    # load the model
+    with open(file_path, 'rb') as f:
+        global_model = pickle.load(f)
