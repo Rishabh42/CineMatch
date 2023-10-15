@@ -354,6 +354,7 @@ We worked together as a team on this assignment like we had done on the project.
 **Link to significant contributions:**
 
 Question 1.1 and 1.2 [Aayush]:
+- Aayush: Found the info. and drafted the content for part 1.1 and 1.2. (Check [here](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/731b97b7715f10ac7b774348d20f754fc6013cdd))
 
 Question 2.1 [Luke][Tamara]:
 - Tamara: 
@@ -363,6 +364,8 @@ Question 2.1 [Luke][Tamara]:
 **Question 2.2:** [Aayush][Varun]
 - Varun: Initial draft of user survey (check [artifact](./artifacts/survey/COMP585_-_User_Survey.pdf)), interview script (check [artifact](./artifacts/interview/interview-script.md)), conducted and transcribed interviews + data analysis (check [OneDrive](https://mcgill-my.sharepoint.com/:f:/r/personal/varun_shiri_mail_mcgill_ca/Documents/COMP585-Team4-A1?csf=1&web=1&e=otQphZ)), report section 2.2.2 ([commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/435a0801ae6dd85a4ae1b8dc81088e3c6e08353d#d3eb7c4dbe5f58eedd318bd05569196db2c4d692_133_136))
 
+- Aayush: Made modifications and completed the draft of user survey (check [here](./artifacts/survey/COMP585_-_User_Survey.pdf)), created the charts (check [here](./artifacts/survey/charts), [commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/b0e12a96a951a53a85d69540d6294e5c5e461adf)), drafted the content for 2.2.1 with data analysis (check [here](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/9145e8d5e92780dfb039539596230d53da04d983))
+
 **Question 2.3** [Rishabh][Varun]:
 - Varun: Drafted the content for and revised the personas and empathy maps (check [artifacts](./artifacts/)), drafted report section 2.3 ([commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/435a0801ae6dd85a4ae1b8dc81088e3c6e08353d#d3eb7c4dbe5f58eedd318bd05569196db2c4d692_136_171))
 - Rishabh: Drafted the content for the personas, created the personas and the empathy maps for each user ([merged commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/25/diffs))
@@ -370,5 +373,5 @@ Question 2.1 [Luke][Tamara]:
 Question 2.4.1 and 2.4.2 [Tamara][Rishabh]:
 
 
-Typo correction, admin work:
+Typo correction, admin work: All the team members were involved in review, admin and cleanup process (either through slack channel or gitlab) but only significant commits for questions by members linked above.
 
