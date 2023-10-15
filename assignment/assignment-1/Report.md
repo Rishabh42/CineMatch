@@ -85,7 +85,7 @@ Because the user need not mention all the steps explicitly nor do they need to w
 
 # Task 2
 
-## 2.1: User Classes & Stakeholders
+## 2.1. User Classes & Stakeholders
 **Explain the different user classes of your target system [10] and other stakeholders of the system [5].**
 
 ### User classes:
@@ -133,10 +133,10 @@ The other stakeholders of Notion, and why they may have an interest in Notion:
 	- Documentation of the product made with Notion (for example a PDF generated with Notion)
 	- Website or portfolio made with Notion
 
-## 2.2: User research
+## 2.2. User research
 **Perform user research (e.g. interviews and observation studies with real users) to gather information about the target user classes. Describe and provide evidence of your user research process, including the format and artifacts used and its outcome [10]. Make sure to obtain consent from the users about being part of the study and sharing their data with your teammates and graders. Avoid collecting personal identifiable information.**
 
-### Interviews
+### 2.2.2. Interviews
 To complement the survey data with qualitative insights about the different user classes, we conducted 2 interviews. These interviews allowed us to dig deeper into our users' experiences with Notion AI, understand their emotional states, and explore their needs in greater detail. The interviews were conducted with the verbal consent of the participants, ensuring full transparency about the study's purpose. 
 
 #### Participants
@@ -217,9 +217,11 @@ Question 1.1 and 1.2 [Aayush]:
 
 Question 2.1 [Luke][Tamara]:
 
-**Question 2.2:**
+**Question 2.2:** [Aayush][Varun]
+- Varun: Initial draft of user survey (check [artifact](./artifacts/survey/COMP585_-_User_Survey.pdf)), interview script (check [artifact](./artifacts/interview/interview-script.md)), conducted and transcribed interviews + data analysis (check [OneDrive](https://mcgill-my.sharepoint.com/:f:/r/personal/varun_shiri_mail_mcgill_ca/Documents/COMP585-Team4-A1?csf=1&web=1&e=otQphZ)), report section 2.2.2 ([commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/435a0801ae6dd85a4ae1b8dc81088e3c6e08353d#d3eb7c4dbe5f58eedd318bd05569196db2c4d692_133_136))
 
-Question 2.3 [Rishabh][Varun]:
+**Question 2.3** [Rishabh][Varun]:
+- Varun: Drafted the content for and revised the personas and empathy maps (check [artifacts](./artifacts/)), drafted report section 2.3 ([commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/435a0801ae6dd85a4ae1b8dc81088e3c6e08353d#d3eb7c4dbe5f58eedd318bd05569196db2c4d692_136_171))
 
 Question 2.4.1 and 2.4.2 [Tamara][Rishabh]:
 
