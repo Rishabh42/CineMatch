@@ -136,6 +136,146 @@ The other stakeholders of Notion, and why they may have an interest in Notion:
 ## 2.2. User research
 **Perform user research (e.g. interviews and observation studies with real users) to gather information about the target user classes. Describe and provide evidence of your user research process, including the format and artifacts used and its outcome [10]. Make sure to obtain consent from the users about being part of the study and sharing their data with your teammates and graders. Avoid collecting personal identifiable information.**
 
+
+### 2.2.1. User Survey
+
+We created a survey to get an idea about the target user classes. The survey helped to understand how notion AI is helpful to the users and what are their pain points which the intelligent system can alleviate. Further, it also shed some light on the concerns which users may have notion AI. The survey could only be filled if the user consented to having the information recorded for the purposes of this assignment and there was a special provision to accommodate the feedback for use cases for teams.
+
+#### Participants
+
+The participants were friends of the group members and acquaintances of the friends of the group members. We had created the survey link and disseminated it in our social circles. Since the survey does not collect any personally identifiable information, we cannot attribute any response to the identity of the individual who filled the survey; however, we can analyze the trends observed across users.
+
+**The survey was designed such that,**
+
+
+
+* Only those people who consented to the data usage policy (which we declared before the start of the survey) could fill the survey.
+* Only those users who have a habit of using notion for academic/ research based tasks could fill the survey.
+* The survey responses accommodated different user classes in the target domain based on what they use notion AI for and the frequency with which they used it.
+
+**Participant details:**
+
+
+<table>
+  <tr>
+   <td>Type
+   </td>
+   <td>Percentage of users
+   </td>
+   <td>Notes
+   </td>
+  </tr>
+  <tr>
+   <td>Consent to information being collected by survey
+   </td>
+   <td>100%
+   </td>
+   <td>
+   </td>
+  </tr>
+  <tr>
+   <td>Level of education of the user
+   </td>
+   <td>Roughly 20% of total users represented by each category.
+   </td>
+   <td>Almost equally distributed between:
+<ul>
+
+<li>Undergraduate student
+
+<li>Graduate student in professional (or) thesis programs
+
+<li>Research intern
+
+<li>Post-doc/ professor
+</li>
+</ul>
+   </td>
+  </tr>
+  <tr>
+   <td>Frequency of usage
+   </td>
+   <td>50% of the users polled use it daily while 40% use it weekly.
+   </td>
+   <td>-
+   </td>
+  </tr>
+  <tr>
+   <td>Manner of usage
+   </td>
+   <td>Almost all the users use it for individual work with 60% of the users using it for collaborative team work as well.
+   </td>
+   <td>We did not find any user using it exclusively for team work but not at a personal level.
+   </td>
+  </tr>
+</table>
+
+
+#### Explanation of survey method:
+
+The survey was created using microsoft-365 suite and shared so that anyone with the survey link could fill it (accessible here: link to fill the [survey](https://forms.office.com/r/NV2NePQdpu)). All the questions were made to be choice based because we felt having descriptive questions may discourage users from accurately completing the survey. Some of the questions were multiple select type choice based questions with the option to add “other” descriptive choices, should the user choose to do so. There were two parts to the survey depending on the manner in which the notion AI was used: i) individual manner of usage ii) team usage for collaboration. It is possible for the users to have both manner of usages in the day-to-day execution of tasks with notion AI.
+
+The survey questions were divided into **four main categories** (apart from consent):
+
+
+
+* General use: frequency, purpose and manner of usage.
+* Tasks: features of notion AI, productivity boost and dependency on the product.
+* Frustrations: problems faced while using notion AI and concerns.
+* Goals: Main expectation and consideration of capabilities of notion AI.
+    * Some questions on data privacy concerns were highlighted separately.
+    * Team level collaboration related questions had a separate section.
+
+**Artifacts used:**
+
+* Link to survey: [here](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/development/assignment/assignment-1/artifacts/survey/COMP585_-_User_Survey.pdf)
+* Outcome of the survey: excel [sheet](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/development/assignment/assignment-1/artifacts/survey/COMP585%20-%20User%20Survey(1-10).xlsx)
+* Survey results dashboard: form [results](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/development/assignment/assignment-1/artifacts/survey/COMP585%20-%20User%20Survey%20-%20results.pdf)
+* Charts and figures: [here](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/tree/development/assignment/assignment-1/artifacts/survey/charts)
+
+#### Data Analysis:
+
+
+
+* We found that notion AI helped increase productivity up to the level of satisfaction as `3.8` measured on a 5 point scale with the higher number being more satisfied by the boost in productivity. For teams based usage, this number was a bit lower at `3.57`.
+* Most of the users reported being dependent on notion AI for their work. Further, it was seen that the users who had the highest satisfaction with increased productivity reported being most dependent on notion AI for their tasks regardless of whether they used it individually or for their team.
+
+_source for the charts below: Data analysis from excel_
+
+
+![alt_text](artifacts/survey/charts/dependent.png "dependent.png")
+
+
+![alt_text](artifacts/survey/charts/productivity-depend.png "productivity-depend.png")
+
+
+![alt_text](artifacts/survey/charts/productivity-team.png "productivity-team.png")
+
+
+![alt_text](artifacts/survey/charts/usage-dependency.png "usage-dependency.png")
+
+
+
+
+* **Usage patterns:** Surprisingly,**the dominating usecase** for notion AI was to plan and manage projects (both research and course projects) and to collaborate with peers. The actual task of creating and organizing notes/ todo lists was the second priority. 
+
+* **Features:** The most used feature further supports the observation made above because most of the users preferred to depend on notion AI for brainstorming ideas followed by summarizing their content. Creating a rough draft and correcting grammatical errors were equally used features for notion AI.
+
+* **Challenges and concerns:** Users felt that the generated content can be irrelevant. This reflects a disconnect between what the user was expecting from the model versus what was the actual output. Some users felt that the notion AI may have the side effect of stemming their creativity as they may come to rely on it for generating new ideas almost exclusively. Further, almost all the users were equally concerned about privacy aspects of using notion AI, they were uncomfortable with the system learning their personalized profiles and were apprehensive by the prospect of bias being introduced by AI generated content in their works.
+
+* **Goals and considerations:** The expectation behind using notion AI were equally split between:
+    * Enhancement of productivity
+    * Improving the quality of user’s work
+    * Seeking inspiration for new ideas and support for brainstorming
+	
+* Users were most concerned about the quality of the work they will produce with the usage of AI assistant and were particularly focused on the level of creativity in their final work. This highlights that when the heavy lifting of producing/ creating something new is offloaded from humans to machines, users may feel a bit uneasy and feel strongly about the quality and novelty seen in the generated content.
+
+* **Personalization and integration:** All the users felt that notion AI should be able to interface with the internet and produce outputs based on external sources which are not limited to their notion database. The majority of users wanted a personalized experience through the app but they wanted notion AI to ensure their data is protected and isolated from the aggregated model training.
+
+
+* **Team usage:** Users strongly felt that notion AI is useful for summarizing their meeting notes into key points quickly. There was an agreement in improved productivity of the team when notion AI is used. However, the majority of the users felt there should be more options to enhance collaboration among the members of the team. Further, making sure everyone on the team knows about the capabilities offered by notion AI is also a challenge for the users.
+
+
 ### 2.2.2. Interviews
 To complement the survey data with qualitative insights about the different user classes, we conducted 2 interviews. These interviews allowed us to dig deeper into our users' experiences with Notion AI, understand their emotional states, and explore their needs in greater detail. The interviews were conducted with the verbal consent of the participants, ensuring full transparency about the study's purpose. 
 
