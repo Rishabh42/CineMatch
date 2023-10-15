@@ -1,6 +1,6 @@
-# 1
+# Task 1
 
-# 1.1.
+## 1.1. 
 **Explain what kind of system you select in this assignment and the reasons for your selection. [5]**
 
 After deliberating on a couple of potential ML enabled products, we picked notion for this assignment specifically their offering combining AI capabilities with the traditional note taking software in the form of notion AI. To provide a bit more context, notion possesses advanced capabilities in comparison to a traditional note taking app such as google keep or onenote. It combines into a single system the processes for taking notes on projects, knowledge management and collaboration. For a user who is a student or researcher, these capabilities can prove to be extremely useful.
@@ -42,7 +42,7 @@ A student or a full-time researcher (working within academia) would expect flexi
 * The data created by users (notes) needs to be kept safe(encrypted) at all times on all devices regardless of which AI enabled feature is being added to the app. There should be a clear separation of concerns and no unnecessary decryption of the notes. The user data should not be moved to different servers unless it is absolutely essential.
 * It is plausible that a lot of users may not want their personal notes to be used for training models. There can be different laws governing the use of data for model training in different geographies (GDPR in Europe), so the app should have an opt -out feature available for users in cases where they don’t want their data to be ingested by the models. Further, there should be a way to accommodate their requests should they change their minds in the future and choose not to include their data in the ML model. In that case, retraining the model without their data may prove to be too costly. 
 
-**Personalized experiences with gen AI:**
+**Personalized experiences with generative AI:**
 
 Building on top of the previous point, when the app can indeed learn from the user’s notes data, offering them a personalized enough experience through notion AI will be challenging. This is because it may be easy to offer everyone similar experience which is personal superficially but to truly cater to their individual needs and anticipating it based on their usage patterns and notes without simply mirroring the trends learned from the aggregated data will be challenging. It is possible that an extremely good implementation of such a system may prove to be too eerie for some users (they may interpret it as quite unnatural as if someone is peering over their shoulders while they are working). Then, the next challenge will be to define how personal is too personal.
 
@@ -83,7 +83,11 @@ Because the user need not mention all the steps explicitly nor do they need to w
 9. [academic-research-notion](https://girlknowstech.com/academic-research-notion/)
 10. Guide: [using-notion-ai](https://www.notion.so/help/guides/using-notion-ai)
 
-# 2.1
+# Task 2
+
+## 2.1. User Classes & Stakeholders
+**Explain the different user classes of your target system [10] and other stakeholders of the system [5].**
+
 ### User classes:
 The different user classes of Notion, and how these different user classes use Notion:
 - **Students**
@@ -116,7 +120,7 @@ The different user classes of Notion, and how these different user classes use N
 	- The ease of use also helps them in not spending much time on the software so they can rather spend time on creative ideas and inspiration
 	- Organize their projects
 
-#### Other stakeholders:
+### Other stakeholders:
 The other stakeholders of Notion, and why they may have an interest in Notion:
 - **Notion's partners**
 	- Integrate Notion in their product
@@ -129,10 +133,67 @@ The other stakeholders of Notion, and why they may have an interest in Notion:
 	- Documentation of the product made with Notion (for example a PDF generated with Notion)
 	- Website or portfolio made with Notion
 
+## 2.2. User research
+**Perform user research (e.g. interviews and observation studies with real users) to gather information about the target user classes. Describe and provide evidence of your user research process, including the format and artifacts used and its outcome [10]. Make sure to obtain consent from the users about being part of the study and sharing their data with your teammates and graders. Avoid collecting personal identifiable information.**
+
+### 2.2.2. Interviews
+To complement the survey data with qualitative insights about the different user classes, we conducted 2 interviews. These interviews allowed us to dig deeper into our users' experiences with Notion AI, understand their emotional states, and explore their needs in greater detail. The interviews were conducted with the verbal consent of the participants, ensuring full transparency about the study's purpose. 
+
+#### Participants
+The participants were recruited from our friends and acquaintances. We tried to find participants that would fit our 3 target user classes. The following inclusion criteria was considered:
+- Should use Notion on a regular basis
+- Should use Notion either for personal learning, schoolwork, collaborating in a team or for research.
+- Should be familiar with Notion AI 
+
+We discovered that some participants fitted multiple user classes and would thus provide us insights on all the target user classes. The following table presents a summary of the background of our participants.
+
+| ID | Current education | Major | Uses Notion AI for |
+| --- | --- | --- | --- |
+| P1 | Graduate | Computer Science | Individual use, team collaboration, research
+| P2 | Undergraduate | Computer Science | Individual use, team collaboration | 
+
+#### Interview Format
+The interviews were semi-structured and conducted remotely via Zoom. Each interview lasted about 20 minutes. They followed a guided questionnaire that explored various aspects of their use of Notion in general and specifically Notion AI. Follow up questions were asked based on the participants' responses. Similar questions were used for the survey and the interview. However, while the survey questions were mainly multiple choice, the corresponding interview questions were more open-ended to elicit details from the participants.
+
+Similar to the survey, in order to facilitate the creation of the personas, the interview questions were divided into 4 main sections:
+1. General questions: In the beginning of the study, a few general questions were asked pertaining to the participant's use of Notion and its AI features.
+2. Tasks: This section posed questions to understand the different tasks for which the participant used Notion AI's capabilities
+3. Frustrations: This section dealt with the problems and challenges that participants faced while using Notion AI. 
+4. Goals: The questions in this section tried to understand the participant's purpose and expectations while using Notion AI. 
+
+The complete interview script can be found [here](./artifacts/interview/interview-script.md).
+
+#### Data Analysis
+The interviews were recorded with the consent of the users and later uploaded to a secure OneDrive folder on McGill's cloud servers managed by Microsoft. The interviews were transcribed using Notion AI and the transcriptions were also to uploaded the OneDrive folder. The recordings and transcriptions can be accessed [here](https://mcgill-my.sharepoint.com/:f:/r/personal/varun_shiri_mail_mcgill_ca/Documents/COMP585-Team4-A1?csf=1&web=1&e=otQphZ).
+
+The transcriptions were then examined to highlight interesting quotes from the participants. The quotes were separated based on their scope, i.e. which user class they represented. These quotes were used to create empathy maps of the target user classes that reflected the participants' thoughts, feelings and experiences as expressed during the interview. These empathy maps formed the basis for our personas. More details about the creation of the empathy maps and personas are presented in Section 2.3 
+
+## 2.3 Personas & Empathy Maps
+The insights from our user research helped us understand the needs, expectations and challenges of Notion AI users. We aggregated these results first into empathy maps for each of our favored user classes and then created personas based on them. 
+
+### Creation of empathy maps
+The user class represented by each survey response was determined based on the participant selections for  question 4 (For what purposes related to learning/research do you generally use Notion) We first analyzed the frequency of the response options for each question in the survey to understand the recurring themes. Quotations related to these themes were then extracted from the statements highlighted in the interview transcripts (as described in the previous section). These quotations were used to form the "Says" quadrant of the empathy map. To formulate the "Thinks" quadrant, we tried to use the participant quotations to think of possible unrevealed thoughts. For the "Does" quadrant, we included actions that a user typically performs in the context, using hints from the quotations. Finally, for the "Feels" quadrant, we made a list of the emotions hidden behind each quotation. 
+
+### Creation of personas
+These empathy maps gave us a good idea of the favored user classes' behavioral characteristics. Furthermore, since our survey and interview were structured based on the typical sections in a persona, this simplified the creation of the persona. We created 3 personas, one for each favored user class. First, the introduction and background of the persona was drafted to give us a specific scenario. The behavioral considerations were mainly derived from the "Says" and "Thinks" quadrants from the empathy map. The frustrations of the participants were inferred by examining the responses from the corresponding section in the survey corroborated by qualitative data from the interviews. The same process was followed for the goals and tasks. The goals mainly covered the needs and expectations of the user, while the tasks highlighted the typical actions a user of the specificed class performed using Notion AI. Along with the survey and interview data, the empathy map of the user class was examined to validate the user needs and common patterns and emotions. We observed that there is a slight overlap in the characteristics across different user classes, however, this can be expected given the limited functionalities of Notion AI. 
+
+We created 3 personas and 3 empathy maps for each of our favored user classes through this process. They are presented below. 
+
+#### Student
+![Persona 1: The Overburdened Productivity Geek](./artifacts/personas/persona1.jpg)
+![Empathy map 1](./artifacts/empathy%20maps/em1.jpg)
+
+#### Team Collaborator
+![Persona 2: The Efficient Teammate](./artifacts/personas/persona2.jpg)
+![Empathy map 2](./artifacts/empathy%20maps/em2.jpg)
+
+#### Researcher
+![Persona 3: The Researcher Sensei](./artifacts/personas/persona3.jpg)
+![Empathy map 3](./artifacts/empathy%20maps/em3.jpg)
+
 ## Contribution statement:
 
-We worked together as a team on this team like we had done on the project. We met during our regular team meetings and assigned tasks to each member. Then we collaborated over gitlab to finalize the report. The commits were reviewed by other team members before they were added to the main branch. The artefacts for the assignment can be be found in the directory. Each member of the team worked on multiple facets of the assignment so that everyone can get an idea of the whole picture.
-
+We worked together as a team on this assignment like we had done on the project. We met during our regular team meetings and assigned tasks to each member. Then we collaborated over gitlab to finalize the report. The commits were reviewed by other team members before they were added to the main branch. The artefacts for the assignment can be be found in the directory. Each member of the team worked on multiple facets of the assignment so that everyone can get an idea of the whole picture. 
 
 **Work division:**
 
@@ -150,14 +211,17 @@ We worked together as a team on this team like we had done on the project. We me
 * Internal deadline among the group: **Oct 13th**
 
 
-**link to significant contribution**
+**Link to significant contributions:**
+
 Question 1.1 and 1.2 [Aayush]:
 
 Question 2.1 [Luke][Tamara]:
 
-Question 2.2 [Varun][Aayush]:
+**Question 2.2:** [Aayush][Varun]
+- Varun: Initial draft of user survey (check [artifact](./artifacts/survey/COMP585_-_User_Survey.pdf)), interview script (check [artifact](./artifacts/interview/interview-script.md)), conducted and transcribed interviews + data analysis (check [OneDrive](https://mcgill-my.sharepoint.com/:f:/r/personal/varun_shiri_mail_mcgill_ca/Documents/COMP585-Team4-A1?csf=1&web=1&e=otQphZ)), report section 2.2.2 ([commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/435a0801ae6dd85a4ae1b8dc81088e3c6e08353d#d3eb7c4dbe5f58eedd318bd05569196db2c4d692_133_136))
 
-Question 2.3 [Rishabh][Varun]:
+**Question 2.3** [Rishabh][Varun]:
+- Varun: Drafted the content for and revised the personas and empathy maps (check [artifacts](./artifacts/)), drafted report section 2.3 ([commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/435a0801ae6dd85a4ae1b8dc81088e3c6e08353d#d3eb7c4dbe5f58eedd318bd05569196db2c4d692_136_171))
 
 Question 2.4.1 and 2.4.2 [Tamara][Rishabh]:
 
