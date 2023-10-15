@@ -130,3 +130,34 @@ The other stakeholders of Notion, and why they may have an interest in Notion:
 - **Stakeholders of product/business made by a Notion's user**
 	- Documentation of the product made with Notion (for example a PDF generated with Notion)
 	- Website or portfolio made with Notion
+
+## Contribution statement:
+
+We worked together as a team on this team like we had done on the project. We met during our regular team meetings and assigned tasks to each member. Then we collaborated over gitlab to finalize the report. The commits were reviewed by other team members before they were added to the main branch. The artefacts for the assignment can be be found in the directory. Each member of the team worked on multiple facets of the assignment so that everyone can get an idea of the whole picture.
+
+
+**Work division:**
+
+1: Aayush
+
+2.1: Luke + Tamara
+
+2.2: Varun + Aayush
+
+2.3: Rishabh + Varun
+
+2.4 User stories: Tamara, Acceptance tests: Tamara + Rishabh
+
+* Put your work on gitlab.
+* Internal deadline among the group: **Oct 13th**
+
+
+**link to significant contribution**
+Question 1.1 and 1.2 [Aayush]:
+Question 2.1 [Luke][Tamara]:
+Question 2.2 [Varun][Aayush]:
+Question 2.3 [Rishabh][Varun]:
+Question 2.4.1 and 2.4.2 [Tamara][Rishabh]:
+
+
+Typo correction, admin work:
