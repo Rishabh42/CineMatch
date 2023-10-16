@@ -339,10 +339,38 @@ User stories are created from personas: we extracted the needs of some particula
 
 ##### User stories inspired by the Student profile
 
-- As a student, I want to have indications when I did spelling or grammatical mistakes in a text so that I can be sure that I submit a report without grammatical or spelling errors.
-- As a student, I want to generate todo list from notes so that I can clearly know what I need to do next and keep track of my progress without wasting the time to transform my notes into a todo list by myself.
-- As a student, I want to generate content on events that are happening now or on recent works so that I can have up-to-date information when I study recent works or events.
-- As a student, I want to generate key ideas from notes I wrote so that I can save time when I just want to remember the principal ideas of my lecture notes.
+- As a student, I want to have indications when I did spelling or grammatical mistakes in a text so that I can be sure that I submit a report without grammatical or spelling errors.\
+\
+**Acceptance tests:** 
+  - Verify a spelling error is underlined in red.
+  - Verify a grammatical error is underlined in blue.
+  - Verify a correct word in a sentence grammatically correct is not underlined.
+  - Verify a dropdown opens when the user hovers over an underlined word and that in this dropdown is proposed suitable corrections.
+  - Verify the word is changed with the correction when the user click on a proposition in the dropdown.
+  - Verify supported languages can be changed in settings
+
+- As a student, I want to generate todo list from notes so that I can clearly know what I need to do next and keep track of my progress without wasting the time to transform my notes into a todo list by myself.\
+\
+**Acceptance tests:** 
+  - Verify that the button "generate todo list" is in the AI dropdown menu.
+  - Verify that when the user clicks on "generate todo list", the AI creates a todo list with task that the user can tick.
+  - Verify that the todo list created is relevant to the content of the text.
+  - Verify that the AI generates an error message if it is impossible to generate tasks from this text.
+
+- As a student, I want to generate content on events that are happening now or on recent works so that I can have up-to-date information when I study recent works or events.\
+\
+**Acceptance tests:** 
+  - Verify that the AI do the task asked correctly when the text used for the task talks about a recent event or work.
+  - Verify that the AI can provide correct information on recent events or works.
+  - Verify that the AI displays an error message if the user ask for information about a recent event that does not exist.
+
+- As a student, I want to generate key ideas from notes I wrote so that I can save time when I just want to remember the principal ideas of my lecture notes.\
+\
+**Acceptance tests:** 
+  - Verify the button "key ideas" exists in the IA dropdown menu.
+  - Verify that the AI generates a bullet list of key ideas when the user click on the button "key ideas" in the dropdown menu.
+  - Verify that the list of key ideas is relevant to the content of the text.
+  - Verify that the AI generates an error message if it is impossible to generate key ideas of this text (for example for a empty text).
 
 ##### User stories inspired by the Team Collaborator profile
 
@@ -352,16 +380,63 @@ User stories are created from personas: we extracted the needs of some particula
 
 ##### User stories inspired by the Researcher profile
 
-- As a researcher I want to generate a summary for a research paper so that I can easily know what the paper is about and what are the key ideas of the paper.
-- As a researcher I want to know how Notion uses my data when I use their AI so that I can know if I can use AI to work on sensitive content that requires privacy.
-- As a researcher and a non-native English speaker, I want to easily translate what I write so that I can get help writing my papers in English when I don't know the translation of a word.
+- As a researcher I want to generate a summary for a research paper so that I can easily know what the paper is about and what are the key ideas of the paper.\
+\
+**Acceptance tests:** 
+  - Verify the "summarize" is in the AI dropdown
+  - Verify that the IA generate a summary when the user give a paper or the name of a paper and click on the summary button in the IA dropdown.
+  - Verify that the summary is relevant to the content of the paper and dont take into account irrelevant information like the citations for example.
+  - Verify that the IA ask for more information if there exist more than one paper with the paper's name given by the user.
+  - Verify that the IA generate a error message when the paper does not exist or the content given by the user cant be summarized.
+  - Verify that the response time of the summary is not more than 10 seconds, and there is a visual indication that the summary is being generated.
+
+- As a researcher I want to know how Notion uses my data when I use their AI so that I can know if I can use AI to work on sensitive content that requires privacy.\
+\
+**Acceptance tests:** 
+  - Verify that there is a button to get information about the AI in the AI dropdown menu.
+  - Verify that clicking on the button open a page with privacy information about the AI.
+  - Verify that the privacy information are well displayed and that user can scroll to read the whole page.
+  - Verify that the information button is accessible with accessibility services allowing the phone to be controlled by voice for blind and visually impaired people.
+
+- As a researcher and a non-native English speaker, I want to easily translate what I write so that I can get help writing my papers in English when I don't know the translation of a word.\
+\
+**Acceptance tests:** 
+  - Verify there is a button "translate" in the AI dropdown menu.
+  - Verify a new dropdown menu with a list of languages is displayed when the user clicks on the button "translate" in the AI dropdown menu.
+  - Verify the translation is correctly performed in the selected language.
+  - Verify the proper nouns are the same after the translation.
+
 - As a researcher and a non-native English speaker, I want the AI to reformulate and improve what I wrote so that my papers seem to be written by a native English speaker.
-- As a researcher I want to quickly structure all the references I keep track of so that I can quickly find a reference that I am looking for. 
-- As a researcher who work in a lab with not much fundings, I want to have access to some Notion AI features for free so that I can be more productive in my research and participate in the common good without spending money.
+\
+\
+**Acceptance tests:** 
+  - Verify the button "improve writing" is in the AI dropdown menu.
+  - Verify the text changed when the user clicks on the button "improve writing".
+  - Verify that the new text is grammatically correct and written in a formal English.
+
+- As a researcher I want to quickly structure all the references I keep track of so that I can quickly find a reference that I am looking for. \
+\
+**Acceptance tests:** 
+  - Verify the button "organized references" is in the AI dropdown menu.
+  - Verify the IA display an error if the text given by the user does not contain references.
+  - Verify the references are put in a table when the user clicks on "organized references".
+  - Verify the references can be sorted by dates or aggregated by subject after clicking on "organized references".
+
+- As a researcher who work in a lab with not much fundings, I want to have access to some Notion AI features for free so that I can be more productive in my research and participate in the common good without spending money.\
+\
+**Acceptance tests:** 
+  - Verify that some features of the AI are available with the free plan.
+  - Verify the list of the available features of the AI with the free plan are display in the pricing page: https://www.notion.so/pricing.
+  - Verify that the features available with the free plan can actually be use with the free plan.
 
 ##### User stories inspired by all the profiles
 
-- As an academic, I want to generate a list of ideas on a specific subject so that I can quickly collect ideas that I can develop for a project or a work.
+- As an academic, I want to generate a list of ideas on a specific subject so that I can quickly collect ideas that I can develop for a project or a work.\
+\
+**Acceptance tests:** 
+  - Verify that the IA generate a bullet list of ideas when the user ask for a list of ideas on a specific subject.
+  - Verify that the ideas generated are relevant regarding to the prompt.
+  - Verify that the IA ask for more precisions if the user only ask for ideas without any precisions.
 
 ### Acceptance tests
 
