@@ -343,7 +343,7 @@ We wrote acceptance tests for each user story. These acceptance tests take into 
 - As a user, I can write on a document in Notion and create new documents.
 - As a user, in each documents I can use the AI dropdown menu to access to the functionalities of the AI.
 
-##### User stories inspired by the Student profile
+### User stories inspired by the Student profile
 
 - As a student, I want to have indications when I did spelling or grammatical mistakes in a text so that I can be sure that I submit a report without grammatical or spelling errors.\
 \
@@ -378,13 +378,13 @@ We wrote acceptance tests for each user story. These acceptance tests take into 
   - Verify that the list of key ideas is relevant to the content of the text.
   - Verify that the AI generates an error message if it is impossible to generate key ideas of this text (for example for a empty text).
 
-##### User stories inspired by the Team Collaborator profile
+### User stories inspired by the Team Collaborator profile
 
 - As a team collaborator, I want to quickly summarize and structure messy meeting notes into a clear meeting minute so that I can save time and send to my collaborators clear and structured meeting minutes.
 - As a team collaborator, I want to generate a meeting agenda based on notes or old meeting minutes so that we can know exactly what we should discuss in meetings.
 - As a team collaborator, I want the AI to automatically add into my calendar the next meetings or deadlines that we discussed in our meeting notes so that I'm sure I won't miss any appointments or deadlines. 
 
-##### User stories inspired by the Researcher profile
+### User stories inspired by the Researcher profile
 
 - As a researcher I want to generate a summary for a research paper so that I can easily know what the paper is about and what are the key ideas of the paper.\
 \
@@ -435,7 +435,7 @@ We wrote acceptance tests for each user story. These acceptance tests take into 
   - Verify the list of the available features of the AI with the free plan are display in the pricing page: https://www.notion.so/pricing.
   - Verify that the features available with the free plan can actually be use with the free plan.
 
-##### User stories inspired by all the profiles
+### User stories inspired by all the profiles
 
 - As an academic, I want to generate a list of ideas on a specific subject so that I can quickly collect ideas that I can develop for a project or a work.\
 \
