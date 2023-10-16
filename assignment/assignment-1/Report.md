@@ -482,10 +482,10 @@ We wrote acceptance tests for each user story. These acceptance tests take into 
 
 **Link to significant contributions:**
 
-Question 1.1 and 1.2 [Aayush]:
+**Question 1.1 and 1.2** [Aayush]:
 - Aayush: Found the info. and drafted the content for part 1.1 and 1.2. (Check [here](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/731b97b7715f10ac7b774348d20f754fc6013cdd))
 
-Question 2.1 [Luke][Tamara]:
+**Question 2.1** [Luke][Tamara]:
 - Tamara: write a list of user classes and other stakeholders and merge it with the Luke's list (Check [here](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/54508a12d98e1a4b880817360fcd891550706005))
 - Luke: 
 - Rishabh: reviewed the merge request and made some enhancements to the writeup: ([merged commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/23))
@@ -499,9 +499,9 @@ Question 2.1 [Luke][Tamara]:
 - Varun: Drafted the content for and revised the personas and empathy maps (check [artifacts](./artifacts/)), drafted report section 2.3 ([commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/435a0801ae6dd85a4ae1b8dc81088e3c6e08353d#d3eb7c4dbe5f58eedd318bd05569196db2c4d692_136_171))
 - Rishabh: Drafted the content for the personas, created the personas and the empathy maps for each user ([merged commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/25/diffs))
 
-Question 2.4.1 and 2.4.2 [Tamara][Rishabh]:
+**Question 2.4.1 and 2.4.2** [Tamara][Rishabh]:
 - Tamara: Write the list of user stories ([commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/63248a0c91b3690a1a06d310ea4f9f46560bf718)) and write a part of the acceptance tests ([commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/2febb5f7363b7337ec6a07aacdf1e872581612f6))
-- Rishabh: Wrote acceptance tests for the users ([commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/a1adfa2c3ccb73eb6ba07115299f08949db1fd84))
+- Rishabh: Wrote acceptance tests for the users ([commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/a1adfa2c3ccb73eb6ba07115299f08949db1fd84)) and ([commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/3cd9fb159ede4ebcffc2b8f17836a87cebbdb22b))
 
 
 Typo correction, admin work: All the team members were involved in review, admin and cleanup process (either through slack channel or gitlab) but only significant commits for questions by members linked above.
