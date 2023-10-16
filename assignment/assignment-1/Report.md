@@ -487,7 +487,7 @@ We wrote acceptance tests for each user story. These acceptance tests take into 
 
 **Question 2.1** [Luke][Tamara]:
 - Tamara: write a list of user classes and other stakeholders and merge it with the Luke's list (Check [here](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/54508a12d98e1a4b880817360fcd891550706005))
-- Luke: 
+- Luke: Worked on 2.1 
 - Rishabh: reviewed the merge request and made some enhancements to the writeup: ([merged commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/23))
 
 **Question 2.2:** [Aayush][Varun]
