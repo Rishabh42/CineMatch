@@ -337,6 +337,12 @@ We created 3 personas and 3 empathy maps for each of our favored user classes th
 
 User stories are created from personas: we extracted the needs of some particular features for each persona. Several personas indicate the need to use the same features, so we generalized some of the user stories to a larger group than just the groups that represented by the personas. 
 
+### Acceptance tests
+
+We wrote acceptance tests for each user story. These acceptance tests take into account:
+- As a user, I can write on a document in Notion and create new documents.
+- As a user, in each documents I can use the AI dropdown menu to access to the functionalities of the AI.
+
 ##### User stories inspired by the Student profile
 
 - As a student, I want to have indications when I did spelling or grammatical mistakes in a text so that I can be sure that I submit a report without grammatical or spelling errors.\
@@ -437,8 +443,6 @@ User stories are created from personas: we extracted the needs of some particula
   - Verify that the IA generate a bullet list of ideas when the user ask for a list of ideas on a specific subject.
   - Verify that the ideas generated are relevant regarding to the prompt.
   - Verify that the IA ask for more precisions if the user only ask for ideas without any precisions.
-
-### Acceptance tests
 
 ## Contribution statement:
 
