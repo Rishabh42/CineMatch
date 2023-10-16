@@ -346,7 +346,7 @@ User stories are created from personas: we extracted the needs of some particula
 
 ##### User stories inspired by the Team Collaborator profile
 
-- As a team collaborator, I want to quickly summarize and structure messy meeting notes into a clear meeting minute so that I can save time and send to my collaborators clear and structured meeting minutes.
+- As a team collaborator, I want to quickly summarize and structure messy meeting notes into clear meeting minutes so that I can save time and send to my collaborators clear and structured meeting minutes.
 - As a team collaborator, I want to generate a meeting agenda based on notes or old meeting minutes so that we can know exactly what we should discuss in meetings.
 - As a team collaborator, I want the AI to automatically add into my calendar the next meetings or deadlines that we discussed in our meeting notes so that I'm sure I won't miss any appointments or deadlines. 
 
@@ -364,6 +364,20 @@ User stories are created from personas: we extracted the needs of some particula
 - As an academic, I want to generate a list of ideas on a specific subject so that I can quickly collect ideas that I can develop for a project or a work.
 
 ### Acceptance tests
+
+##### Team collaborator
+- As a team collaborator, I know whether the meeting minutes are messy or well organised and whether they can be used to present to my team members.
+- As a team collaborator, I have to keep a track of how much time is being spent in taking meeting notes and re-organizing them.
+- The meeting agenda should should include all relevant discussion topics, action items, and key points from the past meetings. 
+- The meeting agenda should be clear and comprehensive, covering the topics we need to discuss.
+- As a team collaborator, I always check my calendar for all upcoming tasks and meetings.
+
+Verification: 
+- Verify that the meeting notes are getting summarized in an efficient format and the notes are grammatically correct.
+- Verify the time it takes to summarize the meeting notes and make sure it is quick.
+- Verify that the agenda does not miss the old discussion topics
+- Verify the verbosity of the agenda to make sure that it is concise without compromising the content.
+- Verify that the meetings are automatically getting added to the user's calendar.
 
 ## Contribution statement:
 
