@@ -486,7 +486,7 @@ Question 1.1 and 1.2 [Aayush]:
 - Aayush: Found the info. and drafted the content for part 1.1 and 1.2. (Check [here](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/731b97b7715f10ac7b774348d20f754fc6013cdd))
 
 Question 2.1 [Luke][Tamara]:
-- Tamara: 
+- Tamara: write a list of user classes and other stakeholders and merge it with the Luke's list (Check [here](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/54508a12d98e1a4b880817360fcd891550706005))
 - Luke: 
 - Rishabh: reviewed the merge request and made some enhancements to the writeup: ([merged commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/23))
 
@@ -500,6 +500,7 @@ Question 2.1 [Luke][Tamara]:
 - Rishabh: Drafted the content for the personas, created the personas and the empathy maps for each user ([merged commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/25/diffs))
 
 Question 2.4.1 and 2.4.2 [Tamara][Rishabh]:
+- Tamara: Write the list of user stories ([commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/63248a0c91b3690a1a06d310ea4f9f46560bf718)) and write a part of the acceptance tests ([commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/2febb5f7363b7337ec6a07aacdf1e872581612f6))
 
 
 Typo correction, admin work: All the team members were involved in review, admin and cleanup process (either through slack channel or gitlab) but only significant commits for questions by members linked above.
