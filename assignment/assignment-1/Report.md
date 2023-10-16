@@ -380,9 +380,22 @@ We wrote acceptance tests for each user story. These acceptance tests take into 
 
 ### User stories inspired by the Team Collaborator profile
 
-- As a team collaborator, I want to quickly summarize and structure messy meeting notes into a clear meeting minute so that I can save time and send to my collaborators clear and structured meeting minutes.
-- As a team collaborator, I want to generate a meeting agenda based on notes or old meeting minutes so that we can know exactly what we should discuss in meetings.
-- As a team collaborator, I want the AI to automatically add into my calendar the next meetings or deadlines that we discussed in our meeting notes so that I'm sure I won't miss any appointments or deadlines. 
+- As a team collaborator, I want to quickly summarize and structure messy meeting notes into a clear meeting minute so that I can save time and send to my collaborators clear and structured meeting minutes. \
+\
+**Acceptance tests:** 
+  - Verify that the meeting notes are getting summarized in an efficient format and the notes are grammatically correct.
+  - Verify the time it takes to summarize the meeting notes and make sure it is quick.
+
+- As a team collaborator, I want to generate a meeting agenda based on notes or old meeting minutes so that we can know exactly what we should discuss in meetings. \
+\
+**Acceptance tests:** 
+  - Verify that the agenda does not miss the old discussion topics
+  - Verify the verbosity of the agenda to make sure that it is concise without compromising the content.
+
+- As a team collaborator, I want the AI to automatically add into my calendar the next meetings or deadlines that we discussed in our meeting notes so that I'm sure I won't miss any appointments or deadlines. \
+\
+**Acceptance tests:** 
+  - Verify that the meetings are automatically getting added to the user's calendar.
 
 ### User stories inspired by the Researcher profile
 
