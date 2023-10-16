@@ -1,6 +1,6 @@
 from surprise import Dataset, Reader
 from surprise.model_selection import train_test_split
-from surprise import KNNBasic
+from surprise import SVD
 from surprise import accuracy
 import pandas as pd
 import numpy as np
@@ -40,26 +40,12 @@ def load_data(folder_path, rate_based):
     # Create a database with users and ratings
     users_ratings = pd.merge(ratings, users, on='user_id')
 
-    # Load the watching history database
-    history = pd.read_csv(os.path.join(folder_path, 'movie_cleaned_1.csv'),
-                          sep=',', on_bad_lines='skip', encoding="latin-1")
-    history.columns = ['user_id', 'movie_id', 'min']
-
     # Load the movies database
     movies = pd.read_csv(os.path.join(folder_path, 'filtered_responses.csv'),
                          sep=',', on_bad_lines='skip', encoding="latin-1")
     movies.columns = ['movie_id', 'adult', 'type',
                       'max_min', 'global_rate', 'languages']
     movies.sort_values(by=['global_rate'], ascending=False)
-
-    # Create a database with the watching history and the percentage of the movie seen
-    history_percentage = pd.merge(history, movies, on='movie_id')
-    history_percentage = history_percentage.drop(
-        ['adult', 'type', 'languages', 'global_rate'], axis=1)
-    history_percentage['percentage'] = history_percentage.apply(
-        column_switch, axis=1)
-    history_percentage = history_percentage.drop(['max_min', 'min'], axis=1)
-    history_percentage.head()
 
     # Create the Dataset for the collaborative filtering
     if rate_based:
@@ -69,6 +55,20 @@ def load_data(folder_path, rate_based):
         dataset = Dataset.load_from_df(ratings, reader=reader)
     else:
         # Dataset based on the percentages of the movie seen
+        # Load the watching history database
+        history = pd.read_csv(os.path.join(folder_path, 'movie_cleaned_1.csv'),
+                              sep=',', on_bad_lines='skip', encoding="latin-1")
+        history.columns = ['user_id', 'movie_id', 'min']
+
+        # Create a database with the watching history and the percentage of the movie seen
+        history_percentage = pd.merge(history, movies, on='movie_id')
+        history_percentage = history_percentage.drop(
+            ['adult', 'type', 'languages', 'global_rate'], axis=1)
+        history_percentage['percentage'] = history_percentage.apply(
+            column_switch, axis=1)
+        history_percentage = history_percentage.drop(['max_min', 'min'], axis=1)
+        history_percentage.head()
+
         reader = Reader(rating_scale=(0, 100))
         dataset = Dataset.load_from_df(history_percentage, reader)
 
@@ -87,7 +87,7 @@ def train_collaborative_filtering(train_set):
     }
 
     # Create the model
-    model = KNNBasic(sim_options=sim_options)
+    model = SVD()
 
     # Train the model on the training data
     model.fit(train_set)
@@ -245,6 +245,7 @@ def get_recommendation(user_id):
 
     :param user_id: the id of the user
     """
+
     # path where the data is
     file_path = os.path.join(os.path.normpath('/app'), 'data')
 
@@ -256,7 +257,9 @@ def get_recommendation(user_id):
     nb_recommendation = 20
     recommendations = recommendation(
         user_id, nb_recommendation, dataset, movies, users, users_ratings)
+
     print_recommendations(recommendations, user_id)
+
     return [x[0] for x in recommendations]
 
 
