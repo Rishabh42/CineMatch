@@ -373,7 +373,7 @@ We wrote acceptance tests for each user story. These acceptance tests take into 
 - As a student, I want to generate key ideas from notes I wrote so that I can save time when I just want to remember the principal ideas of my lecture notes.\
 \
 **Acceptance tests:** 
-  - Verify the button "key ideas" exists in the IA dropdown menu.
+  - Verify the button "key ideas" exists in the AI dropdown menu.
   - Verify that the AI generates a bullet list of key ideas when the user click on the button "key ideas" in the dropdown menu.
   - Verify that the list of key ideas is relevant to the content of the text.
   - Verify that the AI generates an error message if it is impossible to generate key ideas of this text (for example for a empty text).
@@ -403,10 +403,10 @@ We wrote acceptance tests for each user story. These acceptance tests take into 
 \
 **Acceptance tests:** 
   - Verify the "summarize" is in the AI dropdown
-  - Verify that the IA generate a summary when the user give a paper or the name of a paper and click on the summary button in the IA dropdown.
+  - Verify that the AI generate a summary when the user give a paper or the name of a paper and click on the summary button in the IA dropdown.
   - Verify that the summary is relevant to the content of the paper and dont take into account irrelevant information like the citations for example.
-  - Verify that the IA ask for more information if there exist more than one paper with the paper's name given by the user.
-  - Verify that the IA generate a error message when the paper does not exist or the content given by the user cant be summarized.
+  - Verify that the AI ask for more information if there exist more than one paper with the paper's name given by the user.
+  - Verify that the AI generate a error message when the paper does not exist or the content given by the user cant be summarized.
   - Verify that the response time of the summary is not more than 10 seconds, and there is a visual indication that the summary is being generated.
 
 - As a researcher I want to know how Notion uses my data when I use their AI so that I can know if I can use AI to work on sensitive content that requires privacy.\
@@ -437,7 +437,7 @@ We wrote acceptance tests for each user story. These acceptance tests take into 
 \
 **Acceptance tests:** 
   - Verify the button "organized references" is in the AI dropdown menu.
-  - Verify the IA display an error if the text given by the user does not contain references.
+  - Verify the AI display an error if the text given by the user does not contain references.
   - Verify the references are put in a table when the user clicks on "organized references".
   - Verify the references can be sorted by dates or aggregated by subject after clicking on "organized references".
 
@@ -450,12 +450,12 @@ We wrote acceptance tests for each user story. These acceptance tests take into 
 
 ### User stories inspired by all the profiles
 
-- As an academic, I want to generate a list of ideas on a specific subject so that I can quickly collect ideas that I can develop for a project or a work.\
+- As an academic member, I want to generate a list of ideas on a specific subject so that I can quickly collect ideas that I can develop for a project or a work.\
 \
 **Acceptance tests:** 
-  - Verify that the IA generate a bullet list of ideas when the user ask for a list of ideas on a specific subject.
+  - Verify that the AI generate a bullet list of ideas when the user ask for a list of ideas on a specific subject.
   - Verify that the ideas generated are relevant regarding to the prompt.
-  - Verify that the IA ask for more precisions if the user only ask for ideas without any precisions.
+  - Verify that the AI ask for more precisions if the user only ask for ideas without any precisions.
 
 ## Contribution statement:
 
