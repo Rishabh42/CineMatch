@@ -49,5 +49,6 @@ def recommend_route(userid):
 
 
 if __name__ == '__main__':
-    app.run(port=8082)
+    app.run(port=8081)
+
 # run the file using python3 app.py
