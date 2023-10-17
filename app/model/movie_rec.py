@@ -274,5 +274,3 @@ def load_model():
 
     file_path = os.path.join(os.path.normpath('/app'), 'data')
     load_data(file_path, True)
-
-
