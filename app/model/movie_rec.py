@@ -1,11 +1,20 @@
 from surprise import Dataset, Reader
-from surprise.model_selection import train_test_split
+from surprise.model_selection  import train_test_split
 from surprise import SVD
 from surprise import accuracy
 import pandas as pd
 import numpy as np
 import pickle
 import os
+
+print(os.getcwd())
+os.chdir("../")
+CURR = os.getcwd()
+print(CURR)
+
+MODEL_PATH = os.path.join(CURR, 'app', 'model', 'model.pkl')
+DATA_PATH = os.path.join(CURR, 'app', 'data')
+
 
 global_model = None
 global_users = None
@@ -102,7 +111,7 @@ def train_collaborative_filtering(train_set):
     model.fit(train_set)
 
     # save
-    with open(os.path.join(os.path.normpath('/app'), 'model', 'model.pkl'), 'wb') as f:
+    with open(MODEL_PATH, 'wb') as f:
         pickle.dump(model, f)
 
     return model
@@ -230,8 +239,9 @@ def print_recommendations(top_movie_recommendations, user_id):
 
 def train():
     # path where the data is
-    file_path = os.path.join(os.path.normpath('/app'), 'data')
 
+    file_path = DATA_PATH
+    
     # Load the dataset using Surprise
     dataset, users, users_ratings, movies = load_data(
         file_path, rate_based=True)
@@ -266,11 +276,11 @@ def get_recommendation(user_id):
 
 def load_model():
     global global_model
-    file_path = os.path.join(os.path.normpath('/app'), 'model', 'model.pkl')
+    file_path = MODEL_PATH
 
     # load the model
     with open(file_path, 'rb') as f:
         global_model = pickle.load(f)
 
-    file_path = os.path.join(os.path.normpath('/app'), 'data')
+    file_path = DATA_PATH
     load_data(file_path, True)
