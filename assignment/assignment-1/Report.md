@@ -337,47 +337,125 @@ We created 3 personas and 3 empathy maps for each of our favored user classes th
 
 User stories are created from personas: we extracted the needs of some particular features for each persona. Several personas indicate the need to use the same features, so we generalized some of the user stories to a larger group than just the groups that represented by the personas. 
 
-##### User stories inspired by the Student profile
-
-- As a student, I want to have indications when I did spelling or grammatical mistakes in a text so that I can be sure that I submit a report without grammatical or spelling errors.
-- As a student, I want to generate todo list from notes so that I can clearly know what I need to do next and keep track of my progress without wasting the time to transform my notes into a todo list by myself.
-- As a student, I want to generate content on events that are happening now or on recent works so that I can have up-to-date information when I study recent works or events.
-- As a student, I want to generate key ideas from notes I wrote so that I can save time when I just want to remember the principal ideas of my lecture notes.
-
-##### User stories inspired by the Team Collaborator profile
-
-- As a team collaborator, I want to quickly summarize and structure messy meeting notes into clear meeting minutes so that I can save time and send to my collaborators clear and structured meeting minutes.
-- As a team collaborator, I want to generate a meeting agenda based on notes or old meeting minutes so that we can know exactly what we should discuss in meetings.
-- As a team collaborator, I want the AI to automatically add into my calendar the next meetings or deadlines that we discussed in our meeting notes so that I'm sure I won't miss any appointments or deadlines. 
-
-##### User stories inspired by the Researcher profile
-
-- As a researcher I want to generate a summary for a research paper so that I can easily know what the paper is about and what are the key ideas of the paper.
-- As a researcher I want to know how Notion uses my data when I use their AI so that I can know if I can use AI to work on sensitive content that requires privacy.
-- As a researcher and a non-native English speaker, I want to easily translate what I write so that I can get help writing my papers in English when I don't know the translation of a word.
-- As a researcher and a non-native English speaker, I want the AI to reformulate and improve what I wrote so that my papers seem to be written by a native English speaker.
-- As a researcher I want to quickly structure all the references I keep track of so that I can quickly find a reference that I am looking for. 
-- As a researcher who work in a lab with not much fundings, I want to have access to some Notion AI features for free so that I can be more productive in my research and participate in the common good without spending money.
-
-##### User stories inspired by all the profiles
-
-- As an academic, I want to generate a list of ideas on a specific subject so that I can quickly collect ideas that I can develop for a project or a work.
-
 ### Acceptance tests
 
-##### Team collaborator
-- As a team collaborator, I know whether the meeting minutes are messy or well organised and whether they can be used to present to my team members.
-- As a team collaborator, I have to keep a track of how much time is being spent in taking meeting notes and re-organizing them.
-- The meeting agenda should should include all relevant discussion topics, action items, and key points from the past meetings. 
-- The meeting agenda should be clear and comprehensive, covering the topics we need to discuss.
-- As a team collaborator, I always check my calendar for all upcoming tasks and meetings.
+We wrote acceptance tests for each user story. These acceptance tests take into account:
+- As a user, I can write on a document in Notion and create new documents.
+- As a user, in each documents I can use the AI dropdown menu to access to the functionalities of the AI.
 
-Verification: 
-- Verify that the meeting notes are getting summarized in an efficient format and the notes are grammatically correct.
-- Verify the time it takes to summarize the meeting notes and make sure it is quick.
-- Verify that the agenda does not miss the old discussion topics
-- Verify the verbosity of the agenda to make sure that it is concise without compromising the content.
-- Verify that the meetings are automatically getting added to the user's calendar.
+### User stories inspired by the Student profile
+
+- As a student, I want to have indications when I did spelling or grammatical mistakes in a text so that I can be sure that I submit a report without grammatical or spelling errors.\
+\
+**Acceptance tests:** 
+  - Verify a spelling error is underlined in red.
+  - Verify a grammatical error is underlined in blue.
+  - Verify a correct word in a sentence grammatically correct is not underlined.
+  - Verify a dropdown opens when the user hovers over an underlined word and that in this dropdown is proposed suitable corrections.
+  - Verify the word is changed with the correction when the user click on a proposition in the dropdown.
+  - Verify supported languages can be changed in settings
+
+- As a student, I want to generate todo list from notes so that I can clearly know what I need to do next and keep track of my progress without wasting the time to transform my notes into a todo list by myself.\
+\
+**Acceptance tests:** 
+  - Verify that the button "generate todo list" is in the AI dropdown menu.
+  - Verify that when the user clicks on "generate todo list", the AI creates a todo list with task that the user can tick.
+  - Verify that the todo list created is relevant to the content of the text.
+  - Verify that the AI generates an error message if it is impossible to generate tasks from this text.
+
+- As a student, I want to generate content on events that are happening now or on recent works so that I can have up-to-date information when I study recent works or events.\
+\
+**Acceptance tests:** 
+  - Verify that the AI do the task asked correctly when the text used for the task talks about a recent event or work.
+  - Verify that the AI can provide correct information on recent events or works.
+  - Verify that the AI displays an error message if the user ask for information about a recent event that does not exist.
+
+- As a student, I want to generate key ideas from notes I wrote so that I can save time when I just want to remember the principal ideas of my lecture notes.\
+\
+**Acceptance tests:** 
+  - Verify the button "key ideas" exists in the AI dropdown menu.
+  - Verify that the AI generates a bullet list of key ideas when the user click on the button "key ideas" in the dropdown menu.
+  - Verify that the list of key ideas is relevant to the content of the text.
+  - Verify that the AI generates an error message if it is impossible to generate key ideas of this text (for example for a empty text).
+
+### User stories inspired by the Team Collaborator profile
+
+- As a team collaborator, I want to quickly summarize and structure messy meeting notes into a clear meeting minute so that I can save time and send to my collaborators clear and structured meeting minutes. \
+\
+**Acceptance tests:** 
+  - Verify that the meeting notes are getting summarized in an efficient format and the notes are grammatically correct.
+  - Verify the time it takes to summarize the meeting notes and make sure it is quick.
+
+- As a team collaborator, I want to generate a meeting agenda based on notes or old meeting minutes so that we can know exactly what we should discuss in meetings. \
+\
+**Acceptance tests:** 
+  - Verify that the agenda does not miss the old discussion topics
+  - Verify the verbosity of the agenda to make sure that it is concise without compromising the content.
+
+- As a team collaborator, I want the AI to automatically add into my calendar the next meetings or deadlines that we discussed in our meeting notes so that I'm sure I won't miss any appointments or deadlines. \
+\
+**Acceptance tests:** 
+  - Verify that the meetings are automatically getting added to the user's calendar.
+
+### User stories inspired by the Researcher profile
+
+- As a researcher I want to generate a summary for a research paper so that I can easily know what the paper is about and what are the key ideas of the paper.\
+\
+**Acceptance tests:** 
+  - Verify the "summarize" is in the AI dropdown
+  - Verify that the AI generate a summary when the user give a paper or the name of a paper and click on the summary button in the IA dropdown.
+  - Verify that the summary is relevant to the content of the paper and dont take into account irrelevant information like the citations for example.
+  - Verify that the AI ask for more information if there exist more than one paper with the paper's name given by the user.
+  - Verify that the AI generate a error message when the paper does not exist or the content given by the user cant be summarized.
+  - Verify that the response time of the summary is not more than 10 seconds, and there is a visual indication that the summary is being generated.
+
+- As a researcher I want to know how Notion uses my data when I use their AI so that I can know if I can use AI to work on sensitive content that requires privacy.\
+\
+**Acceptance tests:** 
+  - Verify that there is a button to get information about the AI in the AI dropdown menu.
+  - Verify that clicking on the button open a page with privacy information about the AI.
+  - Verify that the privacy information are well displayed and that user can scroll to read the whole page.
+  - Verify that the information button is accessible with accessibility services allowing the phone to be controlled by voice for blind and visually impaired people.
+
+- As a researcher and a non-native English speaker, I want to easily translate what I write so that I can get help writing my papers in English when I don't know the translation of a word.\
+\
+**Acceptance tests:** 
+  - Verify there is a button "translate" in the AI dropdown menu.
+  - Verify a new dropdown menu with a list of languages is displayed when the user clicks on the button "translate" in the AI dropdown menu.
+  - Verify the translation is correctly performed in the selected language.
+  - Verify the proper nouns are the same after the translation.
+
+- As a researcher and a non-native English speaker, I want the AI to reformulate and improve what I wrote so that my papers seem to be written by a native English speaker.
+\
+\
+**Acceptance tests:** 
+  - Verify the button "improve writing" is in the AI dropdown menu.
+  - Verify the text changed when the user clicks on the button "improve writing".
+  - Verify that the new text is grammatically correct and written in a formal English.
+
+- As a researcher I want to quickly structure all the references I keep track of so that I can quickly find a reference that I am looking for. \
+\
+**Acceptance tests:** 
+  - Verify the button "organized references" is in the AI dropdown menu.
+  - Verify the AI display an error if the text given by the user does not contain references.
+  - Verify the references are put in a table when the user clicks on "organized references".
+  - Verify the references can be sorted by dates or aggregated by subject after clicking on "organized references".
+
+- As a researcher who work in a lab with not much fundings, I want to have access to some Notion AI features for free so that I can be more productive in my research and participate in the common good without spending money.\
+\
+**Acceptance tests:** 
+  - Verify that some features of the AI are available with the free plan.
+  - Verify the list of the available features of the AI with the free plan are display in the pricing page: https://www.notion.so/pricing.
+  - Verify that the features available with the free plan can actually be use with the free plan.
+
+### User stories inspired by all the profiles
+
+- As an academic member, I want to generate a list of ideas on a specific subject so that I can quickly collect ideas that I can develop for a project or a work.\
+\
+**Acceptance tests:** 
+  - Verify that the AI generate a bullet list of ideas when the user ask for a list of ideas on a specific subject.
+  - Verify that the ideas generated are relevant regarding to the prompt.
+  - Verify that the AI ask for more precisions if the user only ask for ideas without any precisions.
 
 ## Contribution statement:
 
@@ -404,12 +482,12 @@ Verification:
 
 **Link to significant contributions:**
 
-Question 1.1 and 1.2 [Aayush]:
+**Question 1.1 and 1.2** [Aayush]:
 - Aayush: Found the info. and drafted the content for part 1.1 and 1.2. (Check [here](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/731b97b7715f10ac7b774348d20f754fc6013cdd))
 
-Question 2.1 [Luke][Tamara]:
-- Tamara: 
-- Luke: 
+**Question 2.1** [Luke][Tamara]:
+- Tamara: write a list of user classes and other stakeholders and merge it with the Luke's list (Check [here](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/54508a12d98e1a4b880817360fcd891550706005))
+- Luke: Worked on 2.1 
 - Rishabh: reviewed the merge request and made some enhancements to the writeup: ([merged commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/23))
 
 **Question 2.2:** [Aayush][Varun]
@@ -421,7 +499,9 @@ Question 2.1 [Luke][Tamara]:
 - Varun: Drafted the content for and revised the personas and empathy maps (check [artifacts](./artifacts/)), drafted report section 2.3 ([commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/435a0801ae6dd85a4ae1b8dc81088e3c6e08353d#d3eb7c4dbe5f58eedd318bd05569196db2c4d692_136_171))
 - Rishabh: Drafted the content for the personas, created the personas and the empathy maps for each user ([merged commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/25/diffs))
 
-Question 2.4.1 and 2.4.2 [Tamara][Rishabh]:
+**Question 2.4.1 and 2.4.2** [Tamara][Rishabh]:
+- Tamara: Write the list of user stories ([commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/63248a0c91b3690a1a06d310ea4f9f46560bf718)) and write a part of the acceptance tests ([commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/2febb5f7363b7337ec6a07aacdf1e872581612f6))
+- Rishabh: Wrote acceptance tests for the users ([commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/a1adfa2c3ccb73eb6ba07115299f08949db1fd84)) and ([commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/3cd9fb159ede4ebcffc2b8f17836a87cebbdb22b))
 
 
 Typo correction, admin work: All the team members were involved in review, admin and cleanup process (either through slack channel or gitlab) but only significant commits for questions by members linked above.
