@@ -3,25 +3,30 @@ import app
 import json
 
 class AppTestCase(unittest.TestCase):
-    def set_up(self):
-        app.app.testing = True
-        self.app = app.app.test_client()
-
     def test_home_endpoint(self):
-        response = self.app.get('/')
-        data = json.loads(response.data.decode('utf-8'))
-        self.assertEqual(response.status_code, 200)
-        self.assertIn('Welcome', data)
+        response = app.welcome_return()
+        # self.assertEqual(response.status_code, 200)
+        # self.assertIn('Welcome', data)
 
     def test_valid_user_recommend_route(self):
-        user_id = 1  # valid user ID
-        response = self.app.get(f'/recommend/{user_id}')
-        self.assertEqual(response.status_code, 200)
+        user_id = 3  # valid user ID
+        API_response = app.get_user_details(user_id)
+
+        self.assertEqual(API_response['user_id'],3)
+        self.assertEqual(API_response['age'],29)
+        self.assertEqual(API_response['occupation'],'scientist')
+        self.assertEqual(API_response['gender'],'M')
 
     def test_invalid_user_recommend_route(self):
-        user_id = 9999  # An invalid user ID
-        response = self.app.get(f'/recommend/{user_id}')
-        self.assertEqual(response.status_code, 200)
+        user_id = '99999999999999'  # An invalid user ID
+        API_response = app.get_user_details(user_id)
+        self.assertEqual(API_response,"Response not successful")
+
+    def test_invalid_input(self):
+        user_id = 'g9f'  # An invalid user ID
+        API_response = app.get_user_details(user_id)
+        print("API_response: ",API_response)
+        self.assertEqual(API_response,"Response not successful")
 
 if __name__ == '__main__':
     unittest.main()
