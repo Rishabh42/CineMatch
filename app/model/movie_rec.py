@@ -7,10 +7,8 @@ import numpy as np
 import pickle
 import os
 
-print(os.getcwd())
 os.chdir("../")
 CURR = os.getcwd()
-print(CURR)
 
 MODEL_PATH = os.path.join(CURR, 'app', 'model', 'model.pkl')
 DATA_PATH = os.path.join(CURR, 'app', 'data')
