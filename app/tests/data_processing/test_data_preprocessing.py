@@ -15,11 +15,20 @@ def test_fetch_movies():
         assert fetch_movies('dummy_data_test/movie_list.csv') == "OK"
     except Exception as exc:
         pytest.fail(f"Unexpected exception raised: {exc}")
+def test_fetch_movies_empty():
+    try:
+        assert fetch_movies('dummy_data_test/empty_movie_list.csv') == "OK"
+    except Exception as exc:
+        pytest.fail(f"Unexpected exception raised: {exc}")
 
 def test_fetch_movies_neg(random_file):
     with pytest.raises(FileNotFoundError) as excinfo:
         fetch_movies(random_file)
     assert str(excinfo.value) == f"{random_file} file not found."
+def test_fetch_movies_wrong_column_name():
+    with pytest.raises(KeyError) as excinfo:
+        fetch_movies('dummy_data_test/wrong_column_movie_list.csv')
+    assert "unexpected column name" in str(excinfo.value).lower()
 
 def test_filter_movies():
     # This will work on McGill's network.
@@ -36,14 +45,9 @@ def test_filter_movies_neg(random_file):
     
 def test_fetch_movies_empty():
     try:
-        assert fetch_movies('empty_movie_list.csv') == "OK"
+        assert fetch_movies('dummy_data_test/empty_movie_list.csv') == "OK"
     except Exception as exc:
         pytest.fail(f"Unexpected exception raised: {exc}")
-# Testing extract_history with incorrect date format
-def test_extract_history_date_format():
-    with pytest.raises(ValueError) as excinfo:
-        extract_history("history_wrong_date_format.csv")
-    assert "incorrect date format" in str(excinfo.value).lower()
 
 def test_movie_curl():
     # This will work on McGill's network.

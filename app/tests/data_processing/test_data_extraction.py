@@ -15,3 +15,13 @@ def test_extract_ratings():
         assert extract_ratings("dummy_data_test/ratings.csv") == "SUCCESS"
     except Exception as exc:
         pytest.fail(f"Unexpected exception raised: {exc}")
+# Testing extract_history with incorrect date format
+def test_extract_history_date_format():
+    with pytest.raises(ValueError) as excinfo:
+        extract_history("dummy_data_test/history_wrong_date_format.csv")
+    assert "incorrect date format" in str(excinfo.value).lower()
+def test_extract_history_empty():
+    try:
+        assert extract_history('dummy_data_test/empty_history.csv') == "SUCCESS"
+    except Exception as exc:
+        pytest.fail(f"Unexpected exception raised: {exc}")
