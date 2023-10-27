@@ -33,6 +33,17 @@ def test_filter_movies_neg(random_file):
     with pytest.raises(FileNotFoundError) as excinfo:
         filter_response(random_file)
     assert str(excinfo.value) == f"file not found"
+    
+def test_fetch_movies_empty():
+    try:
+        assert fetch_movies('empty_movie_list.csv') == "OK"
+    except Exception as exc:
+        pytest.fail(f"Unexpected exception raised: {exc}")
+# Testing extract_history with incorrect date format
+def test_extract_history_date_format():
+    with pytest.raises(ValueError) as excinfo:
+        extract_history("history_wrong_date_format.csv")
+    assert "incorrect date format" in str(excinfo.value).lower()
 
 def test_movie_curl():
     # This will work on McGill's network.
