@@ -21,12 +21,12 @@ def test_fetch_movies_neg(random_file):
         fetch_movies(random_file)
     assert str(excinfo.value) == f"{random_file} file not found."
 
-# def test_filter_movies():
-#     # This will work on McGill's network.
-#     try:
-#         assert filter_response('dummy_data_test/final_cleaned_movie_list.csv') == "OK"
-#     except Exception as exc:
-#         pytest.fail(f"Unexpected exception raised: {exc}")
+def test_filter_movies():
+    # This will work on McGill's network.
+    try:
+        assert filter_response('dummy_data_test/final_cleaned_movie_list.csv') == "OK"
+    except Exception as exc:
+        pytest.fail(f"Unexpected exception raised: {exc}")
     
 
 def test_filter_movies_neg(random_file):
@@ -34,15 +34,15 @@ def test_filter_movies_neg(random_file):
         filter_response(random_file)
     assert str(excinfo.value) == f"file not found"
 
-# def test_movie_curl():
-#     # This will work on McGill's network.
-#     try:
-#         response = end_curl_request("the+mask+1994")
-#         assert "adult" in response
-#         assert "genres" in response
-#         assert "runtime" in response
-#         assert "vote_average" in response
-#         assert "spoken_languages" in response
-#     except Exception as exc:
-#         pytest.fail(f"Unexpected exception raised: {exc}")
+def test_movie_curl():
+    # This will work on McGill's network.
+    try:
+        response = send_curl_request("the+mask+1994")
+        assert "adult" in response
+        assert "genres" in response
+        assert "runtime" in response
+        assert "vote_average" in response
+        assert "spoken_languages" in response
+    except Exception as exc:
+        pytest.fail(f"Unexpected exception raised: {exc}")
 
