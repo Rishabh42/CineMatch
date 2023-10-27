@@ -61,3 +61,18 @@ scrape_configs:
             source: error_msg
         - static_labels:
             type: "error"
+         - metrics:
+            request_timeout:
+              type: Counter
+              description: "Number of instances of the recommendation request that timed out"
+              source: error
+              config:
+                value: java.util.concurrent.TimeoutException
+                action: inc
+            connection_timeout: 
+              type: Counter
+              description: "Number of instances of the recommendation request that failed due to connection timeout"
+              source: error
+              config:
+                value: java.net.ConnectException
+                action: inc
