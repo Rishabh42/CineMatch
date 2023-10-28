@@ -3,7 +3,8 @@ stages:
   - deploy
 
 test:
-  image: python:3
+  # image: python:3
+  image: python:3.9.18-alpine3.18
   stage: test
   only:
     - main
