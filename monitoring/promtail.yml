@@ -29,7 +29,7 @@ scrape_configs:
       selector: '{job="kafka"} |~ "/data"'
       stages:
         - regex:
-            expression: (?P<timestamp>\d{4}\-\d{2}\-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}),(?P<userid>\d+),GET \/data\/m\/(?P<movieid>[a-zA-Z0-9]+(\+[a-zA-Z0-9]+)*?)\/(?P<minute>\d+)\.mpg
+            expression: (?P<timestamp>\d{4}\-\d{2}\-\d{2}T\d{2}:\d{2}:\d{2}),(?P<userid>\d+),GET \/data\/m\/(?P<movieid>[a-zA-Z0-9]+(\+[a-zA-Z0-9]+)*?)\/(?P<minute>\d+)\.mpg
         - template:
             source: log_msg
             template: "{{ .timestamp }},{{ .userid }},{{ .movieid }},{{ .minute }}"
@@ -41,7 +41,7 @@ scrape_configs:
       selector: '{job="kafka"} |~ "GET /rate"'
       stages:
         - regex:
-            expression: '^(?P<timestamp>\d{4}\-\d{2}\-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}),(?P<userid>\d+),GET /rate/(?P<movieid>.*?)=(?P<rating>\d+)$'
+            expression: (?P<timestamp>\d{4}\-\d{2}\-\d{2}T\d{2}:\d{2}:\d{2}),(?P<userid>\d+),GET /rate/(?P<movieid>.*?)=(?P<rating>\d+)
         - template:
             source: log_msg
             template: "{{ .timestamp }},{{ .userid }},{{ .movieid }},{{ .rating }}"
@@ -49,6 +49,18 @@ scrape_configs:
             source: log_msg
         - static_labels:
             type: "rating"
+  - match:
+      selector: '{job="kafka"} |~ "status 200"'
+      stages:
+        - regex:
+            expression: (?P<timestamp>\d{4}\-\d{2}\-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}),(?P<userid>\d+?),recommendation\srequest\sfall2023\-comp585\-4\.cs\.mcgill\.ca:8082,\sstatus 200,\sresult:\s(?P<recommendation>[\w\s\d\+,]+?),\s(?P<time_taken>\d+?)\sms$
+        - template:
+            source: recommendation_msg
+            template: "{{ .timestamp }},{{ .userid }},{{ .recommendation }},{{ .time_taken }}"
+        - output:
+            source: recommendation_msg
+        - static_labels:
+            type: "recommendation"
   - match:
       selector: '{job="kafka"} |~ "status 0"'
       stages:
@@ -61,7 +73,7 @@ scrape_configs:
             source: error_msg
         - static_labels:
             type: "error"
-         - metrics:
+        - metrics:
             request_timeout:
               type: Counter
               description: "Number of instances of the recommendation request that timed out"

@@ -1,7 +1,7 @@
 version: "3"
 
 networks:
-  loki:
+  monitoring:
 
 services:
   loki:
@@ -10,16 +10,16 @@ services:
       - "3100:3100"
     command: -config.file=/etc/loki/local-config.yaml
     networks:
-      - loki
+      - monitoring
 
   promtail:
     image: grafana/promtail:2.9.0
     volumes:
       - /var/log:/var/log
-      - ./promtail-config/config.yml:/etc/promtail/promtail-config.yml
+      - ./promtail.yml:/etc/promtail/promtail-config.yml
     command: -config.file=/etc/promtail/promtail-config.yml
     networks:
-      - loki
+      - monitoring
 
   grafana:
     environment:
@@ -49,15 +49,28 @@ services:
     ports:
       - "3000:3000"
     networks:
-      - loki
+      - monitoring
 
-kafka_consumer:
-    image: bitnami/kafka
-    container_name: kafka_stream
-    logging:
-      options:
-        max-size: 50m
-        max-file: "5"
-    command: kafka-console-consumer.sh --bootstrap-server fall2023-comp585.cs.mcgill.ca:9092 --topic movielog4
-    networks:
-      - loki
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - 9090:9090
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    depends_on:
+      - cadvisor
+    
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: cadvisor
+    ports:
+      - 8080:8080
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+
