@@ -9,8 +9,9 @@ test:
     - main
     - merge_requests
   script:
-    - cd app/tests
+    - cd app/
     - pip install -r requirements.txt
+    - cd tests/
     - pytest .
 
 deploy:
