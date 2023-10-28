@@ -1,5 +1,18 @@
 stages:
+  - test
   - deploy
+
+test:
+  image: ubuntu:latest
+  stage: test
+  only:
+    - main
+  before_script:
+    - apt-get -yq update
+    - pip install -r requirements.txt
+    - cd tests
+  script:
+    - pytest .
 
 deploy:
   image: ubuntu:latest
