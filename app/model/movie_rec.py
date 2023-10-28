@@ -264,10 +264,16 @@ def get_recommendation(user_id):
 
     # Get movie recommendations for a user
     nb_recommendation = 20
-    recommendations = recommendation(
-        user_id, nb_recommendation)
+    try:
+        recommendations = recommendation(
+            user_id, nb_recommendation)
+    except Exception as exc:
+        print(f"Error occurred while getting recommendations: {exc}")
 
-    print_recommendations(recommendations, user_id)
+    try:
+        print_recommendations(recommendations, user_id)
+    except Exception as exc:
+        print(f"Error occurred while printing recommendations: {exc}")
 
     return [x[0] for x in recommendations]
 
@@ -281,4 +287,8 @@ def load_model():
         global_model = pickle.load(f)
 
     file_path = DATA_PATH
-    load_data(file_path, True)
+
+    try:
+        load_data(file_path, True)
+    except Exception as exc:
+        print(f"Error occurred while loading model: {exc}")
