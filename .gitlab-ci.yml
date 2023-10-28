@@ -9,7 +9,8 @@ test:
     - main
     - merge_requests
   script:
-    - cd tests/
+    - ls -a
+    - cd app/tests/
     - pip install -r requirements.txt
     - pytest .
 
