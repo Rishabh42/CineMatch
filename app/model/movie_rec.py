@@ -8,6 +8,10 @@ import pickle
 import os
 
 global_model = None
+global_users = None
+global_dataset = None
+global_users_ratings = None
+global_movies = None
 
 
 def column_switch(column):
@@ -27,10 +31,15 @@ def load_data(folder_path, rate_based):
     ratings, and the database with the movies.
     """
 
+    global global_users
+    global global_dataset
+    global global_users_ratings
+    global global_movies
+
     # Load the users database
-    users = pd.read_csv(os.path.join(folder_path, 'user_data.csv'),
+    global_users = pd.read_csv(os.path.join(folder_path, 'user_data.csv'),
                         sep=',', on_bad_lines='skip', encoding="latin-1")
-    users.columns = ['user_id', 'age', 'occupation', 'gender']
+    global_users.columns = ['user_id', 'age', 'occupation', 'gender']
 
     # Load the ratings database
     ratings = pd.read_csv(os.path.join(folder_path, 'cleaned_rating.csv'),
@@ -38,21 +47,21 @@ def load_data(folder_path, rate_based):
     ratings.columns = ['user_id', 'movie_id', 'rate']
 
     # Create a database with users and ratings
-    users_ratings = pd.merge(ratings, users, on='user_id')
+    global_users_ratings = pd.merge(ratings, global_users, on='user_id')
 
     # Load the movies database
-    movies = pd.read_csv(os.path.join(folder_path, 'filtered_responses.csv'),
+    global_movies = pd.read_csv(os.path.join(folder_path, 'filtered_responses.csv'),
                          sep=',', on_bad_lines='skip', encoding="latin-1")
-    movies.columns = ['movie_id', 'adult', 'type',
+    global_movies.columns = ['movie_id', 'adult', 'type',
                       'max_min', 'global_rate', 'languages']
-    movies.sort_values(by=['global_rate'], ascending=False)
+    global_movies.sort_values(by=['global_rate'], ascending=False)
 
     # Create the Dataset for the collaborative filtering
     if rate_based:
         # Dataset based on the rates
         reader = Reader(line_format='user item rating',
                         sep=',', rating_scale=(1, 5))
-        dataset = Dataset.load_from_df(ratings, reader=reader)
+        global_dataset = Dataset.load_from_df(ratings, reader=reader)
     else:
         # Dataset based on the percentages of the movie seen
         # Load the watching history database
@@ -61,7 +70,7 @@ def load_data(folder_path, rate_based):
         history.columns = ['user_id', 'movie_id', 'min']
 
         # Create a database with the watching history and the percentage of the movie seen
-        history_percentage = pd.merge(history, movies, on='movie_id')
+        history_percentage = pd.merge(history, global_movies, on='movie_id')
         history_percentage = history_percentage.drop(
             ['adult', 'type', 'languages', 'global_rate'], axis=1)
         history_percentage['percentage'] = history_percentage.apply(
@@ -70,9 +79,9 @@ def load_data(folder_path, rate_based):
         history_percentage.head()
 
         reader = Reader(rating_scale=(0, 100))
-        dataset = Dataset.load_from_df(history_percentage, reader)
+        global_dataset = Dataset.load_from_df(history_percentage, reader)
 
-    return dataset, users, users_ratings, movies
+    return global_dataset, global_users, global_users_ratings, global_movies
 
 
 def train_collaborative_filtering(train_set):
@@ -113,37 +122,36 @@ def test_collaborative_filtering(model, test_set):
     accuracy.rmse(predictions)
 
 
-def recommendation(user_id, nb_recommendation, dataset, movies, users, users_ratings):
+def recommendation(user_id, nb_recommendation):
     """
     Recommend a list of movies for a user based on collaborative filtering or demographic filtering when there are
     not enough data.
 
     :param user_id: The user id to make the prediction
     :param nb_recommendation: The number of recommendation asked
-    :param dataset: The dataset used for train the model
-    :param movies: All the movies
-    :param users: All the users
-    :param users_ratings: Database with the ratings and the users info
-    :return: the recommendation
     :exception: The user have to exist in the database
     """
 
     assert global_model is not None
+    assert global_movies is not None
+    assert global_users is not None
+    assert global_dataset is not None
+    assert global_users_ratings is not None
 
     # Get the array of the movies already rates by the user
     user_ratings_arr = np.array(list(map(lambda x: x[1], filter(
-        lambda x: x[0] == user_id, dataset.raw_ratings))))
+        lambda x: x[0] == user_id, global_dataset.raw_ratings))))
 
     max_nb_movies = 100
 
     # Get the array of all the movies
-    movies_arr = np.array(movies)[:max_nb_movies, 0]
+    movies_arr = np.array(global_movies)[:max_nb_movies, 0]
 
     # Create an array with all the movies not seen yet by the user
     movies_not_seen = np.setdiff1d(movies_arr, user_ratings_arr)
 
     # Get the user entry in the database of all users
-    user_row = users.loc[users['user_id'] == int(user_id)]
+    user_row = global_users.loc[global_users['user_id'] == int(user_id)]
     assert len(user_row) > 0, 'The user does not exist in the users database'
 
     # Get the user gender ('F' or 'M')
@@ -156,7 +164,7 @@ def recommendation(user_id, nb_recommendation, dataset, movies, users, users_rat
     for movie_id in movies_not_seen:
 
         # Get the movie entry in the database of all movies
-        movie_entry = movies.loc[movies['movie_id'] == movie_id]
+        movie_entry = global_movies.loc[global_movies['movie_id'] == movie_id]
 
         # Filter to do not recommend adult movie to a kid
         if (True in movie_entry['adult'].values) and user_age < 18:
@@ -180,7 +188,7 @@ def recommendation(user_id, nb_recommendation, dataset, movies, users, users_rat
                     global_rate = global_rate[0]
 
                 # Take all the ratings done by a user of the same gender
-                users_same_movie = users_ratings.loc[users_ratings['movie_id'] == movie_id]
+                users_same_movie = global_users_ratings.loc[global_users_ratings['movie_id'] == movie_id]
                 users_same_gender = users_same_movie.loc[users_same_movie['gender'] == user_gender]
 
                 # If at least one person of the same gender have rate the movie, consider it in the prediction
@@ -246,17 +254,10 @@ def get_recommendation(user_id):
     :param user_id: the id of the user
     """
 
-    # path where the data is
-    file_path = os.path.join(os.path.normpath('/app'), 'data')
-
-    # Load the dataset and databases
-    dataset, users, users_ratings, movies = load_data(
-        file_path, rate_based=True)
-
     # Get movie recommendations for a user
     nb_recommendation = 20
     recommendations = recommendation(
-        user_id, nb_recommendation, dataset, movies, users, users_ratings)
+        user_id, nb_recommendation)
 
     print_recommendations(recommendations, user_id)
 
@@ -270,3 +271,8 @@ def load_model():
     # load the model
     with open(file_path, 'rb') as f:
         global_model = pickle.load(f)
+
+    file_path = os.path.join(os.path.normpath('/app'), 'data')
+    load_data(file_path, True)
+
+

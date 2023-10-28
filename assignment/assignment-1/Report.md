@@ -136,6 +136,146 @@ The other stakeholders of Notion, and why they may have an interest in Notion:
 ## 2.2. User research
 **Perform user research (e.g. interviews and observation studies with real users) to gather information about the target user classes. Describe and provide evidence of your user research process, including the format and artifacts used and its outcome [10]. Make sure to obtain consent from the users about being part of the study and sharing their data with your teammates and graders. Avoid collecting personal identifiable information.**
 
+
+### 2.2.1. User Survey
+
+We created a survey to get an idea about the target user classes. The survey helped to understand how notion AI is helpful to the users and what are their pain points which the intelligent system can alleviate. Further, it also shed some light on the concerns which users may have notion AI. The survey could only be filled if the user consented to having the information recorded for the purposes of this assignment and there was a special provision to accommodate the feedback for use cases for teams.
+
+#### Participants
+
+The participants were friends of the group members and acquaintances of the friends of the group members. We had created the survey link and disseminated it in our social circles. Since the survey does not collect any personally identifiable information, we cannot attribute any response to the identity of the individual who filled the survey; however, we can analyze the trends observed across users.
+
+**The survey was designed such that,**
+
+
+
+* Only those people who consented to the data usage policy (which we declared before the start of the survey) could fill the survey.
+* Only those users who have a habit of using notion for academic/ research based tasks could fill the survey.
+* The survey responses accommodated different user classes in the target domain based on what they use notion AI for and the frequency with which they used it.
+
+**Participant details:**
+
+
+<table>
+  <tr>
+   <td>Type
+   </td>
+   <td>Percentage of users
+   </td>
+   <td>Notes
+   </td>
+  </tr>
+  <tr>
+   <td>Consent to information being collected by survey
+   </td>
+   <td>100%
+   </td>
+   <td>
+   </td>
+  </tr>
+  <tr>
+   <td>Level of education of the user
+   </td>
+   <td>Roughly 20% of total users represented by each category.
+   </td>
+   <td>Almost equally distributed between:
+<ul>
+
+<li>Undergraduate student
+
+<li>Graduate student in professional (or) thesis programs
+
+<li>Research intern
+
+<li>Post-doc/ professor
+</li>
+</ul>
+   </td>
+  </tr>
+  <tr>
+   <td>Frequency of usage
+   </td>
+   <td>50% of the users polled use it daily while 40% use it weekly.
+   </td>
+   <td>-
+   </td>
+  </tr>
+  <tr>
+   <td>Manner of usage
+   </td>
+   <td>Almost all the users use it for individual work with 60% of the users using it for collaborative team work as well.
+   </td>
+   <td>We did not find any user using it exclusively for team work but not at a personal level.
+   </td>
+  </tr>
+</table>
+
+
+#### Explanation of survey method:
+
+The survey was created using microsoft-365 suite and shared so that anyone with the survey link could fill it (accessible here: link to fill the [survey](https://forms.office.com/r/NV2NePQdpu)). All the questions were made to be choice based because we felt having descriptive questions may discourage users from accurately completing the survey. Some of the questions were multiple select type choice based questions with the option to add “other” descriptive choices, should the user choose to do so. There were two parts to the survey depending on the manner in which the notion AI was used: i) individual manner of usage ii) team usage for collaboration. It is possible for the users to have both manner of usages in the day-to-day execution of tasks with notion AI.
+
+The survey questions were divided into **four main categories** (apart from consent):
+
+
+
+* General use: frequency, purpose and manner of usage.
+* Tasks: features of notion AI, productivity boost and dependency on the product.
+* Frustrations: problems faced while using notion AI and concerns.
+* Goals: Main expectation and consideration of capabilities of notion AI.
+    * Some questions on data privacy concerns were highlighted separately.
+    * Team level collaboration related questions had a separate section.
+
+**Artifacts used:**
+
+* Link to survey: [here](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/development/assignment/assignment-1/artifacts/survey/COMP585_-_User_Survey.pdf)
+* Outcome of the survey: excel [sheet](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/development/assignment/assignment-1/artifacts/survey/COMP585%20-%20User%20Survey(1-10).xlsx)
+* Survey results dashboard: form [results](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/development/assignment/assignment-1/artifacts/survey/COMP585%20-%20User%20Survey%20-%20results.pdf)
+* Charts and figures: [here](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/tree/development/assignment/assignment-1/artifacts/survey/charts)
+
+#### Data Analysis:
+
+
+
+* We found that notion AI helped increase productivity up to the level of satisfaction as `3.8` measured on a 5 point scale with the higher number being more satisfied by the boost in productivity. For teams based usage, this number was a bit lower at `3.57`.
+* Most of the users reported being dependent on notion AI for their work. Further, it was seen that the users who had the highest satisfaction with increased productivity reported being most dependent on notion AI for their tasks regardless of whether they used it individually or for their team.
+
+_source for the charts below: Data analysis from excel_
+
+
+![alt_text](artifacts/survey/charts/dependent.png "dependent.png")
+
+
+![alt_text](artifacts/survey/charts/productivity-depend.png "productivity-depend.png")
+
+
+![alt_text](artifacts/survey/charts/productivity-team.png "productivity-team.png")
+
+
+![alt_text](artifacts/survey/charts/usage-dependency.png "usage-dependency.png")
+
+
+
+
+* **Usage patterns:** Surprisingly,**the dominating usecase** for notion AI was to plan and manage projects (both research and course projects) and to collaborate with peers. The actual task of creating and organizing notes/ todo lists was the second priority. 
+
+* **Features:** The most used feature further supports the observation made above because most of the users preferred to depend on notion AI for brainstorming ideas followed by summarizing their content. Creating a rough draft and correcting grammatical errors were equally used features for notion AI.
+
+* **Challenges and concerns:** Users felt that the generated content can be irrelevant. This reflects a disconnect between what the user was expecting from the model versus what was the actual output. Some users felt that the notion AI may have the side effect of stemming their creativity as they may come to rely on it for generating new ideas almost exclusively. Further, almost all the users were equally concerned about privacy aspects of using notion AI, they were uncomfortable with the system learning their personalized profiles and were apprehensive by the prospect of bias being introduced by AI generated content in their works.
+
+* **Goals and considerations:** The expectation behind using notion AI were equally split between:
+    * Enhancement of productivity
+    * Improving the quality of user’s work
+    * Seeking inspiration for new ideas and support for brainstorming
+	
+* Users were most concerned about the quality of the work they will produce with the usage of AI assistant and were particularly focused on the level of creativity in their final work. This highlights that when the heavy lifting of producing/ creating something new is offloaded from humans to machines, users may feel a bit uneasy and feel strongly about the quality and novelty seen in the generated content.
+
+* **Personalization and integration:** All the users felt that notion AI should be able to interface with the internet and produce outputs based on external sources which are not limited to their notion database. The majority of users wanted a personalized experience through the app but they wanted notion AI to ensure their data is protected and isolated from the aggregated model training.
+
+
+* **Team usage:** Users strongly felt that notion AI is useful for summarizing their meeting notes into key points quickly. There was an agreement in improved productivity of the team when notion AI is used. However, the majority of the users felt there should be more options to enhance collaboration among the members of the team. Further, making sure everyone on the team knows about the capabilities offered by notion AI is also a challenge for the users.
+
+
 ### 2.2.2. Interviews
 To complement the survey data with qualitative insights about the different user classes, we conducted 2 interviews. These interviews allowed us to dig deeper into our users' experiences with Notion AI, understand their emotional states, and explore their needs in greater detail. The interviews were conducted with the verbal consent of the participants, ensuring full transparency about the study's purpose. 
 
@@ -191,9 +331,138 @@ We created 3 personas and 3 empathy maps for each of our favored user classes th
 ![Persona 3: The Researcher Sensei](./artifacts/personas/persona3.jpg)
 ![Empathy map 3](./artifacts/empathy%20maps/em3.jpg)
 
+## 2.4 user stories and acceptance tests
+
+### User stories
+
+User stories are created from personas: we extracted the needs of some particular features for each persona. Several personas indicate the need to use the same features, so we generalized some of the user stories to a larger group than just the groups that represented by the personas. 
+
+### Acceptance tests
+
+We wrote acceptance tests for each user story. These acceptance tests take into account:
+- As a user, I can write on a document in Notion and create new documents.
+- As a user, in each documents I can use the AI dropdown menu to access to the functionalities of the AI.
+
+### User stories inspired by the Student profile
+
+- As a student, I want to have indications when I did spelling or grammatical mistakes in a text so that I can be sure that I submit a report without grammatical or spelling errors.\
+\
+**Acceptance tests:** 
+  - Verify a spelling error is underlined in red.
+  - Verify a grammatical error is underlined in blue.
+  - Verify a correct word in a sentence grammatically correct is not underlined.
+  - Verify a dropdown opens when the user hovers over an underlined word and that in this dropdown is proposed suitable corrections.
+  - Verify the word is changed with the correction when the user click on a proposition in the dropdown.
+  - Verify supported languages can be changed in settings
+
+- As a student, I want to generate todo list from notes so that I can clearly know what I need to do next and keep track of my progress without wasting the time to transform my notes into a todo list by myself.\
+\
+**Acceptance tests:** 
+  - Verify that the button "generate todo list" is in the AI dropdown menu.
+  - Verify that when the user clicks on "generate todo list", the AI creates a todo list with task that the user can tick.
+  - Verify that the todo list created is relevant to the content of the text.
+  - Verify that the AI generates an error message if it is impossible to generate tasks from this text.
+
+- As a student, I want to generate content on events that are happening now or on recent works so that I can have up-to-date information when I study recent works or events.\
+\
+**Acceptance tests:** 
+  - Verify that the AI do the task asked correctly when the text used for the task talks about a recent event or work.
+  - Verify that the AI can provide correct information on recent events or works.
+  - Verify that the AI displays an error message if the user ask for information about a recent event that does not exist.
+
+- As a student, I want to generate key ideas from notes I wrote so that I can save time when I just want to remember the principal ideas of my lecture notes.\
+\
+**Acceptance tests:** 
+  - Verify the button "key ideas" exists in the AI dropdown menu.
+  - Verify that the AI generates a bullet list of key ideas when the user click on the button "key ideas" in the dropdown menu.
+  - Verify that the list of key ideas is relevant to the content of the text.
+  - Verify that the AI generates an error message if it is impossible to generate key ideas of this text (for example for a empty text).
+
+### User stories inspired by the Team Collaborator profile
+
+- As a team collaborator, I want to quickly summarize and structure messy meeting notes into a clear meeting minute so that I can save time and send to my collaborators clear and structured meeting minutes. \
+\
+**Acceptance tests:** 
+  - Verify that the meeting notes are getting summarized in an efficient format and the notes are grammatically correct.
+  - Verify the time it takes to summarize the meeting notes and make sure it is quick.
+
+- As a team collaborator, I want to generate a meeting agenda based on notes or old meeting minutes so that we can know exactly what we should discuss in meetings. \
+\
+**Acceptance tests:** 
+  - Verify that the agenda does not miss the old discussion topics
+  - Verify the verbosity of the agenda to make sure that it is concise without compromising the content.
+
+- As a team collaborator, I want the AI to automatically add into my calendar the next meetings or deadlines that we discussed in our meeting notes so that I'm sure I won't miss any appointments or deadlines. \
+\
+**Acceptance tests:** 
+  - Verify that the meetings are automatically getting added to the user's calendar.
+
+### User stories inspired by the Researcher profile
+
+- As a researcher I want to generate a summary for a research paper so that I can easily know what the paper is about and what are the key ideas of the paper.\
+\
+**Acceptance tests:** 
+  - Verify the "summarize" is in the AI dropdown
+  - Verify that the AI generate a summary when the user give a paper or the name of a paper and click on the summary button in the IA dropdown.
+  - Verify that the summary is relevant to the content of the paper and dont take into account irrelevant information like the citations for example.
+  - Verify that the AI ask for more information if there exist more than one paper with the paper's name given by the user.
+  - Verify that the AI generate a error message when the paper does not exist or the content given by the user cant be summarized.
+  - Verify that the response time of the summary is not more than 10 seconds, and there is a visual indication that the summary is being generated.
+
+- As a researcher I want to know how Notion uses my data when I use their AI so that I can know if I can use AI to work on sensitive content that requires privacy.\
+\
+**Acceptance tests:** 
+  - Verify that there is a button to get information about the AI in the AI dropdown menu.
+  - Verify that clicking on the button open a page with privacy information about the AI.
+  - Verify that the privacy information are well displayed and that user can scroll to read the whole page.
+  - Verify that the information button is accessible with accessibility services allowing the phone to be controlled by voice for blind and visually impaired people.
+
+- As a researcher and a non-native English speaker, I want to easily translate what I write so that I can get help writing my papers in English when I don't know the translation of a word.\
+\
+**Acceptance tests:** 
+  - Verify there is a button "translate" in the AI dropdown menu.
+  - Verify a new dropdown menu with a list of languages is displayed when the user clicks on the button "translate" in the AI dropdown menu.
+  - Verify the translation is correctly performed in the selected language.
+  - Verify the proper nouns are the same after the translation.
+
+- As a researcher and a non-native English speaker, I want the AI to reformulate and improve what I wrote so that my papers seem to be written by a native English speaker.
+\
+\
+**Acceptance tests:** 
+  - Verify the button "improve writing" is in the AI dropdown menu.
+  - Verify the text changed when the user clicks on the button "improve writing".
+  - Verify that the new text is grammatically correct and written in a formal English.
+
+- As a researcher I want to quickly structure all the references I keep track of so that I can quickly find a reference that I am looking for. \
+\
+**Acceptance tests:** 
+  - Verify the button "organized references" is in the AI dropdown menu.
+  - Verify the AI display an error if the text given by the user does not contain references.
+  - Verify the references are put in a table when the user clicks on "organized references".
+  - Verify the references can be sorted by dates or aggregated by subject after clicking on "organized references".
+
+- As a researcher who work in a lab with not much fundings, I want to have access to some Notion AI features for free so that I can be more productive in my research and participate in the common good without spending money.\
+\
+**Acceptance tests:** 
+  - Verify that some features of the AI are available with the free plan.
+  - Verify the list of the available features of the AI with the free plan are display in the pricing page: https://www.notion.so/pricing.
+  - Verify that the features available with the free plan can actually be use with the free plan.
+
+### User stories inspired by all the profiles
+
+- As an academic member, I want to generate a list of ideas on a specific subject so that I can quickly collect ideas that I can develop for a project or a work.\
+\
+**Acceptance tests:** 
+  - Verify that the AI generate a bullet list of ideas when the user ask for a list of ideas on a specific subject.
+  - Verify that the ideas generated are relevant regarding to the prompt.
+  - Verify that the AI ask for more precisions if the user only ask for ideas without any precisions.
+
 ## Contribution statement:
 
-We worked together as a team on this assignment like we had done on the project. We met during our regular team meetings and assigned tasks to each member. Then we collaborated over gitlab to finalize the report. The commits were reviewed by other team members before they were added to the main branch. The artefacts for the assignment can be be found in the directory. Each member of the team worked on multiple facets of the assignment so that everyone can get an idea of the whole picture. 
+- We worked together as a team on this assignment like we had done on the project. We met during our regular team meetings and assigned tasks to each member.
+  - Link to meeting notes: [here](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/wikis/Meeting-Notes) and [here](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/wikis/Meeting-notes-October-10th).
+
+- We collaborated over gitlab to finalize the report. The commits were reviewed by other team members before they were added to the main branch. The artefacts for the assignment can be be found in the directory. Each member of the team worked on multiple facets of the assignment so that everyone can get an idea of the whole picture. 
 
 **Work division:**
 
@@ -213,18 +482,26 @@ We worked together as a team on this assignment like we had done on the project.
 
 **Link to significant contributions:**
 
-Question 1.1 and 1.2 [Aayush]:
+**Question 1.1 and 1.2** [Aayush]:
+- Aayush: Found the info. and drafted the content for part 1.1 and 1.2. (Check [here](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/731b97b7715f10ac7b774348d20f754fc6013cdd))
 
-Question 2.1 [Luke][Tamara]:
+**Question 2.1** [Luke][Tamara]:
+- Tamara: write a list of user classes and other stakeholders and merge it with the Luke's list (Check [here](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/54508a12d98e1a4b880817360fcd891550706005))
+- Luke: Worked on 2.1 
+- Rishabh: reviewed the merge request and made some enhancements to the writeup: ([merged commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/23))
 
 **Question 2.2:** [Aayush][Varun]
 - Varun: Initial draft of user survey (check [artifact](./artifacts/survey/COMP585_-_User_Survey.pdf)), interview script (check [artifact](./artifacts/interview/interview-script.md)), conducted and transcribed interviews + data analysis (check [OneDrive](https://mcgill-my.sharepoint.com/:f:/r/personal/varun_shiri_mail_mcgill_ca/Documents/COMP585-Team4-A1?csf=1&web=1&e=otQphZ)), report section 2.2.2 ([commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/435a0801ae6dd85a4ae1b8dc81088e3c6e08353d#d3eb7c4dbe5f58eedd318bd05569196db2c4d692_133_136))
 
+- Aayush: Made modifications and completed the draft of user survey (check [here](./artifacts/survey/COMP585_-_User_Survey.pdf)), created the charts (check [here](./artifacts/survey/charts), [commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/b0e12a96a951a53a85d69540d6294e5c5e461adf)), drafted the content for 2.2.1 with data analysis (check [here](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/9145e8d5e92780dfb039539596230d53da04d983))
+
 **Question 2.3** [Rishabh][Varun]:
 - Varun: Drafted the content for and revised the personas and empathy maps (check [artifacts](./artifacts/)), drafted report section 2.3 ([commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/435a0801ae6dd85a4ae1b8dc81088e3c6e08353d#d3eb7c4dbe5f58eedd318bd05569196db2c4d692_136_171))
+- Rishabh: Drafted the content for the personas, created the personas and the empathy maps for each user ([merged commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/25/diffs))
 
-Question 2.4.1 and 2.4.2 [Tamara][Rishabh]:
+**Question 2.4.1 and 2.4.2** [Tamara][Rishabh]:
+- Tamara: Write the list of user stories ([commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/63248a0c91b3690a1a06d310ea4f9f46560bf718)) and write a part of the acceptance tests ([commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/2febb5f7363b7337ec6a07aacdf1e872581612f6))
+- Rishabh: Wrote acceptance tests for the users ([commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/a1adfa2c3ccb73eb6ba07115299f08949db1fd84)) and ([commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/3cd9fb159ede4ebcffc2b8f17836a87cebbdb22b))
 
 
-Typo correction, admin work:
-
+Typo correction, admin work: All the team members were involved in review, admin and cleanup process (either through slack channel or gitlab) but only significant commits for questions by members linked above.
