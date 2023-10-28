@@ -3,6 +3,7 @@ import pandas as pd
 # Read the CSV file into a DataFrame
 df1 = pd.read_csv('../data/movie_cleaned_1.csv')
 df2 = pd.read_csv('../data/movie_cleaned_2.csv')
+
 df = pd.concat([df1, df2])
 print(df.head())
 df.columns = ['userid', 'movieid', 'minute']

@@ -1,5 +1,20 @@
 stages:
+  - test
   - deploy
+
+test:
+  # image: python:3
+  image: python:3.9.18-alpine3.18
+  stage: test
+  only:
+    - main
+    - merge_requests
+  script:
+    - apk update && apk add python3-dev gcc libc-dev 
+    - cd app/
+    - pip install -r requirements.txt
+    - cd tests/
+    - pytest .
 
 deploy:
   image: ubuntu:latest
