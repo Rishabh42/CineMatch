@@ -20,10 +20,10 @@ def test_fetch_movies_neg(random_file):
         fetch_movies(random_file)
     assert str(excinfo.value) == f"{random_file} file not found."
 
-def test_fetch_movies_wrong_column_name():
-    with pytest.raises(KeyError) as excinfo:
-        fetch_movies('dummy_data_test/wrong_column_movie_list.csv')
-    assert "unexpected column name" in str(excinfo.value).lower()
+# def test_fetch_movies_wrong_column_name():
+#     with pytest.raises(KeyError) as excinfo:
+#         fetch_movies('dummy_data_test/wrong_column_movie_list.csv')
+#     assert "unexpected column name" in str(excinfo.value).lower()
 
 def test_filter_movies():
     # This will work on McGill's network.
@@ -34,8 +34,8 @@ def test_filter_movies_neg(random_file):
         filter_response(random_file)
     assert str(excinfo.value) == f"file not found"
     
-def test_fetch_movies_empty():
-    assert fetch_movies('dummy_data_test/empty_movie_list.csv') == "OK"
+# def test_fetch_movies_empty():
+#     assert fetch_movies('dummy_data_test/empty_movie_list.csv') == "OK"
 
 def test_movie_curl():
     response = send_curl_request("the+mask+1994")

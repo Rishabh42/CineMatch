@@ -30,6 +30,16 @@ test-data:
     - cd tests/
     - pytest .
 
+coverage:
+  image: python:3.9.18-alpine3.18
+  stage: coverage
+  only:
+    - main
+    - development
+    - merge_requests
+  script:
+    - python3 -m coverage report
+
 deploy:
   image: ubuntu:latest
   stage: deploy
