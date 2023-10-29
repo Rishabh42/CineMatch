@@ -43,10 +43,11 @@ coverage:
     - pip install coverage
     - cd app/
     - pip install -r requirements.txt
-    - python3 test_app.py
+    - coverage run test_app.py
     - cd tests/
-    - pytest .
+    - python3 -m coverage run -m pytest .
     - cd ..
+    - coverage combine .coverage tests/.coverage
     - python3 -m coverage report
 
 deploy:
