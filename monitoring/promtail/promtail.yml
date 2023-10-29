@@ -61,6 +61,13 @@ scrape_configs:
             source: recommendation_msg
         - static_labels:
             type: "recommendation"
+        - metrics:
+            successful_requests:
+                  type: Counter
+                  description: "Number of instances of successful recommendations returned by the server"
+                  config:
+                    match_all: true
+                    action: inc
   - match:
       selector: '{job="kafka"} |~ "status 0"'
       stages:

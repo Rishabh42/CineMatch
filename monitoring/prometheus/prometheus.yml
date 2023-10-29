@@ -1,16 +1,25 @@
 global:
   scrape_interval: 10s
 
+rule_files:
+  - 'rules.yml'
+
+alerting:
+  alertmanagers:
+  - static_configs:
+    - targets:
+      - "alertmanager:9093"
+
 scrape_configs:
-  - job_name: prometheus
+  - job_name: 'prometheus'
     scrape_interval: 10s
     static_configs:
       - targets: ['localhost:9090']
 
-  - job_name: cadvisor
+  - job_name: 'cadvisor'
     scrape_interval: 10s
     static_configs:
-    - targets: ['cadvisor:8080']
+      - targets: ['cadvisor:8080']
 
   - job_name: 'loki'
     scrape_interval: 10s
@@ -21,3 +30,10 @@ scrape_configs:
     scrape_interval: 10s
     static_configs:
       - targets: ['promtail:80']
+
+  - job_name: 'node-exporter'
+    scrape_interval: 15s
+    static_configs:
+      - targets: ['node-exporter:9100']
+
+

@@ -113,3 +113,6 @@ def save_logs_range_to_csv(type, start_date, end_date=str(datetime.date.today())
             writer.writerow(CSV_HEADER[type])
             for log in logs:
                 writer.writerow(log[:1] + log[1].split(','))
+
+
+save_logs_latest_to_csv('history')
