@@ -19,15 +19,15 @@ test-data:
     - cd tests/
     - pytest .
 
-  test-model:
-  image: python:3.9.18-alpine3.18
-  stage: test-model
-  only:
-    - main
-    - development
-    - merge_requests
-  script:
-    - apk update && apk add python3-dev gcc libc-dev 
+test-model:
+image: python:3.9.18-alpine3.18
+stage: test-model
+only:
+  - main
+  - development
+  - merge_requests
+script:
+  - apk update && apk add python3-dev gcc libc-dev 
 
 test-app:
   image: python:3.9.18-alpine3.18
