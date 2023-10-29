@@ -39,6 +39,7 @@ coverage:
     - development
     - merge_requests
   script:
+    - pip install coverage
     - python3 -m coverage report
 
 deploy:
