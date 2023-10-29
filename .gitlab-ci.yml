@@ -40,6 +40,12 @@ coverage:
     - merge_requests
   script:
     - pip install coverage
+    - pip install -r requirements.txt
+    - cd app/
+    - python3 test_app.py
+    - cd tests/
+    - pytest .
+    - cd ..
     - python3 -m coverage report
 
 deploy:
