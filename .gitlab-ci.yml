@@ -1,6 +1,7 @@
 stages:
   - test-app
   - test-data
+  - coverage
   - deploy
 
 test-app:
