@@ -216,3 +216,24 @@ Relevant commit:
 - report: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/48/diffs?commit_id=744759355d3f780d00f368a45364340fbae72b4f
 
 **Data quality:** Aayush + some unit tests by Tamara
+
+**Testing**: Rishabh  
+Relevant commits:  
+- https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/fa509da38521bcb6fbc9250e0799521c68804e35 
+
+**Error Handling**: Rishabh  
+Relevant commit:
+https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/9f9e4be4841c0d7519b75ce48623ab13228f8ac9
+
+**Pipeline:** Rishabh
+Relevant commit: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/502663867848bc22cb5147c6ab2fa29eca907fa1
+
+**Continuous integration**: Rishabh
+
+**Review pull requests**: Rishabh
+Pull requests reviewed:  
+1. https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/33#note_61433
+2. https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/38#note_61532
+3. https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/45
+4. https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/46
+5. https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/47
