@@ -5,6 +5,7 @@ import json
 class AppTestCase(unittest.TestCase):
     def test_home_endpoint(self):
         response = app.welcome_return()
+        self.assertEqual(response, {'Welcome': 'Hit the user ID end point - /recommend/<userid>'})
         # self.assertEqual(response.status_code, 200)
         # self.assertIn('Welcome', data)
 
@@ -25,7 +26,6 @@ class AppTestCase(unittest.TestCase):
     def test_invalid_input(self):
         user_id = 'g9f'  # An invalid user ID
         API_response = app.get_user_details(user_id)
-        print("API_response: ",API_response)
         self.assertEqual(API_response,"Response not successful")
 
 if __name__ == '__main__':
