@@ -44,6 +44,8 @@ We implemented an MLOps to get constant feedback during the development process 
 
 ## Pipeline structure:
 
+![pipeline](/M2-report/artifacts/pipeline.png)
+
 We configured our pipeline to sequentially run the following different jobs/stages:
   - test-data
   - test-model
@@ -68,7 +70,7 @@ We configured our pipeline to sequentially run the following different jobs/stag
   - Link to our coverage report: ​​https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/jobs/3699 
 
 **Screenshot of our coverage report:**
-![data_quality_1](/M2-report/artifacts/coverage.png)
+![coverage](/M2-report/artifacts/coverage.png)
 
 
 - **deploy:** After all tests have passed, this final pipeline deploys our model and the app to our team server hosted on GitLab.  
