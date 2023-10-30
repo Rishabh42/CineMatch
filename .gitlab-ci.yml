@@ -1,11 +1,79 @@
 stages:
+  - test-data
+  - test-model
+  - test-app
+  - coverage
   - deploy
+
+test-data:
+  image: python:3.9.18-alpine3.18
+  stage: test-data
+  only:
+    - main
+    - development
+    - merge_requests
+  script:
+    - apk update && apk add python3-dev gcc libc-dev 
+    - cd app/
+    - pip install -r requirements.txt
+    - cd tests/
+    - pytest data_processing/ data_quality
+
+test-model:
+  image: python:3.9.18-alpine3.18
+  stage: test-model
+  only:
+    - main
+    - development
+    - merge_requests
+  script:
+    - apk update && apk add python3-dev gcc libc-dev
+    - cd app/
+    - pip install -r requirements.txt
+    - cd tests/model/
+    - python3 test_model.py
+
+test-app:
+  image: python:3.9.18-alpine3.18
+  stage: test-app
+  only:
+    - main
+    - development
+    - merge_requests
+  script:
+    - apk update && apk add python3-dev gcc libc-dev 
+    - cd app/
+    - pip install -r requirements.txt
+    - python3 test_app.py
+
+coverage:
+  image: python:3.9.18-alpine3.18
+  stage: coverage
+  only:
+    - main
+    - development
+    - merge_requests
+  script:
+    - apk update && apk add python3-dev gcc libc-dev 
+    - pip install coverage
+    - cd app/
+    - pip install -r requirements.txt
+    - coverage run test_app.py
+    - cd tests/
+    - python3 -m coverage run -m pytest data_processing/ data_quality/
+    - cd model/
+    - coverage run test_model.py 
+    - cd ../..
+    - coverage combine .coverage tests/.coverage tests/model/.coverage
+    - python3 -m coverage report
 
 deploy:
   image: ubuntu:latest
   stage: deploy
   only:
     - main
+  script:
+    - apt-get -yq update 
   before_script:
     - apt-get -yq update  
     - apt-get -yqq install ssh # install ssh package

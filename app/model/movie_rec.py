@@ -7,11 +7,22 @@ import numpy as np
 import pickle
 import os
 
+os.chdir("../")
+CURR = os.getcwd()
+
+MODEL_PATH = os.path.join(CURR, '..', 'model', 'model.pkl')
+DATA_PATH = os.path.join(CURR, '..', 'data')
+
+FILE_NAME_USERS = 'user_data.csv'
+FILE_NAME_RATINGS = 'cleaned_rating.csv'
+FILE_NAME_MOVIES = 'filtered_responses.csv'
+
 global_model = None
 global_users = None
 global_dataset = None
 global_users_ratings = None
 global_movies = None
+global_test_set = None
 
 
 def column_switch(column):
@@ -20,13 +31,30 @@ def column_switch(column):
     return 0
 
 
-def load_data(folder_path, rate_based):
+def load_dataset_from_csv(folder_path, file_name, columns):
+    """
+    Load a specific dataset from a CSV file
+
+    :param folder_path: the path of the folder where the dataset is
+    :param file_name: the name of the file where the dataset is
+    :param columns: the list of the names of all the columns in the dataset
+    :return: the panda dataset
+    """
+    dataset = pd.read_csv(os.path.join(folder_path, file_name),
+                          sep=',', on_bad_lines='skip', encoding="latin-1")
+    dataset.columns = columns
+    return dataset
+
+
+def load_data(folder_path, file_name_ratings=FILE_NAME_RATINGS, file_name_movies=FILE_NAME_MOVIES,
+              file_name_users=FILE_NAME_USERS):
     """
     Load the data and prepare them for the training.
 
     :param folder_path: The path of the folder containing all the csv files with the data.
-    :param rate_based: If the collaborative filtering is based on the rates given by the users. If it is not based
-    on the rates then it is based on the percentage of the movie seen by the user.
+    :param file_name_ratings: The name of the file containing the ratings of the users.
+    :param file_name_movies: The name of the file containing the movies.
+    :param file_name_users: The name of the file containing the users.
     :return: the dataset for the collaborative filtering, the database of the users, the database with the user and the
     ratings, and the database with the movies.
     """
@@ -37,63 +65,35 @@ def load_data(folder_path, rate_based):
     global global_movies
 
     # Load the users database
-    global_users = pd.read_csv(os.path.join(folder_path, 'user_data.csv'),
-                        sep=',', on_bad_lines='skip', encoding="latin-1")
-    global_users.columns = ['user_id', 'age', 'occupation', 'gender']
+    global_users = load_dataset_from_csv(folder_path, file_name_users, ['user_id', 'age', 'occupation', 'gender'])
 
     # Load the ratings database
-    ratings = pd.read_csv(os.path.join(folder_path, 'cleaned_rating.csv'),
-                          sep=',', on_bad_lines='skip', encoding="latin-1")
-    ratings.columns = ['user_id', 'movie_id', 'rate']
+    ratings = load_dataset_from_csv(folder_path, file_name_ratings, ['user_id', 'movie_id', 'rate'])
 
     # Create a database with users and ratings
     global_users_ratings = pd.merge(ratings, global_users, on='user_id')
 
-    # Load the movies database
-    global_movies = pd.read_csv(os.path.join(folder_path, 'filtered_responses.csv'),
-                         sep=',', on_bad_lines='skip', encoding="latin-1")
-    global_movies.columns = ['movie_id', 'adult', 'type',
-                      'max_min', 'global_rate', 'languages']
+    # Load the movies database and sort it
+    global_movies = load_dataset_from_csv(folder_path, file_name_movies, ['movie_id', 'adult', 'type', 'max_min',
+                                                                          'global_rate', 'languages'])
     global_movies.sort_values(by=['global_rate'], ascending=False)
 
     # Create the Dataset for the collaborative filtering
-    if rate_based:
-        # Dataset based on the rates
-        reader = Reader(line_format='user item rating',
-                        sep=',', rating_scale=(1, 5))
-        global_dataset = Dataset.load_from_df(ratings, reader=reader)
-    else:
-        # Dataset based on the percentages of the movie seen
-        # Load the watching history database
-        history = pd.read_csv(os.path.join(folder_path, 'movie_cleaned_1.csv'),
-                              sep=',', on_bad_lines='skip', encoding="latin-1")
-        history.columns = ['user_id', 'movie_id', 'min']
-
-        # Create a database with the watching history and the percentage of the movie seen
-        history_percentage = pd.merge(history, global_movies, on='movie_id')
-        history_percentage = history_percentage.drop(
-            ['adult', 'type', 'languages', 'global_rate'], axis=1)
-        history_percentage['percentage'] = history_percentage.apply(
-            column_switch, axis=1)
-        history_percentage = history_percentage.drop(['max_min', 'min'], axis=1)
-        history_percentage.head()
-
-        reader = Reader(rating_scale=(0, 100))
-        global_dataset = Dataset.load_from_df(history_percentage, reader)
+    reader = Reader(line_format='user item rating',
+                    sep=',', rating_scale=(1, 5))
+    global_dataset = Dataset.load_from_df(ratings, reader=reader)
 
     return global_dataset, global_users, global_users_ratings, global_movies
 
 
-def train_collaborative_filtering(train_set):
+def train_collaborative_filtering(train_set, model_path=MODEL_PATH):
     """
     Train the model with the train dataset
+
+    :param train_set: The train dataset
+    :param model_path: The path where the model will be saved
     :return: the model
     """
-
-    sim_options = {
-        'name': 'cosine',  # Type of similarity function used
-        'user_based': True  # User-based collaborative filtering
-    }
 
     # Create the model
     model = SVD()
@@ -102,24 +102,25 @@ def train_collaborative_filtering(train_set):
     model.fit(train_set)
 
     # save
-    with open(os.path.join(os.path.normpath('/app'), 'model', 'model.pkl'), 'wb') as f:
+    with open(model_path, 'wb') as f:
         pickle.dump(model, f)
 
     return model
 
 
-def test_collaborative_filtering(model, test_set):
+def test_collaborative_filtering():
     """
     Test of the collaborative filtering
-    :param model: The model of the collaborative filtering
-    :param test_set: The test dataset
     """
 
+    assert global_model is not None
+    assert global_test_set is not None
+
     # Make predictions on the test set
-    predictions = model.test(test_set)
+    predictions = global_model.test(global_test_set)
 
     # Evaluate the model's performance using RMSE (Root Mean Squared Error)
-    accuracy.rmse(predictions)
+    return accuracy.rmse(predictions)
 
 
 def recommendation(user_id, nb_recommendation):
@@ -219,32 +220,42 @@ def print_recommendations(top_movie_recommendations, user_id):
 
     :param top_movie_recommendations: recommendations made by the recommender system
     :param user_id: The id of the user
+    :return the string output
     """
 
-    print(
-        f'Top {len(top_movie_recommendations)} Movie Recommendations for User {user_id}:')
+    output = f'Top {len(top_movie_recommendations)} Movie Recommendations for User {user_id}:'
     for movie_id, predicted_rating in top_movie_recommendations:
-        print(
-            f'Movie ID: {movie_id}, Predicted Rating: {predicted_rating:.2f}')
+        output += '\n'
+        output += f'Movie ID: {movie_id}, Predicted Rating: {predicted_rating:.2f}'
+    print(output)
+    return output
 
 
-def train():
-    # path where the data is
-    file_path = os.path.join(os.path.normpath('/app'), 'data')
+def train(data_path=DATA_PATH, file_name_ratings=FILE_NAME_RATINGS, file_name_movies=FILE_NAME_MOVIES,
+          file_name_users=FILE_NAME_USERS):
+    """
+    Train the model and save it in a file.
+
+    :param data_path: The path where the data are
+    :param file_name_ratings: The name of the file containing the ratings of the users.
+    :param file_name_movies: The name of the file containing the movies.
+    :param file_name_users: The name of the file containing the users.
+    """
+
+    global global_model
+    global global_test_set
 
     # Load the dataset using Surprise
-    dataset, users, users_ratings, movies = load_data(
-        file_path, rate_based=True)
+    dataset, users, users_ratings, movies = load_data(data_path, file_name_users=file_name_users,
+                                                      file_name_movies=file_name_movies,
+                                                      file_name_ratings=file_name_ratings)
 
     # Split the dataset into a train set and a test set (20% test, 80% train)
-    train_set, test_set = train_test_split(
+    train_set, global_test_set = train_test_split(
         dataset, test_size=0.2, random_state=42)
 
     # Training
-    model = train_collaborative_filtering(train_set)
-
-    # Testing
-    test_collaborative_filtering(model, test_set)
+    global_model = train_collaborative_filtering(train_set)
 
 
 def get_recommendation(user_id):
@@ -256,21 +267,29 @@ def get_recommendation(user_id):
 
     # Get movie recommendations for a user
     nb_recommendation = 20
-    recommendations = recommendation(
-        user_id, nb_recommendation)
+    try:
+        recommendations = recommendation(
+            user_id, nb_recommendation)
+    except Exception as exc:
+        print(f"Error occurred while getting recommendations: {exc}")
 
-    print_recommendations(recommendations, user_id)
+    try:
+        print_recommendations(recommendations, user_id)
+    except Exception as exc:
+        print(f"Error occurred while printing recommendations: {exc}")
 
     return [x[0] for x in recommendations]
 
 
-def load_model():
+def load_model(model_path=MODEL_PATH, data_path=DATA_PATH, file_name_ratings=FILE_NAME_RATINGS,
+               file_name_movies=FILE_NAME_MOVIES, file_name_users=FILE_NAME_USERS):
     global global_model
-    file_path = os.path.join(os.path.normpath('/app'), 'model', 'model.pkl')
+    file_path = model_path
 
     # load the model
     with open(file_path, 'rb') as f:
         global_model = pickle.load(f)
 
-    file_path = os.path.join(os.path.normpath('/app'), 'data')
-    load_data(file_path, True)
+    # load the data
+    load_data(data_path, file_name_users=file_name_users, file_name_movies=file_name_movies,
+              file_name_ratings=file_name_ratings)
