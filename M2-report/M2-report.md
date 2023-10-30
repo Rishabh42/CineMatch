@@ -299,17 +299,15 @@ Accepted the merge requests: [36](https://gitlab.cs.mcgill.ca/comp585_2023f/team
 
 
 ##### Contribution by Rishabh
-**Testing**: Rishabh  
+**Testing**: Developed tests for the flask app and API endpoints  
 Relevant commits:  
 - https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/fa509da38521bcb6fbc9250e0799521c68804e35 
 
-**Error Handling**: Rishabh  
-Added error handling to most of the code related to the logic of our system.
+**Error Handling**: Added error handling to most of the code related to the logic of our system.
 Relevant commit:
 https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/9f9e4be4841c0d7519b75ce48623ab13228f8ac9
 
-**Pipeline:** Rishabh
-Worked on setting up the whole end-to-end pipeline.
+**Pipeline:**: Worked on setting up the whole end-to-end pipeline.
 Relevant commit: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/502663867848bc22cb5147c6ab2fa29eca907fa1
 
 - Worked on **Continuous integration** and set up Docker runners
