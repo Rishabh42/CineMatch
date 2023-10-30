@@ -7,8 +7,15 @@ app = Flask(__name__)
 
 with app.app_context():
     # Train the model the first time the container is started and load it locally
-    train()
-    load_model()
+    try:
+        train()
+    except Exception as exc:
+        print(f"Error occurred while training model: {exc}")
+    
+    try:
+        load_model()
+    except Exception as exc:
+        print(f"Error occurred while loading model: {exc}")
 
 
 def get_user_details(userid):
@@ -17,10 +24,15 @@ def get_user_details(userid):
 
         :param userid: user id for prediction
     """
-    response = requests.get(
-        "http://fall2023-comp585.cs.mcgill.ca:8080/user/"+str(userid))
+    try:
+        response = requests.get(
+            "http://fall2023-comp585.cs.mcgill.ca:8080/user/"+str(userid))
+    except Exception as exc:
+        print(f"Unexpected exception raised while getting user details: {exc}")
+    
     if response.status_code != 200:
         return "Response not successful"
+    
     return response.json()
 
 
@@ -32,8 +44,11 @@ def predict_movies(userid):
     """
     # we might have to send request to server to retrieve attributes for the user
     # these may be needed to send to the model.
+    try:
+        prediction = get_recommendation(userid)
+    except Exception as exc:
+        print(f"Unexpected exception raised while getting movie predictions: {exc}")
 
-    prediction = get_recommendation(userid)
     return ",".join(prediction)
 
 
