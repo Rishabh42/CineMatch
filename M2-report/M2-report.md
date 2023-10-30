@@ -198,19 +198,20 @@ We wanted to make sure that in case any of the jobs like `test-dat`, `test-model
 
 # Continuous integration
 In addition to the various stages of the pipeline as described above, we also focussed on the following:
-###1. Infrastructure:
+### 1. Infrastructure:
 
-We have configured our systems to act as GitLab runners. This allows for efficient and rapid execution of CI/CD jobs in a Doker environment, ensuring that our code integrations are validated in real-time. By hosting our runners, we could manage the CI process to match our project’s requirements.
+We have configured our systems to act as GitLab runners. This allows for efficient and rapid execution of CI/CD jobs in a Doker environment, ensuring that our code integrations are validated in real-time. By hosting our runners, we could manage the CI process to match our project’s requirements.  
+\
+Following is a screenshot of our runners:
+![runners](/M2-report/artifacts/runners.png)
 
-### Automated Model Testing:
+### 2. Automated Model Testing:
 
 The model testing phase not only evaluates the model's correctness but also benchmarks its performance. This ensures that the model not only produces the right results but also operates within the expected time and resource constraints.  
 
 **Service:**
 The CI process is integrated within our GitLab repository.  
 To access the platform and monitor the CI jobs, please refer to our GitLab repository URL: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/settings/ci_cd 
-
-
 
 #### Unit tests for data quality
 We have done some unit test to be sure that the data is consistent. In these unit tests, we test:
@@ -304,7 +305,7 @@ On-team expert: Tamara
 Report Writer: Aayush, Varun, Rishabh, Tamara
 
 
-##### Contribution by Tamara
+### Contribution by Tamara
 **Offline evaluation:** Tamara
 
 Relevant commit: 
@@ -313,7 +314,7 @@ Relevant commit:
 
 **Data quality:** Aayush + some unit tests by Tamara
 
-##### Contribution by Aayush
+### Contribution by Aayush
 I worked on the following:
 - Writing tests for data processing. Add unit tests for preprocessing (issue #20), Add html report runner (issue #21) [commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/3a52fa698d9749723e34485e95e91c4881308711), Add helpers for data processing [commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/230bdd2570533079407500ecfdaab97d53edecd2)
 
@@ -328,19 +329,22 @@ Asked review from others: merge request [33](https://gitlab.cs.mcgill.ca/comp585
 Accepted the merge requests: [36](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/36)
 
 
-##### Contribution by Rishabh
+### Contributions by Rishabh
 **Testing**: Developed tests for the flask app and API endpoints  
 Relevant commits:  
 - https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/fa509da38521bcb6fbc9250e0799521c68804e35 
+
+**Coverage:** Developed logic to get the code coverage of all the functions in the system.
+Relevant commit: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/42/diffs#587d266bb27a4dc3022bbed44dfa19849df3044c
 
 **Error Handling**: Added error handling to most of the code related to the logic of our system.
 Relevant commit:
 https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/9f9e4be4841c0d7519b75ce48623ab13228f8ac9
 
-**Pipeline:**: Worked on setting up the whole end-to-end pipeline.
+**Pipelines:** Worked on setting up the whole end-to-end MLOps pipeline.
 Relevant commit: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/502663867848bc22cb5147c6ab2fa29eca907fa1
 
-- Worked on **Continuous integration** and set up Docker runners
+**Continuous integration:** Worked on setting up Docker runners for our CI/CD jobss
 
 **Pull requests reviewed by Rishabh:**  
 1. https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/33#note_61433
