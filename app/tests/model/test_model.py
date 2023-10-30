@@ -134,10 +134,15 @@ class MyTestCase(unittest.TestCase):
         for movie in prediction:
             self.assertIn(movie, movies['movie_id'].tolist())
 
-    def test_rmse(self):
+    def test_rmse_simple_dataset(self):
         # It measures the average difference between values predicted by a model and the actual values.
         train(data_path=DATA_PATH, file_name_users=FILE_NAME_USERS, file_name_movies=FILE_NAME_MOVIES,
               file_name_ratings=FILE_NAME_RATINGS)
+        print('Root Mean Squared Error: ', test_collaborative_filtering())
+
+    def test_rmse_real_dataset(self):
+        # It measures the average difference between values predicted by a model and the actual values.
+        train(data_path=os.path.join(CURR, 'data'))
         print('Root Mean Squared Error: ', test_collaborative_filtering())
 
 

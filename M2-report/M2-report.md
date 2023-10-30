@@ -9,6 +9,8 @@ The model is then trained only on the train dataset. Then, we predict a rating w
 
 The Root Mean Squared Error measures the average difference between values predicted by a model and the actual values. We choose this performance indicators because it permit to know the average error that is made on predictions in general, which seemed to us to be the most relevant indicator. For example, this value can then be compared to the standard deviation of the rating dataset, which allows us to compare our predictor to a predictor which would always predict the average of the ratings. 
 
+With our ratings dataset we have a Root Mean Squared Error of: 0.7215937657284225
+
 ### Unit tests
 
 We also coded unit tests allowing us to see if the recommendations seemed at least coherent and which also allows us to test the other filters. For these unit tests, we created our own datasets, much smaller and simpler than the real datasets. Creating these small datasets allows us to have a better understanding of what is happening and to be able to more easily test simple cases. 
