@@ -36,6 +36,7 @@ Unit tests and print the RMSE: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/
 We have done some unit test to be sure that the data is consistent. In these unit tests, we test:
 - If all the user_ids in the ratings dataset are existing user_ids in the users dataset
 - If all the movie_ids in the ratings dataset are existing movie_ids in the users dataset
+
 Link to these unit tests: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/development/app/tests/model/test_model.py
 
 # Individual Contributions and Meeting Notes
