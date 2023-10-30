@@ -275,7 +275,7 @@ On-team expert: Tamara
 Report Writer: Aayush, Varun, Rishabh, Tamara
 
 
-##### Contribution by Tamara
+### Contribution by Tamara
 **Offline evaluation:** Tamara
 
 Relevant commit: 
@@ -284,7 +284,7 @@ Relevant commit:
 
 **Data quality:** Aayush + some unit tests by Tamara
 
-##### Contribution by Aayush
+### Contribution by Aayush
 I worked on the following:
 - Writing tests for data processing. Add unit tests for preprocessing (issue #20), Add html report runner (issue #21) [commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/3a52fa698d9749723e34485e95e91c4881308711), Add helpers for data processing [commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/230bdd2570533079407500ecfdaab97d53edecd2)
 
@@ -299,7 +299,7 @@ Asked review from others: merge request [33](https://gitlab.cs.mcgill.ca/comp585
 Accepted the merge requests: [36](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/36)
 
 
-##### Contributions by Rishabh
+### Contributions by Rishabh
 **Testing**: Developed tests for the flask app and API endpoints  
 Relevant commits:  
 - https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/fa509da38521bcb6fbc9250e0799521c68804e35 
