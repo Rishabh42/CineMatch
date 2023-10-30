@@ -40,10 +40,10 @@ Link to these unit tests: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blo
 
 # Individual Contributions and Meeting Notes
 
-Offline evaluation: Tamara
+**Offline evaluation:** Tamara
 
 Relevant commit: 
 - code: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/48/diffs?commit_id=25305ce70b22af98f74d5016fb3f8cee39fb8b99, https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/8ecc2a06f07426449d98ae65bcb4c4145754818d, https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/16e8ef354b7f3d2f9ca019401b157404c030933e, https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/691a68ba35fa361b0b876aa592dacb0fe5fc6f59, https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/d5be150108e8a9bf6b32326f390a53ac6a43b52f 
 - report: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/48/diffs?commit_id=744759355d3f780d00f368a45364340fbae72b4f
 
-Data quality: Aayush + some unit tests by Tamara
+**Data quality:** Aayush + some unit tests by Tamara
