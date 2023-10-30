@@ -1,13 +1,16 @@
 stages:
-  - test
+  - test-data
+  - test-model
+  - test-app
+  - coverage
   - deploy
 
-test:
-  # image: python:3
+test-data:
   image: python:3.9.18-alpine3.18
-  stage: test
+  stage: test-data
   only:
     - main
+    - development
     - merge_requests
   script:
     - apk update && apk add python3-dev gcc libc-dev 
@@ -15,6 +18,48 @@ test:
     - pip install -r requirements.txt
     - cd tests/
     - pytest .
+
+test-model:
+  image: python:3.9.18-alpine3.18
+  stage: test-model
+  only:
+    - main
+    - development
+    - merge_requests
+  script:
+    - apk update && apk add python3-dev gcc libc-dev 
+
+test-app:
+  image: python:3.9.18-alpine3.18
+  stage: test-app
+  only:
+    - main
+    - development
+    - merge_requests
+  script:
+    - apk update && apk add python3-dev gcc libc-dev 
+    - cd app/
+    - pip install -r requirements.txt
+    - python3 test_app.py
+
+coverage:
+  image: python:3.9.18-alpine3.18
+  stage: coverage
+  only:
+    - main
+    - development
+    - merge_requests
+  script:
+    - apk update && apk add python3-dev gcc libc-dev 
+    - pip install coverage
+    - cd app/
+    - pip install -r requirements.txt
+    - coverage run test_app.py
+    - cd tests/
+    - python3 -m coverage run -m pytest .
+    - cd ..
+    - coverage combine .coverage tests/.coverage
+    - python3 -m coverage report
 
 deploy:
   image: ubuntu:latest
