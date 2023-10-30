@@ -3,7 +3,7 @@ user_id, age, job, gender
 2,33,college/grad student,M
 3,29,scientist,M
 4,30,other or not specified,M
-5,26,scientist,M
+5,14,scientist,M
 6,27,college/grad student,F
 7,31,sales/marketing,M
 8,30,college/grad student,F
@@ -12,7 +12,7 @@ user_id, age, job, gender
 11,29,artist,M
 12,27,college/grad student,M
 13,30,technician/engineer,M
-14,18,self-employed,F
+14,17,self-employed,F
 15,25,college/grad student,M
 16,31,self-employed,F
 17,30,executive/managerial,M

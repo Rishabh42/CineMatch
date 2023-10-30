@@ -9,6 +9,7 @@ from model.movie_rec import load_data
 from model.movie_rec import train
 from model.movie_rec import load_model
 from model.movie_rec import get_recommendation
+from model.movie_rec import test_collaborative_filtering
 
 os.chdir("../")
 CURR = os.getcwd()
@@ -105,6 +106,44 @@ class MyTestCase(unittest.TestCase):
         self.assertNotIn('movie19', prediction)
         self.assertNotIn('movie29', prediction)
         self.assertNotIn('movie30', prediction)
+
+    def test_adult_filter(self):
+        train(data_path=DATA_PATH, file_name_users=FILE_NAME_USERS, file_name_movies=FILE_NAME_MOVIES,
+              file_name_ratings=FILE_NAME_RATINGS)
+        load_model(data_path=DATA_PATH, file_name_users=FILE_NAME_USERS, file_name_movies=FILE_NAME_MOVIES,
+                   file_name_ratings=FILE_NAME_RATINGS)
+        prediction = get_recommendation(5)
+        self.assertNotIn('movie3', prediction)
+        self.assertNotIn('movie10', prediction)
+        self.assertNotIn('movie23', prediction)
+        prediction = get_recommendation(14)
+        self.assertNotIn('movie3', prediction)
+        self.assertNotIn('movie10', prediction)
+        self.assertNotIn('movie23', prediction)
+
+    def test_new_user(self):
+        dataset, users, users_ratings, movies = load_data(DATA_PATH, file_name_users=FILE_NAME_USERS,
+                                                          file_name_movies=FILE_NAME_MOVIES,
+                                                          file_name_ratings=FILE_NAME_RATINGS)
+        train(data_path=DATA_PATH, file_name_users=FILE_NAME_USERS, file_name_movies=FILE_NAME_MOVIES,
+              file_name_ratings=FILE_NAME_RATINGS)
+        load_model(data_path=DATA_PATH, file_name_users=FILE_NAME_USERS, file_name_movies=FILE_NAME_MOVIES,
+                   file_name_ratings=FILE_NAME_RATINGS)
+        prediction = get_recommendation(30)
+        self.assertEqual(len(prediction), 20)
+        for movie in prediction:
+            self.assertIn(movie, movies['movie_id'].tolist())
+
+    def test_rmse_simple_dataset(self):
+        # It measures the average difference between values predicted by a model and the actual values.
+        train(data_path=DATA_PATH, file_name_users=FILE_NAME_USERS, file_name_movies=FILE_NAME_MOVIES,
+              file_name_ratings=FILE_NAME_RATINGS)
+        print('Root Mean Squared Error: ', test_collaborative_filtering())
+
+    def test_rmse_real_dataset(self):
+        # It measures the average difference between values predicted by a model and the actual values.
+        train(data_path=os.path.join(CURR, 'data'))
+        print('Root Mean Squared Error: ', test_collaborative_filtering())
 
 
 if __name__ == '__main__':
