@@ -7,10 +7,8 @@ import numpy as np
 import pickle
 import os
 
-print(os.getcwd())
 os.chdir("../")
 CURR = os.getcwd()
-print(CURR)
 
 MODEL_PATH = os.path.join(CURR, '..', 'model', 'model.pkl')
 DATA_PATH = os.path.join(CURR, '..', 'data')
@@ -269,10 +267,16 @@ def get_recommendation(user_id):
 
     # Get movie recommendations for a user
     nb_recommendation = 20
-    recommendations = recommendation(
-        user_id, nb_recommendation)
+    try:
+        recommendations = recommendation(
+            user_id, nb_recommendation)
+    except Exception as exc:
+        print(f"Error occurred while getting recommendations: {exc}")
 
-    print_recommendations(recommendations, user_id)
+    try:
+        print_recommendations(recommendations, user_id)
+    except Exception as exc:
+        print(f"Error occurred while printing recommendations: {exc}")
 
     return [x[0] for x in recommendations]
 
