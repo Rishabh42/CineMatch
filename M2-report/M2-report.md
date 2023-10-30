@@ -304,15 +304,17 @@ Relevant commits:
 - https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/fa509da38521bcb6fbc9250e0799521c68804e35 
 
 **Error Handling**: Rishabh  
+Added error handling to most of the code related to the logic of our system.
 Relevant commit:
 https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/9f9e4be4841c0d7519b75ce48623ab13228f8ac9
 
 **Pipeline:** Rishabh
+Worked on setting up the whole end-to-end pipeline.
 Relevant commit: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/502663867848bc22cb5147c6ab2fa29eca907fa1
 
 - Worked on **Continuous integration** and set up Docker runners
 
-**Review pull requests reviewed by Rishabh: **  
+**Pull requests reviewed by Rishabh:**  
 1. https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/33#note_61433
 2. https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/38#note_61532
 3. https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/45
