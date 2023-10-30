@@ -222,9 +222,55 @@ Following are the artifacts from our test reports:
 ![test report 3](/M2-report/artifacts/test_report_3.PNG)
 ![test report 4](/M2-report/artifacts/test_report_4.PNG)
 
+# Pull request reviews
+Following procedure was followed by the team members for working on the code and requesting reviews:
+
+**Pushing changes:**
+- Each member has their own branch to work on.
+- Once changes are completed in private branch, merge to development.
+- Near due date, once **everything** is complete, we will merge it to main branch and tag for submission.
+
+**Request reviews:**
+- Members could directly tag other members in the merge request to the development branch from their own branch. The member who is tagged will get a mail to complete the review. Discussion for each merge request was held through the comment section for merge request on gitlab. Once the reviewer was satisfied, the merge request was accepted.
+
+- The member who gave the reviews would look at the changes included in the merge request and raise issues if need be.
+
+**examples:**
+1. https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/33#note_61433
+2. https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/38#note_61532
+3. https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/45
+4. https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/46
+5. https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/47
+6. https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/33#note_61398
+7. https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/36
 
 # Individual Contributions and Meeting Notes
 
+##### Meeting notes:
+
+12 Oct: Members [Aayush, Rishabh, Varun, Tamara] - Everyone shared their perspectives.
+17 Oct: Members [Aayush, Rishabh, Varun] Updated async: Tamara - Everyone contributed to the meeting.
+19 Oct: Members [Aayush, Rishabh, Varun, Luke] Updated async: Tamara - Everyone shared their perspectives.
+24 Oct: Members [Aayush, Rishabh, Varun, Tamara, Luke] - Everyone contributed to the meeting.
+26 Oct: Members [Aayush, Rishabh, Varun, Tamara] - Everyone shared their perspectives.
+
+Flow of the discussion: We adopted round table based discussion but alot of our ideas were generated over encrypted whatsapp communication.
+
+Role distribution:
+These were our expectations. You can check the relevant commits and what was actually done. Overall, everyone did their part.
+
+Machine learning specialist: Tamara
+Software developer: Aayush, Varun, Rishabh, Tamara
+Project Manager: Aayush
+DevOps specialist: Rishabh, Varun
+Data engineer: Varun, Aayush
+Testing: Rishabh, Luke, Aayush
+Engineering manager: Varun, Rishabh
+On-team expert: Tamara
+Report Writer: Aayush, Varun, Rishabh, Tamara
+
+
+##### Contribution by Tamara
 **Offline evaluation:** Tamara
 
 Relevant commit: 
@@ -233,6 +279,22 @@ Relevant commit:
 
 **Data quality:** Aayush + some unit tests by Tamara
 
+##### Contribution by Aayush
+I worked on the following:
+- Writing tests for data processing. Add unit tests for preprocessing (issue #20), Add html report runner (issue #21) [commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/3a52fa698d9749723e34485e95e91c4881308711), Add helpers for data processing [commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/230bdd2570533079407500ecfdaab97d53edecd2)
+
+- Creating runners for generating test reports through pytest plugins: Commit linked above
+
+- Data quality strategy, code and testing: Create data quality assessment strategy (#25), Add data quality pipeline code (#28), Create tests for it (#32) [commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/ec22145defa1d5b2d482d9bebccef78495e490fa)
+- Online evaluation strategy and code: Create evaluation strategy (#34), Add scripts for online evaluation (#35), Files for grafana data source (#36) [commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/5c5e121b6102908d30678242ef0907681089fcb1)
+- Report: Add report details: Aayush (#37) [commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/46f6364782d2ffd94a97a87f9bc53bbe52138574)
+- I also took initiative to coordinate among the team members, direct team members (Luke) and worked closely with Varun. [team meeting](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/wikis/Meeting-notes-October-10th), resolve user directory not found error which was preventing our model from running on team member's machine [link](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/96a5a67b5c65b0a9db75c5ee94d521d907a3bfd0)
+- Merge request reviews: (It is not an exhaustive list.)
+Asked review from others: merge request [33](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/33#note_61398), 
+Accepted the merge requests: [36](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/36)
+
+
+##### Contribution by Rishabh
 **Testing**: Rishabh  
 Relevant commits:  
 - https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/fa509da38521bcb6fbc9250e0799521c68804e35 
