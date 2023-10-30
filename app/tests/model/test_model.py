@@ -1,15 +1,15 @@
 import unittest
 import os
 import sys
+
+sys.path.append("../..")
+
 from model.movie_rec import print_recommendations
 from model.movie_rec import load_dataset_from_csv
 from model.movie_rec import load_data
 from model.movie_rec import train
 from model.movie_rec import load_model
 from model.movie_rec import get_recommendation
-
-sys.path.append("..")
-sys.path.append("..")
 
 os.chdir("../")
 CURR = os.getcwd()
