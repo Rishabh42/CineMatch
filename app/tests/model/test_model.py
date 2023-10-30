@@ -4,13 +4,16 @@ import sys
 from model.movie_rec import print_recommendations
 from model.movie_rec import load_dataset_from_csv
 from model.movie_rec import load_data
+from model.movie_rec import train
+from model.movie_rec import load_model
+from model.movie_rec import get_recommendation
 
 sys.path.append("..")
 sys.path.append("..")
 
 os.chdir("../")
 CURR = os.getcwd()
-MODEL_PATH = os.path.join(CURR, 'model.pkl')
+MODEL_PATH = os.path.join(CURR, 'model', 'model.pkl')
 DATA_PATH = os.path.join(CURR, 'tests', 'dummy_data_test')
 
 FILE_NAME_USERS = 'simple_users.csv'
@@ -47,13 +50,49 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(dataset['global_rate'].tolist()[:3], [6.6, 7.9, 7.3])
         self.assertEqual(dataset['languages'].tolist()[:3], ['svenska, English', 'FranÃ§ais, English', 'EspaÃ±ol'])
 
-    def test_load_data(self):
+    def test_size_load_data(self):
         dataset, users, users_ratings, movies = load_data(DATA_PATH, file_name_users=FILE_NAME_USERS,
                                                           file_name_movies=FILE_NAME_MOVIES,
                                                           file_name_ratings=FILE_NAME_RATINGS)
         self.assertEqual(len(users), 30)
         self.assertEqual(len(movies), 30)
         self.assertEqual(len(users_ratings), 81)
+        self.assertEqual(len(dataset.df), 81)
+
+    def test_users_are_the_same_load_data(self):
+        dataset, users, users_ratings, movies = load_data(DATA_PATH, file_name_users=FILE_NAME_USERS,
+                                                          file_name_movies=FILE_NAME_MOVIES,
+                                                          file_name_ratings=FILE_NAME_RATINGS)
+        # verify that the users are the same in the users_ratings and users
+        self.assertEqual(users_ratings.merge(users, on='user_id')['user_id'].drop_duplicates().tolist(),
+                         users_ratings['user_id'].drop_duplicates().tolist())
+        # verify that the users are the same in the dataset and users
+        self.assertEqual(dataset.df.merge(users, on='user_id')['user_id'].drop_duplicates().tolist(),
+                         dataset.df['user_id'].drop_duplicates().tolist())
+
+    def test_movies_are_the_same_load_data(self):
+        dataset, users, users_ratings, movies = load_data(DATA_PATH, file_name_users=FILE_NAME_USERS,
+                                                          file_name_movies=FILE_NAME_MOVIES,
+                                                          file_name_ratings=FILE_NAME_RATINGS)
+        # verify that the movies are the same in the dataset and movies
+        self.assertEqual(dataset.df.merge(movies, on='movie_id')['movie_id'].drop_duplicates().tolist(),
+                         dataset.df['movie_id'].drop_duplicates().tolist())
+
+    def test_train_create_model(self):
+        train(data_path=DATA_PATH, file_name_users=FILE_NAME_USERS, file_name_movies=FILE_NAME_MOVIES,
+              file_name_ratings=FILE_NAME_RATINGS)
+        self.assertTrue(os.path.exists(MODEL_PATH))
+
+    def test_get_recommendation_not_recommend_movies_already_rated(self):
+        train(data_path=DATA_PATH, file_name_users=FILE_NAME_USERS, file_name_movies=FILE_NAME_MOVIES,
+              file_name_ratings=FILE_NAME_RATINGS)
+        load_model(data_path=DATA_PATH, file_name_users=FILE_NAME_USERS, file_name_movies=FILE_NAME_MOVIES,
+                   file_name_ratings=FILE_NAME_RATINGS)
+        prediction = get_recommendation(2)
+        self.assertNotIn('movie1', prediction)
+        self.assertNotIn('movie19', prediction)
+        self.assertNotIn('movie29', prediction)
+        self.assertNotIn('movie30', prediction)
 
 
 if __name__ == '__main__':

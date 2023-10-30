@@ -87,9 +87,12 @@ def load_data(folder_path, file_name_ratings=FILE_NAME_RATINGS, file_name_movies
     return global_dataset, global_users, global_users_ratings, global_movies
 
 
-def train_collaborative_filtering(train_set):
+def train_collaborative_filtering(train_set, model_path=MODEL_PATH):
     """
     Train the model with the train dataset
+
+    :param train_set: The train dataset
+    :param model_path: The path where the model will be saved
     :return: the model
     """
 
@@ -100,7 +103,7 @@ def train_collaborative_filtering(train_set):
     model.fit(train_set)
 
     # save
-    with open(MODEL_PATH, 'wb') as f:
+    with open(model_path, 'wb') as f:
         pickle.dump(model, f)
 
     return model
@@ -228,14 +231,21 @@ def print_recommendations(top_movie_recommendations, user_id):
     return output
 
 
-def train():
-    # path where the data is
+def train(data_path=DATA_PATH, file_name_ratings=FILE_NAME_RATINGS, file_name_movies=FILE_NAME_MOVIES,
+          file_name_users=FILE_NAME_USERS):
+    """
+    Train the model and save it in a file.
 
-    file_path = DATA_PATH
+    :param data_path: The path where the data are
+    :param file_name_ratings: The name of the file containing the ratings of the users.
+    :param file_name_movies: The name of the file containing the movies.
+    :param file_name_users: The name of the file containing the users.
+    """
 
     # Load the dataset using Surprise
-    dataset, users, users_ratings, movies = load_data(
-        file_path, rate_based=True)
+    dataset, users, users_ratings, movies = load_data(data_path, file_name_users=file_name_users,
+                                                      file_name_movies=file_name_movies,
+                                                      file_name_ratings=file_name_ratings)
 
     # Split the dataset into a train set and a test set (20% test, 80% train)
     train_set, test_set = train_test_split(
@@ -265,13 +275,15 @@ def get_recommendation(user_id):
     return [x[0] for x in recommendations]
 
 
-def load_model():
+def load_model(model_path=MODEL_PATH, data_path=DATA_PATH, file_name_ratings=FILE_NAME_RATINGS,
+               file_name_movies=FILE_NAME_MOVIES, file_name_users=FILE_NAME_USERS):
     global global_model
-    file_path = MODEL_PATH
+    file_path = model_path
 
     # load the model
     with open(file_path, 'rb') as f:
         global_model = pickle.load(f)
 
-    file_path = DATA_PATH
-    load_data(file_path, True)
+    # load the data
+    load_data(data_path, file_name_users=file_name_users, file_name_movies=file_name_movies,
+              file_name_ratings=file_name_ratings)
