@@ -24,6 +24,7 @@ global_users = None
 global_dataset = None
 global_users_ratings = None
 global_movies = None
+global_test_set = None
 
 
 def column_switch(column):
@@ -109,18 +110,19 @@ def train_collaborative_filtering(train_set, model_path=MODEL_PATH):
     return model
 
 
-def test_collaborative_filtering(model, test_set):
+def test_collaborative_filtering():
     """
     Test of the collaborative filtering
-    :param model: The model of the collaborative filtering
-    :param test_set: The test dataset
     """
 
+    assert global_model is not None
+    assert global_test_set is not None
+
     # Make predictions on the test set
-    predictions = model.test(test_set)
+    predictions = global_model.test(global_test_set)
 
     # Evaluate the model's performance using RMSE (Root Mean Squared Error)
-    accuracy.rmse(predictions)
+    return accuracy.rmse(predictions)
 
 
 def recommendation(user_id, nb_recommendation):
@@ -242,20 +244,20 @@ def train(data_path=DATA_PATH, file_name_ratings=FILE_NAME_RATINGS, file_name_mo
     :param file_name_users: The name of the file containing the users.
     """
 
+    global global_model
+    global global_test_set
+
     # Load the dataset using Surprise
     dataset, users, users_ratings, movies = load_data(data_path, file_name_users=file_name_users,
                                                       file_name_movies=file_name_movies,
                                                       file_name_ratings=file_name_ratings)
 
     # Split the dataset into a train set and a test set (20% test, 80% train)
-    train_set, test_set = train_test_split(
+    train_set, global_test_set = train_test_split(
         dataset, test_size=0.2, random_state=42)
 
     # Training
-    model = train_collaborative_filtering(train_set)
-
-    # Testing
-    test_collaborative_filtering(model, test_set)
+    global_model = train_collaborative_filtering(train_set)
 
 
 def get_recommendation(user_id):
