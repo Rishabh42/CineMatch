@@ -11,7 +11,7 @@ The Root Mean Squared Error measures the average difference between values predi
 
 With our ratings dataset we have a Root Mean Squared Error of: 0.7215937657284225
 
-### Unit tests
+### Unit tests for offline evaluation
 
 We also coded unit tests allowing us to see if the recommendations seemed at least coherent and which also allows us to test the other filters. For these unit tests, we created our own datasets, much smaller and simpler than the real datasets. Creating these small datasets allows us to have a better understanding of what is happening and to be able to more easily test simple cases. 
 
@@ -31,75 +31,6 @@ We also test some functions used for our model in the unit tests:
 Separation of the dataset into two parts and testing: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/development/app/model/movie_rec.py
 Unit tests and print the RMSE: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/development/app/tests/model/test_model.py
 
-# Data quality
-
-We have done some unit test to be sure that the data is consistent. In these unit tests, we test:
-- If all the user_ids in the ratings dataset are existing user_ids in the users dataset
-- If all the movie_ids in the ratings dataset are existing movie_ids in the users dataset
-Link to these unit tests: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/development/app/tests/model/test_model.py
-
-# Pipeline:
-We implemented an MLOps to get constant feedback during the development process and make sure that our code works seamlessly across different modules (data, ML model, app, etc.). 
-
-
-## Pipeline structure:
-
-![pipeline](/M2-report/artifacts/pipeline.png)
-
-We configured our pipeline to sequentially run the following different jobs/stages:
-  - test-data
-  - test-model
-  - test-app
-  - coverage
-  - deploy
-
-### Description of each stage:
-- **test-data:** This pipeline runs tests on the data quality and data processing ensuring that the data which is being fed into the model is of good quality. 
-  - It runs tests like checking if the movies are getting filtered, curl requests are working etc.  
-  - Works on the following branches: main, development
-
-- **test-model:** This pipeline runs tests on the model and ensures that functionalities like printing recommendations, test-train split, global dataset values etc. are working fine.     Based on these tests we get a good benchmark of our model performance.  
-  - Works on the following branches: main, development.
-
-- **test-app:** This pipeline runs tests on the flask app and ensures that functionalities like testing the endpoint of the flask app and other functions of the API are working fine.  
-  - Works on the following branches: main, development
-
-- **coverage:** We implemented a pipeline for the code coverage which tells us how much code of the app has been tested by the tests that we developed. 
-  - This pipeline combines the results of all our tests described previously (data, model, app) and returns the final code coverage report. Currently our test coverage is at 91%.
-  - Works on the following branches: main, development  
-  - Link to our coverage report: ​​https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/jobs/3699 
-
-**Screenshot of our coverage report:**
-![coverage](/M2-report/artifacts/coverage.png)
-
-
-- **deploy:** After all tests have passed, this final pipeline deploys our model and the app to our team server hosted on GitLab.  
-Works on the following branches: main  
-  - We set this job to work on only the `main` branch and not `development` as we don’t want to deploy a new model each time a new commit is pushed to development which is our final testing branch. Only when we are confident of our code we push to the `main` branch which deploys the model.  
-
-**Reason why our testing is adequate:**  
-As described above, we have tested the most crucial aspects of a machine learning model pipeline i.e. the data quality and the model performance. Additionally we have also tested the app interaction which makes our end-to-end test suite robust. \
-\
-**Links to our test suite and other test files:**
-- https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/tree/development/app/tests 
-- https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/development/app/test_app.py 
-
-**Reason for making the jobs sequential:**
-We wanted to make sure that in case any of the jobs like `test-dat`, `test-model` and `test-app` fails, we don’t proceed forward unless we have fixed the issue concerned with the failing pipeline.
-
-# Continuous integration
-In addition to the various stages of the pipeline as described above, we also focussed on the following:
-###1. Infrastructure:
-
-We have configured our systems to act as GitLab runners. This allows for efficient and rapid execution of CI/CD jobs in a Doker environment, ensuring that our code integrations are validated in real-time. By hosting our runners, we could manage the CI process to match our project’s requirements.
-
-###2. Automated Model Testing:
-
-The model testing phase not only evaluates the model's correctness but also benchmarks its performance. This ensures that the model not only produces the right results but also operates within the expected time and resource constraints.  
-
-**Service:**
-The CI process is integrated within our GitLab repository.  
-To access the platform and monitor the CI jobs, please refer to our GitLab repository URL: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/settings/ci_cd 
 
 # Online Evaluation
 
@@ -168,7 +99,8 @@ But **the problem** we faced with this approach was that we were limited by the 
 [Online evaluation based on ranking](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/5c5e121b6102908d30678242ef0907681089fcb1#1da93171e07e7f05bbccd3f2241b707c694cf00e_0_50)
 
 
-## Data Quality
+# Data Quality
+
 
 ### What makes data "high quality" in our context? 
 _Common dimensions of data quality include accuracy, completeness, consistency, reliability, and timeliness._
@@ -209,6 +141,78 @@ We generated reports for each of the data set used for training the model. In th
 [data processing scripts](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/tree/development/app/data_processing_scripts)
 
 [end point data processing](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/5c5e121b6102908d30678242ef0907681089fcb1#33c123951964e87db9810f2101b3da7faf79bdac_0_12)
+
+
+# Pipeline:
+We implemented an MLOps to get constant feedback during the development process and make sure that our code works seamlessly across different modules (data, ML model, app, etc.). 
+
+
+## Pipeline structure:
+
+![pipeline](/M2-report/artifacts/pipeline.png)
+
+We configured our pipeline to sequentially run the following different jobs/stages:
+  - test-data
+  - test-model
+  - test-app
+  - coverage
+  - deploy
+
+### Description of each stage:
+- **test-data:** This pipeline runs tests on the data quality and data processing ensuring that the data which is being fed into the model is of good quality. 
+  - It runs tests like checking if the movies are getting filtered, curl requests are working etc.  
+  - Works on the following branches: main, development
+
+- **test-model:** This pipeline runs tests on the model and ensures that functionalities like printing recommendations, test-train split, global dataset values etc. are working fine.     Based on these tests we get a good benchmark of our model performance.  
+  - Works on the following branches: main, development.
+
+- **test-app:** This pipeline runs tests on the flask app and ensures that functionalities like testing the endpoint of the flask app and other functions of the API are working fine.  
+  - Works on the following branches: main, development
+
+- **coverage:** We implemented a pipeline for the code coverage which tells us how much code of the app has been tested by the tests that we developed. 
+  - This pipeline combines the results of all our tests described previously (data, model, app) and returns the final code coverage report. Currently our test coverage is at 91%.
+  - Works on the following branches: main, development  
+  - Link to our coverage report: ​​https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/jobs/3699 
+
+**Screenshot of our coverage report:**
+![coverage](/M2-report/artifacts/coverage.png)
+
+
+- **deploy:** After all tests have passed, this final pipeline deploys our model and the app to our team server hosted on GitLab.  
+Works on the following branches: main  
+  - We set this job to work on only the `main` branch and not `development` as we don’t want to deploy a new model each time a new commit is pushed to development which is our final testing branch. Only when we are confident of our code we push to the `main` branch which deploys the model.  
+
+**Reason why our testing is adequate:**  
+As described above, we have tested the most crucial aspects of a machine learning model pipeline i.e. the data quality and the model performance. Additionally we have also tested the app interaction which makes our end-to-end test suite robust. \
+\
+**Links to our test suite and other test files:**
+- https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/tree/development/app/tests 
+- https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/development/app/test_app.py 
+
+**Reason for making the jobs sequential:**
+We wanted to make sure that in case any of the jobs like `test-dat`, `test-model` and `test-app` fails, we don’t proceed forward unless we have fixed the issue concerned with the failing pipeline.
+
+# Continuous integration
+In addition to the various stages of the pipeline as described above, we also focussed on the following:
+###1. Infrastructure:
+
+We have configured our systems to act as GitLab runners. This allows for efficient and rapid execution of CI/CD jobs in a Doker environment, ensuring that our code integrations are validated in real-time. By hosting our runners, we could manage the CI process to match our project’s requirements.
+
+### Automated Model Testing:
+
+The model testing phase not only evaluates the model's correctness but also benchmarks its performance. This ensures that the model not only produces the right results but also operates within the expected time and resource constraints.  
+
+**Service:**
+The CI process is integrated within our GitLab repository.  
+To access the platform and monitor the CI jobs, please refer to our GitLab repository URL: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/settings/ci_cd 
+
+
+
+#### Unit tests for data quality
+We have done some unit test to be sure that the data is consistent. In these unit tests, we test:
+- If all the user_ids in the ratings dataset are existing user_ids in the users dataset
+- If all the movie_ids in the ratings dataset are existing movie_ids in the users dataset
+Link to these unit tests: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/development/app/tests/model/test_model.py
 
 ### Data processing tests
 We added made sure to add tests while considering that we do not introduce test specific flows in the programs. The unit tests were added to run before the deployment pipeline so that regression tests were covered. For data preprocessing scripts, unit tests for fetching movies, filtering movies and sending curl requests to API for creating the dataset were covered. We also included negative cases and tests to unpack the ratings and history data. Dummy dataset files were used so that the unit tests do not have to interface with actual data and make these unit tests pretty quick. 
