@@ -285,8 +285,8 @@ Following procedure was followed by the team members for working on the code and
 
 12 Oct: Members [Aayush, Rishabh, Varun, Tamara] - Everyone shared their perspectives.
 17 Oct: Members [Aayush, Rishabh, Varun] Updated async: Tamara - Everyone contributed to the meeting.
-19 Oct: Members [Aayush, Rishabh, Varun, Luke] Updated async: Tamara - Everyone shared their perspectives.
-24 Oct: Members [Aayush, Rishabh, Varun, Tamara, Luke] - Everyone contributed to the meeting.
+19 Oct: Members [Aayush, Rishabh, Varun, Yaoqiang] Updated async: Tamara - Everyone shared their perspectives.
+24 Oct: Members [Aayush, Rishabh, Varun, Tamara, Yaoqiang] - Everyone contributed to the meeting.
 26 Oct: Members [Aayush, Rishabh, Varun, Tamara] - Everyone shared their perspectives.
 
 Flow of the discussion: We adopted round table based discussion but alot of our ideas were generated over encrypted whatsapp communication.
@@ -299,7 +299,7 @@ Software developer: Aayush, Varun, Rishabh, Tamara
 Project Manager: Aayush
 DevOps specialist: Rishabh, Varun
 Data engineer: Varun, Aayush
-Testing: Rishabh, Luke, Aayush
+Testing: Rishabh, Yaoqiang, Aayush
 Engineering manager: Varun, Rishabh
 On-team expert: Tamara
 Report Writer: Aayush, Varun, Rishabh, Tamara
@@ -364,10 +364,12 @@ Relevant commit: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/50266
 - Pull requests
     - Requested review: [!36](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/36)
     - Provided review: [!41](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/41#note_61552)
-### Contributions by Luke
-**Testing**: Coordinated with Rishabh on tests, added more test cases to bring up the coverage
+### Contributions by Yaoqiang
+- **Testing**: Coordinated with Rishabh on tests, added more test cases to bring up the coverage
 Relevant commits:  
-**Tests**:https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/0183ae55e4cd5e6ff84b7a5682c7a2388be23793
+- **Tests**:https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/0183ae55e4cd5e6ff84b7a5682c7a2388be23793
           https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/4f1e788ac02c347761ab701489827846d34fc88d
-**Testsdata**:https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/361ad18ece30155922476658458ca25ebe68cc2e
-**ReviewedPR**:https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/33#note_61433
+
+- **Testsdata**:https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/361ad18ece30155922476658458ca25ebe68cc2e
+
+- **ReviewedPR**:https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/33#note_61433
