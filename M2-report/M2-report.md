@@ -196,7 +196,10 @@ We wanted to make sure that in case any of the jobs like `test-dat`, `test-model
 In addition to the various stages of the pipeline as described above, we also focussed on the following:
 ###1. Infrastructure:
 
-We have configured our systems to act as GitLab runners. This allows for efficient and rapid execution of CI/CD jobs in a Doker environment, ensuring that our code integrations are validated in real-time. By hosting our runners, we could manage the CI process to match our project’s requirements.
+We have configured our systems to act as GitLab runners. This allows for efficient and rapid execution of CI/CD jobs in a Doker environment, ensuring that our code integrations are validated in real-time. By hosting our runners, we could manage the CI process to match our project’s requirements.  
+\
+Following is a screenshot of our runners:
+![runners](/M2-report/artifacts/runners.png)
 
 ### Automated Model Testing:
 
