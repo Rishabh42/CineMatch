@@ -1,0 +1,30 @@
+# Offline evaluation
+
+### Evaluation of the performance of the model
+
+To evaluate the performance of the collaborative filtering model, we divided the dataset containing the ratings into two parts:
+- A test dataset that corresponds to 20% of all ratings we have collected.
+- A train dataset that corresponds to 80% of all ratings we have collected.
+The model is then trained only on the train dataset. Then, we predict a rating with the model for each of the (user_id, movie_id) pairs present in the test dataset, and we calculate the Root Mean Squared Error between the list of predictions of the model and the list of real ratings present in the test dataset. Because the model was not trained on the data from the test dataset, we are know that RMSE is not biased by overfitting the test data. 
+
+The Root Mean Squared Error measures the average difference between values predicted by a model and the actual values. We choose this performance indicators because it permit to know the average error that is made on predictions in general, which seemed to us to be the most relevant indicator. For example, this value can then be compared to the standard deviation of the rating dataset, which allows us to compare our predictor to a predictor which would always predict the average of the ratings. 
+
+### Unit tests
+
+We also coded unit tests allowing us to see if the recommendations seemed at least coherent and which also allows us to test the other filters. For these unit tests, we created our own datasets, much smaller and simpler than the real datasets. Creating these small datasets allows us to have a better understanding of what is happening and to be able to more easily test simple cases. 
+
+In these unit tests, we test:
+- If a person under the age of 18, no film marked as "for adults" has been recommended to them (test for the adult filter)
+- Verify that the recommendation includes 20 movies
+- Verify that movies already rated by a user are not recommended to him/her again.
+- Verify that a new user have also a list of 20 movies when he ask for recommandation.
+
+We also test some functions used for our model in the unit tests:
+- Verify that the model saves in the correct file.
+- Verify that our helping function that print the results of the recommandation prints the result correctly.
+- Verify that we load the entire dataset by checking the size.
+
+### Links to the implementation:
+
+Separation of the dataset into two parts and testing: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/development/app/model/movie_rec.py
+Unit tests: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/development/app/tests/model/test_model.py
