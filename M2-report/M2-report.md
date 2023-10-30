@@ -310,12 +310,13 @@ https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/9f9e4be4841c0d7519b75c
 **Pipeline:** Rishabh
 Relevant commit: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/502663867848bc22cb5147c6ab2fa29eca907fa1
 
-**Continuous integration**: Rishabh
+- Worked on **Continuous integration** and set up Docker runners
 
-**Review pull requests**: Rishabh
-Pull requests reviewed:  
+**Review pull requests reviewed by Rishabh: **  
 1. https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/33#note_61433
 2. https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/38#note_61532
 3. https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/45
 4. https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/46
 5. https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/47
+
+- Also brainstormed on the online evaluation model with Aayush and Varun.
