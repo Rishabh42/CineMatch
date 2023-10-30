@@ -17,7 +17,7 @@ test-data:
     - cd app/
     - pip install -r requirements.txt
     - cd tests/
-    - pytest .
+    - pytest data_processing/ data_quality
 
 test-model:
   image: python:3.9.18-alpine3.18
@@ -27,7 +27,11 @@ test-model:
     - development
     - merge_requests
   script:
-    - apk update && apk add python3-dev gcc libc-dev 
+    - apk update && apk add python3-dev gcc libc-dev
+    - cd app/
+    - pip install -r requirements.txt
+    - cd tests/model/
+    - python3 test_model.py
 
 test-app:
   image: python:3.9.18-alpine3.18
@@ -56,9 +60,11 @@ coverage:
     - pip install -r requirements.txt
     - coverage run test_app.py
     - cd tests/
-    - python3 -m coverage run -m pytest .
-    - cd ..
-    - coverage combine .coverage tests/.coverage
+    - python3 -m coverage run -m pytest data_processing/ data_quality/
+    - cd model/
+    - coverage run test_model.py 
+    - cd ../..
+    - coverage combine .coverage tests/.coverage tests/model/.coverage
     - python3 -m coverage report
 
 deploy:
@@ -66,6 +72,8 @@ deploy:
   stage: deploy
   only:
     - main
+  script:
+    - apt-get -yq update 
   before_script:
     - apt-get -yq update  
     - apt-get -yqq install ssh # install ssh package
