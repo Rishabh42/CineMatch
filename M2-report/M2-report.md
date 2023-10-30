@@ -298,7 +298,7 @@ Asked review from others: merge request [33](https://gitlab.cs.mcgill.ca/comp585
 Accepted the merge requests: [36](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/36)
 
 
-##### Contribution by Rishabh
+##### Contributions by Rishabh
 **Testing**: Developed tests for the flask app and API endpoints  
 Relevant commits:  
 - https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/fa509da38521bcb6fbc9250e0799521c68804e35 
