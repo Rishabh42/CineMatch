@@ -60,10 +60,10 @@ coverage:
     - pip install -r requirements.txt
     - coverage run test_app.py
     - cd tests/
-    - python3 -m coverage run -m pytest data_processing/ data_quality
+    - python3 -m coverage run -m pytest data_processing/ data_quality/
     - cd model/
     - coverage run test_model.py 
-    - cd ..
+    - cd ../..
     - coverage combine .coverage tests/.coverage tests/model/.coverage
     - python3 -m coverage report
 
