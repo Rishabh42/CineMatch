@@ -30,3 +30,20 @@ We also test some functions used for our model in the unit tests:
 
 Separation of the dataset into two parts and testing: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/development/app/model/movie_rec.py
 Unit tests and print the RMSE: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/development/app/tests/model/test_model.py
+
+# Data quality
+
+We have done some unit test to be sure that the data is consistent. In these unit tests, we test:
+- If all the user_ids in the ratings dataset are existing user_ids in the users dataset
+- If all the movie_ids in the ratings dataset are existing movie_ids in the users dataset
+Link to these unit tests: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/development/app/tests/model/test_model.py
+
+# Individual Contributions and Meeting Notes
+
+Offline evaluation: Tamara
+
+Relevant commit: 
+- code: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/48/diffs?commit_id=25305ce70b22af98f74d5016fb3f8cee39fb8b99, https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/8ecc2a06f07426449d98ae65bcb4c4145754818d, https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/16e8ef354b7f3d2f9ca019401b157404c030933e, https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/691a68ba35fa361b0b876aa592dacb0fe5fc6f59, https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/d5be150108e8a9bf6b32326f390a53ac6a43b52f 
+- report: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/48/diffs?commit_id=744759355d3f780d00f368a45364340fbae72b4f
+
+Data quality: Aayush + some unit tests by Tamara
