@@ -4,4 +4,8 @@ We added made sure to add tests while considering that we do not introduce test 
 ### Test reports and runners
 Most of the unit tests were written in pytests. They were kept under tests directory on the app folder. Some tests had to be kept outside because of relative module import issues. We used html-report package added as a plugin to the pytest runner so that we can generate reports for our test suites. The report runner keeps track of the history of the past runs. It saved in the archival files which are read everytime report is generated.
 
-Following are the artifacts for our report:
+Following are the artifacts from our test reports:
+![test report 1](/M2-report/artifacts/test_report_1.PNG)
+![test report 2](/M2-report/artifacts/test_report_2.PNG)
+![test report 3](/M2-report/artifacts/test_report_3.PNG)
+![test report 4](/M2-report/artifacts/test_report_4.PNG)
