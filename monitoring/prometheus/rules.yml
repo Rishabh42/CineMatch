@@ -21,3 +21,12 @@ groups:
     annotations:
       summary: "Container {{ $labels.name }} is down"
       description: "The container {{ $labels.name }} is not up for more than 1 minute."
+
+  - alert: recommender_down
+    expr:  (promtail_custom_request_timeout) / (promtail_custom_successful_requests + promtail_custom_request_timeout ) > 0.8
+    for: 1m
+    labels:
+      severity: critical
+    annotations:
+      summary: "High number of recommendation timeouts"
+      description: "The number of timeouts for recommendations requests is {{ $value }}. Action required to prevent service degradation."
