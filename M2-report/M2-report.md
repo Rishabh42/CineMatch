@@ -32,3 +32,15 @@ Alert Manager was set up to send the alerts on our private group channel on the 
 - Alert when more than 80% of recommendation requests time out. This rule is important as it means that our service is largely unavailable and requires immediate diagnosis. 
 
 ![Slack alert](/M2-report/artifacts/slack.png)
+
+## Individual Contributions and Meeting Notes
+
+Varun:
+- Telemetry collection with Grafana Loki for online evaluation and monitoring ([aadc2c404585065281e06a770d7b342a234126fb](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/aadc2c404585065281e06a770d7b342a234126fb#8e05eaea18b007dfcb04181c00986195057b2bd5_41_27)), scripts for scraping([fe5d2c330ccd0eee67ebc83af93bf314ab18f80e](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/fe5d2c330ccd0eee67ebc83af93bf314ab18f80e#4530003189c923e22abae61d6fa8e0b5450e12d9_6_26))
+- Prometheus and metrics collector setup ([854e27821bd5acc5dc39c64db312a18d6fda2ed6](854e27821bd5acc5dc39c64db312a18d6fda2ed6))
+- Grafana dashboard ([link](http://fall2023-comp585-4.cs.mcgill.ca:3000/d/ce43d1d7-0e50-4bd0-95b8-3f28d8f9f804/monitoring-dashboard?orgId=1), [link](http://fall2023-comp585-4.cs.mcgill.ca:3000/d/ce43d1d7-0e50-4bd0-95b8-3f28d8f9f804/monitoring-dashboard?orgId=1))
+- Prometheus alert manager ([854e27821bd5acc5dc39c64db312a18d6fda2ed6](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/854e27821bd5acc5dc39c64db312a18d6fda2ed6#a4708f6ad79a30d8c3e0b92167de3cd6af006082_0_1), [854e27821bd5acc5dc39c64db312a18d6fda2ed6](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/854e27821bd5acc5dc39c64db312a18d6fda2ed6#97d836bf195b7e218fbd77fb28d17cad24eb05cb_0_1))
+- Report for telemetry collection system and monitoring  ([252f6f3ab5177a5403bd0bd4d4c81c33369bd5c9](252f6f3ab5177a5403bd0bd4d4c81c33369bd5c9))
+- Pull requests
+    - Requested review: [!36](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/36)
+    - Provided review: [!41](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/41#note_61552)
