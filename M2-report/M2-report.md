@@ -307,10 +307,10 @@ Relevant commits:
 Relevant commit:
 https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/9f9e4be4841c0d7519b75ce48623ab13228f8ac9
 
-**Pipeline:**: Worked on setting up the whole end-to-end pipeline.
+**Pipelines:**: Worked on setting up the whole end-to-end MLOps pipeline.
 Relevant commit: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/502663867848bc22cb5147c6ab2fa29eca907fa1
 
-- Worked on **Continuous integration** and set up Docker runners
+**Continuous integration:** Worked on setting up Docker runners for our CI/CD jobss
 
 **Pull requests reviewed by Rishabh:**  
 1. https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/33#note_61433
