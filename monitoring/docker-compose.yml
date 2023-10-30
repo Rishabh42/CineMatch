@@ -1,7 +1,7 @@
 version: "3"
 
 networks:
-  loki:
+  monitoring:
 
 services:
   loki:
@@ -10,16 +10,16 @@ services:
       - "3100:3100"
     command: -config.file=/etc/loki/local-config.yaml
     networks:
-      - loki
+      - monitoring
 
   promtail:
     image: grafana/promtail:2.9.0
     volumes:
       - /var/log:/var/log
-      - ./promtail-config/config.yml:/etc/promtail/promtail-config.yml
+      - ./promtail/promtail.yml:/etc/promtail/promtail-config.yml
     command: -config.file=/etc/promtail/promtail-config.yml
     networks:
-      - loki
+      - monitoring
 
   grafana:
     environment:
@@ -49,15 +49,62 @@ services:
     ports:
       - "3000:3000"
     networks:
-      - loki
+      - monitoring
 
-kafka_consumer:
-    image: bitnami/kafka
-    container_name: kafka_stream
-    logging:
-      options:
-        max-size: 50m
-        max-file: "5"
-    command: kafka-console-consumer.sh --bootstrap-server fall2023-comp585.cs.mcgill.ca:9092 --topic movielog4
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - 9090:9090
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    depends_on:
+      - cadvisor
+    
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: cadvisor
+    ports:
+      - 8080:8080
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+
+  node-exporter:
+    image: quay.io/prometheus/node-exporter:latest
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+      - /:/host:ro,rslave
+    command: 
+      - '--path.rootfs=/host'
+      - '--path.procfs=/host/proc' 
+      - '--path.sysfs=/host/sys'
+      - --collector.filesystem.ignored-mount-points
+      - "^/(sys|proc|dev|host|etc|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)"
+    ports:
+      - 9100:9100
     networks:
-      - loki
+      - monitoring
+    restart: always
+    deploy:
+      mode: global
+
+  alertmanager:
+    image: prom/alertmanager
+    ports:
+      - 9093:9093
+    volumes:
+      - ./alertmanager/:/etc/alertmanager/
+    restart: always
+    command:
+      - '--config.file=/etc/alertmanager/config.yml'
+      - '--storage.path=/alertmanager'
+    networks:
+      - monitoring
+
