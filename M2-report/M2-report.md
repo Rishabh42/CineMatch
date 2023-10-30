@@ -87,6 +87,19 @@ As described above, we have tested the most crucial aspects of a machine learnin
 **Reason for making the jobs sequential:**
 We wanted to make sure that in case any of the jobs like `test-dat`, `test-model` and `test-app` fails, we don’t proceed forward unless we have fixed the issue concerned with the failing pipeline.
 
+# Continuous integration
+In addition to the various stages of the pipeline as described above, we also focussed on the following:
+###1. Infrastructure:
+
+We have configured our systems to act as GitLab runners. This allows for efficient and rapid execution of CI/CD jobs in a Doker environment, ensuring that our code integrations are validated in real-time. By hosting our runners, we could manage the CI process to match our project’s requirements.
+
+###2. Automated Model Testing:
+
+The model testing phase not only evaluates the model's correctness but also benchmarks its performance. This ensures that the model not only produces the right results but also operates within the expected time and resource constraints.  
+
+**Service:**
+The CI process is integrated within our GitLab repository.  
+To access the platform and monitor the CI jobs, please refer to our GitLab repository URL: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/settings/ci_cd 
 
 # Online Evaluation
 
