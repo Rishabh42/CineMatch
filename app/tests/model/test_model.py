@@ -1,15 +1,15 @@
 import unittest
 import os
 import sys
+
+sys.path.append("..")
+sys.path.append("..")
 from model.movie_rec import print_recommendations
 from model.movie_rec import load_dataset_from_csv
 from model.movie_rec import load_data
 from model.movie_rec import train
 from model.movie_rec import load_model
 from model.movie_rec import get_recommendation
-
-sys.path.append("..")
-sys.path.append("..")
 
 os.chdir("../")
 CURR = os.getcwd()
@@ -56,8 +56,8 @@ class MyTestCase(unittest.TestCase):
                                                           file_name_ratings=FILE_NAME_RATINGS)
         self.assertEqual(len(users), 30)
         self.assertEqual(len(movies), 30)
-        self.assertEqual(len(users_ratings), 81)
-        self.assertEqual(len(dataset.df), 81)
+        self.assertEqual(len(users_ratings), 82)
+        self.assertEqual(len(dataset.df), 82)
 
     def test_users_are_the_same_load_data(self):
         dataset, users, users_ratings, movies = load_data(DATA_PATH, file_name_users=FILE_NAME_USERS,
@@ -82,6 +82,19 @@ class MyTestCase(unittest.TestCase):
         train(data_path=DATA_PATH, file_name_users=FILE_NAME_USERS, file_name_movies=FILE_NAME_MOVIES,
               file_name_ratings=FILE_NAME_RATINGS)
         self.assertTrue(os.path.exists(MODEL_PATH))
+
+    def test_get_recommendation_recommend_20_movies(self):
+        dataset, users, users_ratings, movies = load_data(DATA_PATH, file_name_users=FILE_NAME_USERS,
+                                                          file_name_movies=FILE_NAME_MOVIES,
+                                                          file_name_ratings=FILE_NAME_RATINGS)
+        train(data_path=DATA_PATH, file_name_users=FILE_NAME_USERS, file_name_movies=FILE_NAME_MOVIES,
+              file_name_ratings=FILE_NAME_RATINGS)
+        load_model(data_path=DATA_PATH, file_name_users=FILE_NAME_USERS, file_name_movies=FILE_NAME_MOVIES,
+                   file_name_ratings=FILE_NAME_RATINGS)
+        prediction = get_recommendation(2)
+        self.assertEqual(len(prediction), 20)
+        for movie in prediction:
+            self.assertIn(movie, movies['movie_id'].tolist())
 
     def test_get_recommendation_not_recommend_movies_already_rated(self):
         train(data_path=DATA_PATH, file_name_users=FILE_NAME_USERS, file_name_movies=FILE_NAME_MOVIES,
