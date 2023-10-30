@@ -5,6 +5,7 @@
 To evaluate the performance of the collaborative filtering model, we divided the dataset containing the ratings into two parts:
 - A test dataset that corresponds to 20% of all ratings we have collected.
 - A train dataset that corresponds to 80% of all ratings we have collected.
+
 The model is then trained only on the train dataset. Then, we predict a rating with the model for each of the (user_id, movie_id) pairs present in the test dataset, and we calculate the Root Mean Squared Error between the list of predictions of the model and the list of real ratings present in the test dataset. Because the model was not trained on the data from the test dataset, we are know that RMSE is not biased by overfitting the test data. 
 
 The Root Mean Squared Error measures the average difference between values predicted by a model and the actual values. We choose this performance indicators because it permits to know the average error that is made on predictions in general, which seemed to us to be the most relevant indicator. For example, this value can then be compared to the standard deviation of the rating dataset, which allows us to compare our predictor to a predictor which would always predict the average of the ratings. 
