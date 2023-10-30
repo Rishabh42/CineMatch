@@ -5,7 +5,6 @@
 To evaluate the performance of the collaborative filtering model, we divided the dataset containing the ratings into two parts:
 - A test dataset that corresponds to 20% of all ratings we have collected.
 - A train dataset that corresponds to 80% of all ratings we have collected.
-
 The model is then trained only on the train dataset. Then, we predict a rating with the model for each of the (user_id, movie_id) pairs present in the test dataset, and we calculate the Root Mean Squared Error between the list of predictions of the model and the list of real ratings present in the test dataset. Because the model was not trained on the data from the test dataset, we are know that RMSE is not biased by overfitting the test data. 
 
 The Root Mean Squared Error measures the average difference between values predicted by a model and the actual values. We choose this performance indicators because it permits to know the average error that is made on predictions in general, which seemed to us to be the most relevant indicator. For example, this value can then be compared to the standard deviation of the rating dataset, which allows us to compare our predictor to a predictor which would always predict the average of the ratings. 
@@ -37,7 +36,6 @@ Unit tests and print the RMSE: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/
 We have done some unit test to be sure that the data is consistent. In these unit tests, we test:
 - If all the user_ids in the ratings dataset are existing user_ids in the users dataset
 - If all the movie_ids in the ratings dataset are existing movie_ids in the users dataset
-
 Link to these unit tests: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/development/app/tests/model/test_model.py
 
 # Individual Contributions and Meeting Notes
@@ -49,3 +47,49 @@ Relevant commit:
 - report: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/48/diffs?commit_id=744759355d3f780d00f368a45364340fbae72b4f
 
 **Data quality:** Aayush + some unit tests by Tamara
+
+# Pipeline:
+We implemented an MLOps to get constant feedback during the development process and make sure that our code works seamlessly across different modules (data, ML model, app, etc.). 
+
+
+## Pipeline structure:
+
+We configured our pipeline to sequentially run the following different jobs/stages:
+  - test-data
+  - test-model
+  - test-app
+  - coverage
+  - deploy
+
+### Description of each stage:
+- **test-data:** This pipeline runs tests on the data quality and data processing ensuring that the data which is being fed into the model is of good quality. 
+  - It runs tests like checking if the movies are getting filtered, curl requests are working etc.  
+  - Works on the following branches: main, development
+
+- **test-model:** This pipeline runs tests on the model and ensures that functionalities like printing recommendations, test-train split, global dataset values etc. are working fine.     Based on these tests we get a good benchmark of our model performance.  
+  - Works on the following branches: main, development.
+
+- **test-app:** This pipeline runs tests on the flask app and ensures that functionalities like testing the endpoint of the flask app and other functions of the API are working fine.  
+  - Works on the following branches: main, development
+
+- **coverage:** We implemented a pipeline for the code coverage which tells us how much code of the app has been tested by the tests that we developed. 
+  - This pipeline combines the results of all our tests described previously (data, model, app) and returns the final code coverage report. Currently our test coverage is at 91%.
+  - Works on the following branches: main, development  
+  - Link to our coverage report: ​​https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/jobs/3699 
+
+**Screenshot of our coverage report:**
+
+
+- **deploy:** After all tests have passed, this final pipeline deploys our model and the app to our team server hosted on GitLab.  
+Works on the following branches: main  
+  - We set this job to work on only the `main` branch and not `development` as we don’t want to deploy a new model each time a new commit is pushed to development which is our final testing branch. Only when we are confident of our code we push to the `main` branch which deploys the model.  
+
+**Reason why our testing is adequate:**  
+As described above, we have tested the most crucial aspects of a machine learning model pipeline i.e. the data quality and the model performance. Additionally we have also tested the app interaction which makes our end-to-end test suite robust. \
+\
+**Links to our test suite and other test files:**
+- https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/tree/development/app/tests 
+- https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/development/app/test_app.py 
+
+**Reason for making the jobs sequential:**
+We wanted to make sure that in case any of the jobs like `test-dat`, `test-model` and `test-app` fails, we don’t proceed forward unless we have fixed the issue concerned with the failing pipeline.
