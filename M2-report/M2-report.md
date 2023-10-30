@@ -303,11 +303,14 @@ Accepted the merge requests: [36](https://gitlab.cs.mcgill.ca/comp585_2023f/team
 Relevant commits:  
 - https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/fa509da38521bcb6fbc9250e0799521c68804e35 
 
+**Coverage:** Developed logic to get the code coverage of all the functions in the system.
+Relevant commit: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/42/diffs#587d266bb27a4dc3022bbed44dfa19849df3044c
+
 **Error Handling**: Added error handling to most of the code related to the logic of our system.
 Relevant commit:
 https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/9f9e4be4841c0d7519b75ce48623ab13228f8ac9
 
-**Pipelines:**: Worked on setting up the whole end-to-end MLOps pipeline.
+**Pipelines:** Worked on setting up the whole end-to-end MLOps pipeline.
 Relevant commit: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/502663867848bc22cb5147c6ab2fa29eca907fa1
 
 **Continuous integration:** Worked on setting up Docker runners for our CI/CD jobss
