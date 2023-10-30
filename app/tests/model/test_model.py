@@ -2,8 +2,7 @@ import unittest
 import os
 import sys
 
-sys.path.append("..")
-sys.path.append("..")
+sys.path.append("../..")
 from model.movie_rec import print_recommendations
 from model.movie_rec import load_dataset_from_csv
 from model.movie_rec import load_data
