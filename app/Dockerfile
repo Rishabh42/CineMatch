@@ -17,11 +17,11 @@ ADD app.py app.py
 COPY model model/
 COPY data data/
 
-# Expose port 8081 from the container
-EXPOSE 8081
+# Expose port 8082 from the container
+EXPOSE 8082
 
 # Start the Python application
-CMD ["gunicorn", "--bind", "0.0.0.0:8081", "app:app", "--threads", "2", "--timeout", "180"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8082", "app:app", "--threads", "2", "--timeout", "180"]
 
 # to run
 # docker build -t service .
