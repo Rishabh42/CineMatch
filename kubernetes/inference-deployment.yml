@@ -17,5 +17,5 @@ spec:
       containers:
         - name: inference
           image: app-recommender:latest
-        restartPolicy: Always  
+      restartPolicy: Always  
         

@@ -11,7 +11,7 @@ with app.app_context():
         train()
     except Exception as exc:
         print(f"Error occurred while training model: {exc}")
-    
+
     try:
         load_model()
     except Exception as exc:
@@ -27,13 +27,14 @@ def get_user_details(userid):
     try:
         response = requests.get(
             "http://fall2023-comp585.cs.mcgill.ca:8080/user/"+str(userid))
+
+        if response.status_code != 200:
+            return "Response not successful"
+
+        return response.json()
     except Exception as exc:
         print(f"Unexpected exception raised while getting user details: {exc}")
-    
-    if response.status_code != 200:
-        return "Response not successful"
-    
-    return response.json()
+        return "Error: " + str(exc)
 
 
 def predict_movies(userid):
@@ -46,10 +47,11 @@ def predict_movies(userid):
     # these may be needed to send to the model.
     try:
         prediction = get_recommendation(userid)
+        return ",".join(prediction)
     except Exception as exc:
-        print(f"Unexpected exception raised while getting movie predictions: {exc}")
-
-    return ",".join(prediction)
+        print(
+            f"Unexpected exception raised while getting movie predictions: {exc}")
+        return "Error: " + str(exc)
 
 
 @app.route("/")
@@ -64,6 +66,6 @@ def recommend_route(userid):
 
 
 if __name__ == '__main__':
-    app.run(port=8081)
+    app.run(port=8082)
 
 # run the file using python3 app.py
