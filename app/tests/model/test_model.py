@@ -143,8 +143,9 @@ class MyTestCase(unittest.TestCase):
     def test_rmse_real_dataset(self):
         # It measures the average difference between values predicted by a model and the actual values.
         train(data_path=os.path.join(CURR, 'data'))
-        print('Root Mean Squared Error: ', test_collaborative_filtering())
-
+        rmse_value = test_collaborative_filtering()
+        print('Root Mean Squared Error: ', rmse_value())
+        self.assertLessEqual(rmse_value, 1, f'RMSE is greater than 1: {rmse_value}')
 
 if __name__ == '__main__':
     unittest.main()
