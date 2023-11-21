@@ -1,16 +1,35 @@
 services:
-  recommender:
-    build: .
+  inference_v1:
+    container_name: inference-v1
+    build: 
+      context: .
+      dockerfile: Dockerfile.v1
+    environment:
+      - PORT=5000
     deploy:
-      replicas: 2
+      replicas: 1
       restart_policy:
         condition: on-failure
+    
+  inference_v2:
+    container_name: inference-v2
+    build: 
+      context: .
+      dockerfile: Dockerfile.v2
+    environment:
+      - PORT=5001
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+
   nginx:
-    container_name: nginx
+    container_name: load_balancer
     build: nginx
     # Bind the port 8082 of container to machine port 8082
     ports:
       - 8082:8082
     # Make app as nginx dependency service
     depends_on:
-      - recommender
+      - inference_v1
+      - inference_v2
