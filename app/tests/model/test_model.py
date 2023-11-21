@@ -138,14 +138,14 @@ class MyTestCase(unittest.TestCase):
         # It measures the average difference between values predicted by a model and the actual values.
         train(data_path=DATA_PATH, file_name_users=FILE_NAME_USERS, file_name_movies=FILE_NAME_MOVIES,
               file_name_ratings=FILE_NAME_RATINGS)
-        print('Root Mean Squared Error: ', test_collaborative_filtering())
+        print('Root Mean Squared Error for simple dataset: ', test_collaborative_filtering())
 
     def test_rmse_real_dataset(self):
         # It measures the average difference between values predicted by a model and the actual values.
         train(data_path=os.path.join(CURR, 'data'))
-        rmse_value = test_collaborative_filtering()
-        print('Root Mean Squared Error: ', rmse_value())
-        self.assertLessEqual(rmse_value, 1, f'RMSE is greater than 1: {rmse_value}')
+        rmse_value_real = test_collaborative_filtering()
+        print('Root Mean Squared Error for real dataset: ', rmse_value_real)
+        self.assertLessEqual(rmse_value_real, 1, f'RMSE is greater than 1: {rmse_value_real}')
 
 if __name__ == '__main__':
     unittest.main()
