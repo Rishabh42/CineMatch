@@ -145,6 +145,8 @@ class MyTestCase(unittest.TestCase):
         train(data_path=os.path.join(CURR, 'data'))
         rmse_value_real = test_collaborative_filtering()
         print('Root Mean Squared Error for real dataset: ', rmse_value_real)
+
+        # Check if offline evaluation metric is fine, otherwise fail the job
         self.assertLessEqual(rmse_value_real, 1, f'RMSE is greater than 1: {rmse_value_real}')
 
 if __name__ == '__main__':
