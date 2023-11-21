@@ -64,6 +64,8 @@ def welcome_return():
 # define predict endpoint
 @app.route('/recommend/<userid>')
 def recommend_route(userid):
+    if not userid.isdigit():
+        return "Error: Invalid user id"
     return predict_movies(int(userid))
 
 
