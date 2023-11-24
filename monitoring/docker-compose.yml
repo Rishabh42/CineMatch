@@ -1,7 +1,8 @@
-version: "3"
+version: '3.9'
 
 networks:
   monitoring:
+    name: monitoring
 
 services:
   # loki:
@@ -22,6 +23,7 @@ services:
   #     - monitoring
 
   grafana:
+    container_name: grafana
     environment:
       - GF_PATHS_PROVISIONING=/etc/grafana/provisioning
       - GF_AUTH_ANONYMOUS_ENABLED=true
@@ -62,6 +64,8 @@ services:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
     depends_on:
       - cadvisor
+    networks:
+      - monitoring
     
   cadvisor:
     image: gcr.io/cadvisor/cadvisor:latest
@@ -73,6 +77,8 @@ services:
       - /var/run:/var/run:rw
       - /sys:/sys:ro
       - /var/lib/docker/:/var/lib/docker:ro
+    networks:
+      - monitoring
 
   # node-exporter:
   #   image: quay.io/prometheus/node-exporter:latest

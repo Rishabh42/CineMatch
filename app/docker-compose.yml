@@ -1,35 +1,49 @@
+version: '3.9'
+
+networks:
+  monitoring:
+    name: monitoring
+  inference:
+    name: inference
+
 services:
-  inference_v1:
-    container_name: inference-v1
+  inference_stable:
     build: 
       context: .
-      dockerfile: Dockerfile.v1
-    environment:
-      - PORT=5000
+      args:
+        PORT: 5000
+    image: inference:stable
     deploy:
-      replicas: 1
+      replicas: 2
       restart_policy:
         condition: on-failure
+    networks:
+      - monitoring 
+      - inference 
     
-  inference_v2:
-    container_name: inference-v2
+  inference_canary:
     build: 
       context: .
-      dockerfile: Dockerfile.v2
-    environment:
-      - PORT=5001
+      args:
+        PORT: 5001
+    image: inference:canary
     deploy:
       replicas: 1
       restart_policy:
         condition: on-failure
+    networks:
+      - monitoring
+      - inference
 
   nginx:
+    image: nginx:mainline-alpine3.18-slim
     container_name: load_balancer
-    build: nginx
-    # Bind the port 8082 of container to machine port 8082
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
     ports:
       - 8082:8082
-    # Make app as nginx dependency service
     depends_on:
-      - inference_v1
-      - inference_v2
+      - inference_stable
+      - inference_canary
+    networks:
+      - inference

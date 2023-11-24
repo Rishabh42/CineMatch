@@ -81,6 +81,11 @@ deploy:
     - echo "$SSH_PRIVATE_KEY" | base64 -d > ~/.ssh/id_rsa # decodes the base64 encoded private key and writes it to the id_rsa file
     - ssh-keyscan -H $SSH_HOST > ~/.ssh/known_hosts # add the host to the list of known hosts
   script:
-    - ssh $SSH_USER@$SSH_HOST "rm -rf $WORK_DIR && git clone $CI_REPOSITORY_URL && cd $WORK_DIR && git checkout main && cd app && docker compose up -d --build && exit" # ssh to the host, pull the latest changes, build the docker image and run the container
+    - ssh $SSH_USER@$SSH_HOST "\
+      git clone $CI_REPOSITORY_URL && \
+      cd $WORKDIR && \
+      docker build -t canary-controller canary && \
+      docker run -d --name canary-controller canary-controller"
+
   after_script:
     - rm -rf ~/.ssh # remove the private key
