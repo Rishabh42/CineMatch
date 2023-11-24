@@ -1,7 +1,7 @@
 #!/bin/bash
-
+ 
 # Build the canary version of the application
-cd ~/app
+cd ~/team-4
 git checkout main 
 cd app 
 docker compose up -d --build --force-recreate inference_canary

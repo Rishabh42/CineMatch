@@ -82,10 +82,10 @@ deploy:
     - ssh-keyscan -H $SSH_HOST > ~/.ssh/known_hosts # add the host to the list of known hosts
   script:
     - ssh $SSH_USER@$SSH_HOST "\
+      rm -rf $WORKDIR && \
       git clone $CI_REPOSITORY_URL && \
       cd $WORKDIR && \
-      docker build -t canary-controller canary && \
-      docker run -d --name canary-controller canary-controller"
+      sh scripts/deploy.sh"
 
   after_script:
     - rm -rf ~/.ssh # remove the private key

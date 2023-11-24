@@ -58,7 +58,7 @@ def predict_movies(userid):
 
 @app.route("/")
 def welcome_return():
-    return {"Welcome": "Hit the user ID end point - /recommend/<userid>"}
+    return {"Welcome": "This is the {name} API".format(name="stable" if str(os.environ['PORT']) == "5000" else "canary")}
 
 
 # define predict endpoint
