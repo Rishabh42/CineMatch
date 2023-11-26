@@ -12,7 +12,7 @@ sleep $((12 * 60 * 60))
 
 threshold=500
 # Calculate averag response time over the last 12 hours
-response=$(curl -g 'http://prometheus-server:9090/api/v1/query' --data-urlencode 'query=sum(flask_http_request_duration_seconds_sum{path=~"/recommend/.*"}) / sum(flask_http_request_duration_seconds_count{path=~"/recommend/.*"})')
+response=$(curl -g 'http://localhost:9090/api/v1/query' --data-urlencode 'query=sum(flask_http_request_duration_seconds_sum{path=~"/recommend/.*"}) / sum(flask_http_request_duration_seconds_count{path=~"/recommend/.*"})')
 avg_response_time=$(echo $response | awk -F'[][]' '/value/{print $3}' | awk -F',' '/".*"/{gsub(/"/, "", $2); print $2}')
 
 echo "Average response time over the last 12 hours: $avg_response_time"
