@@ -7,11 +7,13 @@ cd app
 docker compose up -d --build --force-recreate inference_canary
 
 # Sleep for 12 hours
+echo "Monitoring the average response time... See you in 12 hours :)"
 sleep $((12 * 60 * 60))
 
 threshold=500
 # Calculate averag response time over the last 12 hours
-avg_response_time=$(curl -g 'http://prometheus-server:9090/api/v1/query' --data-urlencode 'query=sum(flask_http_request_duration_seconds_sum) / sum(flask_http_request_duration_seconds_count)' | jq -r '.data.result[0].value[1]')
+response=$(curl -g 'http://prometheus-server:9090/api/v1/query' --data-urlencode 'query=sum(flask_http_request_duration_seconds_sum{path=~"/recommend/.*"}) / sum(flask_http_request_duration_seconds_count{path=~"/recommend/.*"})')
+avg_response_time=$(echo $response | awk -F'[][]' '/value/{print $3}' | awk -F',' '/".*"/{gsub(/"/, "", $2); print $2}')
 
 echo "Average response time over the last 12 hours: $avg_response_time"
 
@@ -21,6 +23,3 @@ if (( $(echo "$avg_response_time < $threshold" | bc -l) )); then
 else
   echo "Average response time is greater than threshold ($avg_response_time ms > 500 ms). Canary release aborted."
 fi
-
-docker stop canary-controller 
-docker rm canary-controller

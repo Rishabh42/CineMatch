@@ -85,7 +85,7 @@ deploy:
       rm -rf $WORKDIR && \
       git clone $CI_REPOSITORY_URL && \
       cd $WORKDIR && \
-      sh scripts/deploy.sh"
+      sh scripts/deploy.sh &"
 
   after_script:
     - rm -rf ~/.ssh # remove the private key
