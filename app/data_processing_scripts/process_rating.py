@@ -1,39 +1,44 @@
-import pandas as pd
-import re
+import subprocess
+import time
+import os
 
-DATA_PATH = "dummy_data_test/ratings.csv"
+DATA_COLLECTION_PATH = 'dummy_data_test/ratings.csv'
+CLEANED_DATA_PATH = 'cleaned_rating.csv'
+TARGET_FILE_PATH = '/app/data/cleaned_rating.csv'
 
-def determine_format(dt_str):
-    try:
-        pd.to_datetime(dt_str, format="%Y-%m-%dT%H:%M:%S")
-        return "%Y-%m-%dT%H:%M:%S"
-    except:
-        try:
-            pd.to_datetime(dt_str, format="%Y-%m-%dT%H:%M")
-            return "%Y-%m-%dT%H:%M"
-        except:
-            return None
+def run_kafka_consumer(duration_in_minutes):
+    kafka_command = ("docker run -it --log-opt max-size=50m --log-opt max-file=5 "
+                     "bitnami/kafka kafka-console-consumer.sh "
+                     "--bootstrap-server fall2023-comp585.cs.mcgill.ca:9092 "
+                     "--topic movielog4")
+    
+    start_time = time.time()
+    process = subprocess.Popen(kafka_command, shell=True, stdout=subprocess.PIPE)
 
-def extract_ratings(data_path):
-    # Load data
-    df_all = pd.read_csv(data_path, names=['raw'], sep='\t')
-    mask = df_all['raw'].str.contains(r"/rate")
-    df = df_all[mask]
-    print(df.head())
+    while True:
+        if time.time() - start_time > duration_in_minutes * 60:
+            process.terminate()
+            break
 
-    # Splitting the raw data into separate columns
-    df_split = df['raw'].str.split(',', expand=True)
-    df_split.columns = ['time', 'userid', 'data']
+    output, _ = process.communicate()
+    with open(DATA_COLLECTION_PATH, 'wb') as file:
+        file.write(output)
 
-    # Extract movie name and rating from the data column
-    pattern = r'GET /rate/(.*?)=(\d)'
-    df_split[['movieid', 'rating']] = df_split['data'].str.extract(pattern)
-    df_split.drop(columns=['data'], inplace=True)
-    df_split['time'] = df_split['time'].apply(lambda x: pd.to_datetime(x, format=determine_format(x), errors='coerce'))
-    df_split.to_csv('cleaned_rating.csv', index=False)
+def run_processing_script():
+    os.system('/app/data_processing_scripts/process_rating.py')
 
-    print(df_split.head())
-    return "SUCCESS"
+def append_to_cleaned_data():
+    with open(TARGET_FILE_PATH, 'a') as outfile, open(CLEANED_DATA_PATH, 'r') as infile:
+        next(infile)  
+        outfile.write(infile.read())
 
-# if __name__ == "__main__":
-#     extract_ratings(DATA_PATH)
+def main():
+    run_kafka_consumer(15)
+    time.sleep(300)  
+    run_processing_script()
+    append_to_cleaned_data()
+
+    os.remove(CLEANED_DATA_PATH)
+
+if __name__ == "__main__":
+    main()

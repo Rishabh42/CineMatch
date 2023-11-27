@@ -22,12 +22,12 @@ def run_kafka_consumer(duration_in_minutes):
     with open('kafka_output.txt', 'wb') as file:
         file.write(output)
 
-def run_processing_script():
-    os.system('/app/data_processing_scripts/process_rating.py kafka_output.txt')
+# def run_processing_script():
+#     os.system('/app/data_processing_scripts/process_rating.py kafka_output.txt')
 
-def append_to_cleaned_data():
-    with open('/app/data/cleaned_rating.csv', 'a') as outfile, open('cleaned_rating.csv', 'r') as infile:
-        outfile.write(infile.read())
+# def append_to_cleaned_data():
+#     with open('/app/data/cleaned_rating.csv', 'a') as outfile, open('cleaned_rating.csv', 'r') as infile:
+#         outfile.write(infile.read())
 
 def main():
     # Run Kafka Consumer for 15 minutes
