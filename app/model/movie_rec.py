@@ -41,7 +41,7 @@ def load_dataset_from_csv(folder_path, file_name, columns):
     :return: the panda dataset
     """
     dataset = pd.read_csv(os.path.join(folder_path, file_name),
-                          sep=',', on_bad_lines='skip', encoding="latin-1")
+                          sep=',', encoding="latin-1")
     dataset.columns = columns
     return dataset
 
