@@ -11,8 +11,7 @@ from model.movie_rec import test_collaborative_filtering
 
 CURR = os.getcwd()
 train(data_path=os.path.join(CURR, 'data'))
-# rmse_score = test_collaborative_filtering()
-rmse_score = 1.2
+rmse_score = test_collaborative_filtering()
 
 # TODO: Data collection script
 
