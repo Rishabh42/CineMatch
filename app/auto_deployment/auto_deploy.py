@@ -6,14 +6,16 @@ import subprocess
 subprocess.run(["git", "pull"])
 
 sys.path.append("../")
+# os.chdir('../')
 from model.movie_rec import train
 from model.movie_rec import test_collaborative_filtering
 
 CURR = os.getcwd()
-train(data_path=os.path.join(CURR, 'data'))
-rmse_score = test_collaborative_filtering()
+print("---- CURR ----:",CURR)
 
 # TODO: Data collection script
+train(data_path=os.path.join(CURR, 'data'))
+rmse_score = test_collaborative_filtering()
 
 if rmse_score < 1:
     # TODO: Success mail
