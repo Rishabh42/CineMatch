@@ -4,7 +4,7 @@ import os
 
 DATA_COLLECTION_PATH = 'dummy_data_test/ratings.csv'
 CLEANED_DATA_PATH = 'cleaned_rating.csv'
-TARGET_FILE_PATH = '/app/data/cleaned_rating.csv'
+TARGET_FILE_PATH = '/home/team-4/app/data/cleaned_rating.csv'
 
 def ensure_directory_exists(directory):
     if not os.path.exists(directory):
