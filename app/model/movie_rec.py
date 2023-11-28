@@ -9,7 +9,7 @@ import os
 
 os.chdir("../")
 CURR = os.getcwd()
-
+print(CURR)
 MODEL_PATH = os.path.join(CURR, '..', 'model', 'model.pkl')
 DATA_PATH = os.path.join(CURR, '..', 'data')
 

@@ -5,7 +5,7 @@ import json
 class AppTestCase(unittest.TestCase):
     def test_home_endpoint(self):
         response = app.welcome_return()
-        self.assertEqual(response, {'Welcome': 'Hit the user ID end point - /recommend/<userid>'})
+        self.assertEqual(response, {'Welcome': 'This is the stable API'})
         # self.assertEqual(response.status_code, 200)
         # self.assertIn('Welcome', data)
 
