@@ -1,46 +1,39 @@
-import os
-import subprocess
-import time
+import pandas as pd
+import re
 
-# Set BASE_DIR to the root directory of your app
-BASE_DIR = '/home/team-4/app'
-DATA_COLLECTION_DIR = os.path.join(BASE_DIR, 'dummy_data_test')
-DATA_COLLECTION_PATH = os.path.join(DATA_COLLECTION_DIR, 'ratings.csv')
-PROCESSED_DATA_PATH = os.path.join(BASE_DIR, 'cleaned_rating.csv')  # Processed file path
-TARGET_FILE_PATH = os.path.join(BASE_DIR, 'data', 'cleaned_rating.csv')  # Final file path
+DATA_PATH = "dummy_data_test/ratings.csv"
 
-def ensure_directory_exists(directory):
-    if not os.path.exists(directory):
-        os.makedirs(directory)
+def determine_format(dt_str):
+    try:
+        pd.to_datetime(dt_str, format="%Y-%m-%dT%H:%M:%S")
+        return "%Y-%m-%dT%H:%M:%S"
+    except:
+        try:
+            pd.to_datetime(dt_str, format="%Y-%m-%dT%H:%M")
+            return "%Y-%m-%dT%H:%M"
+        except:
+            return None
 
-def run_kafka_consumer(duration_in_minutes):
-    ensure_directory_exists(DATA_COLLECTION_DIR)
+def extract_ratings(data_path):
+    # Load data
+    df_all = pd.read_csv(data_path, names=['raw'], sep='\t')
+    mask = df_all['raw'].str.contains(r"/rate")
+    df = df_all[mask]
+    print(df.head())
 
-def process_ratings():
-    processing_script_path = os.path.join(BASE_DIR, "data_processing_scripts", "process_rating.py")
-    subprocess.run(['python3', processing_script_path, DATA_COLLECTION_PATH], check=True)
+    # Splitting the raw data into separate columns
+    df_split = df['raw'].str.split(',', expand=True)
+    df_split.columns = ['time', 'userid', 'data']
 
-def append_to_cleaned_data():
-    if not os.path.isfile(PROCESSED_DATA_PATH):
-        print(f"Processed file {PROCESSED_DATA_PATH} does not exist.")
-        return
+    # Extract movie name and rating from the data column
+    pattern = r'GET /rate/(.*?)=(\d)'
+    df_split[['movieid', 'rating']] = df_split['data'].str.extract(pattern)
+    df_split.drop(columns=['data'], inplace=True)
+    df_split['time'] = df_split['time'].apply(lambda x: pd.to_datetime(x, format=determine_format(x), errors='coerce'))
+    df_split.to_csv('cleaned_rating.csv', index=False)
 
-    skip_header = os.path.isfile(TARGET_FILE_PATH) and os.path.getsize(TARGET_FILE_PATH) > 0
-
-    with open(PROCESSED_DATA_PATH, 'r') as infile:
-        lines = infile.readlines()
-
-    with open(TARGET_FILE_PATH, 'a') as outfile:
-        if skip_header:
-            lines = lines[1:]  
-        outfile.writelines(lines)
-
-def main():
-    run_kafka_consumer(1)
-    process_ratings()
-    append_to_cleaned_data()
-    if os.path.exists(PROCESSED_DATA_PATH):
-        os.remove(PROCESSED_DATA_PATH)
+    print(df_split.head())
+    return "SUCCESS"
 
 if __name__ == "__main__":
-    main()
+    extract_ratings(DATA_PATH)
