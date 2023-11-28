@@ -1,12 +1,20 @@
 import subprocess
-import time
 import os
+import time
 
-DATA_COLLECTION_PATH = 'dummy_data_test/ratings.csv'
-CLEANED_DATA_PATH = 'cleaned_rating.csv'
-TARGET_FILE_PATH = '/app/data/cleaned_rating.csv'
+BASE_DIR = os.path.dirname(__file__)
+DATA_COLLECTION_DIR = os.path.join(BASE_DIR, 'dummy_data_test')
+DATA_COLLECTION_PATH = os.path.join(DATA_COLLECTION_DIR, 'ratings.csv')
+CLEANED_DATA_PATH = os.path.join(BASE_DIR, 'cleaned_rating.csv')
+TARGET_FILE_PATH = os.path.join('/app/data', 'cleaned_rating.csv')
+
+def ensure_directory_exists(directory):
+    if not os.path.exists(directory):
+        os.makedirs(directory)
 
 def run_kafka_consumer(duration_in_minutes):
+    ensure_directory_exists(DATA_COLLECTION_DIR)
+
     kafka_command = ("docker run --log-opt max-size=50m --log-opt max-file=5 "
                      "bitnami/kafka kafka-console-consumer.sh "
                      "--bootstrap-server fall2023-comp585.cs.mcgill.ca:9092 "
@@ -26,21 +34,26 @@ def run_kafka_consumer(duration_in_minutes):
         process.kill()
 
     with open(DATA_COLLECTION_PATH, 'w') as file:
-        for line in output:
-            file.write(line + '\n')
+        file.writelines(line + '\n' for line in output)
 
 def run_processing_script():
-    os.system('/app/data_processing_scripts/process_rating.py')
+    os.system(f'python /app/data_processing_scripts/process_rating.py {DATA_COLLECTION_PATH}')
 
 def append_to_cleaned_data():
-    with open(TARGET_FILE_PATH, 'a') as outfile, open(CLEANED_DATA_PATH, 'r') as infile:
-        next(infile)  
-        outfile.write(infile.read())
+    with open(CLEANED_DATA_PATH, 'r') as infile:
+        lines = infile.readlines()
+
+    with open(TARGET_FILE_PATH, 'a') as outfile:
+        if os.path.getsize(TARGET_FILE_PATH) > 0:  #
+            lines = lines[1:]  
+        outfile.writelines(lines)
 
 def main():
-    run_kafka_consumer(15)
+    run_kafka_consumer(1)
+    time.sleep(300)  # Optional: sleep for a bit
     run_processing_script()
     append_to_cleaned_data()
+    os.remove(CLEANED_DATA_PATH)
 
 if __name__ == "__main__":
     main()
