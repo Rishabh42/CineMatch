@@ -10,8 +10,8 @@ import os
 os.chdir("../")
 CURR = os.getcwd()
 
-MODEL_PATH = os.path.join(CURR, 'app', 'model', 'model.pkl')
-DATA_PATH = os.path.join(CURR, 'app', 'data')
+MODEL_PATH = os.path.join(CURR, '..', 'model', 'model.pkl')
+DATA_PATH = os.path.join(CURR, '..', 'data')
 
 FILE_NAME_USERS = 'user_data.csv'
 FILE_NAME_RATINGS = 'cleaned_rating.csv'
