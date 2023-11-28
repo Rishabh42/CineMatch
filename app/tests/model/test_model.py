@@ -11,8 +11,8 @@ from model.movie_rec import load_model
 from model.movie_rec import get_recommendation
 from model.movie_rec import test_collaborative_filtering
 
-os.chdir("../")
 CURR = os.getcwd()
+print(CURR)
 MODEL_PATH = os.path.join(CURR, 'model', 'model.pkl')
 DATA_PATH = os.path.join(CURR, 'tests', 'dummy_data_test')
 

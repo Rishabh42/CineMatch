@@ -7,11 +7,10 @@ import numpy as np
 import pickle
 import os
 
-os.chdir("../")
+os.chdir(os.path.abspath(os.path.join(os.path.dirname(__file__), '..',)))
 CURR = os.getcwd()
-print(CURR)
-MODEL_PATH = os.path.join(CURR, '..', 'model', 'model.pkl')
-DATA_PATH = os.path.join(CURR, '..', 'data')
+MODEL_PATH = os.path.join(CURR, 'model', 'model.pkl')
+DATA_PATH = os.path.join(CURR, 'data')
 
 FILE_NAME_USERS = 'user_data.csv'
 FILE_NAME_RATINGS = 'cleaned_rating.csv'
