@@ -7,11 +7,10 @@ import numpy as np
 import pickle
 import os
 
-os.chdir("../")
+os.chdir(os.path.abspath(os.path.join(os.path.dirname(__file__), '..',)))
 CURR = os.getcwd()
-
-MODEL_PATH = os.path.join(CURR, '..', 'model', 'model.pkl')
-DATA_PATH = os.path.join(CURR, '..', 'data')
+MODEL_PATH = os.path.join(CURR, 'model', 'model.pkl')
+DATA_PATH = os.path.join(CURR, 'data')
 
 FILE_NAME_USERS = 'user_data.csv'
 FILE_NAME_RATINGS = 'cleaned_rating.csv'
@@ -65,10 +64,12 @@ def load_data(folder_path, file_name_ratings=FILE_NAME_RATINGS, file_name_movies
     global global_movies
 
     # Load the users database
-    global_users = load_dataset_from_csv(folder_path, file_name_users, ['user_id', 'age', 'occupation', 'gender'])
+    global_users = load_dataset_from_csv(folder_path, file_name_users, [
+                                         'user_id', 'age', 'occupation', 'gender'])
 
     # Load the ratings database
-    ratings = load_dataset_from_csv(folder_path, file_name_ratings, ['user_id', 'movie_id', 'rate'])
+    ratings = load_dataset_from_csv(folder_path, file_name_ratings, [
+                                    'user_id', 'movie_id', 'rate'])
 
     # Create a database with users and ratings
     global_users_ratings = pd.merge(ratings, global_users, on='user_id')
@@ -270,15 +271,14 @@ def get_recommendation(user_id):
     try:
         recommendations = recommendation(
             user_id, nb_recommendation)
+        return [x[0] for x in recommendations]
     except Exception as exc:
         print(f"Error occurred while getting recommendations: {exc}")
 
-    try:
-        print_recommendations(recommendations, user_id)
-    except Exception as exc:
-        print(f"Error occurred while printing recommendations: {exc}")
-
-    return [x[0] for x in recommendations]
+    # try:
+    #     print_recommendations(recommendations, user_id)
+    # except Exception as exc:
+    #     print(f"Error occurred while printing recommendations: {exc}")
 
 
 def load_model(model_path=MODEL_PATH, data_path=DATA_PATH, file_name_ratings=FILE_NAME_RATINGS,
