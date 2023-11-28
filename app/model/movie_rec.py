@@ -9,6 +9,7 @@ import os
 
 os.chdir(os.path.abspath(os.path.join(os.path.dirname(__file__), '..',)))
 CURR = os.getcwd()
+
 MODEL_PATH = os.path.join(CURR, 'model', 'model.pkl')
 DATA_PATH = os.path.join(CURR, 'data')
 
