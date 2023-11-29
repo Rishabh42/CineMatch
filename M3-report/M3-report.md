@@ -106,7 +106,7 @@ Moving forward, the focus will be on enhancing data collection and curation proc
 I worked on the Auto Development for M3. One of the significant contributions is which I crafted a pivotal script, kafka_consumer_data_appender.py, that streamlined our data handling. This script automates the collection and processing of real-time movie ratings from a Kafka server, elegantly solving the challenge of efficiently managing and integrating large data streams. Its functionality extends to structuring raw data and appending it to a centralized dataset. This contribution significantly alleviates data processing bottlenecks, enhances scalability, and ensures a consistent flow of processed data. 
 
 
-**Relevant commits:  **
+Relevant commits:  
 
 https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/54/diffs?commit_id=480f1c1dd015bf125a39575ccd2f74802e74d1f8
 https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/54/diffs?commit_id=66c0123af5dd8c157352d673bcad5b94c064b6a9
@@ -117,7 +117,7 @@ https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/55/diffs?commi
 **Meeting management:**
 led meetings on fairness analysis approaches and documented these sessions, providing clear and concise meeting notes for team reference.
 
-**Relevant commits:  **
+Relevant commits:  
 
 https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/54/diffs?commit_id=1c4f40512a48d7ae3a12f005c10ebd481bb7a1f9
 
