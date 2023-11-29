@@ -11,7 +11,7 @@ sys.path.append("../")
 # os.chdir('../')
 from model.movie_rec import train
 from model.movie_rec import test_collaborative_filtering
-from data_processing_scripts.kafka_consumer_data_appender import run_kafka_consumer, run_processing_script, append_to_cleaned_data 
+from data_processing_scripts.kafka_consumer_data_appender import run_kafka_consumer, run_processing_script, append_to_cleaned_data, cleanup_containers
 
 CURR = os.getcwd()
 # print("---- CURR ----:",CURR)
@@ -22,6 +22,7 @@ CURR = os.getcwd()
 run_kafka_consumer(1)
 run_processing_script()
 append_to_cleaned_data()
+cleanup_containers()
 
 # train the model with new data
 train(data_path=os.path.join(CURR, 'data'))
