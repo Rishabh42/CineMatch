@@ -1,4 +1,4 @@
-# Milestone 3
+****# Milestone 3
 
 ## Containerization
 We have four running containers for our inference service at all times: two containers for the stable deployment, one for the canary deployment and one for the load balancer. We additionally have containers running Prometheus and cadvisor as part of our monitoring service.
@@ -55,31 +55,31 @@ To determine whether to perform the canary release, we perform the following Pro
 
 [^pfe]: https://pypi.org/project/prometheus-flask-exporter/
 
-Reflection on Recommendation Service
-Telemetry Collection System
-Challenge:
+**Reflection on Recommendation Service**
+**Telemetry Collection System**
+**Challenge**:
 
 The initial challenge was managing a vast volume of logs. Loki was chosen for its promise of efficient storage, but it presented limitations in log retrieval and high CPU usage.
-Current Solution:
+**Current Solution:**
 
 Our team transitioned to a file-based system, opting to store logs in CSV files. This approach, while simpler, demanded more storage and necessitated regular log cleanups.
-Future Direction:
+**Future Direction:**
 
 With additional resources, the ideal solution would be to implement a database specifically for telemetry post-processing, aiming to enhance storage efficiency and retrieval capabilities.
-Load Balancing and Kubernetes
-Challenge:
+**Load Balancing and Kubernetes**
+**Challenge:**
 
 Implementing Kubernetes for load balancing and canary deployment was challenging, particularly due to the lack of root access and difficulties in configuring load balancers on specific ports.
-Current Solution:
+**Current Solution:**
 
 Our team reverted to a simpler solution using an NGINX load balancer and bash scripts for canary deployment.
-Reflection:
+**Reflection:**
 
 This part of the project highlighted the importance of balancing ambitious technological implementations with practical project management considerations.
 Training Data for the Model
-Challenge:
+**Challenge:**
 
 A critical aspect was the training data for the model. Our team faced the challenge of insufficient data, which limited the model's effectiveness and accuracy.
-Future Improvement:
+**Future Improvement:**
 
 Moving forward, the focus will be on enhancing data collection and curation processes. Acquiring more comprehensive and diverse datasets is a primary goal to improve the model's performance and reliability.
