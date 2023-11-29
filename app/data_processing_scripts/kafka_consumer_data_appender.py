@@ -50,10 +50,27 @@ def append_to_cleaned_data():
         next(infile)  # Skip the header
         outfile.write(infile.read())
 
+def cleanup_containers():
+    # "docker rm $(docker stop $(docker ps -q --filter ancestor=bitnami/kafka))"
+    # Get the list of container IDs
+    docker_ps_command = ["docker", "ps", "-q", "--filter", "ancestor=bitnami/kafka"]
+    ps_result = subprocess.run(docker_ps_command, capture_output=True, text=True, check=True)
+    container_ids = ps_result.stdout.splitlines()
+
+    # Stop the containers
+    if container_ids:
+        docker_stop_command = ["docker", "stop"] + container_ids
+        subprocess.run(docker_stop_command, check=True)
+
+        # Remove the containers
+        docker_rm_command = ["docker", "rm"] + container_ids
+        subprocess.run(docker_rm_command, check=True)
+
 def main():
     run_kafka_consumer(1)
     run_processing_script()
     append_to_cleaned_data()
+    cleanup_containers()
 
 if __name__ == "__main__":
     main()
