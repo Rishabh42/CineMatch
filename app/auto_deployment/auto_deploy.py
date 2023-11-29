@@ -18,8 +18,7 @@ CURR = os.getcwd()
 # the current directory is the app directory
 
 # Data collection & pre-processing
-# TODO: use 15 minutes
-run_kafka_consumer(1)
+run_kafka_consumer(15)
 run_processing_script()
 append_to_cleaned_data()
 cleanup_containers()
