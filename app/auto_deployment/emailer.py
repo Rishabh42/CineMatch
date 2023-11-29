@@ -6,7 +6,7 @@ from email.message import EmailMessage
 def send_email(subject, body):
     email_sender = 'ci.cd.team4@gmail.com'
     email_password = 'nxhrtwymbywcdhzv'
-    email_receivers = ['rishabh.thaney@mail.mcgill.ca', ]
+    email_receivers = ['rishabh.thaney@mail.mcgill.ca', 'aayush.kapur@mail.mcgill.ca', 'varun.shiri@mail.mcgill.ca']
 
     subject = subject
     body = body

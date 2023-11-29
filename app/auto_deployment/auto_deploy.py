@@ -28,6 +28,7 @@ if rmse_score < 1:
     with open("auto_deployment/version.txt", "w") as f:
         f.write(next_version)
 
+    # TODO: Push the new cleaned_rating.csv instead of version.txt
     subprocess.run(["git", "add", "auto_deployment/version.txt"])
     subprocess.run(["git", "commit", "-m", "model version update" + next_version])
     subprocess.run(["git", "push"])
