@@ -10,7 +10,7 @@ docker compose up -d --build --force-recreate inference_canary
 echo "Monitoring the average response time... See you in 12 hours :)"
 sleep $((12 * 60 * 60))
 
-threshold=500
+threshold=0.5
 # Calculate averag response time over the last 12 hours
 response=$(curl -g 'http://localhost:9090/api/v1/query' --data-urlencode 'query=sum(flask_http_request_duration_seconds_sum{path=~"/recommend/.*"}) / sum(flask_http_request_duration_seconds_count{path=~"/recommend/.*"})')
 avg_response_time=$(echo $response | awk -F'[][]' '/value/{print $3}' | awk -F',' '/".*"/{gsub(/"/, "", $2); print $2}')
