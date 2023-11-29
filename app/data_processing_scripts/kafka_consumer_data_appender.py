@@ -1,6 +1,6 @@
+import os
 import subprocess
 import time
-import os
 
 DATA_COLLECTION_PATH = 'dummy_data_test/ratings.csv'
 CLEANED_DATA_PATH = 'cleaned_rating.csv'

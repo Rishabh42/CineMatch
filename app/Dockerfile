@@ -1,6 +1,9 @@
 # Pull alpine library of Python for better resource utilization
 FROM python:3.9.18-alpine3.18
 
+ARG PORT
+ENV PORT=${PORT}
+
 # Install dependencies for our service
 RUN apk update && apk add python3-dev \
                           gcc \
@@ -17,13 +20,13 @@ ADD app.py app.py
 COPY model model/
 COPY data data/
 
-# Expose port 8081 from the container
-EXPOSE 8081
+# Expose port  from the container
+EXPOSE ${PORT}
 
 # Start the Python application
-CMD ["gunicorn", "--bind", "0.0.0.0:8081", "app:app", "--threads", "2", "--timeout", "180"]
+CMD gunicorn --bind 0.0.0.0:$PORT app:app --threads 2 --timeout 180
 
 # to run
-# docker build -t service .
+# docker build -t inference .
 # docker compose up -d
-# docker exec -it recommender /bin/bash
+# docker exec -it inference /bin/bash
