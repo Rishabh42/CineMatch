@@ -15,6 +15,8 @@ from data_processing_scripts.kafka_consumer_data_appender import run_kafka_consu
 CURR = os.getcwd()
 # print("---- CURR ----:",CURR)
 
+# Data collection & pre-processing
+# TODO: use 15 minutes
 run_kafka_consumer(1)
 run_processing_script()
 append_to_cleaned_data()
@@ -32,8 +34,8 @@ if rmse_score < 1:
     with open("auto_deployment/version.txt", "w") as f:
         f.write(next_version)
 
-    # TODO: Push the new cleaned_rating.csv instead of version.txt
     subprocess.run(["git", "add", "auto_deployment/version.txt"])
+    subprocess.run(["git", "add", "data/cleaned_rating.csv"])
     subprocess.run(["git", "commit", "-m", "model version update" + next_version])
     subprocess.run(["git", "push"])
 
