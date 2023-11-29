@@ -10,11 +10,15 @@ sys.path.append("../")
 # os.chdir('../')
 from model.movie_rec import train
 from model.movie_rec import test_collaborative_filtering
+from data_processing_scripts.kafka_consumer_data_appender import run_kafka_consumer, run_processing_script, append_to_cleaned_data 
 
 CURR = os.getcwd()
 # print("---- CURR ----:",CURR)
 
-# TODO: Data collection script
+run_kafka_consumer(1)
+run_processing_script()
+append_to_cleaned_data()
+
 # train the model with new data
 train(data_path=os.path.join(CURR, 'data'))
 rmse_score = test_collaborative_filtering()
