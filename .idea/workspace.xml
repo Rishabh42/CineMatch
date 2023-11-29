@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e74c1f85-5595-4607-81fc-d4f8028509c4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/fairness_feedbackloop_analysis/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/fairness_feedbackloop_analysis/data_fairness.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/model/movie_rec.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/model/movie_rec.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/fairness_feedbackloop_analysis/data_fairness.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/fairness_feedbackloop_analysis/data_fairness.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,7 +158,6 @@
         <item itemvalue="Python tests.pytest for test_model.MyTestCase.test_rmse_real_dataset" />
         <item itemvalue="Python tests.pytest for test_model.MyTestCase" />
         <item itemvalue="Python tests.pytest for test_model.MyTestCase.test_accuracy" />
-        <item itemvalue="Python tests.pytest in test_model.py (1)" />
       </list>
     </recent_temporary>
   </component>
