@@ -11,8 +11,8 @@ from model.movie_rec import load_model
 from model.movie_rec import get_recommendation
 from model.movie_rec import test_collaborative_filtering
 
-os.chdir("../")
 CURR = os.getcwd()
+print(CURR)
 MODEL_PATH = os.path.join(CURR, 'model', 'model.pkl')
 DATA_PATH = os.path.join(CURR, 'tests', 'dummy_data_test')
 
@@ -138,13 +138,16 @@ class MyTestCase(unittest.TestCase):
         # It measures the average difference between values predicted by a model and the actual values.
         train(data_path=DATA_PATH, file_name_users=FILE_NAME_USERS, file_name_movies=FILE_NAME_MOVIES,
               file_name_ratings=FILE_NAME_RATINGS)
-        print('Root Mean Squared Error: ', test_collaborative_filtering())
+        print('Root Mean Squared Error for simple dataset: ', test_collaborative_filtering())
 
     def test_rmse_real_dataset(self):
         # It measures the average difference between values predicted by a model and the actual values.
         train(data_path=os.path.join(CURR, 'data'))
-        print('Root Mean Squared Error: ', test_collaborative_filtering())
+        rmse_value_real = test_collaborative_filtering()
+        print('Root Mean Squared Error for real dataset: ', rmse_value_real)
 
+        # Check if offline evaluation metric is fine, otherwise fail the job
+        self.assertLessEqual(rmse_value_real, 1, f'RMSE is greater than 1: {rmse_value_real}')
 
 if __name__ == '__main__':
     unittest.main()

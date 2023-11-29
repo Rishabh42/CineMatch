@@ -35,5 +35,5 @@ def extract_ratings(data_path):
     print(df_split.head())
     return "SUCCESS"
 
-# if __name__ == "__main__":
-#     extract_ratings(DATA_PATH)
+if __name__ == "__main__":
+    extract_ratings(DATA_PATH)

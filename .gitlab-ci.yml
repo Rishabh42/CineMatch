@@ -44,7 +44,7 @@ test-app:
     - apk update && apk add python3-dev gcc libc-dev 
     - cd app/
     - pip install -r requirements.txt
-    - python3 test_app.py
+    - PORT=5000 python3 test_app.py
 
 coverage:
   image: python:3.9.18-alpine3.18
@@ -58,7 +58,7 @@ coverage:
     - pip install coverage
     - cd app/
     - pip install -r requirements.txt
-    - coverage run test_app.py
+    - PORT=5000 coverage run test_app.py
     - cd tests/
     - python3 -m coverage run -m pytest data_processing/ data_quality/
     - cd model/
@@ -81,6 +81,11 @@ deploy:
     - echo "$SSH_PRIVATE_KEY" | base64 -d > ~/.ssh/id_rsa # decodes the base64 encoded private key and writes it to the id_rsa file
     - ssh-keyscan -H $SSH_HOST > ~/.ssh/known_hosts # add the host to the list of known hosts
   script:
-    - ssh $SSH_USER@$SSH_HOST "rm -rf $WORK_DIR && git clone $CI_REPOSITORY_URL && cd $WORK_DIR && git checkout main && cd app && docker compose up -d --build && exit" # ssh to the host, pull the latest changes, build the docker image and run the container
+    - ssh $SSH_USER@$SSH_HOST "\
+      rm -rf $WORKDIR && \
+      git clone $CI_REPOSITORY_URL && \
+      cd $WORKDIR && \
+      sh scripts/deploy.sh &"
+
   after_script:
     - rm -rf ~/.ssh # remove the private key

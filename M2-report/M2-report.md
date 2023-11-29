@@ -285,8 +285,8 @@ Following procedure was followed by the team members for working on the code and
 
 12 Oct: Members [Aayush, Rishabh, Varun, Tamara] - Everyone shared their perspectives.
 17 Oct: Members [Aayush, Rishabh, Varun] Updated async: Tamara - Everyone contributed to the meeting.
-19 Oct: Members [Aayush, Rishabh, Varun, Luke] Updated async: Tamara - Everyone shared their perspectives.
-24 Oct: Members [Aayush, Rishabh, Varun, Tamara, Luke] - Everyone contributed to the meeting.
+19 Oct: Members [Aayush, Rishabh, Varun, Yaoqiang] Updated async: Tamara - Everyone shared their perspectives.
+24 Oct: Members [Aayush, Rishabh, Varun, Tamara, Yaoqiang] - Everyone contributed to the meeting.
 26 Oct: Members [Aayush, Rishabh, Varun, Tamara] - Everyone shared their perspectives.
 
 Flow of the discussion: We adopted round table based discussion but alot of our ideas were generated over encrypted whatsapp communication.
@@ -299,7 +299,7 @@ Software developer: Aayush, Varun, Rishabh, Tamara
 Project Manager: Aayush
 DevOps specialist: Rishabh, Varun
 Data engineer: Varun, Aayush
-Testing: Rishabh, Luke, Aayush
+Testing: Rishabh, Yaoqiang, Aayush
 Engineering manager: Varun, Rishabh
 On-team expert: Tamara
 Report Writer: Aayush, Varun, Rishabh, Tamara
@@ -323,7 +323,7 @@ I worked on the following:
 - Data quality strategy, code and testing: Create data quality assessment strategy (#25), Add data quality pipeline code (#28), Create tests for it (#32) [commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/ec22145defa1d5b2d482d9bebccef78495e490fa)
 - Online evaluation strategy and code: Create evaluation strategy (#34), Add scripts for online evaluation (#35), Files for grafana data source (#36) [commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/5c5e121b6102908d30678242ef0907681089fcb1)
 - Report: Add report details: Aayush (#37) [commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/46f6364782d2ffd94a97a87f9bc53bbe52138574)
-- I also took initiative to coordinate among the team members, direct team members (Luke) and worked closely with Varun. [team meeting](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/wikis/Meeting-notes-October-10th), resolve user directory not found error which was preventing our model from running on team member's machine [link](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/96a5a67b5c65b0a9db75c5ee94d521d907a3bfd0)
+- I also took initiative to coordinate among the team members, direct team members (Yaoqiang) and worked closely with Varun. [team meeting](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/wikis/Meeting-notes-October-10th), resolve user directory not found error which was preventing our model from running on team member's machine [link](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/96a5a67b5c65b0a9db75c5ee94d521d907a3bfd0)
 - Merge request reviews: (It is not an exhaustive list.)
 Asked review from others: merge request [33](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/33#note_61398), 
 Accepted the merge requests: [36](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/36)
@@ -364,3 +364,12 @@ Relevant commit: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/50266
 - Pull requests
     - Requested review: [!36](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/36)
     - Provided review: [!41](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/41#note_61552)
+### Contributions by Yaoqiang
+- **Testing**: Coordinated and assisted with Rishabh on tests, added more test cases to bring up the coverage
+Relevant commits:  
+- **Tests**:https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/0183ae55e4cd5e6ff84b7a5682c7a2388be23793
+          https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/4f1e788ac02c347761ab701489827846d34fc88d
+
+- **Testsdata**:https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/361ad18ece30155922476658458ca25ebe68cc2e
+
+- **ReviewedPR**:https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/33#note_61433
