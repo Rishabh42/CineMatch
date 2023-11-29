@@ -3,7 +3,7 @@
 
 #### Definition
 
-In order to analyze the fairness of our model, it is important to define what we mean by fairness. In the scientific literature, there are numerous definitions of fairness, and a taxonomy of these definitions can be found in [1]. The definition of fairness that we will use in our project is based on three principles:
+In order to analyze the fairness of our model, it is important to define what we mean by fairness. In the scientific literature, there are numerous definitions of fairness, and a taxonomy of these definitions can be found in [this paper](https://dl.acm.org/doi/pdf/10.1145/3547333). The definition of fairness that we will use in our project is based on three principles:
 
 - Our definition is **outcome-oriented**, meaning that it considers the fairness of the outputs of our model rather than the process.
 - We evaluate fairness in relation to **groups of individuals** (for example, based on their gender, age, etc.) rather than the individuals themselves.
