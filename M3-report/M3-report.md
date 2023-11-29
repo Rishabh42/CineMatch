@@ -99,3 +99,22 @@ A critical aspect was the training data for the model. Our team faced the challe
 **Future Improvement:**
 
 Moving forward, the focus will be on enhancing data collection and curation processes. Acquiring more comprehensive and diverse datasets is a primary goal to improve the model's performance and reliability.
+
+### Contributions by Yaoqiang
+**Auto Development:I worked on the Auto Development for M3. One of the significant contributions is which I crafted a pivotal script, kafka_consumer_data_appender.py, that streamlined our data handling. This script automates the collection and processing of real-time movie ratings from a Kafka server, elegantly solving the challenge of efficiently managing and integrating large data streams. Its functionality extends to structuring raw data and appending it to a centralized dataset. This contribution significantly alleviates data processing bottlenecks, enhances scalability, and ensures a consistent flow of processed data. 
+Relevant commits:  
+https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/54/diffs?commit_id=480f1c1dd015bf125a39575ccd2f74802e74d1f8
+https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/54/diffs?commit_id=66c0123af5dd8c157352d673bcad5b94c064b6a9
+https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/55/diffs?commit_id=cd2667c60a08a0f9e2fc3051d39114a648ea7178
+https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/55/diffs?commit_id=ecbc4098be32718effc3d9b923460eea6ac18da1
+https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/55/diffs?commit_id=9672fb95d85d4137e965f7ea5442eb415558cf79
+**Meeting management: led meetings on fairness analysis approaches and documented these sessions, providing clear and concise meeting notes for team reference.
+Relevant commits:  
+https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/54/diffs?commit_id=1c4f40512a48d7ae3a12f005c10ebd481bb7a1f9
+**Pull requests reviewed by Yaoqiang:**  
+https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/52
+https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/51
+**Report writing:
+https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/6e72b5ae933a3ea170835f9064b5134533d4b6f2
+
+- Also brainstormed on the Auto Development with Rishabh.
