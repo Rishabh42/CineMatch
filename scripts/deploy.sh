@@ -22,5 +22,6 @@ if (( $(echo "$avg_response_time < $threshold" | bc -l) )); then
   docker compose up -d --build --force-recreate inference_stable
 else
   echo "Average response time is greater than threshold ($avg_response_time ms > 500 ms). Canary release aborted."
+  python3 ../scripts/canary_alert.py
   docker compose down inference_canary 
 fi
