@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, g
 import requests
 import os
 from model.movie_rec import get_recommendation, train, load_model
@@ -32,7 +32,8 @@ with app.app_context():
         conn = get_db()
 
         with open("auto_deployment/version.txt", "r") as f:
-            global global_version = str(f.read())
+            global_version = int(str(f.read()))
+            
         
     except Exception as exc:
         print(f"Error occurred while training model: {exc}")
@@ -75,7 +76,7 @@ def predict_movies(userid):
     # these may be needed to send to the model.
     try:
         prediction = get_recommendation(userid)
-        db_insert(get_db(), "reccom", {"version": global_version, "user_id": userid})
+        db_insert(get_db(), "reccom", {"version_number": global_version, "user_id": userid})
         return ",".join(prediction)
     except Exception as exc:
         print(
