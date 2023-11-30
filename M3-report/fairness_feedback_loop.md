@@ -35,7 +35,7 @@ The echo chamber can have both positive and negative consequences. The positive 
 
 But, if a movie becomes highly rated because it is extensively watched by a bubble of people who like that type of movie, it will then be propelled into everyone's recommendations, including those not particularly interested in that type of movie. With this movie repeatedly appearing in recommendations, even users who are not interested may eventually watch it. If it turns out not to be to their liking, they might give it a poor rating. The impact of this can vary depending on the recommendation model used: if the model primarily considers the number of people who have watched the movie, it might further boost its recommendations. However, if the model is based on ratings (like ours) or viewing time, the movie might cease to be recommended altogether, even to those who initially enjoyed that type of movie.
 
-On the contrary, this can also lead to some movies never recommanded. For instance, if a movie receives an initial poor rating, it may not appear in the recommendations for anyone and, consequently, never get watched, so never get rated again, etc.
+On the contrary, this can also lead to some movies never recommended. For instance, if a movie receives an initial poor rating, it may not appear in the recommendations for anyone and, consequently, never get watched, so never get rated again, etc.
 
 #### Detection
 
@@ -75,7 +75,6 @@ However, the distribution within the datasets is highly uneven between social gr
 
 We have also examined intersections of social groups. For example, we observed that, on average, women are older than men, and 11% of women are academics/educators compared to 2% of men. Regarding differences in occupations between women and men, we would like to emphasize that achieving balance in this intersection of social groups can be more complex than simply having a similar representation across occupations between women and men because a person's occupation is not an independent variable from their gender, unlike age and gender, which can be considered independent. 
 
-
 <img src="https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/raw/tamara-fairness-feedback-loop/app/fairness_feedbackloop_analysis/results/GenderDistribution.png" alt="GenderDistribution" width="500"/>
 
 <img src="https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/raw/tamara-fairness-feedback-loop/app/fairness_feedbackloop_analysis/results/AgeDistribution.png" alt="AgeDistribution" width="500"/>
@@ -86,7 +85,7 @@ We have also examined intersections of social groups. For example, we observed t
 
 You can find all the statistics and results of our analysis [here](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/tree/tamara-fairness-feedback-loop/app/fairness_feedbackloop_analysis/results) (in particular, the results of all the groups intersections), and the code to generate these results [here](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/tamara-fairness-feedback-loop/app/fairness_feedbackloop_analysis/data_fairness.py).
 
-### Quality of recommandations
+### Quality of recommendations
 
 We then analyzed the differences in the quality of recommendations based on gender, age, and occupation. After training our model on the train dataset, we divided the test dataset according to the gender, age, and occupation of the users, calculating the RMSE for these sub-datasets of the test dataset. 
 
