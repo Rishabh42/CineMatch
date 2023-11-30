@@ -85,7 +85,32 @@ To determine whether to perform the canary release, we perform the following Pro
 
 [^pfe]: https://pypi.org/project/prometheus-flask-exporter/
 
-## Reflection on Recommendation Service
+## Provenance
+Our idea behind having provenance in the system was to bind the data and models to our gitlab commits. We wanted to include precise commit messages to help us track the evolution of data/ model with each iteration. As the pipeline code is already tracked based on the commits, we figured this would be a good idea. It is to be noted that uploading models to gitlab is impractical due to size issues. Also, our deployment works through the code changes on our repo and it is heavily making use of gitlab CI/CD so we wanted the benefits of versioning using gitlab for models as well.
+
+**We do the following:** On the host machine (our team-4 server), we have initialized dvc in the deployed github repo. We use it to create .dvc files for models. These files are metadata for the models which can be uploaded to gitlab for each version of the model. They primarily consist of md5 hash and as such are pretty small. the benefit is .dvc files provide a way for us to link models to commits without actually committing the big model files. We decided it would be the most practical to add the model file for tracking when data collection was happening. So whenever, our automated data collection script appends processed data to existing one on the host machine (outside of any container), we also initiate training of the model and include the resulting .dvc file of the tracked and trained model to the github commit. (**link to code demontrating that:** dvc tracking within automated data creation pipeline) It can be argued that the host machine does not possess resources to store different versions of model which is true as each model is roughly 2GB in size. We can offload those models to remote storage using dvc with the .dvc files acting as symbolic links. Since we did not have access to such a free remote storage to host multiple models, as a proof of concept: we kept different versions of models but in the form of .dvc files along with the data files. We committed these to the gitlab repo as well. This is to denote the remote offloading in real scenario. (**link to code demontrating that**: remote offloading and versioning)
+
+This allows us to have a great versioning track record of the models and data. (**link to depict what I mean**)
+
+**Further enhancement**: With the above approach, we were able to track the evolution of data and models along with the pipeline code but linking each individual recommendation with the pipeline code, model and data used to make that recommendation was difficult. We worked out the following approach:
+- We created a new mysql container which would host a database on our team's server host machine. To put in perspective, this will be a separate container apart from the release containers and the host machine itself where the auto-data collection scripts were scheduled with cron job. Now the mysql container is having a persistently mounted storage. The mysql container is connected to the same docker network as the release containers and is part of docker compose.yml for releases. This was necessary to ensure database connection from within release containers to the mysql docker container. (**link to code implementation**: docker compose file)
+- We created two tables in the database namely:
+  - reccom (version_number INT, user_id INT);
+  - tracking (version_number INT, data_creation TIMESTAMP, trained_on TIMESTAMP, model_rmse FLOAT);
+- Since the mysql container had its port exposed, the host machine could insert data in the tracking table while the release containers were bound to the mysql database when the app was launched. The connection was opened and close using app_context and tear_down methods of flask. The release containers would insert records in reccom table linking version_number and user_ids of the recommendations being served.
+- Lastly, with each iteration of data training and model updation: we increment a unique identifier in our auto_deployment module known as version_number which essentially tracks and relates the changes in data to models. It is to be noted that the version.txt file having the number is part of our commit whenever automated data updation happens. Now, each container would have its own copy of the version number depending on which model it is serving which in turn is dependent on the data being used to train it.
+- As a result, we store the version_number, and the userID served by the container running that version of model+data along with the data creation timestamp, model creation timestamp and model_rmse score for that version_number in our database. Using a join query helps deliver the output of granular provenance per userID request. (**link to concrete example**: *we recorded a small video depicting it in action and explaining more*)
+**example:** Following screenshot depicts the last two rows of the result set sorted in descending order for user_ids. We could not display all the rows due to space limitations in the screenshot.
+
+![Version numbers per requests](/M3-report/artifacts/version%20number%20to%20user%20ids.PNG)
+
+link to mysql insertion query updates from container image:
+  - helper functions:
+link to host insertion queries:
+  - helper functions:
+
+
+## Reflections on Recommendation Service
 We had no shortage of problems, both technical and logistic, in developing our recommendation system. But in the end, we are happy to have encountered these problems as you learn more from these challenges than you would if everything worked perfectly fine. Here are 3 main challenges we dealt with:
 
 ### Cold start problem
@@ -112,7 +137,7 @@ With additional resources, the ideal solution would be to implement a database s
 ### Load Balancing and Kubernetes
 
 **Challenge:**
-Implementing Kubernetes for load balancing and canary deployment was challenging, particularly due to the lack of root access and difficulties in configuring load balancers on  port 8082. We installed Docker using Kubernetes in Docker (KIND) which is alright for test environments. While we were able to set up all pods, deployments and services, and our service worked on port 80 of the team URL, we were not able to get it to work on port 8082, the port to which the simulator sends requests. We believe this was an ingress configuration issue, but could not figure out a solution. After putting in two to three days of relentless effort into fixing this without success, we decided to move on. 
+Implementing Kubernetes for load balancing and canary deployment was challenging, particularly due to the lack of root access and difficulties in configuring load balancers on  port 8082. We installed Docker using Kubernetes in Docker (KIND) which is alright for test environments. While we were able to set up all pods, deployments and services, and our service worked on port 80 of the team URL, we were not able to get it to work on port 8082, the port to which the simulator sends requests. We believe this was an ingress configuration issue, but could not figure out a solution. After putting in around three to four days of relentless effort into fixing this without success, we decided to move on. 
 
 
 **Current Solution:**
@@ -125,7 +150,7 @@ This part of the project highlighted the importance of balancing ambitious techn
 ## Reflections on Teamwork
 
 ### What went well
-Our experience in this team has been quite a rollercoaster ride, but in the end, we believe that things turned out fairly well. We did not have the most ideal team kickoff, but we managed to settle disputes and patch up stronger after that. Over time, we understood each other better and our workability and compatibility increased. We also some exchanged some skills with each other and got to learn new things and workstyles from each other. The whole project helped us develop not only technical skills, but also some valuable interpersonal skills that we present below.
+Our experience in this team has been quite a rollercoaster ride, but in the end, we believe that things turned out fairly well. We did not have the most ideal team kickoff, but we managed to settle disputes and patch up stronger after that. Over time, we understood each other better and our workability and compatibility increased. We also some exchanged some skills with each other and got to learn new things and workstyles from each other. Especially during M3, everyone was active and pitched in their ideas and collaborated well. The whole project helped us develop not only technical skills, but also some valuable interpersonal skills that we present below.
 
 ### Challenges
 - **Ensuring that all team members feel included**: We started off on a not-so-good note as there were some initial conflicts with regard to the involvement of all team members. Some team members knew each other outside of the course and this led to misunderstandings with regard to involving other team members, though it was never the intention. However, these were resolved by talking things out and setting expectations right. After the small tiff, our team cohesion was quite good and we had no differences with each other for the most part.
@@ -144,6 +169,27 @@ Based on the challenges we discussed, here are the lessons we learnt to make fut
 - **Accept constructive criticism**: We did not have a major problem in this regard, but something that we observed in general is that it is important for one to be open minded and accept suggestions and different perspectives rather than be fixated on one's own idea. You should also be willing to accept that you don't know things and should be willing to learn from your teammates.
 
 - **Pair programming is a good productivity booster**: We did not have extensive pair programming for the first two milestones, however, we did this fairly regularly for Milestone 3 and found it to be quite effective to bounce off ideas and get work done by sharing each other's expertise. We were able to complete our work faster and accomplish more this way. This is something we would definitely want to do more of in future projects.
+
+### Some points worth highlighting about our implementation:
+
+- Our commit messages are linked to the version of the data and model being committed. It gives a nice overview when observed within the repo as follows: (more description on why this is so - added in provenance)
+![data-versioning](/M3-report/artifacts/data-versioning.PNG)
+![model-versioning](/M3-report/artifacts/model-versioning.PNG)
+![commit-version-txt](/M3-report/artifacts/commit-version-txt.PNG)
+(commit includes the version number which we save in the version txt)
+
+- If the average response time of the deployed canary release is greater than 500ms then the canary release is abandoned. We get slack and email alerts for the same.
+![canary-slack](/M3-report/artifacts/canary-release-aborted-alert-slack-average-response-time.PNG)
+![canary-email](/M3-report/artifacts/canary-release-aborted-alert-email-average-response-time.PNG)
+
+- If the rmse score is acceptable after auto-updation of data and models then we proceed with deployment of the pipeline. Upon successful auto-updation, we get the following email. This is separate from the aborting after a release has been deployed as canary.
+![successful-deployment](/M3-report/artifacts/successful-deployment-email.PNG)
+
+- The screenshot of how our database looks has been attached above under provenance. This is used for per request tracking of models.
+
+- We have a nice logging module. We have uploaded a sample log file in our repo. Following is the screenshot of how we create the logs. We tried to create our in similar fashion as we would get in a production app.
+![logging](/M3-report/artifacts/logging-sample.PNG)
+
 
 
 ## Contributions 
@@ -239,7 +285,34 @@ https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/6e72b5ae933a3ea170835f
     - [Releases](#releases)
     - [Reflections on Teamwork](#reflections-on-teamwork)
 
-
 **Merge requests reviewed**:
 - dev --> main: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/59
 - Offline evaluation metric: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/51
+
+
+### Contributions by Aayush:
+I have provided explanation on what I did and linked the commit for the same. The issue number is added in the commit message. Helps in linking issues to commit on gitlab.
+- **Developed the dvc infrastructure - connected it auto data and model updates**: 
+- **Set up the versioning for data files and models**:
+- **Developed per request tracking solution** - Created the mysql container deployment, connected it with the auto updates, linked release containers to it so that insertion queries go through:
+- **Fixed stale docker containers issue during data collection**:
+- **Created slack and email alerts for failed canary containers deployment**: This is different from the pipeline canary failure mentioned above. This alert comes from the deploy script based on the average response time of the canary container:
+- **Added the infrastructure for logging**:
+- **Helped Rishabh with auto-deployment part**:
+
+- I took initiative in the earlier part of the project to get things rolling because I had back to back exams and other deliverables near to M3 deadline. I raised this point with prof. too. As a result, I tended to ask everyone to stay back and meet after classes - get the momentum going.
+
+- **Kubernetes**: I spent a lot of time trying to get kubernetes to run on our team's server. I worked closely on it with Varun and we spent around 4 days cumulatively. I learnt so much during the process but it led to a lot lost time which could have been used elsewhere. We were able to get it working only on port 80 of the exposed api which sadly was not practical for this project. The intention behind using kubernetes was the production grade capabilities for load balancing, canary releases and replicas to ensure availability. I even reached out to Deeksha for the same. I have extensively documented the issues observed and the command line remnants from one of the troubleshooting sessions.
+link to issues in detail:
+link to troubleshooting:
+issues in short:
+
+- Helping out the team with the general stuff: report writing, presentation, coordination and team management.
+
+**Merge requests reviewed and raised:**
+
+**Report writing:**
+
+**Meeting notes created:**
+
+note: I felt that everyone worked great for M3. Each member really got involved in the project and pushed as best as they could. I am quite pleased with how everyone collaborated and not just for the sake of points.
