@@ -17,6 +17,34 @@ We use [docker compose](/app/docker-compose.yml) to orchestrate the deployment o
 [^surp]: https://surpriselib.com/
 [^gu]: https://gunicorn.org/ 
 
+## Automated model updates
+We implemented the automatic training and deployment of the models by developing a python script (`auto_deployment/auto_deploy.py`) which broadly performs the following tasks: \
+\
+**1. Data collection and pre-processing from the Kafka stream:** \
+The raw data is collected from the Kafka stream for 15 minutes and pre-processed. After this it is appended to the records previously collected in `data/clean_rating.csv`.
+
+**2. Training the models with the new data:** \
+The newly collected data is now used to train the model \
+
+**3. Checking if RMSE score is < 1:** \
+We do our offline evaluation i.e. checking if RMSE score is less than 1  after the model has successfully been trained as described previously. If this condition is not satisfied, the new model doesn’t get deployed and the user gets an email mentioning that the new model wasn’t deployed and also reports the RMSE score.
+
+**4. Versions the new model using DVC:** \
+If the offline evaluation metric is satisfied, the new model gets versioned by DVC.
+
+**5. Pushes the newly collected data to GitLab:** \
+Finally, if everything works fine till this point, the newly collected data as well as the version is pushed to GitLab. This triggers the automated testing pipeline and also deploys the new model. 
+
+**6. Users get notified via an email:** \
+After the successful deployment of the model the users get an automated email confirming that the deployment was successful.
+
+Additionally, we developed a Python scheduler script (`auto_deployment/scheduler.py`) which runs in the background on our team-4 server and triggers the auto deployment pipeline every 2 days.
+
+**Links to the scripts involved:**
+- Auto deployment script: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/main/app/auto_deployment/auto_deploy.py 
+- Scheduler: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/main/app/auto_deployment/scheduler.py 
+
+
 ## Releases
 
 ### Triggering releases
