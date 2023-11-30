@@ -3,16 +3,42 @@ import requests
 import os
 from model.movie_rec import get_recommendation, train, load_model
 from prometheus_flask_exporter import PrometheusMetrics
+from container_db_connect import connect_db, db_insert
 
 app = Flask(__name__)
 metrics = PrometheusMetrics(app)
+global_version = "default"
+
+def get_db():
+    if 'db' not in g:
+        g.db = connect_db()
+    return g.db
+
+def close_db(e=None):
+    db = g.pop('db', None)
+    if db is not None:
+        db.close()
+
+@app.teardown_appcontext
+def teardown_db(e=None):
+    close_db(e)
+
 
 with app.app_context():
     # Train the model the first time the container is started and load it locally
     try:
         train()
+        # create connection with db
+        conn = get_db()
+
+        with open("auto_deployment/version.txt", "r") as f:
+            global global_version = str(f.read())
+        
     except Exception as exc:
         print(f"Error occurred while training model: {exc}")
+    
+    finally:
+        close_db()
 
     try:
         load_model()
@@ -49,6 +75,7 @@ def predict_movies(userid):
     # these may be needed to send to the model.
     try:
         prediction = get_recommendation(userid)
+        db_insert(get_db(), "reccom", {"version": global_version, "user_id": userid})
         return ",".join(prediction)
     except Exception as exc:
         print(

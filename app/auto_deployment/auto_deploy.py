@@ -3,7 +3,9 @@ import sys
 import subprocess
 from emailer import send_email
 from logger import Logger
+from mysql_connector import db_insert
 from data_versioning import model_data_versioning
+from datetime import datetime
 
 # get the logger initialized
 log = Logger(os.getcwd(), "auto_deploy")
@@ -25,6 +27,8 @@ CURR = os.getcwd()
 log.info("Data collection & pre-processing")
 
 # TODO: use 15 minutes
+data_created_time = datetime.utcnow()
+
 run_kafka_consumer(1)
 run_processing_script()
 log.debug("Run data processing.")
@@ -39,6 +43,7 @@ train(data_path=os.path.join(CURR, 'data'))
 rmse_score = test_collaborative_filtering()
 log.info("Train the model with new data.")
 log.info(f"RMSE score for the trained model: {rmse_score}.")
+model_created_time = datetime.utcnow()
 
 if rmse_score < 1:
     with open("auto_deployment/version.txt", "r") as f:
@@ -62,6 +67,15 @@ if rmse_score < 1:
     subprocess.run(["git", "add", "auto_deployment/version.txt"])
     subprocess.run(["git", "add", "data/cleaned_rating.csv"])
     log.debug(f"Stage new data and new_version: [{next_version}].")
+
+    log.info("Insert the tracking information in the db.")
+    data_col_row = {
+        "version_number": next_version,
+        "data_creation": data_created_time,
+        "trained_on": model_created_time,
+        "model_rmse": rmse_score
+    }
+    db_insert("tracking", data_col_row)
 
     subprocess.run(["git", "commit", "-m", "Data and Model version update: [" + next_version + "]"])
     subprocess.run(["git", "push"])
