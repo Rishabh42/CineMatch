@@ -100,6 +100,7 @@ This allows us to have a great versioning track record of the models and data. (
 - As a result, we store the version_number, and the userID served by the container running that version of model+data along with the data creation timestamp, model creation timestamp and model_rmse score for that version_number in our database. Using a join query helps deliver the output of granular provenance per userID request. (**link to concrete example**: *we recorded a small video depicting it in action and explaining more*)
 **example:** Following screenshot depicts the last two rows of the result set sorted in descending order for user_ids. We could not display all the rows due to space limitations in the screenshot.
 
+![Version numbers per requests](/M3-report/artifacts/version%20number%20to%20user%20ids.PNG)
 
 link to mysql insertion query updates from container image:
   - helper functions:
@@ -152,6 +153,27 @@ A critical aspect was the training data for the model. Our team faced the challe
 **Future Improvement:**
 
 Moving forward, the focus will be on enhancing data collection and curation processes. Acquiring more comprehensive and diverse datasets is a primary goal to improve the model's performance and reliability.
+
+
+### Some points worth highlighting about our implementation:
+
+- Our commit messages are linked to the version of the data and model being committed. It gives a nice overview when observed within the repo as follows: (more description on why this is so - added in provenance)
+![data-versioning](/M3-report/artifacts/data-versioning.PNG)
+![model-versioning](/M3-report/artifacts/model-versioning.PNG)
+![commit-version-txt](/M3-report/artifacts/commit-version-txt.PNG)
+(commit includes the version number which we save in the version txt)
+
+- If the average response time of the deployed canary release is greater than 500ms then the canary release is abandoned. We get slack and email alerts for the same.
+![canary-slack](/M3-report/artifacts/canary-release-aborted-alert-slack-average-response-time.PNG)
+![canary-email](/M3-report/artifacts/canary-release-aborted-alert-email-average-response-time.PNG)
+
+- If the rmse score is acceptable after auto-updation of data and models then we proceed with deployment of the pipeline. Upon successful auto-updation, we get the following email. This is separate from the aborting after a release has been deployed as canary.
+![successful-deployment](/M3-report/artifacts/successful-deployment-email.PNG)
+
+- The screenshot of how our database looks has been attached above under provenance. This is used for per request tracking of models.
+
+- We have a nice logging module. We have uploaded a sample log file in our repo. Following is the screenshot of how we create the logs. We tried to create our in similar fashion as we would get in a production app.
+![logging](/M3-report/artifacts/logging-sample.PNG)
 
 ### Contributions by Yaoqiang
 **Data processing scripts for automated model updates**:
@@ -230,6 +252,7 @@ issues in short:
 
 **Merge requests reviewed and raised:**
 
+**Report writing:**
 
 **Meeting notes created:**
 
