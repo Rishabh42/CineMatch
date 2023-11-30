@@ -356,14 +356,34 @@ https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/6e72b5ae933a3ea170835f
 ### Contributions by Rishabh:
 - **Developed the automated model updates script**  
 (Corresponding issue: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/main/app/auto_deployment/auto_deploy.py
+  - Developed the complete auto-deployment script, linked with data integration from Kafka stream, integrated the emailer, scheduler, git commit logic, etc.
+
 - **Developed the Python scheduler:** https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/main/app/auto_deployment/scheduler.py 
+  - Created a Python scheduler to trigger the auto deployment script. This was done because the cron job that I earlier created had some issues with the reletavive path of the installation of Python on the server.
+
 - **Developed the email notification service:** https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/main/app/auto_deployment/emailer.py 
+
 - **Pipeline/Offline eval metric** (Corresponding issue: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/issues/52) \
- **Code file:** https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/main/app/tests/model/test_model.py#L149 
+ **Code file:** https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/main/app/tests/model/test_model.py#L149 \
+ Added the offline evaluation metric that I developed, i.e. chacking if the RMSE score is < 1 to the pipeline.
+
+  - **Commits:** 
+    1. https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/da16a681461b5f72334ae3185e6774a04d3d319f
+    2. https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/ddf07bcb9b472b443616b49a579be161183fdaf0
+
 - **Debugging and making sure that the pipeline is working fine**: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/issues/52 
+  - Checked if the pipeline is working fine and covers all the componenets required. Made some changes to fix the pipeline.
+
 - **Brainstormed with Varun on Canary releases, helped with the correct paths/routes and failing test cases.**
-- **Assisted Yaoqiang with Kafka data processing**
-- **Assisted Aayush with data integration in the `auto_deploy.py` script**
+  - commit: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/fc883bdfa8439230780e446ec19a88997065598c
+  - Helped resolve the issues with Canary deployment integration and corrected the routes in the code to fix this issue.
+
+- **Assisted Yaoqiang with Kafka data processing:**
+  - Helped Yaoqiang create the data processing scripts required for the auto_deploy script and fixed the issues with his code. 
+  - Did an in-depth review of the code as well, making sure that everything was well integrated.
+
+- **Helped Aayush with data integration in the `auto_deploy.py` script**
+
 - **Repo quality assurance:** 
   1. Added rule to have at least 1 approval for MR 
   2. Added rule to merge only when the pipeline succeeds
@@ -376,6 +396,8 @@ https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/6e72b5ae933a3ea170835f
 
 **Meeting notes created:** https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/wikis/M3:-Issue-discussion,-debugging-and-development-sync-up
 
+**Report writing:**
+  - Added the automatic model updats part to the report
 
 ### Contributions by Varun
 
