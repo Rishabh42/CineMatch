@@ -146,7 +146,7 @@ https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/55/diffs?commi
 led meetings on fairness analysis approaches and documented these sessions, providing clear and concise meeting notes for team reference.
 
 Relevant commits:  
-
+**Meeting notes created:**
 https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/54/diffs?commit_id=1c4f40512a48d7ae3a12f005c10ebd481bb7a1f9
 
 **Pull requests reviewed by Yaoqiang:**  
