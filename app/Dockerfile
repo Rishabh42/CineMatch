@@ -17,8 +17,10 @@ RUN pip install -r requirements.txt
 
 # Copy the files from our application
 ADD app.py app.py
+ADD container_db_connect.py container_db_connect.py 
 COPY model model/
 COPY data data/
+COPY auto_deployment auto_deployment/
 
 # Expose port  from the container
 EXPOSE ${PORT}
