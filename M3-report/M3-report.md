@@ -176,7 +176,7 @@ https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/6e72b5ae933a3ea170835f
   2. Added rule to merge only when the pipeline succeeds
 
 **Merge requests reviewed:**
-- https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/55
-- https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/52
+- Fixed the hanging bug: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/55
+- Canary release set up and scripts: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/52
 
 **Meeting notes created:** https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/wikis/M3:-Issue-discussion,-debugging-and-development-sync-up
