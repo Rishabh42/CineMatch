@@ -1,4 +1,4 @@
-****# Milestone 3
+# Milestone 3
 
 ## Containerization
 We have four running containers for our inference service at all times: two containers for the stable deployment, one for the canary deployment and one for the load balancer. We additionally have containers running Prometheus and cadvisor as part of our monitoring service.
