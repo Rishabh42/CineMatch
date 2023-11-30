@@ -9,7 +9,7 @@ def job(t):
     subprocess.run(["python3", "auto_deploy.py"])
     return
 
-schedule.every().day.at("19:15").do(job,'Periodic training and deployment scheduled successfully at ',datetime.now())
+schedule.every().day.at("20:00").do(job,'Periodic training and deployment scheduled successfully at ',datetime.now())
 
 while True:
     # Run pending tasks
