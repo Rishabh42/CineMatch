@@ -102,9 +102,9 @@ Our idea behind having provenance in the system was to bind the data and models 
 
 ![Version numbers per requests](/M3-report/artifacts/version%20number%20to%20user%20ids.PNG)
 
-link to mysql insertion query updates from container image: [link](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/main/app/app.py#L79)
+- ink to mysql insertion query updates from container image: [link](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/main/app/app.py#L79)
   - helper functions: [link](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/main/app/container_db_connect.py)
-link to host insertion queries: [link](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/main/app/auto_deployment/auto_deploy.py#L80)
+- link to host insertion queries: [link](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/main/app/auto_deployment/auto_deploy.py#L80)
   - helper functions: [link](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/main/app/auto_deployment/mysql_connector.py)
 
 
@@ -333,4 +333,4 @@ M3 stuck on port issue for kubernetes cluster: [here](https://gitlab.cs.mcgill.c
 Project session Nov 7 notes: [here](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/wikis/Project-session-Nov-7-notes)
 
 
-*Note: I felt that everyone worked great for M3. Each member really got involved in the project and pushed as best as they could. I am quite pleased with how everyone collaborated and not just for the sake of points.*
+*Note: We felt that everyone worked great for M3. Each member really got involved in the project and pushed as best as they could.*
