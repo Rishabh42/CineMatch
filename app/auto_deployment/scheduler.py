@@ -2,13 +2,14 @@
 import subprocess
 import schedule
 import time
+from datetime import datetime
 
 def job(t):
     print(t)
     subprocess.run(["python3", "auto_deploy.py"])
     return
 
-schedule.every().day.at("18:12").do(job,'Periodic training and deployment scheduled successfully')
+schedule.every().day.at("19:15").do(job,'Periodic training and deployment scheduled successfully at ',datetime.now())
 
 while True:
     # Run pending tasks

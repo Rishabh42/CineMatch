@@ -5,6 +5,7 @@ from emailer import send_email
 from data_versioning import model_data_versioning
 
 # Update the repo
+subprocess.run(["git", "checkout", "main"])
 subprocess.run(["git", "pull"])
 
 sys.path.append("../")
@@ -15,7 +16,6 @@ from data_processing_scripts.kafka_consumer_data_appender import run_kafka_consu
 
 CURR = os.getcwd()
 # print("---- CURR ----:",CURR)
-# the current directory is the app directory
 
 # Data collection & pre-processing
 run_kafka_consumer(15)
