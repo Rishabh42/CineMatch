@@ -47,3 +47,19 @@ services:
       - inference_canary
     networks:
       - inference
+
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - inference
+    environment:
+      MYSQL_ROOT_PASSWORD: temp
+    volumes:
+      - mysql:/var/lib/mysql
+    restart: unless-stopped
+
+volumes:
+  mysql:
