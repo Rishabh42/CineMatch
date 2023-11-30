@@ -125,6 +125,16 @@ def write_age_balance():
     write_csv(value_count, 'users_age_balance.csv')
 
 
+def write_age_balance_ratings():
+    labels = get_labels('gender')
+    value_count = ratings_age_balance().reset_index()
+    for label in labels:
+        value_count_c = ratings_age_balance_by_gender(label).reset_index()
+        value_count = value_count.merge(value_count_c, on='index')
+    write_csv(value_count, 'ratings_age_balance.csv')
+
+
+
 def write_occupation_balance():
     list_labels = []
     labels_gender = get_labels('gender')
@@ -241,5 +251,5 @@ def get_labels(column_name):
 
 
 if __name__ == '__main__':
-    write_occupation_balance()
+    write_age_balance_ratings()
 
