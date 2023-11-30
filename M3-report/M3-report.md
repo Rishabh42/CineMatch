@@ -53,6 +53,8 @@ As described in the previous section, when the new data is periodically pushed t
 ### Monitoring the release
 The release script performs the following actions: (1) It kills the current canary container, builds a new image containing the new model and recreates the canary container. (2) It waits for 12 hours to allow the new deployment to stabilize and receive a fair amount of requests (3) After 12 hours, it sends a curl request to the Prometheus HTTP API to fetch the average response time of the successful requests over the past 12 hours. (4) Our threshold response time is 500ms. If the average response time is below the threshold, it builds a new image with the `stable` tag and recreates the two stable containers. At this point our canary release is successfully completed. If the average response time is greater than the threshold, the canary release is aborted by removing the canary container and sending an email notification to our team informing of the failed release.
 
+After the canary release is complete, we retain the canary container along with the newly deployed stable containers as this will increase availability of our service. This means that all three containers serve the stable deployment at the time. Though this may not be an ideal practice in production, we chose to follow this approach as it allows us to serve a greater number of successful requests.
+
 ### Load balancing
 Our NGINX load balancer is configured to execute a 80-20 split of the incoming traffic between the two containers of the stable deployment and the canary container respectively. 
 
@@ -109,51 +111,65 @@ link to host insertion queries:
 
 
 
-**Reflection on Recommendation Service**
-**Telemetry Collection System**
-**Challenge:**
+## Reflections on Recommendation Service
+We had no shortage of problems, both technical and logistic, in developing our recommendation system. But in the end, we are happy to have encountered these problems as you learn more from these challenges than you would if everything worked perfectly fine. Here are 3 main challenges we dealt with:
 
-The initial challenge was managing a vast volume of logs. Loki was chosen for its promise of efficient storage, but it presented limitations in log retrieval and high CPU usage.
+### Cold start problem
+
+**Challenge:**
+One of our biggest challenges in developing a decent recommendation system was the lack of sufficient data, which limited the model's effectiveness and accuracy. Since we had a million users, we would need a substantial amount of data related to their watch history and ratings to give meaningful predictions. A major limitation with the collected data was duplication, since there was a log entry for each minute of the movie watched by a user. When we filtered these logs to extract unique entries, there was often a 70-80% reduction. For example, 5 million records would reduce to just 50,000. However, the cold start problem is common in recommendation systems and better data collection pipelines would have helped us improve our models. 
+
+**Future Improvement:**
+Moving forward, the focus will be on enhancing data collection and curation processes. We would need to set up a more robust system to collect, parse and store our logs. Acquiring more comprehensive and diverse datasets is a primary goal to improve the model's performance and reliability. 
+
+### Telemetry Collection System
+**Challenge:**
+The initial challenge was managing a vast volume of logs. Loki was chosen for its promise of efficient storage, but it presented limitations in log retrieval as we could only retrieve 5,000 logs in one API request and it also averaged high CPU usage.
 
 
 **Current Solution:**
-
-Our team transitioned to a file-based system, opting to store logs in CSV files. This approach, while simpler, demanded more storage and necessitated regular log cleanups.
+Our team transitioned to a file-based system, opting to store logs in CSV files. This approach, while simpler, demands more storage and requires regular log cleanups. However, given the timeframe of the project, we decided this was a reasonable approach.
 
 
 **Future Direction:**
-
 With additional resources, the ideal solution would be to implement a database specifically for telemetry post-processing, aiming to enhance storage efficiency and retrieval capabilities.
 
 
-**Load Balancing and Kubernetes**
-
+### Load Balancing and Kubernetes
 
 **Challenge:**
-
-Implementing Kubernetes for load balancing and canary deployment was challenging, particularly due to the lack of root access and difficulties in configuring load balancers on specific ports.
+Implementing Kubernetes for load balancing and canary deployment was challenging, particularly due to the lack of root access and difficulties in configuring load balancers on  port 8082. We installed Docker using Kubernetes in Docker (KIND) which is alright for test environments. While we were able to set up all pods, deployments and services, and our service worked on port 80 of the team URL, we were not able to get it to work on port 8082, the port to which the simulator sends requests. We believe this was an ingress configuration issue, but could not figure out a solution. After putting in around three to four days of relentless effort into fixing this without success, we decided to move on. 
 
 
 **Current Solution:**
-
-Our team reverted to a simpler solution using an NGINX load balancer and bash scripts for canary deployment.
-
+Our team reverted to a simpler solution using an NGINX load balancer and bash scripts for canary deployment. All the containers are orchestrated using docker compose and Docker networks.
 
 **Reflection:**
-
-This part of the project highlighted the importance of balancing ambitious technological implementations with practical project management considerations.
-Training Data for the Model
+This part of the project highlighted the importance of balancing ambitious technological implementations with practical project management considerations. Kubernetes may have been a bit overkill for the scope of our project, but we wanted to kill two birds with one stone (load balancing and canary releases), which did not turn out very well. It is important to consider the scale of the project and available resources and limitations before venturing into a big technology.
 
 
-**Challenge:**
+## Reflections on Teamwork
 
-A critical aspect was the training data for the model. Our team faced the challenge of insufficient data, which limited the model's effectiveness and accuracy.
+### What went well
+Our experience in this team has been quite a rollercoaster ride, but in the end, we believe that things turned out fairly well. We did not have the most ideal team kickoff, but we managed to settle disputes and patch up stronger after that. Over time, we understood each other better and our workability and compatibility increased. We also some exchanged some skills with each other and got to learn new things and workstyles from each other. Especially during M3, everyone was active and pitched in their ideas and collaborated well. The whole project helped us develop not only technical skills, but also some valuable interpersonal skills that we present below.
 
+### Challenges
+- **Ensuring that all team members feel included**: We started off on a not-so-good note as there were some initial conflicts with regard to the involvement of all team members. Some team members knew each other outside of the course and this led to misunderstandings with regard to involving other team members, though it was never the intention. However, these were resolved by talking things out and setting expectations right. After the small tiff, our team cohesion was quite good and we had no differences with each other for the most part.
 
-**Future Improvement:**
+- **Juggling commitments and varying availabilities**: Each team member had other commitments in terms of coursework from other classes or research projects.  This made it hard to find a common time to meet and to have a continual progress on the milestones. We were quite diligent with our meetings at the start, but as we got burdened with increasing workloads converging at the same time, the regularity of our meetings started to wane. We realize that this is typical and expected of a university student, so it is unfair to expect team members to devote a hundred percent of their time toward the project. But it is important to set up an appropriate workflow to work asynchronously and sync up regularly to ensure the project does not stall.
 
-Moving forward, the focus will be on enhancing data collection and curation processes. Acquiring more comprehensive and diverse datasets is a primary goal to improve the model's performance and reliability.
+- **Responsiveness**: As the team got busier, we experienced communication gaps that slowed down our progress as a whole. Sometimes it used to be tough to get a response or acknowledgement from all team members when issues were being discussed or work was being allocated via WhatsApp. We realized that messaging, in general, tends to be a less engaging form of communication and actual conversations are important from time to time. 
 
+- **Balancing expertise**: Though our team had varying domains of expertise that helped cover different aspects of the project, this also posed a challenge at times, especially in M1. As only one member in our team had solid hands-on machine learning experience, there was a high dependance on them to get things moving for M1. However, this was taken care of in subsequent milestones as the project's scope widened out. 
+
+### Takeaways
+Based on the challenges we discussed, here are the lessons we learnt to make future collaborations more productive and successful:
+
+- **Being accountable and taking initiative**: The essence of teamwork is the team working together and playing an equally active role towards the advancement of the project, at least in projects in such a context. Despite one's packed schedule, if each team member takes personal responsibility to allot some time for the project at hand rather than leaving the heavylifting to just a few members, it can improve the overall quality of the project and can prevent cramming work close to the deadline.
+
+- **Accept constructive criticism**: We did not have a major problem in this regard, but something that we observed in general is that it is important for one to be open minded and accept suggestions and different perspectives rather than be fixated on one's own idea. You should also be willing to accept that you don't know things and should be willing to learn from your teammates.
+
+- **Pair programming is a good productivity booster**: We did not have extensive pair programming for the first two milestones, however, we did this fairly regularly for Milestone 3 and found it to be quite effective to bounce off ideas and get work done by sharing each other's expertise. We were able to complete our work faster and accomplish more this way. This is something we would definitely want to do more of in future projects.
 
 ### Some points worth highlighting about our implementation:
 
@@ -175,7 +191,20 @@ Moving forward, the focus will be on enhancing data collection and curation proc
 - We have a nice logging module. We have uploaded a sample log file in our repo. Following is the screenshot of how we create the logs. We tried to create our in similar fashion as we would get in a production app.
 ![logging](/M3-report/artifacts/logging-sample.PNG)
 
+## Contributions 
+Each team member was alloted one major task and helped other team members in their tasks. The distribution was as follows:
+- Aayush: Provenance
+- Rishabh: Automatic model updates and deployment
+- Varun: Canary releases
+- Tamara: Feedback loops and fairness
+- Yaoqiang: Reflection on recommendation service and automatic deployment
+
+Each team member worked on a separate branch for their respective features. In general, we tried to follow the following naming convention for all branches: `name-feature`.
+
+A summary of our meeting notes can be found [here](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/wikis/M3-Meeting-Notes)
+
 ### Contributions by Yaoqiang
+
 **Data processing scripts for automated model updates**:
 
 I worked on the Auto Development for M3. One of the significant contributions is which I implemented a script, kafka_consumer_data_appender.py, that streamlined our data handling. This script automates the collection and processing of real-time movie ratings from a Kafka server, elegantly solving the challenge of efficiently managing and integrating large data streams. 
@@ -229,6 +258,41 @@ https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/6e72b5ae933a3ea170835f
 - Tamara fairness feedback loop: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/67
 
 **Meeting notes created:** https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/wikis/M3:-Issue-discussion,-debugging-and-development-sync-up
+
+
+### Contributions by Varun
+
+- **Containerization of the application**: Had developed the containers as part of M1 and M2. Updated the container and docker compose configuration to match M3 requirements (64ddda2d946a8bfe6ca8d13efbb8d2a3e28d9b06, df6d166e20013327cf1b3d108b59f571c3d7057a)
+
+    Files: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/64ddda2d946a8bfe6ca8d13efbb8d2a3e28d9b06/app/docker-compose.yml, https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/main/app/nginx/nginx.conf?ref_type=heads
+
+- **Reconfiguration of monitoring service to track canary and stable deployments** (5a15738a13c8e5067c970cab36d6f086833c609d, )
+
+    Files: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/main/app/nginx/nginx.conf?ref_type=heads, https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/development/monitoring/prometheus/prometheus.yml#L24
+
+
+- **Set up of the canary release pipeline**: Spent a considerable amount of time experimenting with Kubernetes before switching to the current version of the release workflow. (b85b9e545f1aa2e99387641365b22434d15d25c9, 64ddda2d946a8bfe6ca8d13efbb8d2a3e28d9b06)
+
+    Files: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/tree/varun_k8s/kubernetes, https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/b85b9e545f1aa2e99387641365b22434d15d25c9/scripts/deploy.sh, https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/development/.gitlab-ci.yml
+
+- **Participated in regular dev sync ups with other team members to bounce off ideas and help in development.** Pointers from meeting notes:
+    - https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/wikis/M3-Meeting-Notes#progress-sync-up
+    - https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/wikis/M3-Meeting-Notes#meeting-debugging-01
+    - https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/wikis/M3-Meeting-Notes#meeting-debugging-01 
+
+- **Other debugging and fixing activities**:
+    - Setting a fixed current working directory for `movie_rec.py` to resolve varying path issues: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/726a1df1af5df3b3d019997b03369782aea57477/app/model/movie_rec.py#L10
+
+- **Report writing**:
+    - [Containerization](#containerization)
+    - [Releases](#releases)
+    - [Reflections on Teamwork](#reflections-on-teamwork)
+    - Refined [Reflections on Recommendation Service](#reflections-on-recommendation-service)
+
+**Merge requests reviewed**:
+- dev --> main: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/59
+- Offline evaluation metric: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/51
+
 
 
 ### Contributions by Aayush:
