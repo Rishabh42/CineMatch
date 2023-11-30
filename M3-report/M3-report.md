@@ -233,15 +233,14 @@ https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/6e72b5ae933a3ea170835f
 
 ### Contributions by Aayush:
 I have provided explanation on what I did and linked the commit for the same. The issue number is added in the commit message. Helps in linking issues to commit on gitlab.
-- **Developed the dvc infrastructure - connected it auto data and model updates**: 
-- **Set up the versioning for data files and models**:
-- **Developed per request tracking solution** - Created the mysql container deployment, connected it with the auto updates, linked release containers to it so that insertion queries go through:
-- **Fixed stale docker containers issue during data collection**:
-- **Created slack and email alerts for failed canary containers deployment**: This is different from the pipeline canary failure mentioned above. This alert comes from the deploy script based on the average response time of the canary container:
-- **Added the infrastructure for logging**:
-- **Helped Rishabh with auto-deployment part**:
+- **Developed the dvc infrastructure locally on the host- connected it to auto data and model updates,Set up the versioning for data files and models**: [commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/b378a42a3d26b73a6627c8f04de561fc27ff7b65)
+- **Developed per request tracking solution** - Created the mysql container deployment, connected it with the auto updates, linked release containers to it so that insertion queries go through: [commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/485d1879297d0b86aef9b9f09980a861e7c8653a), [commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/0aca11f83c1be2701176419e89b1fec175d105a2)
+- **Fixed stale docker containers issue during data collection**: [commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/c28a2453fa5eb1a3d25ff1e802142179b65396f9)
+- **Created slack and email alerts for failed canary containers deployment**: This is different from the pipeline canary failure mentioned above. This alert comes from the deploy script based on the average response time of the canary container: [commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/a6b2ab5441e6824827b17c06e27478ad52a6dec2)
+- **Added the infrastructure for logging** - for auto_deploy, canary container fail: [commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/da19fc51f2c09dca84a83733f15a3818de653f26)
+- **Helped Rishabh with auto-deployment part**- Data integration for automated model updates: [commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/53afab5d79ea4a73a66ca4b7cec4a7ebfc6d6f69)
 
-- I took initiative in the earlier part of the project to get things rolling because I had back to back exams and other deliverables near to M3 deadline. I raised this point with prof. too. As a result, I tended to ask everyone to stay back and meet after classes - get the momentum going.
+- I took initiative in the earlier part of the project to get things rolling because I had back to back exams and other deliverables near to M3 deadline. I raised this point with prof. too. As a result, spent quite a bit of time to get deliverables in perspective. I discussed extensively with Varun. We combined all the expectation, project requirements, report requirements and points distribution in a single page to have a clear idea. [link](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/wikis/M3-notes)
 
 - **Kubernetes**: I spent a lot of time trying to get kubernetes to run on our team's server. I worked closely on it with Varun and we spent around 4 days cumulatively. I learnt so much during the process but it led to a lot lost time which could have been used elsewhere. We were able to get it working only on port 80 of the exposed api which sadly was not practical for this project. The intention behind using kubernetes was the production grade capabilities for load balancing, canary releases and replicas to ensure availability. I even reached out to Deeksha for the same. I have extensively documented the issues observed and the command line remnants from one of the troubleshooting sessions.
 link to issues in detail:
@@ -250,10 +249,20 @@ issues in short:
 
 - Helping out the team with the general stuff: report writing, presentation, coordination and team management.
 
-**Merge requests reviewed and raised:**
+**Merge requests reviewed:**
+Reviews given: [request 57](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/57#note_62121), [request 62](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/62#note_62168)
 
-**Report writing:**
+MR approval based workflow was followed within team: [example](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/58)
+
+**Report writing:** [Add provenance](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/67e47995009a337e4255961fa4f580135c980d31), [Report writing commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/a9f5f9276afd0fa313c28b3071c689a7bcc9fb4a)
 
 **Meeting notes created:**
+We followed an evolving doc approach for making meeting notes. In the single wiki page, team members kept on adding more info. for M3. My contribution can be tracked from history tab of that page. Link to evolving wiki page: [here](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/wikis/M3-Meeting-Notes)
 
-note: I felt that everyone worked great for M3. Each member really got involved in the project and pushed as best as they could. I am quite pleased with how everyone collaborated and not just for the sake of points.
+Other notes:
+M3 stuck on port issue for kubernetes cluster: [here](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/wikis/M3---stuck-on-port-issue-for-kubernetes-cluster)
+
+Project session Nov 7 notes: [here](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/wikis/Project-session-Nov-7-notes)
+
+
+*Note: I felt that everyone worked great for M3. Each member really got involved in the project and pushed as best as they could. I am quite pleased with how everyone collaborated and not just for the sake of points.*
