@@ -83,6 +83,31 @@ To determine whether to perform the canary release, we perform the following Pro
 
 [^pfe]: https://pypi.org/project/prometheus-flask-exporter/
 
+### Provenance
+Our idea behind having provenance in the system was to bind the data and models to our gitlab commits. We wanted to include precise commit messages to help us track the evolution of data/ model with each iteration. As the pipeline code is already tracked based on the commits, we figured this would be a good idea. It is to be noted that uploading models to gitlab is impractical due to size issues. Also, our deployment works through the code changes on our repo and it is heavily making use of gitlab CI/CD so we wanted the benefits of versioning using gitlab for models as well.
+
+**We do the following:** On the host machine (our team-4 server), we have initialized dvc in the deployed github repo. We use it to create .dvc files for models. These files are metadata for the models which can be uploaded to gitlab for each version of the model. They primarily consist of md5 hash and as such are pretty small. the benefit is .dvc files provide a way for us to link models to commits without actually committing the big model files. We decided it would be the most practical to add the model file for tracking when data collection was happening. So whenever, our automated data collection script appends processed data to existing one on the host machine (outside of any container), we also initiate training of the model and include the resulting .dvc file of the tracked and trained model to the github commit. (**link to code demontrating that:** dvc tracking within automated data creation pipeline) It can be argued that the host machine does not possess resources to store different versions of model which is true as each model is roughly 2GB in size. We can offload those models to remote storage using dvc with the .dvc files acting as symbolic links. Since we did not have access to such a free remote storage to host multiple models, as a proof of concept: we kept different versions of models but in the form of .dvc files along with the data files. We committed these to the gitlab repo as well. This is to denote the remote offloading in real scenario. (**link to code demontrating that**: remote offloading and versioning)
+
+This allows us to have a great versioning track record of the models and data. (**link to depict what I mean**)
+
+**Further enhancement**: With the above approach, we were able to track the evolution of data and models along with the pipeline code but linking each individual recommendation with the pipeline code, model and data used to make that recommendation was difficult. We worked out the following approach:
+- We created a new mysql container which would host a database on our team's server host machine. To put in perspective, this will be a separate container apart from the release containers and the host machine itself where the auto-data collection scripts were scheduled with cron job. Now the mysql container is having a persistently mounted storage. The mysql container is connected to the same docker network as the release containers and is part of docker compose.yml for releases. This was necessary to ensure database connection from within release containers to the mysql docker container. (**link to code implementation**: docker compose file)
+- We created two tables in the database namely:
+  - reccom (version_number INT, user_id INT);
+  - tracking (version_number INT, data_creation TIMESTAMP, trained_on TIMESTAMP, model_rmse FLOAT);
+- Since the mysql container had its port exposed, the host machine could insert data in the tracking table while the release containers were bound to the mysql database when the app was launched. The connection was opened and close using app_context and tear_down methods of flask. The release containers would insert records in reccom table linking version_number and user_ids of the recommendations being served.
+- Lastly, with each iteration of data training and model updation: we increment a unique identifier in our auto_deployment module known as version_number which essentially tracks and relates the changes in data to models. It is to be noted that the version.txt file having the number is part of our commit whenever automated data updation happens. Now, each container would have its own copy of the version number depending on which model it is serving which in turn is dependent on the data being used to train it.
+- As a result, we store the version_number, and the userID served by the container running that version of model+data along with the data creation timestamp, model creation timestamp and model_rmse score for that version_number in our database. Using a join query helps deliver the output of granular provenance per userID request. (**link to concrete example**: *we recorded a small video depicting it in action and explaining more*)
+**example:** Following screenshot depicts the last two rows of the result set sorted in descending order for user_ids. We could not display all the rows due to space limitations in the screenshot.
+
+
+link to mysql insertion query updates from container image:
+  - helper functions:
+link to host insertion queries:
+  - helper functions:
+
+
+
 **Reflection on Recommendation Service**
 **Telemetry Collection System**
 **Challenge:**
@@ -182,3 +207,30 @@ https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/6e72b5ae933a3ea170835f
 - Tamara fairness feedback loop: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/67
 
 **Meeting notes created:** https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/wikis/M3:-Issue-discussion,-debugging-and-development-sync-up
+
+
+### Contributions by Aayush:
+I have provided explanation on what I did and linked the commit for the same. The issue number is added in the commit message. Helps in linking issues to commit on gitlab.
+- **Developed the dvc infrastructure - connected it auto data and model updates**: 
+- **Set up the versioning for data files and models**:
+- **Developed per request tracking solution** - Created the mysql container deployment, connected it with the auto updates, linked release containers to it so that insertion queries go through:
+- **Fixed stale docker containers issue during data collection**:
+- **Created slack and email alerts for failed canary containers deployment**: This is different from the pipeline canary failure mentioned above. This alert comes from the deploy script based on the average response time of the canary container:
+- **Added the infrastructure for logging**:
+- **Helped Rishabh with auto-deployment part**:
+
+- I took initiative in the earlier part of the project to get things rolling because I had back to back exams and other deliverables near to M3 deadline. I raised this point with prof. too. As a result, I tended to ask everyone to stay back and meet after classes - get the momentum going.
+
+- **Kubernetes**: I spent a lot of time trying to get kubernetes to run on our team's server. I worked closely on it with Varun and we spent around 4 days cumulatively. I learnt so much during the process but it led to a lot lost time which could have been used elsewhere. We were able to get it working only on port 80 of the exposed api which sadly was not practical for this project. The intention behind using kubernetes was the production grade capabilities for load balancing, canary releases and replicas to ensure availability. I even reached out to Deeksha for the same. I have extensively documented the issues observed and the command line remnants from one of the troubleshooting sessions.
+link to issues in detail:
+link to troubleshooting:
+issues in short:
+
+- Helping out the team with the general stuff: report writing, presentation, coordination and team management.
+
+**Merge requests reviewed and raised:**
+
+
+**Meeting notes created:**
+
+note: I felt that everyone worked great for M3. Each member really got involved in the project and pushed as best as they could. I am quite pleased with how everyone collaborated and not just for the sake of points.
