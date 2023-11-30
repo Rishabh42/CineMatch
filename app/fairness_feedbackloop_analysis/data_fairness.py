@@ -11,6 +11,7 @@ DATA_PATH = os.path.join(CURR, 'app', 'data')
 FILE_NAME_USERS = 'user_data.csv'
 FILE_NAME_RATINGS = 'cleaned_rating.csv'
 FILE_NAME_MOVIES = 'filtered_responses.csv'
+RESULT_PATH = os.path.join(CURR, 'app', 'fairness_feedbackloop_analysis', 'results')
 
 
 # In the users dataset
@@ -108,7 +109,47 @@ def ratings_by_gender_age(gender, age):
     return ratings_value_counts('rate', [('gender', gender), ('age', age)])
 
 
-# Other
+# Write the result in a csv file
+
+def write_csv(data, file_name):
+    # data is a value_count
+    data.to_csv(os.path.join(RESULT_PATH, file_name))
+
+
+def write_age_balance():
+    labels = get_labels('gender')
+    value_count = users_age_balance().reset_index()
+    for label in labels:
+        value_count_c = users_age_balance_by_gender(label).reset_index()
+        value_count = value_count.merge(value_count_c, on='index')
+    write_csv(value_count, 'users_age_balance.csv')
+
+
+def write_occupation_balance():
+    list_labels = []
+    labels_gender = get_labels('gender')
+    value_count = users_occupation_balance().reset_index()
+    for label in labels_gender:
+        list_labels.append(label)
+        value_count_c = users_occupation_balance_by_gender(label).reset_index()
+        value_count = value_count.merge(value_count_c, on='index', how='outer')
+    labels_age = get_labels('age')
+    for label in labels_age:
+        list_labels.append(label)
+        value_count_c = users_occupation_balance_by_age(label).reset_index()
+        if len(value_count_c) > 0:
+            value_count = value_count.merge(value_count_c, on='index', how='outer')
+    for label1 in labels_age:
+        for label2 in labels_gender:
+            list_labels.append(f'{label1}_{label2}')
+            value_count_c = users_occupation_balance_by_gender_age(label2, label1).reset_index()
+            if len(value_count_c) > 0:
+                value_count = value_count.merge(value_count_c, on='index', how='outer')
+    write_csv(value_count.fillna(0), 'users_occupation_balance.csv')
+    print(list_labels)
+
+
+# Other functions
 
 def percentage(x):
     return x / float(x.sum()) * 100
@@ -194,5 +235,11 @@ def age_gender():
     print(mean_f)
 
 
+def get_labels(column_name):
+    data = load_dataset_from_csv(DATA_PATH, FILE_NAME_USERS, ['user_id', 'age', 'occupation', 'gender'])
+    return data[column_name].unique().tolist()
+
+
 if __name__ == '__main__':
-    age_gender()
+    write_occupation_balance()
+
