@@ -389,6 +389,7 @@ https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/6e72b5ae933a3ea170835f
   2. Added rule to merge only when the pipeline succeeds
 
 **Merge requests reviewed by Rishabh:**
+Reviewed majority of the merge requests, linking some for your reference: 
 - Fixed the hanging bug: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/55
 - Canary release set up and scripts: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/52
 - Add the db provenance changes from data-integration to development: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/63
