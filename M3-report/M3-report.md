@@ -83,8 +83,9 @@ To determine whether to perform the canary release, we perform the following Pro
 
 [^pfe]: https://pypi.org/project/prometheus-flask-exporter/
 
-**Reflection on Recommendation Service**
-**Telemetry Collection System**
+## Reflection on Recommendation Service
+
+### Telemetry Collection System
 **Challenge:**
 
 The initial challenge was managing a vast volume of logs. Loki was chosen for its promise of efficient storage, but it presented limitations in log retrieval and high CPU usage.
@@ -100,21 +101,17 @@ Our team transitioned to a file-based system, opting to store logs in CSV files.
 With additional resources, the ideal solution would be to implement a database specifically for telemetry post-processing, aiming to enhance storage efficiency and retrieval capabilities.
 
 
-**Load Balancing and Kubernetes**
-
+### Load Balancing and Kubernetes
 
 **Challenge:**
-
 Implementing Kubernetes for load balancing and canary deployment was challenging, particularly due to the lack of root access and difficulties in configuring load balancers on specific ports.
 
 
 **Current Solution:**
-
 Our team reverted to a simpler solution using an NGINX load balancer and bash scripts for canary deployment.
 
 
 **Reflection:**
-
 This part of the project highlighted the importance of balancing ambitious technological implementations with practical project management considerations.
 Training Data for the Model
 
@@ -128,8 +125,13 @@ A critical aspect was the training data for the model. Our team faced the challe
 
 Moving forward, the focus will be on enhancing data collection and curation processes. Acquiring more comprehensive and diverse datasets is a primary goal to improve the model's performance and reliability.
 
-### Contributions by Yaoqiang
-**Data processing scripts for automated model updates**:
+## Reflections on Teamwork
+
+## Contributions 
+
+### Contributions by Yaoqiang:
+
+*Data processing scripts for automated model updates*:
 
 I worked on the data processing scripts for automated model updates for M3. One of the significant contributions is which I crafted a pivotal script, kafka_consumer_data_appender.py, that streamlined our data handling. This script automates the collection and processing of real-time movie ratings from a Kafka server, elegantly solving the challenge of efficiently managing and integrating large data streams. Its functionality extends to structuring raw data and appending it to a centralized dataset. This contribution significantly alleviates data processing bottlenecks, enhances scalability, and ensures a consistent flow of processed data. 
 
