@@ -43,13 +43,12 @@ However, the distribution within the datasets is highly uneven between social gr
 We have also examined intersections of social groups. For example, we observed that, on average, women are older than men, and 11% of women are academics/educators compared to 2% of men. Regarding differences in occupations between women and men, we would like to emphasize that achieving balance in this intersection of social groups can be more complex than simply having a similar representation across occupations between women and men because a person's occupation is not an independent variable from their gender, unlike age and gender, which can be considered independent. 
 
 
+<img src="https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/raw/tamara-fairness-feedback-loop/app/fairness_feedbackloop_analysis/results/GenderDistribution.png" alt="GenderDistribution" width="500"/>
 
-![GenderDistribution](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/raw/tamara-fairness-feedback-loop/app/fairness_feedbackloop_analysis/results/GenderDistribution.png)
+<img src="https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/raw/tamara-fairness-feedback-loop/app/fairness_feedbackloop_analysis/results/AgeDistribution.png" alt="AgeDistribution" width="500"/>
 
-![AgeDistribution](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/raw/tamara-fairness-feedback-loop/app/fairness_feedbackloop_analysis/results/AgeDistribution.png)
+<img src="https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/raw/tamara-fairness-feedback-loop/app/fairness_feedbackloop_analysis/results/MenOccupationDistribution.png" alt="MenOccupationDistribution" width="500"/>
 
-![OccupationDistributionMen](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/raw/tamara-fairness-feedback-loop/app/fairness_feedbackloop_analysis/results/MenOccupationDistribution.png)
-
-![OccupationDistributionWomen](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/raw/tamara-fairness-feedback-loop/app/fairness_feedbackloop_analysis/results/WomenOccupationDistribution.png)
+<img src="https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/raw/tamara-fairness-feedback-loop/app/fairness_feedbackloop_analysis/results/WomenOccupationDistribution.png" alt="WomenOccupationDistribution" width="500"/>
 
 You can find all the statistics and results of our analysis [here](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/tree/tamara-fairness-feedback-loop/app/fairness_feedbackloop_analysis/results), and the code to generate these results [here](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/tamara-fairness-feedback-loop/app/fairness_feedbackloop_analysis/data_fairness.py).
