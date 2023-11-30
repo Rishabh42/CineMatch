@@ -284,6 +284,7 @@ https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/6e72b5ae933a3ea170835f
     - [Containerization](#containerization)
     - [Releases](#releases)
     - [Reflections on Teamwork](#reflections-on-teamwork)
+    - Refined [Reflections on Recommendation Service](#reflections-on-recommendation-service)
 
 **Merge requests reviewed**:
 - dev --> main: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/59
