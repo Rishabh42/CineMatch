@@ -129,9 +129,9 @@ A critical aspect was the training data for the model. Our team faced the challe
 Moving forward, the focus will be on enhancing data collection and curation processes. Acquiring more comprehensive and diverse datasets is a primary goal to improve the model's performance and reliability.
 
 ### Contributions by Yaoqiang
-**Auto Development**:
+**Data processing scripts for automated model updates**:
 
-I worked on the Auto Development for M3. One of the significant contributions is which I crafted a pivotal script, kafka_consumer_data_appender.py, that streamlined our data handling. This script automates the collection and processing of real-time movie ratings from a Kafka server, elegantly solving the challenge of efficiently managing and integrating large data streams. Its functionality extends to structuring raw data and appending it to a centralized dataset. This contribution significantly alleviates data processing bottlenecks, enhances scalability, and ensures a consistent flow of processed data. 
+I worked on the data processing scripts for automated model updates for M3. One of the significant contributions is which I crafted a pivotal script, kafka_consumer_data_appender.py, that streamlined our data handling. This script automates the collection and processing of real-time movie ratings from a Kafka server, elegantly solving the challenge of efficiently managing and integrating large data streams. Its functionality extends to structuring raw data and appending it to a centralized dataset. This contribution significantly alleviates data processing bottlenecks, enhances scalability, and ensures a consistent flow of processed data. 
 
 
 Relevant commits:  
