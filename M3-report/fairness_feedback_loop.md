@@ -111,3 +111,8 @@ In an [Excel spreadsheet](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blo
 For example, we observe a very significant negative correlation when comparing with the non-absolute difference with the previous mean of ratings (r = -0.61221059, p = 3.0293E-250). This means that the most liked films are the ones that have lost the most in popularity, and the least liked films are the ones that have gained the most in popularity. However, this can be explained by the fact that movies that are nearly rated 5/5 have little room for improvement, and movies that are nearly rated 1/5 have little room for deterioration.
 
 You can find the implementation of this part [here.](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/tamara-fairness-feedback-loop/app/fairness_feedbackloop_analysis/feedback_loop.py)
+
+# Contribution
+
+Conceptual Analysis of Potential Problems: Tamara ([commit 1](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/b337f8a6c6b9565cc590b93b24d70722e7a4d16a), [commit 2](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/c735919017e60e0d04d48bc38883593fbc80f45b), [commit 3](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/47a61d3aaa15621b9b6357110f2915e1998e2aee), ... (all the commits on the report))
+Analysis of Problems in log Data: Tamara ([commit 1](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/ed660124e3f4c9a6f9ab8a409dbf37f8ca927d82), [commit 2](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/3f58aa15fd5634996b2b7cab4ff8fe2eac7ab226), [commit 3](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/775c04af41486b0e8bfaec325bf3a4b8596981e2), [commit 4](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/f9fdac273fb4bac7896abf21905c0b520e5d53c0))
