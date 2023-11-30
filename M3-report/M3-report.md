@@ -159,3 +159,23 @@ https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/51
 https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/6e72b5ae933a3ea170835f9064b5134533d4b6f2
 
 - Also brainstormed on the Auto Development with Rishabh.
+
+### Contributions by Rishabh:
+- Developed the automated model updates script (Corresponding issue: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/issues/58 ): https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/main/app/auto_deployment/auto_deploy.py 
+- Developed the Python scheduler: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/main/app/auto_deployment/scheduler.py 
+- Developed the email notification service: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/main/app/auto_deployment/emailer.py 
+- Pipeline/Offline eval metric (Corresponding issue:): https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/issues/52
+- Code file: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/blob/main/app/tests/model/test_model.py#L149 
+- Debugging and making sure that the pipeline is working fine: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/issues/52 
+- Brainstormed with Varun on Canary releases, helped with the correct paths/routes and failing test cases.
+- Assisted Luke with Kafka data processing
+- Assisted Aayush with data integration in the `auto_deploy.py` script
+- Repo quality assurance: 
+1. Added rule to have at least 1 approval for MR 
+2. Added rule to merge only when the pipeline succeeds
+
+Merge requests reviewed:
+- https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/55
+- https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/merge_requests/52
+
+Meeting notes created: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/wikis/M3:-Issue-discussion,-debugging-and-development-sync-up
