@@ -115,20 +115,20 @@ _Revisit the user stories you wrote in Assignment 1. Discuss what kind of decisi
       - **Knowledge:** Understanding of how to write a prompt.
       - **Effort:** Moderate effort: the student have to actively think about how to write the prompt.
 
-4) As a student, I want to generate key ideas from notes I wrote so that I can save time when I just want to remember the principal ideas of my lecture notes. 
+4) **User story:** As a student, I want to generate key ideas from notes I wrote so that I can save time when I just want to remember the principal ideas of my lecture notes. 
     - **Decision:** Determining which notes to give to the AI to generate the key ideas.
       - **Knowledge:** Familiarity with the notes.
       - **Effort:** Low effort: most of the time, the student will just give the entire messy notes without reviewing them a lot.
    
-5) As a team collaborator, I want to quickly summarize and structure messy meeting notes into a clear meeting minute so that I can save time and send to my collaborators clear and structured meeting minutes. 
+5) **User story:** As a team collaborator, I want to quickly summarize and structure messy meeting notes into a clear meeting minute so that I can save time and send to my collaborators clear and structured meeting minutes. 
     - **Decision:** Determining which meeting notes to give to the AI to generate the meeting minute.
       - **Knowledge:** Understanding of meeting context and familiarity with the notes.
       - **Effort:** Low to moderate effort: the effort will depend on how efficient the AI is, and whether the notes can be given almost entirely to generate an understandable and relevant meeting minute.
-    - **Decision:** choose the information that should appear in the meeting minute / the structure of the meeting minute (in the case where the user gives more information to the AI to generate the meeting minute)
+    - **Decision:** Choose the information that should appear in the meeting minute / the structure of the meeting minute (in the case where the user gives more information to the AI to generate the meeting minute)
       - **Knowledge:** Understanding of meeting context and familiarity with the notes.
       - **Effort:** Moderate effort: the collaborator have to actively think about the structure of the meeting minute.
    
-6) As a team collaborator, I want to generate a meeting agenda based on notes or old meeting minutes so that we can know exactly what we should discuss in meetings. 
+6) **User story:** As a team collaborator, I want to generate a meeting agenda based on notes or old meeting minutes so that we can know exactly what we should discuss in meetings. 
     - **Decision:** Determining which old meeting minutes to give to the AI to generate the meeting agenda.
 	    - **Knowledge:** Familiarity with the old meeting minutes.
 	    - **Effort:** Moderate effort: the collaborator must actively think about which mitunes are relevant to generate the meeting agenda.
@@ -136,21 +136,30 @@ _Revisit the user stories you wrote in Assignment 1. Discuss what kind of decisi
       - **Knowledge:** Understanding of meeting context.
       - **Effort:** Moderate effort: maybe the collaborator have to correct some of the generate part of the meeting agenda.
    
-7) As a team collaborator, I want the AI to automatically add into my calendar the next meetings or deadlines that we discussed in our meeting notes so that I'm sure I won't miss any appointments or deadlines. 
+7) **User story:** As a team collaborator, I want the AI to automatically add into my calendar the next meetings or deadlines that we discussed in our meeting notes so that I'm sure I won't miss any appointments or deadlines. 
+    - **Decision:** Removing irrelevant dates adding to the calendar by the AI.
+      - **Knowledge:** Awareness of upcoming events and deadlines.
+      - **Effort:** Low effort: The collaborator only have to review the new deadlines add to his/her calendar after the meeting.
    
-8) As a researcher I want to generate a summary for a research paper so that I can easily know what the paper is about and what are the key ideas of the paper. 
+8) **User story:** As a researcher I want to generate a summary for a research paper so that I can easily know what the paper is about and what are the key ideas of the paper. 
+    - **Decision:** Determine the length of the summary and/or how detailed the summary is.
+      - **Knowledge:** Understanding of the amount of information needed to capture important key ideas of a paper.
+      - **Effort:** Low effort: This is a decision that may require a little effort for the first papers, but over time the researcher will know his or her preferences.
+    - **Decision:** Determine if he or she would like more information on a part of the paper after reading the first summary. (for example regenerate a summary for a particular part, or asking for more precision)
+      - **Knowledge:** Understanding of the paper's subject.
+      - **Effort:** High effort: The researcher have to understand he summary and know what can be relevant for his/her research.
    
-9) As a researcher I want to know how Notion uses my data when I use their AI so that I can know if I can use AI to work on sensitive content that requires privacy. 
+9) **User story:** As a researcher I want to know how Notion uses my data when I use their AI so that I can know if I can use AI to work on sensitive content that requires privacy. 
    
-10) As a researcher and a non-native English speaker, I want to easily translate what I write so that I can get help writing my papers in English when I don't know the translation of a word. 
+10) **User story:** As a researcher and a non-native English speaker, I want to easily translate what I write so that I can get help writing my papers in English when I don't know the translation of a word. 
 
-11) As a researcher and a non-native English speaker, I want the AI to reformulate and improve what I wrote so that my papers seem to be written by a native English speaker. 
+11) **User story:** As a researcher and a non-native English speaker, I want the AI to reformulate and improve what I wrote so that my papers seem to be written by a native English speaker. 
 
-12) As a researcher I want to quickly structure all the references I keep track of so that I can quickly find a reference that I am looking for. 
+12) **User story:** As a researcher I want to quickly structure all the references I keep track of so that I can quickly find a reference that I am looking for. 
 
-13) As a researcher who work in a lab with not much fundings, I want to have access to some Notion AI features for free so that I can be more productive in my research and participate in the common good without spending money. 
+13) **User story:** As a researcher who work in a lab with not much fundings, I want to have access to some Notion AI features for free so that I can be more productive in my research and participate in the common good without spending money. 
 
-14) As an academic member, I want to generate a list of ideas on a specific subject so that I can quickly collect ideas that I can develop for a project or a work.
+14) **User story:** As an academic member, I want to generate a list of ideas on a specific subject so that I can quickly collect ideas that I can develop for a project or a work.
 
 ### 2. **Question 2.2:** 
 _Examine each decision-making point closely and consider if the users are vulnerable to any of the four biases from the work [Judgment under uncertainty: Heuristics and biases](https://www.jstor.org/stable/pdf/1738360.pdf?casa_token=PEUwAsY9bNoAAAAA:i7KvVWYA73fJzugepP9xnVfBc_tCv1TWq884garHfyiwpR0kooepIGbSSfu__bxvaMYyMxTwGpCTCfzWrRXJI5-ghi44wtwX_WrGiSdQ2fKla6PhPH8), i.e., Representativeness, Availability, Adjustment and Anchoring. Explain how the design of the product exacerbates or alleviates each of the users' biases. [20] For the designs that alleviate users' biases, what kind of information should be presented and how so that it might improve the users' decision-making? [5]_
