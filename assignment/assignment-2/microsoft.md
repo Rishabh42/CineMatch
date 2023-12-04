@@ -78,7 +78,7 @@ Notion AI does not limit disruptive changes when updating and adapting the AI sy
 
 Yes, user can provide granular feedback and also give a thumbs up/down rating to the text prompts.
 
-![](/assignment/assignment-2/artifacts/g8.png)
+![](/assignment/assignment-2/artifacts/g15.png)
 _Figure 6: Feednack suggestion_
 
 ### G16: Convey the consequences of user actions
