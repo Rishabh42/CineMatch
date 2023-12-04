@@ -106,14 +106,14 @@ _Revisit the user stories you wrote in Assignment 1. Discuss what kind of decisi
 	- **Decision:** Determining which notes to give to the AI to generate the todo list.
 	  - **Knowledge:** Familiarity with the notes and prioritization.
 	  - **Effort:** Moderate effort, the student must actively think about which note to include.
-  - **Decision:** Review the generate todo list and determine which ones are relevant to his/her needs.
-    - **Knowledge:** Knowing his/her need and what can be relevent to him/her, knowing the notes.
-    - **Effort:** Low effort, the student only have to review and keep or remove the todos.
+    - **Decision:** Review the generate todo list and determine which ones are relevant to his/her needs.
+      - **Knowledge:** Knowing his/her need and what can be relevent to him/her, knowing the notes.
+      - **Effort:** Low effort, the student only have to review and keep or remove the todos.
 
 3) **User story:** As a student, I want to generate content on events that are happening now or on recent works so that I can have up-to-date information when I study recent works or events. 
-  - **Decision:** Creating the prompt to ask for information on a particular event.
-    - **Knowledge:** Understanding of how to write a prompt.
-    - **Effort:** Moderate effort, the student have to actively think about how to write the prompt.
+    - **Decision:** Creating the prompt to ask for information on a particular event.
+      - **Knowledge:** Understanding of how to write a prompt.
+      - **Effort:** Moderate effort, the student have to actively think about how to write the prompt.
 
 4) As a student, I want to generate key ideas from notes I wrote so that I can save time when I just want to remember the principal ideas of my lecture notes. 
    
