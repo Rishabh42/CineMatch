@@ -47,7 +47,7 @@ he would be proactive in ensuring that Notion AI is used as a supplement to the 
 
 Team Dynamics could shift because members vary in their dependencies  on AI, with Carl taking a leadership role in guiding the responsible use of AI.
 
-**Akira**
+**Akira:**
 
 **Consequences for Akira:**
 
