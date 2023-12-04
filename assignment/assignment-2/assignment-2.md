@@ -97,6 +97,8 @@ _Compare the report from the two works. Discuss how well they support the HAI de
 ### 1. **Question 2.1:** 
 _Revisit the user stories you wrote in Assignment 1. Discuss what kind of decisions (big or small) its users need to make during interaction when trying to achieve their goals. Explain what the decision is, what knowledge is required to make the decision, and how much effort is needed to make such decisions. [10]_
 
+For each user story we wrote in Assignment 1, we determined the decisions that the user had to make during the interaction with the AI, in order to achieve their goals:
+
 1) **User story:** As a student, I want to have indications when I did spelling or c mistakes in a text so that I can be sure that I submit a report without grammatical or spelling errors. 
 	- **Decision:** Accept or correct the spelling or grammatical suggestions.
 		- **Knowledge:** Understanding of correct spelling and grammar.
