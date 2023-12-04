@@ -36,7 +36,7 @@ she would lean on the AI for efficiency but may also carry out specific times to
 As Maya becomes more dependent on Notion AI, she could influence her peers to adopt similar tools, potentially changing the study groups from traditional discussions to more technology-driven ways.
 Professors might question the depth of her understanding if her work appears lack of her voice, prompting Maya to balance AI use with her own inputs.
 
-**Carl: **
+**Carl:**
 
 **Consequences for Carl:**
 
@@ -48,6 +48,7 @@ he would be proactive in ensuring that Notion AI is used as a supplement to the 
 Team Dynamics could shift because members vary in their dependencies  on AI, with Carl taking a leadership role in guiding the responsible use of AI.
 
 **Akira**
+
 **Consequences for Akira:**
 
 Akira may feel a combination of relief at the ease of managing administrative tasks and concern over privacy and originality.
