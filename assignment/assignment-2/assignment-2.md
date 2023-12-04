@@ -171,13 +171,19 @@ _Revisit the user stories you wrote in Assignment 1. Discuss what kind of decisi
     - **Decision:** Adding a reference.
       - **Knowledge:** Knowing the reference relevance. 
       - **Effort:** Low effort: for a researcher, this is done rather automatically.
-    - **Decision:** Choosing the category of my references.
+    - **Decision:** Choosing the category of the references.
       - **Knowledge:** Understanding of the research domain.
       - **Effort:** Moderate effort: The researcher have to actively think about which category are relevant.
 
 13) **User story:** As a researcher who work in a lab with not much fundings, I want to have access to some Notion AI features for free so that I can be more productive in my research and participate in the common good without spending money. 
+    - **Decision:** Choosing which features are essential for free use. (for example in the case where notion leaves the possibility of choosing a limited number of features for free)
+      - **Knowledge:** Understanding Notion's AI feature.
+      - **Effort:** Moderate effort: The researcher have to actively think about which features are relevant for his/her works.
 
 14) **User story:** As an academic member, I want to generate a list of ideas on a specific subject so that I can quickly collect ideas that I can develop for a project or a work.
+    - **Decision:** Creating the prompt to generate the list of ideas.
+      - **Knowledge:** Understanding of how to write a prompt.
+      - **Effort:** Moderate effort: the academic member have to actively think about how to write the prompt.
 
 ### 2. **Question 2.2:** 
 _Examine each decision-making point closely and consider if the users are vulnerable to any of the four biases from the work [Judgment under uncertainty: Heuristics and biases](https://www.jstor.org/stable/pdf/1738360.pdf?casa_token=PEUwAsY9bNoAAAAA:i7KvVWYA73fJzugepP9xnVfBc_tCv1TWq884garHfyiwpR0kooepIGbSSfu__bxvaMYyMxTwGpCTCfzWrRXJI5-ghi44wtwX_WrGiSdQ2fKla6PhPH8), i.e., Representativeness, Availability, Adjustment and Anchoring. Explain how the design of the product exacerbates or alleviates each of the users' biases. [20] For the designs that alleviate users' biases, what kind of information should be presented and how so that it might improve the users' decision-making? [5]_
