@@ -150,12 +150,30 @@ _Revisit the user stories you wrote in Assignment 1. Discuss what kind of decisi
       - **Effort:** High effort: The researcher have to understand he summary and know what can be relevant for his/her research.
    
 9) **User story:** As a researcher I want to know how Notion uses my data when I use their AI so that I can know if I can use AI to work on sensitive content that requires privacy. 
+    - **Decision:** Assessing the privacy implications of using the Notion AI knowing the Notion's Privacy Policy.
+      - **Knowledge:** Understanding Notion's privacy policy.
+      - **Effort:** High effort: The research have to understand perfectly the privacy information.
    
 10) **User story:** As a researcher and a non-native English speaker, I want to easily translate what I write so that I can get help writing my papers in English when I don't know the translation of a word. 
+    - **Decision:** Choosing when to use language translation.
+      - **Knowledge:** Identifying words where he or she don't know the translation.
+      - **Effort:** Low effort: Most of the time, it's easy to know when you don't know the translation by yourself.
+    - **Decision:** Choosing to accept the translation or not.
+      - **Knowledge:** Understanding of the language
+      - **Effort** Low effort: The researcher only have to review the translation.
 
 11) **User story:** As a researcher and a non-native English speaker, I want the AI to reformulate and improve what I wrote so that my papers seem to be written by a native English speaker. 
+    - **Decision:** Selecting sentences for improvement.
+      - **Knowledge:** Understanding of English language.
+      - **Effort:** Moderate effort: The researcher have to review and accept the improvements.
 
 12) **User story:** As a researcher I want to quickly structure all the references I keep track of so that I can quickly find a reference that I am looking for. 
+    - **Decision:** Adding a reference.
+      - **Knowledge:** Knowing the reference relevance. 
+      - **Effort:** Low effort: for a researcher, this is done rather automatically.
+    - **Decision:** Choosing the category of my references.
+      - **Knowledge:** Understanding of the research domain.
+      - **Effort:** Moderate effort: The researcher have to actively think about which category are relevant.
 
 13) **User story:** As a researcher who work in a lab with not much fundings, I want to have access to some Notion AI features for free so that I can be more productive in my research and participate in the common good without spending money. 
 
