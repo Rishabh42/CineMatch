@@ -99,15 +99,21 @@ _Revisit the user stories you wrote in Assignment 1. Discuss what kind of decisi
 
 1) **User story:** As a student, I want to have indications when I did spelling or c mistakes in a text so that I can be sure that I submit a report without grammatical or spelling errors. 
 	- **Decision:** Accept or correct the spelling or grammatical suggestions.
-		  => **Knowledge:** Understanding of correct spelling and grammar.
-		  => **Effort:** Low effort, mostly involving reviewing and accepting or rejecting the suggestions.
+		- **Knowledge:** Understanding of correct spelling and grammar.
+	  - **Effort:** Low effort, the student only have to review and accept or reject the suggestions.
 
 2) **User story:** As a student, I want to generate todo list from notes so that I can clearly know what I need to do next and keep track of my progress without wasting the time to transform my notes into a todo list by myself.
 	- **Decision:** Determining which notes to give to the AI to generate the todo list.
-		  => **Knowledge:** Familiarity with the notes and prioritization.
-		  => **Effort:** Moderate effort, the student must actively think about which note to include.
+	  - **Knowledge:** Familiarity with the notes and prioritization.
+	  - **Effort:** Moderate effort, the student must actively think about which note to include.
+  - **Decision:** Review the generate todo list and determine which ones are relevant to his/her needs.
+    - **Knowledge:** Knowing his/her need and what can be relevent to him/her, knowing the notes.
+    - **Effort:** Low effort, the student only have to review and keep or remove the todos.
 
 3) **User story:** As a student, I want to generate content on events that are happening now or on recent works so that I can have up-to-date information when I study recent works or events. 
+  - **Decision:** Creating the prompt to ask for information on a particular event.
+    - **Knowledge:** Understanding of how to write a prompt.
+    - **Effort:** Moderate effort, the student have to actively think about how to write the prompt.
 
 4) As a student, I want to generate key ideas from notes I wrote so that I can save time when I just want to remember the principal ideas of my lecture notes. 
    
