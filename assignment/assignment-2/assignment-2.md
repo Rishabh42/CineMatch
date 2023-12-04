@@ -100,26 +100,41 @@ _Revisit the user stories you wrote in Assignment 1. Discuss what kind of decisi
 1) **User story:** As a student, I want to have indications when I did spelling or c mistakes in a text so that I can be sure that I submit a report without grammatical or spelling errors. 
 	- **Decision:** Accept or correct the spelling or grammatical suggestions.
 		- **Knowledge:** Understanding of correct spelling and grammar.
-	  - **Effort:** Low effort, the student only have to review and accept or reject the suggestions.
+	  - **Effort:** Low effort: the student only have to review and accept or reject the suggestions.
 
 2) **User story:** As a student, I want to generate todo list from notes so that I can clearly know what I need to do next and keep track of my progress without wasting the time to transform my notes into a todo list by myself.
 	- **Decision:** Determining which notes to give to the AI to generate the todo list.
 	  - **Knowledge:** Familiarity with the notes and prioritization.
-	  - **Effort:** Moderate effort, the student must actively think about which note to include.
+	  - **Effort:** Moderate effort: the student must actively think about which note to include.
     - **Decision:** Review the generate todo list and determine which ones are relevant to his/her needs.
       - **Knowledge:** Knowing his/her need and what can be relevent to him/her, knowing the notes.
-      - **Effort:** Low effort, the student only have to review and keep or remove the todos.
+      - **Effort:** Low effort: the student only have to review and keep or remove the todos.
 
 3) **User story:** As a student, I want to generate content on events that are happening now or on recent works so that I can have up-to-date information when I study recent works or events. 
     - **Decision:** Creating the prompt to ask for information on a particular event.
       - **Knowledge:** Understanding of how to write a prompt.
-      - **Effort:** Moderate effort, the student have to actively think about how to write the prompt.
+      - **Effort:** Moderate effort: the student have to actively think about how to write the prompt.
 
 4) As a student, I want to generate key ideas from notes I wrote so that I can save time when I just want to remember the principal ideas of my lecture notes. 
+    - **Decision:** Determining which notes to give to the AI to generate the key ideas.
+      - **Knowledge:** Familiarity with the notes.
+      - **Effort:** Low effort: most of the time, the student will just give the entire messy notes without reviewing them a lot.
    
 5) As a team collaborator, I want to quickly summarize and structure messy meeting notes into a clear meeting minute so that I can save time and send to my collaborators clear and structured meeting minutes. 
+    - **Decision:** Determining which meeting notes to give to the AI to generate the meeting minute.
+      - **Knowledge:** Understanding of meeting context and familiarity with the notes.
+      - **Effort:** Low to moderate effort: the effort will depend on how efficient the AI is, and whether the notes can be given almost entirely to generate an understandable and relevant meeting minute.
+    - **Decision:** choose the information that should appear in the meeting minute / the structure of the meeting minute (in the case where the user gives more information to the AI to generate the meeting minute)
+      - **Knowledge:** Understanding of meeting context and familiarity with the notes.
+      - **Effort:** Moderate effort: the collaborator have to actively think about the structure of the meeting minute.
    
 6) As a team collaborator, I want to generate a meeting agenda based on notes or old meeting minutes so that we can know exactly what we should discuss in meetings. 
+    - **Decision:** Determining which old meeting minutes to give to the AI to generate the meeting agenda.
+	    - **Knowledge:** Familiarity with the old meeting minutes.
+	    - **Effort:** Moderate effort: the collaborator must actively think about which mitunes are relevant to generate the meeting agenda.
+    - **Decision:** Review the generate meeting agenda and determine which parts are relevant to the meeting.
+      - **Knowledge:** Understanding of meeting context.
+      - **Effort:** Moderate effort: maybe the collaborator have to correct some of the generate part of the meeting agenda.
    
 7) As a team collaborator, I want the AI to automatically add into my calendar the next meetings or deadlines that we discussed in our meeting notes so that I'm sure I won't miss any appointments or deadlines. 
    
