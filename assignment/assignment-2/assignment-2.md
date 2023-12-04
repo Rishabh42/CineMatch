@@ -97,6 +97,40 @@ _Compare the report from the two works. Discuss how well they support the HAI de
 ### 1. **Question 2.1:** 
 _Revisit the user stories you wrote in Assignment 1. Discuss what kind of decisions (big or small) its users need to make during interaction when trying to achieve their goals. Explain what the decision is, what knowledge is required to make the decision, and how much effort is needed to make such decisions. [10]_
 
+1) **User story:** As a student, I want to have indications when I did spelling or c mistakes in a text so that I can be sure that I submit a report without grammatical or spelling errors. 
+	- **Decision:** Accept or correct the spelling or grammatical suggestions.
+		  => **Knowledge:** Understanding of correct spelling and grammar.
+		  => **Effort:** Low effort, mostly involving reviewing and accepting or rejecting the suggestions.
+
+2) **User story:** As a student, I want to generate todo list from notes so that I can clearly know what I need to do next and keep track of my progress without wasting the time to transform my notes into a todo list by myself.
+	- **Decision:** Determining which notes to give to the AI to generate the todo list.
+		  => **Knowledge:** Familiarity with the notes and prioritization.
+		  => **Effort:** Moderate effort, the student must actively think about which note to include.
+
+3) **User story:** As a student, I want to generate content on events that are happening now or on recent works so that I can have up-to-date information when I study recent works or events. 
+
+4) As a student, I want to generate key ideas from notes I wrote so that I can save time when I just want to remember the principal ideas of my lecture notes. 
+   
+5) As a team collaborator, I want to quickly summarize and structure messy meeting notes into a clear meeting minute so that I can save time and send to my collaborators clear and structured meeting minutes. 
+   
+6) As a team collaborator, I want to generate a meeting agenda based on notes or old meeting minutes so that we can know exactly what we should discuss in meetings. 
+   
+7) As a team collaborator, I want the AI to automatically add into my calendar the next meetings or deadlines that we discussed in our meeting notes so that I'm sure I won't miss any appointments or deadlines. 
+   
+8) As a researcher I want to generate a summary for a research paper so that I can easily know what the paper is about and what are the key ideas of the paper. 
+   
+9) As a researcher I want to know how Notion uses my data when I use their AI so that I can know if I can use AI to work on sensitive content that requires privacy. 
+   
+10) As a researcher and a non-native English speaker, I want to easily translate what I write so that I can get help writing my papers in English when I don't know the translation of a word. 
+
+11) As a researcher and a non-native English speaker, I want the AI to reformulate and improve what I wrote so that my papers seem to be written by a native English speaker. 
+
+12) As a researcher I want to quickly structure all the references I keep track of so that I can quickly find a reference that I am looking for. 
+
+13) As a researcher who work in a lab with not much fundings, I want to have access to some Notion AI features for free so that I can be more productive in my research and participate in the common good without spending money. 
+
+14) As an academic member, I want to generate a list of ideas on a specific subject so that I can quickly collect ideas that I can develop for a project or a work.
+
 ### 2. **Question 2.2:** 
 _Examine each decision-making point closely and consider if the users are vulnerable to any of the four biases from the work [Judgment under uncertainty: Heuristics and biases](https://www.jstor.org/stable/pdf/1738360.pdf?casa_token=PEUwAsY9bNoAAAAA:i7KvVWYA73fJzugepP9xnVfBc_tCv1TWq884garHfyiwpR0kooepIGbSSfu__bxvaMYyMxTwGpCTCfzWrRXJI5-ghi44wtwX_WrGiSdQ2fKla6PhPH8), i.e., Representativeness, Availability, Adjustment and Anchoring. Explain how the design of the product exacerbates or alleviates each of the users' biases. [20] For the designs that alleviate users' biases, what kind of information should be presented and how so that it might improve the users' decision-making? [5]_
 
