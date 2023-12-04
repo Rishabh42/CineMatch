@@ -54,30 +54,42 @@ _Figure 6: Notion AI output and further suggestions after changing tone of the s
 
 Depending on the kind of operation, Notion AI offers features to edit the generated content or to redo the operation. For example, in Figure 6, Notion AI provides the option to make the generates response longer or to try again. It is also possible to type in a new prompt in plain language ("Tell AI what to do next...") to refine or edit the response as one desires. For example, one could prompt Notion AI to convert the output to a bulleted list or table format.
 
-10. Scope services when in doubt.
+### G10: Scope services when in doubt
+
 Since Notion AI follows predefined instructions, it does not engage in disambiguation or gracefully degrade its services when uncertain about a user's goals
 
-11. Make clear why the system did what it did.
+### G11: Make clear why the system did what it did
+
 Notion AI is an assistant that follows predefined instructions to provide responses based on user inputs. It does not have the ability to explain why it generated a specific output or provide transparency into its decision-making process. Its responses are based solely on the instructions it has been programmed with.
 
-12. Remember recent interactions:
+### G12: Remember recent interactions
+
 Searches are saved only if the user accepts the suggestions given by the AI and can be used for reference later. However, it does not save the prompts in a ‘history’ list format. It does not have the ability to retain information from previous interactions or remember specific user inputs. Each interaction with Notion AI is treated as an isolated event, and it does not have the capability to recall past information or context.
 
-13. Learn from user behavior.
+### G13: Learn from user behavior
+
 Notion AI does not learn from user behavior. It follows predefined instructions and does not have the ability to adapt or improve based on user interactions.
 
-14. Update and adapt cautiously.
+### G14: Update and adapt cautiously
+
 Notion AI does not limit disruptive changes when updating and adapting the AI system's behaviors.
 
-15. Encourage granular feedback
+### G15: Encourage granular feedback
+
 Yes, user can provide granular feedback and also give a thumbs up/down rating to the text prompts.
 
-16. Convey the consequences of user actions.
+![](/assignment/assignment-2/artifacts/g8.png)
+_Figure 6: Feednack suggestion_
+
+### G16: Convey the consequences of user actions
+
 No
 
-17. Provide global controls.
+### G17: Provide global controls
+
 No
 
-18. Notify users about changes.
+### G18: Notify users about changes
+
 Doesn’t explicitly notify people but new releases can be tracked through their blog posts or Twitter accounts
 
