@@ -223,6 +223,35 @@ _Examine each decision-making point closely and consider if the users are vulner
   - **Representativeness**: The way the prompt is framed may be influenced by the user's preconceived notions about the event which may in turn skew the generated content.
   - *How the design alleviates the bias*: Notion AI does not reinforce any preconceived notions the user may have as it does not autocomplete a user's prompt, allowing them to represent their thought fully.
 
+- Decision: Determining which meeting notes to give to the AI to generate the meeting minute.
+
+- Decision: Choose the information that should appear in the meeting minute / the structure of the meeting minute (in the case where the user gives more information to the AI to generate the meeting minute)
+
+- Decision: Determining which old meeting minutes to give to the AI to generate the meeting agenda.
+
+- Decision: Review the generate meeting agenda and determine which parts are relevant to the meeting.
+
+- Decision: Removing irrelevant dates adding to the calendar by the AI.
+
+- Decision: Determine the length of the summary and/or how detailed the summary is.
+
+- Decision: Determine if he or she would like more information on a part of the paper after reading the first summary. (for example regenerate a summary for a particular part, or asking for more precision)
+
+- Decision: Assessing the privacy implications of using the Notion AI knowing the Notion's Privacy Policy.
+
+- Decision: Choosing when to use language translation.
+
+- Decision: Choosing to accept the translation or not.
+
+- Decision: Selecting sentences for improvement.
+
+- Decision: Adding a reference.
+
+- Decision: Choosing the category of the references.
+
+- Decision: Choosing which features are essential for free use. (for example in the case where notion leaves the possibility of choosing a limited number of features for free)
+
+- Decision: Creating the prompt to generate the list of ideas.
 
 **For the designs that alleviate users' biases, what kind of information should be presented and how so that it might improve the users' decision-making?**
 - Include information about the decisions here...
