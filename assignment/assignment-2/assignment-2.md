@@ -101,6 +101,12 @@ do and DP2: Set the right expectations). In our case, it helps users of Notion A
 - **Incorporate user feedback**: Both works encourage allowing users to provide feedback about their interaction with the AI system, which is essential to for the continuous improvement of the product.
 - **Giving users control over poor or incorrect predictions**: Both works highlight what to do when the AI product fails to deliver as expected or as the user desires. Having an easy and effective way to dismiss undesired outputs is an essential part of a good user experience. For example, if Notion AI replaced the user's content with its generated content without approval, it would not benefit the user in case of a poor prediction.
 
+##### Microsoft guidelines
+The Microsoft guidelines are useful to assess the ease of use of the AI system. It focuses on the user experience of the AI interaction, emphasizing the importance of clearly conveying the capabilities and limitations of the system, and ensuring that users can easily access the AI services and efficiently make decisions about the AI system's output. Another important aspect it touches upon is notifying users about changes in the AI system, which is especially useful in a rapidly evolving field. 
+
+##### PAIR design patterns
+The PAIR design patterns are useful to evaluate whether best practices are followed in implementation and to encourage develop to think about various architectural considerations while implementing the AI system. As AI systems deal with large amounts of data, privacy of the data is an important issue, which PAIR touches upon. PAIR also provides useful guidance on data labeling and dataset management. In addition, PAIR encourages gradual automation to adapt to the user's preferences.
+
 
 ## Task-2
 ### 1. **Question 2.1:** 
