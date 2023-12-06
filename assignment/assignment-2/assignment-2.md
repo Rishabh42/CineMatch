@@ -90,7 +90,22 @@ We went through 23 design principles created by Google. Having summarized them, 
 
 
 ### 3. **Question 1.3:** 
-_Compare the report from the two works. Discuss how well they support the HAI design evaluation, including both their usefulness and limitations. [10] Explain how the design patterns help realize those design guidelines. Discuss if there is any aspect you find missing from either the guideline or design pattern to reveal the quality of the HAI design of the product. [10]_
+We observed that the Microsoft guidelines touch more on the user experience of the human-AI interaction, for example, G7 (Support efcient invocation), G12 (Remember recent interactions), and on the topic of AI ethics and principles, for example, G5 (Match relevant social norms) and G6 (Mitigate social biases).
+
+On the other hand, the PAIR design patterns cover a broader spectrum of concerns, focusing on the architectural and developer-oriented considerations for human-AI design. For example, PAIR incorporates guidelines related to privacy and data settings, which is not covered by the Microsoft guidelines. It also covers topics like automation (automate more when risk is low, automate in phases) and inputs from domain experts. PAIR also promotes design considerations related to discrepancy handling, like label disagreements and noisy data. PAIR also tends to be more specific, providing examples and specific suggestions. 
+
+#### Usefulness
+Both Microsoft guidelines and PAIR design patterns offer valuable considerations when designing and evaluating AI products. The following are some useful aspects common to both works: 
+- **Transparency**: Both works promote transparency in design, encouraging the design to plainly acknowledge limitations and potential inaccuracies. (G2: Make clear how well the system can do what it can
+do and DP2: Set the right expectations). In our case, it helps users of Notion AI to understand that they should not hold the generated content as the final authority, which can be important when the stakes of having accurate information is high.
+- **Incorporate user feedback**: Both works encourage allowing users to provide feedback about their interaction with the AI system, which is essential to for the continuous improvement of the product.
+- **Giving users control over poor or incorrect predictions**: Both works highlight what to do when the AI product fails to deliver as expected or as the user desires. Having an easy and effective way to dismiss undesired outputs is an essential part of a good user experience. For example, if Notion AI replaced the user's content with its generated content without approval, it would not benefit the user in case of a poor prediction.
+
+##### Microsoft guidelines
+The Microsoft guidelines are useful to assess the ease of use of the AI system. It focuses on the user experience of the AI interaction, emphasizing the importance of clearly conveying the capabilities and limitations of the system, and ensuring that users can easily access the AI services and efficiently make decisions about the AI system's output. Another important aspect it touches upon is notifying users about changes in the AI system, which is especially useful in a rapidly evolving field. 
+
+##### PAIR design patterns
+The PAIR design patterns are useful to evaluate whether best practices are followed in implementation and to encourage develop to think about various architectural considerations while implementing the AI system. As AI systems deal with large amounts of data, privacy of the data is an important issue, which PAIR touches upon. PAIR also provides useful guidance on data labeling and dataset management. In addition, PAIR encourages gradual automation to adapt to the user's preferences.
 
 **Compare the report from the two works. Discuss how well they support the HAI design evaluation, including both their usefulness and limitations.**
 
@@ -210,6 +225,40 @@ _Examine each decision-making point closely and consider if the users are vulner
   - **Representativeness**: The way the prompt is framed may be influenced by the user's preconceived notions about the event which may in turn skew the generated content.
   - *How the design alleviates the bias*: Notion AI does not reinforce any preconceived notions the user may have as it does not autocomplete a user's prompt, allowing them to represent their thought fully.
 
+- Decision: Determining which meeting notes to give to the AI to generate the meeting minute.
+  - **Availability**: It is more likely that the user will provide the AI with the parts of the meeting notes that he has understood the best, possibly the parts he has written. If other meeting members have added notes that the user has not really taken the time to understand, it is less likely that he will give them to the AI to create the meeting minutes. This is an availability bias.
+  - *How the design alleviate the bias*: Given that in the collaborative mode of Notion, everyone can write and read all created files, other team members can review the generated meeting minutes and check if any parts are missing. Notion also provides templates to organize meeting notes systematically which can facilitate the user's task of choosing relevant notes.
+
+- Decision: Choose the information that should appear in the meeting minute / the structure of the meeting minute (in the case where the user gives more information to the AI to generate the meeting minute)
+  - **Availability**: It is more likely that the user will generate meeting minutes similar to what he is accustomed to using in his meetings, even if it is less relevant for these particular meeting minutes.
+  - **Enchor**: The first template that is presented to the user is more likely to be chosen.
+  - **How the design alleviate the biases**: Notion provides templates to organize meeting notes systematically which can facilitate the user's task of choosing relevant notes.
+
+- Decision: Determining which old meeting minutes to give to the AI to generate the meeting agenda.
+
+- Decision: Review the generate meeting agenda and determine which parts are relevant to the meeting.
+
+- Decision: Removing irrelevant dates adding to the calendar by the AI.
+
+- Decision: Determine the length of the summary and/or how detailed the summary is.
+
+- Decision: Determine if he or she would like more information on a part of the paper after reading the first summary. (for example regenerate a summary for a particular part, or asking for more precision)
+
+- Decision: Assessing the privacy implications of using the Notion AI knowing the Notion's Privacy Policy.
+
+- Decision: Choosing when to use language translation.
+
+- Decision: Choosing to accept the translation or not.
+
+- Decision: Selecting sentences for improvement.
+
+- Decision: Adding a reference.
+
+- Decision: Choosing the category of the references.
+
+- Decision: Choosing which features are essential for free use. (for example in the case where notion leaves the possibility of choosing a limited number of features for free)
+
+- Decision: Creating the prompt to generate the list of ideas.
 
 **For the designs that alleviate users' biases, what kind of information should be presented and how so that it might improve the users' decision-making?**
 - Include information about the decisions here...
