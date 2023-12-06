@@ -224,8 +224,13 @@ _Examine each decision-making point closely and consider if the users are vulner
   - *How the design alleviates the bias*: Notion AI does not reinforce any preconceived notions the user may have as it does not autocomplete a user's prompt, allowing them to represent their thought fully.
 
 - Decision: Determining which meeting notes to give to the AI to generate the meeting minute.
+  - **Availability**: It is more likely that the user will provide the AI with the parts of the meeting notes that he has understood the best, possibly the parts he has written. If other meeting members have added notes that the user has not really taken the time to understand, it is less likely that he will give them to the AI to create the meeting minutes. This is an availability bias.
+  - *How the design alleviate the bias*: Given that in the collaborative mode of Notion, everyone can write and read all created files, other team members can review the generated meeting minutes and check if any parts are missing. Notion also provides templates to organize meeting notes systematically which can facilitate the user's task of choosing relevant notes.
 
 - Decision: Choose the information that should appear in the meeting minute / the structure of the meeting minute (in the case where the user gives more information to the AI to generate the meeting minute)
+  - **Availability**: It is more likely that the user will generate meeting minutes similar to what he is accustomed to using in his meetings, even if it is less relevant for these particular meeting minutes.
+  - **Enchor**: The first template that is presented to the user is more likely to be chosen.
+  - **How the design alleviate the biases**: Notion provides templates to organize meeting notes systematically which can facilitate the user's task of choosing relevant notes.
 
 - Decision: Determining which old meeting minutes to give to the AI to generate the meeting agenda.
 
