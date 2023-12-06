@@ -92,6 +92,8 @@ We went through 23 design principles created by Google. Having summarized them, 
 ### 3. **Question 1.3:** 
 _Compare the report from the two works. Discuss how well they support the HAI design evaluation, including both their usefulness and limitations. [10] Explain how the design patterns help realize those design guidelines. Discuss if there is any aspect you find missing from either the guideline or design pattern to reveal the quality of the HAI design of the product. [10]_
 
+**Compare the report from the two works. Discuss how well they support the HAI design evaluation, including both their usefulness and limitations.**
+
 
 ## Task-2
 ### 1. **Question 2.1:** 
@@ -193,7 +195,7 @@ _Examine each decision-making point closely and consider if the users are vulner
 **Examine each decision-making point closely and consider if the users are vulnerable to any of the four biases. Explain how the design of the product exacerbates or alleviates each of the users' biases.**
 
 - Decision: Accept or correct the spelling or grammatical suggestions.
-  - **Bias: Availability**: There will likely be no doubt with regard to spelling mistakes as Notion AI can accurately correct spelling mistakes. However, for grammatical corrections, the user could be subject to availability bias if they want to judge the accuracy of the correction. They may need to rely on their memory of grammatical rules to evaluate the corrections. 
+  - **Availability**: There will likely be no doubt with regard to spelling mistakes as Notion AI can accurately correct spelling mistakes. However, for grammatical corrections, the user could be subject to availability bias if they want to judge the accuracy of the correction. They may need to rely on their memory of grammatical rules to evaluate the corrections. 
   - *How the design exacerbates the bias*: Notion AI does not highlight the changes made, but simply outputs the corrected text. This may make it slightly harder to identify the corrected text and check its accuracy. 
 
 - Decision: Determining which notes to give to the AI to generate the todo list
