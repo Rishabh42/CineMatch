@@ -90,7 +90,16 @@ We went through 23 design principles created by Google. Having summarized them, 
 
 
 ### 3. **Question 1.3:** 
-_Compare the report from the two works. Discuss how well they support the HAI design evaluation, including both their usefulness and limitations. [10] Explain how the design patterns help realize those design guidelines. Discuss if there is any aspect you find missing from either the guideline or design pattern to reveal the quality of the HAI design of the product. [10]_
+We observed that the Microsoft guidelines touch more on the user experience of the human-AI interaction, for example, G7 (Support efcient invocation), G12 (Remember recent interactions), and on the topic of AI ethics and principles, for example, G5 (Match relevant social norms) and G6 (Mitigate social biases).
+
+On the other hand, the PAIR design patterns cover a broader spectrum of concerns, focusing on the architectural and developer-oriented considerations for human-AI design. For example, PAIR incorporates guidelines related to privacy and data settings, which is not covered by the Microsoft guidelines. It also covers topics like automation (automate more when risk is low, automate in phases) and inputs from domain experts. PAIR also promotes design considerations related to discrepancy handling, like label disagreements and noisy data. PAIR also tends to be more specific, providing examples and specific suggestions. 
+
+#### Usefulness
+Both Microsoft guidelines and PAIR design patterns offer valuable considerations when designing and evaluating AI products. The following are some useful aspects common to both works: 
+- **Transparency**: Both works promote transparency in design, encouraging the design to plainly acknowledge limitations and potential inaccuracies. (G2: Make clear how well the system can do what it can
+do and DP2: Set the right expectations). In our case, it helps users of Notion AI to understand that they should not hold the generated content as the final authority, which can be important when the stakes of having accurate information is high.
+- **Incorporate user feedback**: Both works encourage allowing users to provide feedback about their interaction with the AI system, which is essential to for the continuous improvement of the product.
+- **Giving users control over poor or incorrect predictions**: Both works highlight what to do when the AI product fails to deliver as expected or as the user desires. Having an easy and effective way to dismiss undesired outputs is an essential part of a good user experience. For example, if Notion AI replaced the user's content with its generated content without approval, it would not benefit the user in case of a poor prediction.
 
 
 ## Task-2
