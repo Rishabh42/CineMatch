@@ -321,3 +321,13 @@ With His Research Team, Akira's approach to AI could lead to a team environment 
 In the Academic Community, he could influence the conversation around AI, driving forward discussions on privacy, data security, and the role of AI in research.
 ### **Task3**: 
 Presentation
+
+
+## Contribution
+
+**Question 1.1**:
+**Question 1.2**:
+**Question 1.3**:
+**Question 2.1**: Tamara
+**Question 2.2**: Tamara + Varun
+**Question 2.3**:
