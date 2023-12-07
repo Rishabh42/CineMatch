@@ -473,13 +473,18 @@ Presentation
 
 **Question 1.1**:
 
-**Question 1.2**:
+**Question 1.2**: Aayush [commit:1.2](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/30188ff30b7e1aba37c40991537005d9f9c78acc)
 
-**Question 1.3**:
+**Question 1.3**: Aayush [commit: 1.3](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/4f2c9d522284b293e16677904ea3e3eefe96ce2e)
 
 **Question 2.1**: Tamara ([commit 1](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/a7efd32e1af7994cfe0a529c319bb03bdd55b379), [commit 2](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/6ed3ae3257cfcb4919ecfe1a6716a8d9b9155d67), [commit 3](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/e6c19a49b045c8f069e1bdade318e3c21b55b8c7), [commit 4](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/111a59c035a30cca1cb587970a5786fed19c4b63), [commit 5](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/e9995df6b4c0f356668d5183a382c5d91aad7e3d), [commit 6](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/60decb9e98599576fb51720fb8cac9d55e41296b))
 
 **Question 2.2**: Tamara ([commit 1](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/52a53313eaf8d28b5143ed6216680c030145e5a1), [commit 2](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/07a69c73fc7f8a2382e2a95259bb41482ca09682), [commit 3](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/e768c36c3c16e5f3bb0635b4b4b5f041e178df15)) + Varun
 
+Aayush [commit_2: 2.2.2](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/051c2f045be2fcc95b8ac272c26eb78441c1396d) [commit_1: 2.2.2](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/30188ff30b7e1aba37c40991537005d9f9c78acc)
+
 **Question 2.3**:Yaoqiang ([commit 1](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/14fe2916c172d98bf34e8a7cd7e79ab8ea400469), [commit 2](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/f95cbace033ef27a28e6178ef2397d5b8e032d4f))
 
+Repo cleanup, admin, issue creation: Aayush [commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/86a18b92e4f3f7adba1f4b3da4b8e6ced936ea6e)
+
+Please find meeting notes here: https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/wikis/Assignment-2-meeting-notes
