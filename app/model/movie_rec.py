@@ -41,7 +41,7 @@ def load_dataset_from_csv(folder_path, file_name, columns):
     :return: the panda dataset
     """
     dataset = pd.read_csv(os.path.join(folder_path, file_name),
-                          sep=',', on_bad_lines='skip', encoding="latin-1")
+                          sep=',', encoding="latin-1")
     dataset.columns = columns
     return dataset
 
@@ -123,6 +123,36 @@ def test_collaborative_filtering():
 
     # Evaluate the model's performance using RMSE (Root Mean Squared Error)
     return accuracy.rmse(predictions)
+
+
+def test_collaborative_filtering_subset(subset_label, subset_values):
+    """
+    Test of the collaborative filtering for a subset of the user set
+    """
+
+    assert global_model is not None
+    assert global_test_set is not None
+
+    test_set = global_test_set
+    users_df = global_users
+
+    # transform the test set to a dataframe
+    test_set_df = pd.DataFrame(test_set, columns=['user_id', 'movie_id', 'rate'])
+
+    # merge the test set with the users dataframe
+    test_set_df = pd.merge(test_set_df, users_df, on='user_id')
+
+    dict_rmse = {}
+
+    for value in subset_values:
+        new_test_set = test_set_df[test_set_df[subset_label] == value]
+        new_test_set = new_test_set[['user_id', 'movie_id', 'rate']]
+        new_test_set = new_test_set.values.tolist()
+        predictions = global_model.test(new_test_set)
+        if len(predictions) != 0:
+            dict_rmse[value] = accuracy.rmse(predictions)
+
+    return dict_rmse
 
 
 def recommendation(user_id, nb_recommendation):
@@ -234,7 +264,7 @@ def print_recommendations(top_movie_recommendations, user_id):
 
 
 def train(data_path=DATA_PATH, file_name_ratings=FILE_NAME_RATINGS, file_name_movies=FILE_NAME_MOVIES,
-          file_name_users=FILE_NAME_USERS):
+          file_name_users=FILE_NAME_USERS, model_path=MODEL_PATH):
     """
     Train the model and save it in a file.
 
@@ -242,6 +272,7 @@ def train(data_path=DATA_PATH, file_name_ratings=FILE_NAME_RATINGS, file_name_mo
     :param file_name_ratings: The name of the file containing the ratings of the users.
     :param file_name_movies: The name of the file containing the movies.
     :param file_name_users: The name of the file containing the users.
+    :param model_path: The path where the model will be saved
     """
 
     global global_model
@@ -257,7 +288,7 @@ def train(data_path=DATA_PATH, file_name_ratings=FILE_NAME_RATINGS, file_name_mo
         dataset, test_size=0.2, random_state=42)
 
     # Training
-    global_model = train_collaborative_filtering(train_set)
+    global_model = train_collaborative_filtering(train_set, model_path=model_path)
 
 
 def get_recommendation(user_id):
