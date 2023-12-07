@@ -326,8 +326,13 @@ Presentation
 ## Contribution
 
 **Question 1.1**:
+
 **Question 1.2**:
+
 **Question 1.3**:
+
 **Question 2.1**: Tamara
+
 **Question 2.2**: Tamara + Varun
+
 **Question 2.3**:
