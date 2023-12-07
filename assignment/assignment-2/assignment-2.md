@@ -7,13 +7,13 @@ _Provide screenshots and explanations to illustrate how well each guideline is f
 **G1: Make clear what the system can do.**
 
 Notion AI provides suggestions about what the user can do every time it is invoked, as can be seen in Figure 1. While the user can type in a free prompt, Notion AI clearly informs the users about all possible functions it can carry out.
-![](/assignment/assignment-2/artifacts/g1.png)
+![G1](/assignment/assignment-2/artifacts/g1.png)
 _Figure 1: Notion AI suggestions on hitting Space_
 
 **G2: Make clear how well the system can do what it can do.**
 
 Since Notion AI uses GPT-3.5 under the hood, it shares similar shortcomings with ChatGPT - the generated content may be inaccurate or misleading. This limitation is acknowledged in each response, as shown in Figure 2.
-![](/assignment/assignment-2/artifacts/g2.png)
+![G2](/assignment/assignment-2/artifacts/g2.png)
 _Figure 2: Notion AI warns of limitations of generated responses_
 
 **G3: Time services based on context..**
@@ -46,14 +46,14 @@ One of the current limitations of Notion AI is the possibility of bias in the ou
 
 Notion AI can be invoked simply by hitting the `Space` key, which will open the prompt as seen in Figure 1. Similarly whenever a block of text is selected, the first option that appears is "Ask AI", highlighted in a different color.
 
-![](/assignment/assignment-2/artifacts/g7.png)
+![G7](/assignment/assignment-2/artifacts/g7.png)
 _Figure 5: Pop up displayed on selecting text_
 
 **G8: Support efficient dismissal**
 
 Notion AI allows the user to easily dismiss the answer if the user is not satisfied through the "Discard" option present in the output for all generates responses (Figure 6).
 
-![](/assignment/assignment-2/artifacts/g8.png)
+![G8](/assignment/assignment-2/artifacts/g8.png)
 _Figure 6: Notion AI output and further suggestions after changing tone of the selected text to "Professional"_
 
 **G9: Support efficient correction**
@@ -101,7 +101,7 @@ Doesn’t explicitly notify people but new releases can be tracked through their
 
 
 ### 2. **Question 1.2:** 
-_Peform the same task with Q1.1 using the PAIR's [design patterns](https://pair.withgoogle.com/guidebook/patterns). [12]_
+_Peform the same task with Q1.1 using the PAIR's [design patterns](https://pair.withgoogle.com/guidebook/patterns)._
 
 
 We went through the 23 design principles created by Google. Having summarized them, we checked how they are being adhered to by Notion AI. Following are our findings:
@@ -233,7 +233,7 @@ So a similar system of measurement is needed for AI enabled systems as well to e
 
 ## Task-2
 ### 1. **Question 2.1:** 
-_Revisit the user stories you wrote in Assignment 1. Discuss what kind of decisions (big or small) its users need to make during interaction when trying to achieve their goals. Explain what the decision is, what knowledge is required to make the decision, and how much effort is needed to make such decisions. [10]_
+_Revisit the user stories you wrote in Assignment 1. Discuss what kind of decisions (big or small) its users need to make during interaction when trying to achieve their goals. Explain what the decision is, what knowledge is required to make the decision, and how much effort is needed to make such decisions._
 
 For each user story we wrote in Assignment 1, we determined the decisions that the user had to make during the interaction with the AI, in order to achieve their goals:
 
@@ -326,9 +326,7 @@ For each user story we wrote in Assignment 1, we determined the decisions that t
       - **Effort:** Moderate effort: the academic member have to actively think about how to write the prompt.
 
 ### 2. **Question 2.2:** 
-_Examine each decision-making point closely and consider if the users are vulnerable to any of the four biases from the work [Judgment under uncertainty: Heuristics and biases](https://www.jstor.org/stable/pdf/1738360.pdf?casa_token=PEUwAsY9bNoAAAAA:i7KvVWYA73fJzugepP9xnVfBc_tCv1TWq884garHfyiwpR0kooepIGbSSfu__bxvaMYyMxTwGpCTCfzWrRXJI5-ghi44wtwX_WrGiSdQ2fKla6PhPH8), i.e., Representativeness, Availability, Adjustment and Anchoring. Explain how the design of the product exacerbates or alleviates each of the users' biases. [20] For the designs that alleviate users' biases, what kind of information should be presented and how so that it might improve the users' decision-making? [5]_
-
-**Examine each decision-making point closely and consider if the users are vulnerable to any of the four biases. Explain how the design of the product exacerbates or alleviates each of the users' biases.**
+_Examine each decision-making point closely and consider if the users are vulnerable to any of the four biases from the work [Judgment under uncertainty: Heuristics and biases](https://www.jstor.org/stable/pdf/1738360.pdf?casa_token=PEUwAsY9bNoAAAAA:i7KvVWYA73fJzugepP9xnVfBc_tCv1TWq884garHfyiwpR0kooepIGbSSfu__bxvaMYyMxTwGpCTCfzWrRXJI5-ghi44wtwX_WrGiSdQ2fKla6PhPH8), i.e., Representativeness, Availability, Adjustment and Anchoring. Explain how the design of the product exacerbates or alleviates each of the users' biases._
 
 1a. Decision: Accept or correct the spelling or grammatical suggestions.
   - **Availability**: There will likely be no doubt with regard to spelling mistakes as Notion AI can accurately correct spelling mistakes. However, for grammatical corrections, the user could be subject to availability bias if they want to judge the accuracy of the correction. They may need to rely on their memory of grammatical rules to evaluate the corrections. 
@@ -409,12 +407,22 @@ _Examine each decision-making point closely and consider if the users are vulner
 - **Representativeness**: The way the user frames the prompt can be influenced by their stereotypes about the particular subject which can skew Notion AI's response.
 - *How the design alleviates the bias*: Notion AI does not reinforce any preconceived notions the user may have as it does not autocomplete a user's prompt, allowing them to represent their thought fully.
 
+_For the designs that alleviate users' biases, what kind of information should be presented and how so that it might improve the users' decision-making?_
+- If we consider all the decisions described above which alleviate bias and try to determine a common thread in them, we will find that almost all such decisions fall in the following catergories of actions to be performed by user: **Reviewing, determining the suitability of something, creating the prompt, choosing something, giving the final confirmation, assessing the trade between two options**
 
-**For the designs that alleviate users' biases, what kind of information should be presented and how so that it might improve the users' decision-making?**
-- What kind of information to present?
-  The user should be able to able to view the complete picture of both sides of the decision he/she is about to make. The UI should display to the user what the intermediate output of choosing a particular type of option would be and it should be reversible. This will allow the user to make up he/her own mind after seeing the output for each perspective. It is possible that intelligent systems may permeate biases based on the output being generated for the user but even if the outout may not be balanced which may not be practical in all circumstances, atleast having outputs from each perspective can be quite helpful for the user.
+- This means that most of the work from user's part is offloaded to AI and the user is responsible in making the final decision to choose whether to accept the created work or not. Now whatever information can help users in the actions mentioned above in bold is the information which will improve the decision-making process in our app.
+
+- What can be such information?
+  The user should be able to able to view the complete picture of both sides of the decision he/she is about to make. The UI should display to the user what the intermediate output of choosing a particular type of option would be and it should be reversible. This will allow the user to make up he/her own mind after seeing the output for each perspective. It is possible that intelligent systems may permeate biases based on the output being generated for the user but even if the output may not be completely impartial (afterall the system is as impartial as the training data and models used) which may not be practical in all circumstances, atleast having outputs from each perspective can be quite helpful for the user because atleast the user will know what to expect and not to completely rely on the system. Alot of the AI enabled products use some sort of AI API in the backend to power their services. The least which can be done is that the API providers can clearly mention what their models/ AI services can and cannot do. There should be a clear description with examples of the scenarios when the models may not work as expected and that the app/ system developers need to come up with their own logic to handle them.
+
 - How should the information be presented? 
-  For Notion AI, such a information can be presented in the form of displaying intermediate outputs on the screen while giving the option to the user to pick one. It would be wrong to influence the user in the name of eliminating bias by pushing a particular view more than the other. The right approach should be to present both perspectives to the user and it should be the user who makes the decision. Because the content part of a User's notion workspace is considered to be written by User and a representative of his/her viewpoints. Lastly, as an enhancement, there can be a adjustable toggle for deciding the parameters of the model to generate the response. Currently, the app has different menu options to select the type of response expected to be generated by Notion AI but it can be further customised by toggling individual styles and emotions in the response. The GUI can look quite similar to how it looks in games where such graphics are used to customize character parameters.
+  For Notion AI, such a information can be presented in the form of displaying intermediate outputs by splitting the screen in two parts while giving the option to the user to pick one. It would be wrong to influence the user in the name of eliminating bias by pushing a particular view more than the other. The right approach should be to present both perspectives to the user and it should be the user who makes the decision. Because the content part of a User's notion workspace is considered to be written by User and a representative of his/her viewpoints. Lastly, as an enhancement, there can be a adjustable toggle for deciding the parameters of the model to generate the response. Currently, the app has different menu options to select the type of response expected to be generated by Notion AI but it can be further customised by toggling individual styles and emotions in the response. The GUI can look quite similar to how it looks in games where such graphics are used to customize character parameters.
+
+  - A sample UX screen from chatGPT: depicting two choices for user
+  (source: google images: uxwhisper)
+  ![user-choice](https://www.uxwhisper.com/wp-content/uploads/2023/09/image-2.png)
+
+
 ### 3. **Question 2.3:** 
 _Revisit the persona you created in Assignment 1. Discuss the consequences for the users (including how they would feel and act) if they adopt the product and make decisions. Then, stretch your imagination and discuss how it might impact the relationship between the persona and other stakeholders as the system becomes more integrated into their daily routine. [5]_
 
@@ -461,13 +469,18 @@ Presentation
 
 **Question 1.1**: Varun [G1-G9] ([commit 1](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/ce93bd4d54875882d611f7a64436e019bec7009f)) + Rishabh [G10-G18] ([commit1](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/17cf913341f08568ee35c9063ec6e567a93cd227), [commit2](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/00812e54a53701b36bee0f896282d1ced83330b3))
 
-**Question 1.2**:
+**Question 1.2**: Aayush ([commit 1](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/30188ff30b7e1aba37c40991537005d9f9c78acc))
 
-**Question 1.3**: Rishabh [usefulness] ([commit1](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/960cf1e91868e0dd96b8339e319701b094333610), [commit2](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/5d7f9eaaa281290f5430de870d10d128b3f04ab6)) + Varun [limitations] ([commit1](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/c1c63aa50ddc7769a70d59400724f16f7d9f7615))
+**Question 1.3**: Rishabh [usefulness] ([commit1](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/960cf1e91868e0dd96b8339e319701b094333610), [commit2](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/5d7f9eaaa281290f5430de870d10d128b3f04ab6)) + Varun [limitations] ([commit1](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/c1c63aa50ddc7769a70d59400724f16f7d9f7615)) + Aayush [limitations + missing aspects] ([commit 1](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/4f2c9d522284b293e16677904ea3e3eefe96ce2e))
 
 **Question 2.1**: Tamara ([commit 1](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/a7efd32e1af7994cfe0a529c319bb03bdd55b379), [commit 2](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/6ed3ae3257cfcb4919ecfe1a6716a8d9b9155d67), [commit 3](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/e6c19a49b045c8f069e1bdade318e3c21b55b8c7), [commit 4](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/111a59c035a30cca1cb587970a5786fed19c4b63), [commit 5](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/e9995df6b4c0f356668d5183a382c5d91aad7e3d), [commit 6](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/60decb9e98599576fb51720fb8cac9d55e41296b))
 
-**Question 2.2**: Tamara [user stories 5-10] ([commit 1](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/52a53313eaf8d28b5143ed6216680c030145e5a1), [commit 2](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/07a69c73fc7f8a2382e2a95259bb41482ca09682), [commit 3](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/e768c36c3c16e5f3bb0635b4b4b5f041e178df15)) + Varun [1-4] ([commit1](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/cebb27a16ef7b60aac48950129874bfbffa7a98b)), [11-14] ([commit1](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/c4e2ea3e2a2e9cc4d97ecbf3d843b3530d385006))
+**Question 2.2**: Tamara [user stories 5-10] ([commit 1](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/52a53313eaf8d28b5143ed6216680c030145e5a1), [commit 2](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/07a69c73fc7f8a2382e2a95259bb41482ca09682), [commit 3](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/e768c36c3c16e5f3bb0635b4b4b5f041e178df15)) + Varun [1-4] ([commit1](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/cebb27a16ef7b60aac48950129874bfbffa7a98b)), [11-14] ([commit1](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/c4e2ea3e2a2e9cc4d97ecbf3d843b3530d385006)) + Aayush 
+([commit 1: 2.2.2](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/30188ff30b7e1aba37c40991537005d9f9c78acc),
+[commit 2: 2.2.2](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/051c2f045be2fcc95b8ac272c26eb78441c1396d)) 
 
-**Question 2.3**:Yaoqiang ([commit 1](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/14fe2916c172d98bf34e8a7cd7e79ab8ea400469), [commit 2](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/f95cbace033ef27a28e6178ef2397d5b8e032d4f))
+**Question 2.3**: Yaoqiang ([commit 1](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/14fe2916c172d98bf34e8a7cd7e79ab8ea400469), [commit 2](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/f95cbace033ef27a28e6178ef2397d5b8e032d4f))
 
+Repo cleanup, admin, issue creation: Aayush ([commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/86a18b92e4f3f7adba1f4b3da4b8e6ced936ea6e))
+
+Please find meeting notes [here](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/wikis/Assignment-2-meeting-notes).
