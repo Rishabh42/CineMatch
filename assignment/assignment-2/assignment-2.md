@@ -2,7 +2,102 @@
 
 ## Task-1
 ### 1. **Question 1.1:** 
-_Provide screenshots and explanations to illustrate how well each guideline is followed in the MS HAI [guilelines](https://www.microsoft.com/en-us/research/uploads/prod/2019/01/Guidelines-for-Human-AI-Interaction-camera-ready.pdf). **If you cannot accurately evaluate some guideline(s), provide concrete reasons.** [12]_
+_Provide screenshots and explanations to illustrate how well each guideline is followed in the MS HAI [guilelines](https://www.microsoft.com/en-us/research/uploads/prod/2019/01/Guidelines-for-Human-AI-Interaction-camera-ready.pdf). If you cannot accurately evaluate some guideline(s), provide concrete reasons. [12]_
+
+**G1: Make clear what the system can do.**
+
+Notion AI provides suggestions about what the user can do every time it is invoked, as can be seen in Figure 1. While the user can type in a free prompt, Notion AI clearly informs the users about all possible functions it can carry out.
+![](/assignment/assignment-2/artifacts/g1.png)
+_Figure 1: Notion AI suggestions on hitting Space_
+
+**G2: Make clear how well the system can do what it can do.**
+
+Since Notion AI uses GPT-3.5 under the hood, it shares similar shortcomings with ChatGPT - the generated content may be inaccurate or misleading. This limitation is acknowledged in each response, as shown in Figure 2.
+![](/assignment/assignment-2/artifacts/g2.png)
+_Figure 2: Notion AI warns of limitations of generated responses_
+
+**G3: Time services based on context..**
+
+Notion AI is based on GPT-3.5, which like other language models, is not designed to provide real-time information or location-based guidance. It operates based on the input it receives and generates responses accordingly. Therefore, for time-sensitive tasks, Notion AI may not be the most suitable tool.
+
+**G4: Show contextually relevant information.**
+
+Notion AI tweaks its AI suggestions based on the context by anticipating what the user needs at each step in the interaction. Here are a few scenarios where Notion AI shows contextually relevant information, when the user hits the `Space` key to call Notion AI:
+- Starting a new page: Notion AI prioritizes suggestions for drafting functions like brainstorming ideas or writing a story, essay, blog post and more (see Image 1)
+- Adding a new block around existing content: Notion AI prioritizes generating more ideas or extracting relevant information from the content, like "Continue writing", "Summarize" and "Find action item".
+![](/assignment/assignment-2/artifacts/g4.1.png)
+_Figure 3: Notion AI suggestions with existing content_
+- Selecting a block of text: Notion AI gives precedence to providing suggestions related to editing the selected content, including changing the tone of or improving the writing, or fixing spelling and grammar mistakes.
+![](/assignment/assignment-2/artifacts/g4.2.png)
+_Figure 4: Notion AI suggestions on selecting text_
+
+
+Source: [The design thinking behind Notion AI](https://www.notion.so/help/guides/using-notion-ai)
+
+**G5: Match relevant social norms**
+
+For the main functions provided by Notion AI, social norms do not particularly come into play. The AI functions are directly performed on the text, without much extra dialogue between the AI and user. However, the user has a certain amount of control over the nature of the generated content, for example, by defining the tone of the content. 
+
+**G6: Mitigate social biases**
+
+One of the current limitations of Notion AI is the possibility of bias in the outputted responses, a limitation inherent to the GPT-3.5 model. While measures are put in place to reduce biases, especially during model training, the model may still exhibit biased behavior or reinforce certain stereotypes. 
+
+**G7: Support efficient invocation**
+
+Notion AI can be invoked simply by hitting the `Space` key, which will open the prompt as seen in Figure 1. Similarly whenever a block of text is selected, the first option that appears is "Ask AI", highlighted in a different color.
+
+![](/assignment/assignment-2/artifacts/g7.png)
+_Figure 5: Pop up displayed on selecting text_
+
+**G8: Support efficient dismissal**
+
+Notion AI allows the user to easily dismiss the answer if the user is not satisfied through the "Discard" option present in the output for all generates responses (Figure 6).
+
+![](/assignment/assignment-2/artifacts/g8.png)
+_Figure 6: Notion AI output and further suggestions after changing tone of the selected text to "Professional"_
+
+**G9: Support efficient correction**
+
+Depending on the kind of operation, Notion AI offers features to edit the generated content or to redo the operation. For example, in Figure 6, Notion AI provides the option to make the generates response longer or to try again. It is also possible to type in a new prompt in plain language ("Tell AI what to do next...") to refine or edit the response as one desires. For example, one could prompt Notion AI to convert the output to a bulleted list or table format.
+
+**G10: Scope services when in doubt**
+
+Since Notion AI follows predefined instructions, it does not engage in disambiguation or gracefully degrade its services when uncertain about a user's goals
+
+**G11: Make clear why the system did what it did**
+
+Notion AI is an assistant that follows predefined instructions to provide responses based on user inputs. It does not have the ability to explain why it generated a specific output or provide transparency into its decision-making process. Its responses are based solely on the instructions it has been programmed with.
+
+**G12: Remember recent interactions**
+
+Searches are saved only if the user accepts the suggestions given by the AI and can be used for reference later. However, it does not save the prompts in a ‘history’ list format. It does not have the ability to retain information from previous interactions or remember specific user inputs. Each interaction with Notion AI is treated as an isolated event, and it does not have the capability to recall past information or context.
+
+**G13: Learn from user behavior**
+
+Notion AI does not learn from user behavior. It follows predefined instructions and does not have the ability to adapt or improve based on user interactions.
+
+**G14: Update and adapt cautiously**
+
+Notion AI does not limit disruptive changes when updating and adapting the AI system's behaviors.
+
+**G15: Encourage granular feedback**
+
+Yes, user can provide granular feedback and also give a thumbs up/down rating to the text prompts.
+
+![](/assignment/assignment-2/artifacts/g15.png)
+_Figure 6: Feedback suggestion_
+
+**G16: Convey the consequences of user actions**
+
+No. Notion AI does not really have any features/settings that will affect future interactions with the system. All operations are limited to the scope of the block 
+
+**G17: Provide global controls**
+
+No. Notion AI is limited to the block-level with all settings applied to a block. It is not possible to configure any global preferences or settings that will be applied to all operations. 
+
+**G18: Notify users about changes**
+
+Doesn’t explicitly notify people but new releases can be tracked through their blog posts or Twitter accounts.
 
 
 ### 2. **Question 1.2:** 
@@ -87,9 +182,9 @@ We went through 23 design principles created by Google. Having summarized them, 
 23. **Get input from domain experts as you build your dataset:** Notion AI does not explicitly mention how it gets input from domain experts. They do use the chatGPT 3.5 version API to serve responses but they do not go into explicit details for the same. So, we cannot comment on how exactly the dataset was built and if inputs from domain experts was used.
 
 
-
-
 ### 3. **Question 1.3:** 
+_Compare the report from the two works. Discuss how well they support the HAI design evaluation, including both their usefulness and limitations. [10]_
+
 We observed that the Microsoft guidelines touch more on the user experience of the human-AI interaction, for example, G7 (Support efcient invocation), G12 (Remember recent interactions), and on the topic of AI ethics and principles, for example, G5 (Match relevant social norms) and G6 (Mitigate social biases).
 
 On the other hand, the PAIR design patterns cover a broader spectrum of concerns, focusing on the architectural and developer-oriented considerations for human-AI design. For example, PAIR incorporates guidelines related to privacy and data settings, which is not covered by the Microsoft guidelines. It also covers topics like automation (automate more when risk is low, automate in phases) and inputs from domain experts. PAIR also promotes design considerations related to discrepancy handling, like label disagreements and noisy data. PAIR also tends to be more specific, providing examples and specific suggestions. 
@@ -106,6 +201,20 @@ The Microsoft guidelines are useful to assess the ease of use of the AI system. 
 
 ##### PAIR design patterns
 The PAIR design patterns are useful to evaluate whether best practices are followed in implementation and to encourage develop to think about various architectural considerations while implementing the AI system. As AI systems deal with large amounts of data, privacy of the data is an important issue, which PAIR touches upon. PAIR also provides useful guidance on data labeling and dataset management. In addition, PAIR encourages gradual automation to adapt to the user's preferences.
+
+#### Limitations
+Microsoft and PAIR each contain certain guidelines/design patterns that the other does not. We identify some of these missing guidelines/design patterns as limitations for the particular work, and justify why we view the absence as a limitation. We also consider some other general limitations.
+
+##### General limitations
+- **Domain-specific considerations**: The guidelines/design patterns may not cover every possible scenario or application domain, and specific industries or use cases might require additional, domain-specific considerations. AI systems in areas like healthcare, finance, or criminal justice may have unique challenges and ethical considerations that aren't explicitly addressed in the general PAIR guidelines.
+
+##### Microsoft guidelines
+In comparison with the PAIR design patterns, we observe that the Microsoft guidelines do not cover certain design considerations.
+- **Limited details**: Overall, the Microsoft guidelines are limited with regard to the details they provide, presenting the guideline in one or two sentences. The research paper containing the guidelines focuses on the process of validating the guidelines through a user study. However, a detailed explanation for each guideline is not provided, although each guideline is supported by examples from the user study. In comparison, the PAIR guidelines offer a more comprehensive description, including specific steps or suggestions, image illustrations, and links to related reading and case studies. The lack of details can make it slightly harder for developers to implement the guidelines.
+- **Conveying the privacy settings of the AI product**: Privacy settings and data quality are critical considerations in HAI, especially as users become increasingly concerned about how AI systems handle their personal information. While Microsoft guidelines may touch upon user control (G17) and clear communication (G1), they do not provide specific guidance on privacy-related considerations.
+
+##### PAIR design patterns
+- **Consideration of social biases**: It is interesting that the PAIR patterns cover a wide range of issues but do not discuss handling biases in the AI system's behavior, as this is a common and important issue in AI systems. Mitigating social biases is essential to ensuring a fair and inclusive AI system that everyone can benefit from. 
 
 **Compare the report from the two works. Discuss how well they support the HAI design evaluation, including both their usefulness and limitations.**
 

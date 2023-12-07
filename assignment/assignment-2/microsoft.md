@@ -79,17 +79,17 @@ Notion AI does not limit disruptive changes when updating and adapting the AI sy
 Yes, user can provide granular feedback and also give a thumbs up/down rating to the text prompts.
 
 ![](/assignment/assignment-2/artifacts/g15.png)
-_Figure 6: Feednack suggestion_
+_Figure 6: Feedback suggestion_
 
 ### G16: Convey the consequences of user actions
 
-No
+No. Notion AI does not really have any features/settings that will affect future interactions with the system. All operations are limited to the scope of the block 
 
 ### G17: Provide global controls
 
-No
+No. Notion AI is limited to the block-level with all settings applied to a block. It is not possible to configure any global preferences or settings that will be applied to all operations. 
 
 ### G18: Notify users about changes
 
-Doesn’t explicitly notify people but new releases can be tracked through their blog posts or Twitter accounts
+Doesn’t explicitly notify people but new releases can be tracked through their blog posts or Twitter accounts.
 
