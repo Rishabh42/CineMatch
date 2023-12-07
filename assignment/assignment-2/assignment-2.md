@@ -205,7 +205,7 @@ The PAIR design patterns are useful to evaluate whether best practices are follo
 #### Limitations
 Microsoft and PAIR each contain certain guidelines/design patterns that the other does not. We identify some of these missing guidelines/design patterns as limitations for the particular work, and justify why we view the absence as a limitation. We also consider some other general limitations.
 
-##### General limitations
+##### General limitation
 - **Domain-specific considerations**: The guidelines/design patterns may not cover every possible scenario or application domain, and specific industries or use cases might require additional, domain-specific considerations. AI systems in areas like healthcare, finance, or criminal justice may have unique challenges and ethical considerations that aren't explicitly addressed in the general PAIR guidelines.
 
 ##### Microsoft guidelines
@@ -215,6 +215,7 @@ In comparison with the PAIR design patterns, we observe that the Microsoft guide
 
 ##### PAIR design patterns
 - **Consideration of social biases**: It is interesting that the PAIR patterns cover a wide range of issues but do not discuss handling biases in the AI system's behavior, as this is a common and important issue in AI systems. Mitigating social biases is essential to ensuring a fair and inclusive AI system that everyone can benefit from. 
+- **Notification of changes**: The PAIR patterns do not advise about notifying users of changes to the AI system. This is very important in an agile world, where new models and services are deployed continuously, adding new features and modifying current ones. Users need to be informed of these changes to effectively use the AI system.
 
 **Compare the report from the two works. Discuss how well they support the HAI design evaluation, including both their usefulness and limitations.**
 
@@ -318,77 +319,87 @@ _Examine each decision-making point closely and consider if the users are vulner
 
 **Examine each decision-making point closely and consider if the users are vulnerable to any of the four biases. Explain how the design of the product exacerbates or alleviates each of the users' biases.**
 
-- Decision: Accept or correct the spelling or grammatical suggestions.
+1a. Decision: Accept or correct the spelling or grammatical suggestions.
   - **Availability**: There will likely be no doubt with regard to spelling mistakes as Notion AI can accurately correct spelling mistakes. However, for grammatical corrections, the user could be subject to availability bias if they want to judge the accuracy of the correction. They may need to rely on their memory of grammatical rules to evaluate the corrections. 
   - *How the design exacerbates the bias*: Notion AI does not highlight the changes made, but simply outputs the corrected text. This may make it slightly harder to identify the corrected text and check its accuracy. 
 
-- Decision: Determining which notes to give to the AI to generate the todo list
+2a. Decision: Determining which notes to give to the AI to generate the todo list
   - **Availability**: This decision again could be influenced by availability bias. Users may be more likely to select notes that contain information readily available to them, neglecting less accessible notes. This could cause the to-do list to miss out some important tasks that were note covered by the notes.
   - *How the design alleviates the bias*: Notion AI allows you to select particular text blocks to perform an AI operation on. This allows the user to select only what they wish to give. Notion also provides templates to organize meeting notes systematically which can facilitate the user's task of choosing relevant notes. 
 
-- Decision: Review the generated todo list and determine which ones are relevant to his/her needs.
+2b. Decision: Review the generated todo list and determine which ones are relevant to his/her needs.
   - **Availability**: To determine which tasks are relevant to his/her needs, the user needs to make this judgement based on what they recall best from the meeting discussion or their notes.  
   - *How the design alleviates the bias*: As described in the previous notes, Notion helps to organize one's notes which can help the user verify the generated content more easily by quickly referring to these notes.
 
-- Decision: Creating the prompt to ask for information on a particular event.
+3a. Decision: Creating the prompt to ask for information on a particular event.
   - **Representativeness**: The way the prompt is framed may be influenced by the user's preconceived notions about the event which may in turn skew the generated content.
   - *How the design alleviates the bias*: Notion AI does not reinforce any preconceived notions the user may have as it does not autocomplete a user's prompt, allowing them to represent their thought fully.
 
-- Decision: Determining which meeting notes to give to the AI to generate the meeting minute.
+4a. Decision: Determining which notes to give to the AI to generate the key ideas.
+-  **Availability**: Same reasoning as 2a.
+
+5a. Decision: Determining which meeting notes to give to the AI to generate the meeting minute.
   - **Availability**: It is more likely that the user will provide the AI with the parts of the meeting notes that he has understood the best, possibly the parts he has written. If other meeting members have added notes that the user has not really taken the time to understand, it is less likely that he will give them to the AI to create the meeting minutes. This is an availability bias.
   - *How the design alleviate the bias*: Given that in the collaborative mode of Notion, everyone can write and read all created files, other team members can review the generated meeting minutes and check if any parts are missing. Notion also provides templates to organize meeting notes systematically which can facilitate the user's task of choosing relevant notes.
 
-- Decision: Choose the information that should appear in the meeting minute / the structure of the meeting minute (in the case where the user gives more information to the AI to generate the meeting minute)
+5b. Decision: Choose the information that should appear in the meeting minute / the structure of the meeting minute (in the case where the user gives more information to the AI to generate the meeting minute)
   - **Availability**: It is more likely that the user will generate meeting minutes similar to what he is accustomed to using in his meetings, even if it is less relevant for these particular meeting minutes.
   - **Enchor**: The first template that is presented to the user is more likely to be chosen.
   - **How the design alleviate the biases**: Notion provides templates to organize meeting notes systematically which can facilitate the user's task of choosing relevant notes.
 
-- Decision: Determining which old meeting minutes to give to the AI to generate the meeting agenda.
+6a. Decision: Determining which old meeting minutes to give to the AI to generate the meeting agenda.
   - **Availability**: It is more likely that the user will provide the meeting minutes that he is familiar with.
   - **How the design alleviate the biases**: The readability of meeting minutes created by Notion's AI allows the user to quickly understand the older meeting minutes with which he is not familiar.
 
-- Decision: Review the generate meeting agenda and determine which parts are relevant to the meeting.
+6b. Decision: Review the generate meeting agenda and determine which parts are relevant to the meeting.
   - **Representativeness**: It is possible that the user makes this decision based on what he believes is a good meeting agenda, relying on his own understanding of the representation of a meeting agenda.
   - **How the design alleviate the biases**: The agenda ideas generated by Notion's AI can give the user new ideas for filling in the meeting agenda. The separation into blocks allows the user to easily delete or keep only small parts.
 
-- Decision: Removing irrelevant dates adding to the calendar by the AI.
+7a. Decision: Removing irrelevant dates adding to the calendar by the AI.
   - **Representativeness**: The user often has a preconceived idea of what a relevant date may be and will apply their own representation of this idea when selecting dates.
   - **How the design alleviate the biases**: The dates generated by Notion's AI can give the user new ideas for planning his/her life.
 
-- Decision: Determine the length of the summary and/or how detailed the summary is.
-  - **Anchor and adaptation**: It's likely that the user will initially use the default settings and never change them because he/she will be used to this length of summary and this amount of details.
+8a. Decision: Determine the length of the summary and/or how detailed the summary is.
+  - **Adjustment and anchoring**: It's likely that the user will initially use the default settings and never change them because he/she will be used to this length of summary and this amount of details.
   - **How the design exacerbates the bias**: Notion gives default settings.
 
-- Decision: Determine if he or she would like more information on a part of the paper after reading the first summary. (for example regenerate a summary for a particular part, or asking for more precision)
+8b. Decision: Determine if he or she would like more information on a part of the paper after reading the first summary. (for example regenerate a summary for a particular part, or asking for more precision)
   - **Availability**: It's likely that if the user is more familiar with a concept in the paper, it's more probable that this concept will catch their attention, and they would want more details on it than if the concept is new to them and they only have a brief overview. If the summary of the new concept doesn't explain why it's important/useful or doesn't clarify the concept well, the user may not seek further information.
   - **How the design exacerbates the bias**: Notion's AI uses GPT-3.5, which can sometimes explain a concept poorly when summarizing it.
 
-- Decision: Assessing the privacy implications of using the Notion AI knowing the Notion's Privacy Policy.
-  - **Anchor**: The user will probably read Notion's privacy policy only once, and even if it changes, they may not necessarily alter their perception of Notion's privacy policy.
+9a. Decision: Assessing the privacy implications of using the Notion AI knowing the Notion's Privacy Policy.
+  - **Anchoring**: The user will probably read Notion's privacy policy only once, and even if it changes, they may not necessarily alter their perception of Notion's privacy policy.
   - **How the design alleviate the biases**: Notion notifies users when they change their privacy policy.
 
-- Decision: Choosing when to use language translation.
+10a. Decision: Choosing when to use language translation.
   - **Representativeness**: It's likely that the user has a preconceived idea of what should be translated or not (e.g., proper nouns), so the user will use translation only when they believe it aligns with their idea of what should be translated.
   - **How the design alleviate the biases**: Notion mainly allows for the translation of entire texts rather than word-for-word, which reduces this bias as there are fewer choices to make, thus less freedom in the selection.
 
-- Decision: Choosing to accept the translation or not.
+10b. Decision: Choosing to accept the translation or not.
   - **Availability**: If the user does not understand the proposed translation, it's likely that they will be less inclined to choose it compared to a situation where they understand the suggested translation.
   - **How the design exacerbates the bias**: Notion allows to regenerate a translation for a given text if the first translation does not suit us.
 
+11a. Decision: Selecting sentences for improvement.
+  - **Availability**: Same explanation as 1a.
 
+12a. Decision: Adding a reference.
+- **Availability**: There is no particular bias here, but the output depends on the references available to the researcher at the time.
+- **How the design could affect the bias**: The design does not really influence the bias, as the user would add the reference from an external source.
 
-- Decision: Selecting sentences for improvement.
+12b. Decision: Choosing the category of the references.
+- **Adjustment and anchoring**: Notion AI may automatically categorize the references and the user will have to adjust inaccurate categorizations or add new ones. This decision can be influenced by the initial category Notion AI assigned.
+- **How the design exacerbates the bias**: They very action of automatically categorizing the references by Notion AI opens the door to this bias.
 
-- Decision: Adding a reference.
+13a. Decision: Choosing which features are essential for free use. (for example in the case where notion leaves the possibility of choosing a limited number of features for free)
+- **Availability**: This decision does not directly involve any response generated by Notion AI, but simply to a user's hypothetical decision while subscribing to the product. For the sake of discussion, this decision could be subject to availability bias as the user would need to select the desired features based on what he/she thinks to be important at the moment.
+- **How the design could alleviate the bias**: By providing a set of default recommended or most common features can help the user decide which features to use, but could also introduct adjustment bias. 
 
-- Decision: Choosing the category of the references.
+14a. Decision: Creating the prompt to generate the list of ideas.
+- **Representativeness**: The way the user frames the prompt can be influenced by their stereotypes about the particular subject which can skew Notion AI's response.
+- *How the design alleviates the bias*: Notion AI does not reinforce any preconceived notions the user may have as it does not autocomplete a user's prompt, allowing them to represent their thought fully.
 
-- Decision: Choosing which features are essential for free use. (for example in the case where notion leaves the possibility of choosing a limited number of features for free)
-
-- Decision: Creating the prompt to generate the list of ideas.
 
 **For the designs that alleviate users' biases, what kind of information should be presented and how so that it might improve the users' decision-making?**
-- Include information about the decisions here...
 - What kind of information to present?
   The user should be able to able to view the complete picture of both sides of the decision he/she is about to make. The UI should display to the user what the intermediate output of choosing a particular type of option would be and it should be reversible. This will allow the user to make up he/her own mind after seeing the output for each perspective. It is possible that intelligent systems may permeate biases based on the output being generated for the user but even if the outout may not be balanced which may not be practical in all circumstances, atleast having outputs from each perspective can be quite helpful for the user.
 - How should the information be presented? 
