@@ -185,10 +185,6 @@ We went through the 23 design principles created by Google. Having summarized th
 23. **Get input from domain experts as you build your dataset:** Notion AI does not explicitly mention how it gets input from domain experts. They do use the chatGPT 3.5 version API to serve responses but they do not go into explicit details for the same. So, we cannot comment on how exactly the dataset was built and if inputs from domain experts was used.
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 4f2c9d522284b293e16677904ea3e3eefe96ce2e
 ### 3. **Question 1.3:** 
 _Compare the report from the two works. Discuss how well they support the HAI design evaluation, including both their usefulness and limitations. [10]_
 
@@ -456,21 +452,22 @@ he would likely become more insecure about data security and careful to ensure t
 
 With His Research Team, Akira's approach to AI could lead to a team environment where there's a strong focus on attention to detail and using technology in a responsible and ethical way.
 In the Academic Community, he could influence the conversation around AI, driving forward discussions on privacy, data security, and the role of AI in research.
+
 ### **Task3**: 
 Presentation
 
 
 ## Contribution
 
-**Question 1.1**:
+**Question 1.1**: Varun [G1-G9] ([commit 1](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/ce93bd4d54875882d611f7a64436e019bec7009f)) + Rishabh [G10-G18] ([commit1](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/17cf913341f08568ee35c9063ec6e567a93cd227), [commit2](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/00812e54a53701b36bee0f896282d1ced83330b3))
 
 **Question 1.2**:
 
-**Question 1.3**:
+**Question 1.3**: Rishabh [usefulness] ([commit1](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/960cf1e91868e0dd96b8339e319701b094333610), [commit2](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/5d7f9eaaa281290f5430de870d10d128b3f04ab6)) + Varun [limitations] ([commit1](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/c1c63aa50ddc7769a70d59400724f16f7d9f7615))
 
 **Question 2.1**: Tamara ([commit 1](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/a7efd32e1af7994cfe0a529c319bb03bdd55b379), [commit 2](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/6ed3ae3257cfcb4919ecfe1a6716a8d9b9155d67), [commit 3](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/e6c19a49b045c8f069e1bdade318e3c21b55b8c7), [commit 4](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/111a59c035a30cca1cb587970a5786fed19c4b63), [commit 5](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/e9995df6b4c0f356668d5183a382c5d91aad7e3d), [commit 6](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/60decb9e98599576fb51720fb8cac9d55e41296b))
 
-**Question 2.2**: Tamara ([commit 1](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/52a53313eaf8d28b5143ed6216680c030145e5a1), [commit 2](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/07a69c73fc7f8a2382e2a95259bb41482ca09682), [commit 3](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/e768c36c3c16e5f3bb0635b4b4b5f041e178df15)) + Varun
+**Question 2.2**: Tamara [user stories 5-10] ([commit 1](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/52a53313eaf8d28b5143ed6216680c030145e5a1), [commit 2](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/07a69c73fc7f8a2382e2a95259bb41482ca09682), [commit 3](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/e768c36c3c16e5f3bb0635b4b4b5f041e178df15)) + Varun [1-4] ([commit1](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/cebb27a16ef7b60aac48950129874bfbffa7a98b)), [11-14] ([commit1](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/c4e2ea3e2a2e9cc4d97ecbf3d843b3530d385006))
 
 **Question 2.3**:Yaoqiang ([commit 1](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/14fe2916c172d98bf34e8a7cd7e79ab8ea400469), [commit 2](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/f95cbace033ef27a28e6178ef2397d5b8e032d4f))
 
