@@ -2,7 +2,7 @@
 
 ## Task-1
 ### 1. **Question 1.1:** 
-_Provide screenshots and explanations to illustrate how well each guideline is followed in the MS HAI [guilelines](https://www.microsoft.com/en-us/research/uploads/prod/2019/01/Guidelines-for-Human-AI-Interaction-camera-ready.pdf). If you cannot accurately evaluate some guideline(s), provide concrete reasons. [12]_
+_Provide screenshots and explanations to illustrate how well each guideline is followed in the MS HAI [guilelines](https://www.microsoft.com/en-us/research/uploads/prod/2019/01/Guidelines-for-Human-AI-Interaction-camera-ready.pdf). If you cannot accurately evaluate some guideline(s), provide concrete reasons._
 
 **G1: Make clear what the system can do.**
 
@@ -186,7 +186,7 @@ We went through the 23 design principles created by Google. Having summarized th
 
 
 ### 3. **Question 1.3:** 
-_Compare the report from the two works. Discuss how well they support the HAI design evaluation, including both their usefulness and limitations. [10]_
+_Compare the report from the two works. Discuss how well they support the HAI design evaluation, including both their usefulness and limitations._
 
 We observed that the Microsoft guidelines touch more on the user experience of the human-AI interaction, for example, G7 (Support efcient invocation), G12 (Remember recent interactions), and on the topic of AI ethics and principles, for example, G5 (Match relevant social norms) and G6 (Mitigate social biases).
 
@@ -483,4 +483,6 @@ Presentation
 
 Repo cleanup, admin, issue creation: Aayush ([commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/86a18b92e4f3f7adba1f4b3da4b8e6ced936ea6e))
 
-Please find meeting notes [here](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/wikis/Assignment-2-meeting-notes).
+Repo cleanup, admin, issue creation: Aayush [commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/86a18b92e4f3f7adba1f4b3da4b8e6ced936ea6e)
+
+Please find meeting notes: [here](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/wikis/Assignment-2-meeting-notes) - They contain progress updates, ideas discussed, the ToDos, and how the work was divided.
