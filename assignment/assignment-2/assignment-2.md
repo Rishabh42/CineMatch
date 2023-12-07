@@ -331,8 +331,8 @@ Presentation
 
 **Question 1.3**:
 
-**Question 2.1**: Tamara
+**Question 2.1**: Tamara ([commit 1](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/a7efd32e1af7994cfe0a529c319bb03bdd55b379), [commit 2](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/6ed3ae3257cfcb4919ecfe1a6716a8d9b9155d67), [commit 3](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/e6c19a49b045c8f069e1bdade318e3c21b55b8c7), [commit 4](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/111a59c035a30cca1cb587970a5786fed19c4b63), [commit 5](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/e9995df6b4c0f356668d5183a382c5d91aad7e3d), [commit 6](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/60decb9e98599576fb51720fb8cac9d55e41296b))
 
-**Question 2.2**: Tamara + Varun
+**Question 2.2**: Tamara ([commit 1](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/52a53313eaf8d28b5143ed6216680c030145e5a1), [commit 2](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/07a69c73fc7f8a2382e2a95259bb41482ca09682), [commit 3](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/e768c36c3c16e5f3bb0635b4b4b5f041e178df15)) + Varun
 
-**Question 2.3**: Yaoqiang
+**Question 2.3**:
