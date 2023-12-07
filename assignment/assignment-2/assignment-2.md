@@ -483,6 +483,4 @@ Presentation
 
 Repo cleanup, admin, issue creation: Aayush ([commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/86a18b92e4f3f7adba1f4b3da4b8e6ced936ea6e))
 
-Repo cleanup, admin, issue creation: Aayush [commit](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/commit/86a18b92e4f3f7adba1f4b3da4b8e6ced936ea6e)
-
 Please find meeting notes: [here](https://gitlab.cs.mcgill.ca/comp585_2023f/team-4/-/wikis/Assignment-2-meeting-notes) - They contain progress updates, ideas discussed, the ToDos, and how the work was divided.
