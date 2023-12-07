@@ -101,7 +101,7 @@ Doesn’t explicitly notify people but new releases can be tracked through their
 
 
 ### 2. **Question 1.2:** 
-_Peform the same task with Q1.1 using the PAIR's [design patterns](https://pair.withgoogle.com/guidebook/patterns). [12]_
+_Peform the same task with Q1.1 using the PAIR's [design patterns](https://pair.withgoogle.com/guidebook/patterns)._
 
 
 We went through the 23 design principles created by Google. Having summarized them, we checked how they are being adhered to by Notion AI. Following are our findings:
@@ -185,12 +185,8 @@ We went through the 23 design principles created by Google. Having summarized th
 23. **Get input from domain experts as you build your dataset:** Notion AI does not explicitly mention how it gets input from domain experts. They do use the chatGPT 3.5 version API to serve responses but they do not go into explicit details for the same. So, we cannot comment on how exactly the dataset was built and if inputs from domain experts was used.
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 4f2c9d522284b293e16677904ea3e3eefe96ce2e
 ### 3. **Question 1.3:** 
-_Compare the report from the two works. Discuss how well they support the HAI design evaluation, including both their usefulness and limitations. [10]_
+_Compare the report from the two works. Discuss how well they support the HAI design evaluation, including both their usefulness and limitations._
 
 We observed that the Microsoft guidelines touch more on the user experience of the human-AI interaction, for example, G7 (Support efcient invocation), G12 (Remember recent interactions), and on the topic of AI ethics and principles, for example, G5 (Match relevant social norms) and G6 (Mitigate social biases).
 
@@ -237,7 +233,7 @@ So a similar system of measurement is needed for AI enabled systems as well to e
 
 ## Task-2
 ### 1. **Question 2.1:** 
-_Revisit the user stories you wrote in Assignment 1. Discuss what kind of decisions (big or small) its users need to make during interaction when trying to achieve their goals. Explain what the decision is, what knowledge is required to make the decision, and how much effort is needed to make such decisions. [10]_
+_Revisit the user stories you wrote in Assignment 1. Discuss what kind of decisions (big or small) its users need to make during interaction when trying to achieve their goals. Explain what the decision is, what knowledge is required to make the decision, and how much effort is needed to make such decisions._
 
 For each user story we wrote in Assignment 1, we determined the decisions that the user had to make during the interaction with the AI, in order to achieve their goals:
 
